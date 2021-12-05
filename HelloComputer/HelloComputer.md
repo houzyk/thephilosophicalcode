@@ -42,7 +42,7 @@ Secondly, Computation requires that there exist objects being manipulated! Natur
 
 ### A Formal Observation
 
-We kept the article devoid of logical and mathematical technicalities so far. For those who wanna deep dive into the matter, this section is for you. Anyone else, please skip this section. Let's begin by asking ourselves how do we lay "symbolic manipulation" on a formal basis? Those used to TCS and Logic might see each model of Computation as a precisification of "symbolic manipulation". So, we see that the semantics of "symbolic manipulation" is varied. So, we have a Pluralism of Computation! For example, we may precisificate "symbolic manipulation" as a Turing Machine tuple (Q, L, s, t) where
+We kept the article devoid of logical and mathematical technicalities so far. For those who wanna deep dive into the matter, this section is for you. Anyone else, this marks the end of the article for you. Let's begin by asking ourselves how do we lay "symbolic manipulation" on a formal basis? Those used to TCS and Logic might see each model of Computation as a precisification of "symbolic manipulation". So, we see that the semantics of "symbolic manipulation" is varied. So, we have a Pluralism of Computation! For example, we may precisificate "symbolic manipulation" as a Turing Machine tuple (Q, L, s, t) where
 
 1 Q is a finite set of states q.
 
