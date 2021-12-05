@@ -1,7 +1,7 @@
 # The Philosophical Code
 ### Exploring Code &amp; Computation From A Philosophical Point Of View.
 
-  An open-source project where we write articles about the intersection of Philosophy and Computer Science. Here we try to philosophically breakdown our much-loved concepts about Coding and Computation. These could be anything- from ethics, logic, philosophy of language to the philosophy of mind. Honestly, anything! (as long as it is philosophically interesting, duh?).
+  An open-source project where we write articles about the intersection of Philosophy and Computer Science. Here we try to philosophically breakdown our much-loved concepts about Coding and Computation. These could be anything- from ethics, theoretical computer science, logic, philosophy of language to the philosophy of mind. Honestly, anything! (as long as it is philosophically interesting, duh?).
   
 
 ## Contribution Guidelines
