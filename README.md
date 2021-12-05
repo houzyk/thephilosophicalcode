@@ -1,0 +1,2 @@
+# thephilosophicalcode
+Exploring Code &amp; Computation from a Philosophical point of view.
