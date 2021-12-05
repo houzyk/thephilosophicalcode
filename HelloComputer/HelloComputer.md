@@ -3,16 +3,6 @@
 
 > Computers run the world, that's obvious! *What is it that computers do?* That's less obvious. There are several, equally good, answers to that question. One may give an 'engineering' answer by talking about microchips or motherboards. One may also give a theoretical answer by talking of automata or Turing Machines. Alternatively, one may give a philosophical and slightly more abstract answer. So, instead of diving into the physical and theoretical implementations of computers, let's explore what computers *conceptually* do.
 
-#### Outline
-
-• Section 1. Inspired by Analytic Philosophers, I talk about the method behind answering the question "what is it that computers conceptually do?".
-
-• Section 2. I propose an answer (dubbed "The Linguistic Answer") to what they conceptually do. Fundamentally, the Linguistic Answer characterizes Computation as **symbolic manipulation**.
-
-• Section 3. I take a slight detour in talking about the relationship between our Linguistic Answer and two programming paradigms- imperative languages (like JS) and declarative languages (like Haskell).
-
-• Section 4. I briefly look at two philosophical implications of our Linguistic Answer.
-
 
 ### 1. Our Method
 
@@ -31,7 +21,7 @@ One might retort that "okay, we've philosophized a bit to only came to the answe
 
 ### 3. Two Programming Paradigms
 
-So far, we came up with a tentative, but intuitive, Linguistic Answer to our question of "what is a Computation?". It would feel lacking if we do not somehow show how our answer connects to the actual practice of coding. Among the many flavours of programming languages, we find two common paradigms. Imperative languages and declarative ones. To me, imperative ones are those where we give explicit instructions to our computer and declarative ones are those where we simply tell our computer what we want.
+So far, we came up with a tentative, but intuitive, Linguistic Answer to our question of "what is a Computation?". It would feel lacking if we do not somehow show how our answer connects to the actual practice of coding. Among the many flavours of programming languages, we find two common paradigms. Imperative languages (like JS) and declarative ones (like Haskell). To me, imperative ones are those where we give explicit instructions to our computer and declarative ones are those where we simply tell our computer what we want.
 
 On one hand, it is quite natural to see how our Linguistic Answer that Computation is symbolic manipulation is related to imperative languages. The symbols doing the manipulation are simply the explicit imperative instructions of our code.
 
@@ -48,3 +38,15 @@ Secondly, Computation requires that there exist objects being manipulated! Natur
 
 
 > In the end, what is it that computers conceptually do? Or what is a Computation? We proposed that a Computation is what can be done given an amount of space-time. Conceptually, this means that computers manipulate symbols! These symbols need not be from a programing language, they can also be from a natural language like English. In terms of coding, these symbols are either instruction sets (given imperative programming languages) or the objects being manipulated themselves (given declarative programming languages).
+
+
+### A Formal Observation
+
+We kept the article devoid of logical and mathematical technicalities so far. For those who wanna deep dive into the matter, this section is for you. Anyone else, please skip this section. Let's begin by asking ourselves how do we lay "symbolic manipulation" on a formal basis? Those used to TCS and Logic might see each model of Computation as a precisification of "symbolic manipulation". So, we see that the semantics of "symbolic manipulation" is varied. So, we have a Pluralism of Computation! For example, we may precisificate "symbolic manipulation" as a Turing Machine tuple (Q, L, s, t) where
+
+1 Q is a finite set of states q
+2 L is a finite set of symbols
+3 s in the initial state q (in Q)
+4 t is our common-place TM transition function.
+
+Importantly, notice how symbolic manipulation crops in the very formal definition of a TM (at 2)! Alternatively, we may precisificate "symbolic manipulation" using the Lambda Calculus or any other model of Computation. To me, this plurality, which crops out from our Linguistic Answer, offers a very intuitive philosophical basis to fundamental CS ideas such as the Church-Turing thesis.
