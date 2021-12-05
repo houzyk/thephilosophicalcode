@@ -10,7 +10,7 @@
   2. The folder should be named after the name of your article in upper camel.
   3. The folder should contain an assets folder (if you want to include media) and a .md which is where your article resides.
   4. Please keep the number of media to less than 3.
-  5. Your .md should also reflect the name of your article.
+  5. Your .md should also reflect the name of your article (also in upper camel).
   6. The name of your article should be less that 20 characters (including whitespace).
   7. Your article needs to contain references to authoritative philosophical and CS sources. So, keep away from the wikipedia articles or random internet articles.
   8. Your article should be less than 1000 words (excluding references).
