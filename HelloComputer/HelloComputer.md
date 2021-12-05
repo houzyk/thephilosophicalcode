@@ -48,7 +48,7 @@ Secondly, Computation requires that there are objects being manipulated! Natural
 
 \
 \
-\
+
 
 So, what is it that computers conceptually do? Or simply, what is a Computation? We proposed that a Computation is what can be done given an amount of space and time. This conceptually means that computers manipulate symbols! These symbols need not be from a programing language, they can also be from a natural language like English. In terms of coding, these symbols are either instruction sets (given imperative programming languages) or the objects being manipulated themselves (given declarative programming languages).
 
