@@ -16,4 +16,5 @@
   8. Your article should be less than 1000 words (excluding references).
   9. Your article should be related to the intersection of Philosophy and Computer Science.
   10. Once you're satisfied with your article, make a PR. I'll review the changes and if I like it, I'll merge it. Include your name (doesn't have to be your full name) and a link to any of your socials in the PR description. This is so I can share it on my socials and give credit to you!
-  11. You can publish your article wherever else you want! An article on your linkedIn, Facebook, Twitter... The world is your oyster! Just make sure to link this repo.
+  11. Alternatively, if you don't wanna go through all that github faff, just email me your article on houzairmk@icloud.com
+  12. You can publish your article wherever else you want! An article on your linkedIn, Facebook, Twitter... The world is your oyster! Just make sure to link this repo.
