@@ -7,7 +7,7 @@
 
 • Section 1. Inspired by Analytic Philosophers, I talk about the method behind answering the question "what is it that computers conceptually do?".
 
-• Section 2. I propose my answer (dubbed "The Linguistic Answer") to what they conceptually do. Fundamentally, the Linguistic Answer characterizes Computation as **symbolic manipulation**.
+• Section 2. I propose an answer (dubbed "The Linguistic Answer") to what they conceptually do. Fundamentally, the Linguistic Answer characterizes Computation as **symbolic manipulation**.
 
 • Section 3. I take a slight detour in talking about the relationship between our Linguistic Answer and two programming paradigms- imperative languages (like JS) and declarative languages (like Haskell).
 
