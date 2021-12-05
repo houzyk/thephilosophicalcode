@@ -1,3 +1,6 @@
+<img width="1440" alt="Screenshot 2021-12-05 at 17 06 02" src="https://user-images.githubusercontent.com/88334281/144754991-948a47d4-d2d2-4a9d-a7d9-7a13ed562c63.png">
+
+
 # The Philosophical Code
 ### Exploring Code &amp; Computation From A Philosophical Point Of View.
 
