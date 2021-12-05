@@ -13,14 +13,19 @@ Section 3. I take a slight detour in outlining the relationship between my Lingu
 
 Section 4. I briefly look at the philosophical implications of my Linguistic Answer.
 
+
 ### 1. An Issue Of Method
 
 I'll take an Analytic route in trying to get to the bottom of what a computation is. This means that I begin by analyzing the meaning of the word "computation". Finding the meaning of a word is notoriously tricky especially if you're operating in a vacuum. What I mean is that it is quite hard (some would argue impossible!) to find the meaning of a word if we are not given some context on how that word is used. In summary, we need some kind of reference point to anchor our analysis of a particular word. It is easier to do that with words that refer to concrete and non-abstract objects. For example, if you want to find the meaning of the word "tree", that's fine. You simply look for people speaking about trees which they can *physically* interact with. However`, our goal in this article is to find the meaning of the word "computation" which refers to a non-physical concept rather than a physical object (bear in mind that we're not asking what a computer is but rather what a computer *conceptually* does). So, to find that anchor on which we shall base our analysis of the meaning of "computation", I shall turn to our intuitions.
 
 ### 2. A Linguistic Answer
 
+
 ### 3. Two Paradigms Of Programming
 
+
 ### 4. Implications Of My Linguistic Answer
+
+
 
 ## References
