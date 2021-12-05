@@ -5,7 +5,7 @@
 
 #### Outline
 
-• Section 1. Inspired by Analytic Philosophers, I talk about my method behind answering the question "what is it that computers conceptually do?".
+• Section 1. Inspired by Analytic Philosophers, I talk about the method behind answering the question "what is it that computers conceptually do?".
 
 • Section 2. I propose my answer (dubbed "The Linguistic Answer") to what they conceptually do. Fundamentally, the Linguistic Answer characterizes Computation as **symbolic manipulation**.
 
@@ -14,7 +14,7 @@
 • Section 4. I briefly look at two philosophical implications of our Linguistic Answer.
 
 
-### 1. My Method
+### 1. Our Method
 
 Analytic Philosophers often approach a question, such as our very own "what is it that computers conceptually do", by simplifying that question into a simpler, but more abstract, one. The reasoning behind this approach is that such simplification allows us to better pin down the real issue at stake. With this in mind, it seems quite intuitive that we may simplify our question into "what is a Computation?". With this simplified question in hand, we follow the footsteps of these Analytic Philosophers in saying that the answer to our simplified question is, quite simply, finding the meaning of the word "Computation".
 
