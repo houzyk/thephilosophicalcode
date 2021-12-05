@@ -46,7 +46,7 @@ Firstly, it seems that the absence of symbolic manipulation entails the absence 
 
 Secondly, Computation requires that there are objects being manipulated! Naturally, if we do not have anything to manipulate then, we cannot carry out a Computation. So, it seems that, metaphysically, Computation is dependent on Existence. I wonder what this may imply for metaphysical theories that take the universe to be some sort of computer simulation. Isn't it paradoxical that Computation depends on Existence when (according to these simulation theories) Existence itself depends on Computation? I feel like an infinite regress may pop out here but i'm not gonna go there!
 
-\
+
 
 
 So, what is it that computers conceptually do? Or simply, what is a Computation? We proposed that a Computation is what can be done given an amount of space and time. This conceptually means that computers manipulate symbols! These symbols need not be from a programing language, they can also be from a natural language like English. In terms of coding, these symbols are either instruction sets (given imperative programming languages) or the objects being manipulated themselves (given declarative programming languages).
