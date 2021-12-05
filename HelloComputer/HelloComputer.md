@@ -21,7 +21,7 @@ One might retort that "okay, we've philosophized a bit to only came to the answe
 
 ### 3. Two Programming Paradigms
 
-So far, we came up with a tentative, but intuitive, Linguistic Answer to our question of "what is a Computation?". It would feel lacking if we do not somehow show how our answer connects to the actual practice of coding. Among the many flavours of programming languages, we find two common paradigms. Imperative languages (like JS) and declarative ones (like Haskell). To me, imperative ones are those where we give explicit instructions to our computer and declarative ones are those where we simply tell our computer what we want.
+So far, we came up with a tentative, but intuitive, Linguistic Answer to our question of "what is a Computation?". It would feel lacking if we do not show how our answer connects to the actual practice of coding. Among the many flavours of programming languages, we find two common paradigms. Imperative languages (like JS) and declarative ones (like Haskell). To me, imperative ones are those where we give explicit instructions to our computer and declarative ones are those where we simply tell our computer what we want.
 
 On one hand, it is quite natural to see how our Linguistic Answer that Computation is symbolic manipulation is related to imperative languages. The symbols doing the manipulation are simply the explicit imperative instructions of our code.
 
