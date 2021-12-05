@@ -14,7 +14,7 @@ Section 3. I take a slight detour in outlining the relationship between my Lingu
 Section 4. I briefly look at the philosophical implications of my Linguistic Answer.
 
 
-### 1. An Issue Of Method
+### 1. My Method
 
 Very often, Analytic Philosophers of Language approach a question, such as our very own "what is it that computers conceptually do", by simplifying that question into a simpler, but more abstract, question. The reasoning behind this approach is that such simplification allows us to better pin down the real issue at stake. With this in mind, it seems quite intuitive that we may simplify our aforementioned question into "what is a computation?". With this simplified question in hand, we follow the footsteps of these Analytic Philosophers in saying that the answer to our simplified question is finding the meaning of the word "Computation".
 
@@ -23,12 +23,10 @@ Finding the meaning behind words is notoriously tricky especially if you're oper
 
 ### 2. A Linguistic Answer
 
+I stumbled on a really interesting video about the P vs NP problem once (https://www.youtube.com/watch?v=YX40hbAHx3s). Somewhere through that video, I told myself that, somehow, the P vs NP problem is intrinsically linked to how much *we can do given a particular amount of time and space*. To me, that also seems like a philosophically interesting anchor in finding the meaning of the word "Computation". I would go on further in proposing that, intuitively, Computation *is* what can be done given a particular amount of time and space. This entails that the meaning of the word "Computation" refers to how much can be *manipulated* through a particular region of space-time. To clarify, let's say that any form of manipulation is between a manipulator and the object being manipulated. Here, we find some form of structure whereby the manipulator is *related* the object being manipulated through the *relationship of manipulation*. So, we may abstract away from this structure by saying that this relationship of manipulation is formally similar to that of a string referring to an object (We've simply, substituted the manipulation relationship for the relationship of reference and the manipulator for a string). In the context of a Computation, that string would be a piece of code/instruction *manipulating* a region of space across time. Think of how code from low-level languages directly refer to memory (i.e. a region of space) and gives instructions on what to do with that bit of memory and for how long to do it for. Hence, I propose that, **conceptually**, Computation is symbolic manipulation (where the symbols are the instructions given in some natural, formal or programming language).
+
 
 ### 3. Two Paradigms Of Programming
 
 
 ### 4. Implications Of My Linguistic Answer
-
-
-
-## References
