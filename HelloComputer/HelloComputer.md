@@ -44,9 +44,12 @@ Secondly, Computation requires that there exist objects being manipulated! Natur
 
 We kept the article devoid of logical and mathematical technicalities so far. For those who wanna deep dive into the matter, this section is for you. Anyone else, please skip this section. Let's begin by asking ourselves how do we lay "symbolic manipulation" on a formal basis? Those used to TCS and Logic might see each model of Computation as a precisification of "symbolic manipulation". So, we see that the semantics of "symbolic manipulation" is varied. So, we have a Pluralism of Computation! For example, we may precisificate "symbolic manipulation" as a Turing Machine tuple (Q, L, s, t) where
 
-1 Q is a finite set of states q
-2 L is a finite set of symbols
-3 s in the initial state q (in Q)
+1 Q is a finite set of states q.
+
+2 L is a finite set of symbols.
+
+3 s in the initial state q (in Q).
+
 4 t is our common-place TM transition function.
 
 Importantly, notice how symbolic manipulation crops in the very formal definition of a TM (at 2)! Alternatively, we may precisificate "symbolic manipulation" using the Lambda Calculus or any other model of Computation. To me, this plurality, which crops out from our Linguistic Answer, offers a very intuitive philosophical basis to fundamental CS ideas such as the Church-Turing thesis.
