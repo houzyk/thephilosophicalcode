@@ -11,7 +11,7 @@ Section 2. I outline my answer (dubbed "The Linguistic Answer") to what computer
 
 Section 3. I take a slight detour in outlining the relationship between my Linguistic Answer and two paradigms of programming- the imperative paradigm (think JS or Python) and the declarative/functional paradigm (think Haskell or Agda).
 
-Section 4. I briefly look at the philosophical implications of my Linguistic Answer.
+Section 4. I briefly look at two philosophical implications of my Linguistic Answer.
 
 
 ### 1. My Method
@@ -38,10 +38,15 @@ Naturally, it is quite easy to see how our Linguistic Answer that Computation is
 However, it is harder to see how our Linguistic Answer is related to declarative languages. To that, we may say that Computation carried in a declarative way is symbolic manipulation that only looks at the beginning and the end of a Computation. This is a black-box approach. We do not need to see *how* the symbols are being manipulated, we simply need to see that they were manipulated! So, compared to imperative languages, the symbols are not doing the manipulation. The symbols are **not** the instruction set, but rather, the symbols are the objects being manipulated themselves. So, we've shifted the objects being manipulated for the manipulator and we took the objects as being the symbols. We are able to conceptually carry out this shift because, as previously mentioned, we left the interpretation of the word "symbolic" open in the context of a Computation. To me, the ability for this shift is where the beauty of viewing Computation as symbolic manipulation resides.
 
 
-### 4. Implications Of My Linguistic Answer
+### 4. Implications Of Our Linguistic Answer
 
 It is philosophically interesting to observe the possible implications of our Linguistic Answer. Here, I briefly go through two of them.
 
-Firstly, it seems that the absence of symbolic manipulation entails the absence of a computation. In terms of imperative languages, this is intuitive as a lack of instructions means an absence of computation. In terms of declarative languages, we see that an absence of symbolic manipulation entails an absence of objects being manipulated. However, that does not mean the absence of objects themselves because it seems that going from some objects to the absence of objects is a Computation itself.
+Firstly, it seems that the absence of symbolic manipulation entails the absence of a computation. In terms of imperative languages, this is intuitive as a lack of instructions means an absence of computation. In terms of declarative languages, we see that an absence of symbolic manipulation entails an absence of objects being manipulated. However, that does not entail the absence of objects themselves because it seems that going from some objects to the absence of these objects is a Computation itself. They were simply manipulated our of existence.
 
 Secondly, Computation requires that there are objects being manipulated! Naturally, if we do not have anything to manipulate then, we cannot carry out a Computation. So, it seems that, metaphysically, Computation is dependent on Existence. I wonder what this may imply for metaphysical theories that take the universe to be some sort of computer simulation. Isn't it paradoxical that Computation depends on Existence when (according to these simulation theories) Existence itself depends on Computation? I feel like an infinite regress may pop out here but i'm not gonna go there!
+
+
+So, what is it that computers conceptually do? Or simply, what is a Computation? We proposed that a Computation is what can be done given an amount of space and time. This conceptually means that computers manipulate symbols! These symbols need not be from a programing language, they can also be from a natural language like English. In terms of coding, these symbols are either instruction sets (given imperative programming languages) or the objects being manipulated themselves (given declarative programming languages).
+
+Happy coding!
