@@ -40,7 +40,7 @@ Secondly, Computation requires that there exist objects being manipulated! Natur
 > In the end, what is it that computers conceptually do? Or what is a Computation? We proposed that a Computation is what can be done given an amount of space-time. Conceptually, this means that computers manipulate symbols! These symbols need not be from a programing language, they can also be from a natural language like English. In terms of coding, these symbols are either instruction sets (given imperative programming languages) or the objects being manipulated themselves (given declarative programming languages).
 
 
-### A Formal Observation
+### PS
 
 We kept the article devoid of logical/mathematical technicalities so far. For those who wanna deep dive into the matter, this section is for you. Let's begin by asking ourselves how do we lay "symbolic manipulation" on a formal basis? Those used to TCS and Logic might see each model of Computation as a precisification of "symbolic manipulation". So, we see that the semantics of "symbolic manipulation" is varied. So, we have a Pluralism of Computation! For example, we may precisificate "symbolic manipulation" as a Turing Machine tuple (Q, L, s, t) where
 
