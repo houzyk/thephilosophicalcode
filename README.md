@@ -3,7 +3,9 @@
 
   An open-source project where we write articles about the intersection of Philosophy and Computer Science. Here we try to philosophically breakdown our much-loved concepts about Coding and Computation. These could be anything- from ethics, theoretical computer science, logic, philosophy of language to the philosophy of mind. Honestly, anything! (as long as it is philosophically interesting, duh?).
 
+## Articles
 
+1. [Hello, Computer!](/HelloComputer/HelloComputer.md)
 ## Contribution Guidelines
 
   1. To add an article, fork this repo and create a folder in the root.
