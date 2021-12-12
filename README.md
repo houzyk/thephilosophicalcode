@@ -9,6 +9,8 @@
 ## Articles
 
 1. [Hello, Computer!](/HelloComputer/HelloComputer.md)
+2. [Keep It Dry](/KeepItDry/KeepItDry.md)
+
 ## Contribution Guidelines
 
   1. To add an article, fork this repo and create a folder in the root.
