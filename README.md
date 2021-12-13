@@ -7,10 +7,15 @@
   An open-source article series talking about the intersection of Philosophy, Coding and Computer Science.
   
   \#TheoreticalComputerScience
+  
   \#PhilosophyOfMind
+  
   \#PhilosophyOfLanguage
+  
   \#PhilosophyOfAI/ML
+  
   \#PhilosophyOfMathematics+Logic
+  
   \#ComputationalEthics
 
 
