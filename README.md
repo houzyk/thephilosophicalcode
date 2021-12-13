@@ -5,6 +5,7 @@
 ### Exploring Code &amp; Computation From A Philosophical Point Of View.
 
   An open-source article series talking about the intersection of Philosophy, Coding and Computer Science.
+  
   \#Theoretical Computer Science
   \#Philosophy of Mind
   \#Philosophy of Language
