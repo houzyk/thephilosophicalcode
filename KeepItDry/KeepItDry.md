@@ -4,22 +4,31 @@
 
 ### 1. Don't Repeat Yourself
 
-  Firstly, let's understand how the DRY principle works. Imagine that we're a developer tasked with coding a simple program that tells us whether a positive integer is even or odd. Recall that a number is even if we can *fully* divide it by 2 and odd if we can't. So, given a number, our little program divides it by 2 and checks if we obtain a remainder. If the remainder is 0, then our number is even. Alternatively, if it isn't 0, then our number is odd. For example, our program may decide whether 14 or 15 are even using the following block of code (if you're not used to coding or the Ruby programming language, please find a comment after the "#" explaining what each line of code does).
+  Firstly, let's understand how the DRY principle works. Imagine that we're a developer tasked with coding a simple program that tells us whether a positive integer is even or odd. Recall that a number is even if we can *fully* divide it by 2 and odd if we can't. So, given a number, our little program divides it by 2 and checks if we obtain a remainder. If the remainder is 0, then our number is even. Alternatively, if it isn't 0, then our number is odd. For example, our program may decide whether 14 or 15 are even using the following block of code (if you're not used to coding or the Ruby programming language, please find some comments before each line of code explaining what that line does).
+
 
 ```
-if 15 % 2 == 0 # our program checks if the remainder of dividing 15 by 2 is 0
-  puts "15 is even" # our program prints "15 is even" if the remainder is 0
-else
-  puts "15 is odd" # our program prints "15 is odd" if the remainder isn't 0
-end
+  # our program checks if the remainder of dividing 15 by 2 is 0
+  if 15 % 2 == 0
+    # our program prints "15 is even" if the remainder is 0
+    puts '15 is even'
+  else
+    # our program prints "15 is odd" if the remainder isn't 0
+    puts '15 is odd'
+  end
 
-
-if 14 % 2 == 0 # our program checks if the remainder of dividing 14 by 2 is 0
-  puts "14 is even" # our program prints "14 is even" if the remainder is 0
-else
-  puts "14 is odd"  # our program prints "14 is odd" if the remainder isn't 0
-end
+  # our program checks if the remainder of dividing 14 by 2 is 0
+  if 14 % 2 == 0
+    # our program prints "14 is even" if the remainder is 0
+    puts '14 is even'
+  else
+    # our program prints "14 is odd" if the remainder isn't 0
+    puts '14 is odd'
+  end
 ```
+
+Eventually, our program prints `"15 is odd"` followed by `"14 is even"`. That's cool and all but let's criticize our block of code.
+
 
 
 
