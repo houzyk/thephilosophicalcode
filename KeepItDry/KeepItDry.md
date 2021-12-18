@@ -27,37 +27,46 @@
   end
 ```
 
-Eventually, our program prints `"15 is odd"` followed by `"14 is even"`. That's cool and all but let's criticize our block of code.
+  Eventually, our program prints `"15 is odd"` and `"14 is even"`- that's cool! However, let's criticize our code. Notice that we're repeating ourselves. We wrote virtually the same code to check the evenness of 14 and 15. What if we were given a thousand numbers instead of just two? we would waste our time in writing more than a thousand lines of repeating code! Naturally, this is where the DRY principle kicks in. Irrespective of how many numbers we are given, we need to find a way to only write a few lines of code which can be used to test the evenness of any number *without* repeating ourselves. In doing so, our code becomes adaptable, scalable and repeatable. To do this, let's see use functions!.
 
 
-
-
-Our two blocks of code are quite problematic- notice how we're repeating ourselves. In particular, the only that has changed between our two blocks of code is the numbers 14 and 15. The. So, how would we avoid this repetition? Functions (sometimes called methods). In essence, a function is a bit like a box. We put something in the box (out input), the function does some things to that input and gives us back an output. Let's take a concrete example of such a function which we call `even()`.
+  In essence, a function takes some input, does something with that input in order to return an output. So, we need to code a function that takes a positive integer as input, check whether that integer is even and returns an output that tells us whether the number is even or not. For example, we may code a function called `even()` as follows.
 
 
 ```
+  # our function takes a number as input
   def even(number)
+    # our function checks if the remainder of dividing our input by 2 is 0
     if number % 2 == 0
-      return "#{number} is even"
+      # our function tells us that our number is even if the remainder is 0
+      puts "#{number} is even"
     else
-      return "#{number} is odd"
+      # our function tells us that our number is odd if the remainder is 0
+      puts "#{number} is odd"
     end
   end
 ```
 
+  From now on, we can check whether 15 and 14 are even by simply calling `even()` on them. `even(14)` prints `"14 is even"` and `even(15)` prints `"15 is odd"`. In doing so, we don't write if-statements for each number like we previously did. We don't repeat ourselves anymore!
 
-`even()` takes in a number as an input. Then, it checks whether that number is fully divisible by 2. if it is, it outputs `true` and if it isn't, it outputs `false`. Now, we may then call our function using any number. As in our last example, we may call `even?(14)` which outputs `true`. We may also call `even?(15)` which outputs `false`. So, how have we not repeated ourselves? The thing is we've written less lines of code. we only need to call the function . In the wild, there are way more complex forms of the DRY principle than an even function On a side note, in the spirit of simplicity, it is possible to further refactor our code into as follows.
 
-```
-def even?(number)
-  (number % 2).zero? ? "#{number} is even" : "#{number} is odd"
-end
-```
+  So far, we've seen one simple scenario of how the DRY principle works. In the wild world of software, there are way more complex scenarios than ours! Irrespective of such complexity, the *raison d'être* of the DRY principle stays the same- We do not waste our time in writing repeating code because our code should be adaptable, scalable and re-usable. We've also seen that functions are a neat way to keep our code dry. In my opinion, this is because functions allow us to abstract away from unnecessary details just like *human languages abstract away from unnecessary details*
 
-So far, we've seen how developers do not repeat themselves. This practice of not repeating ourselves is closer to home than the world of coding.
 
 ### 2. Layers Of Abstractions
 
 ### 3. Can The Real Layer Please Stand Up?
 
 ### 4. Confused Talk, Confused Philosophy
+
+
+### PS
+
+  We may further simplify our `even()` function as follows.
+
+
+```
+  def even(number)
+    puts (number % 2).zero? ? "#{number} is even" : "#{number} is odd"
+  end
+```
