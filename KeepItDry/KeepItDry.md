@@ -75,11 +75,9 @@
 
 
   2. We may further simplify our `even()` function as follows.
-
-```
-  def even(number)
-    (number % 2).zero? ? "#{number} is even" : "#{number} is odd"
-  end
-```
-
+  ```
+    def even(number)
+      (number % 2).zero? ? "#{number} is even" : "#{number} is odd"
+    end
+  ```
   We could also check if the function's arguments are not numbers or if none are given. To avoid all that hassle and to keep it dry, we can instead use Ruby's built-in `#even?` function.
