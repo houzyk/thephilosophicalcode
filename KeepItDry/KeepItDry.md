@@ -8,37 +8,36 @@
   Imagine that we have to write a block of code that tells us whether a number is even or odd. We may code the following in order to check the evenness of 14 and 15.
 
 ```
-  # If you're not used to coding or Ruby, please find comments (like this one) before each line of code explaining what that line does.
+# If you're not used to coding or Ruby, please find comments (like this one) before each line of code explaining what that line does.
 
+# our code checks whether the remainder of dividing 15 by 2 is 0
+if 15 % 2 == 0
+  # our code prints "15 is even" if the remainder is 0
+  puts '15 is even'
+else
+  # our code prints "15 is odd" if the remainder isn't 0
+  puts '15 is odd'
+end
 
-  # our code checks whether the remainder of dividing 15 by 2 is 0
-  if 15 % 2 == 0
-    # our code prints "15 is even" if the remainder is 0
-    puts '15 is even'
-  else
-    # our code prints "15 is odd" if the remainder isn't 0
-    puts '15 is odd'
-  end
-
-  if 14 % 2 == 0
-    puts '14 is even'
-  else
-    puts '14 is odd'
-  end
+if 14 % 2 == 0
+  puts '14 is even'
+else
+  puts '14 is odd'
+end
 ```
 
   Eventually, our code prints `15 is odd` and `14 is even`. That's cool but notice how we're repeating ourselves. We wrote virtually the same code to check the evenness of 14 and 15. What if we had a thousand numbers instead of just the two? It would be a waste of time to write repeating code to check the evenness of a thousand numbers. Naturally, this is where the DRY principle kicks in. Irrespective of how many numbers we are given, we want to be able to check their evenness using only a few lines of non-repeating code. In doing so, our code becomes adaptable, scalable and repeatable! To do this, let's use functions. Basically, a function takes some input, does something with it and returns an output. So, let's code a function called `even()` that takes a number, checks for its evenness and outputs whether it is even or odd.
 
 ```
-  # our function takes a number as input
-  def even(number)
-    # our function checks if the remainder of dividing our number by 2 is 0
-    if number % 2 == 0
-      "#{number} is even"
-    else
-      "#{number} is odd"
-    end
+# our function takes a number as input
+def even(number)
+  # our function checks if the remainder of dividing our number by 2 is 0
+  if number % 2 == 0
+    "#{number} is even"
+  else
+    "#{number} is odd"
   end
+end
 ```
 
   We can now check whether 15 and 14 are even by calling `even()` with them- `puts even(14)` prints `14 is even` and `puts even(15)` prints `15 is odd`. In doing so, we don't write repeating if-statements anymore. We don't repeat ourselves!
@@ -61,13 +60,15 @@
 
   Firstly, one argument for believing that a last layer comes from human language itself. We've seen how a simple word like "Toto" gives rise to a highly complex pyramid. It is quite obvious that we manipulate all kinds of words from all kinds of languages. It seems quite natural that each of these word give rise of a complex pyramid themselves. That's a lot of complexity (just think of the sheer complexity of linguistics abstractions derived from the words in this article itself). It also seems quite natural that we, humans, have limited mental powers. If there was no last layer to our linguistic pyramids, then we would have infinite information to deal with. It seems absurd to believe that us, humans with finite mental capabilities, would be able to process an infinite amount of information. So, we may conclude that there is no infinite chain of information. Hence, there is a last layer to our pyramids of abstraction.
 
-  Secondly, let's go through an argument for believing that there is no last layer. Let's go back to our `even()` function once again. One could answer that the last layer of the pyramid arising from `even()` is Machine code. The problem with this answer is its arbitrariness- why stop at Machine code? Can't we dive deeper? Let's talk of the logic gates themselves! But why stop here? These logic gates are made up of atoms. But these atoms are made up of sub-atomic particles. What if our beloved physicists tell us that our standard particle model doesn't work anymore and  we found smaller stuff. This is not surprising given that this kind of paradigm shift happens a lot. To me, that's the beauty of Science. Anyway, my point is that there doesn't seem to be a non-arbitrary stopping point. There doesn't seem to be non-arbitrarily chosen last layer. Additionally, in my [last article](https://medium.com/@houzairmk/hello-computer-dff5e097aa9a), we saw how Computation goes beyond silicon powered computers. So, Computation is much more than just Machine code. When we consider a human computation like following a recipe, the of finding a non-arbitrary last layer gets even more complication. Is it the atoms making up then human? Is it their souk? Is it their brain? Is it their body? You get the picture.
+  Secondly, let's go through an argument for believing that there is no last layer. Let's go back to our `even()` function once again. One could answer that the last layer of the pyramid arising from `even()` is Machine code. The problem with this answer is its arbitrariness- why stop at Machine code? Can't we dive deeper? Let's talk of the logic gates themselves! But why stop here? These logic gates are made up of atoms. But these atoms are made up of sub-atomic particles. What if our beloved physicists tell us that our standard particle model doesn't work anymore and  we found smaller stuff. This is not surprising given that this kind of paradigm shift happens a lot. To me, that's the beauty of Science. Anyway, my point is that there doesn't seem to be a non-arbitrary stopping point. There doesn't seem to be non-arbitrarily chosen last layer. Additionally, in my [last article](/HelloComputer/HelloComputer.md), we saw how Computation goes beyond silicon powered computers. Conceptually, Computation is much more than just Machine code. When we consider a human computation like following a recipe, we see that finding a non-arbitrary last layer gets even more complication. Is it the atoms making up then human? Is it their soul? Is it their brain? Is it their body? You get the picture.
 
   At this point, we could anticipate many counter-arguments to our two aforementioned arguments. One could say that the first argument says more about our mental capabilities rather than pyramids of abstractions themselves. Alternatively, one could say that the second argument puts the epistemological cart before the metaphysical horse (That's a philosopher's way of saying we're chatting tosh). Let's not pay too much attention to these possible counter-argument. Instead, let's take a pause and think about the question we're trying to answer- *"what lies at the bottom of layered pyramids of abstraction?"* Maybe that question itself is ill-posed- there is no right answer. In trying to find such an answer, we've confused ourselves. We've philosophized too much. We've reached the limits of Philosophy. Hell, maybe we've reacted the limits of human thought itself.
 
 ### 4. Confused Talk, Confused Philosophy
 
   Think of a time when you heard or saw a kid uttering their first word. Isn't it amazing how such a young brain deals with such complexity? They'll then grow up. In a cheeky way (yet again), the DRY principle is guiding them.
+
+  > At last, we saw that the DRY principle guides not only developers but can be connected to mostly anyone engaged with a human language. It is fascinating how such a simple principle gives rise to highly complex pyramids of abstractions. Instead of confusing ourselves with these amazing relations and complexity, we should simple take a pause and remain in awe of what humans can do. Let's not push Philosophy and human thought to their limits.
 
 ### PS
 
@@ -78,9 +79,9 @@
 
 
   2. We may further simplify our `even()` function as follows.
-  ```
-    def even(number)
-      (number % 2).zero? ? "#{number} is even" : "#{number} is odd"
-    end
-  ```
-  We could also check if the arguments are not numbers or `null`. To avoid all that hassle and to keep it dry, we can instead use Ruby's built-in `#even?` method (In Ruby, functions are called "methods" 😉).
+```
+def even(number)
+  (number % 2).zero? ? "#{number} is even" : "#{number} is odd"
+end
+```
+We could also check if the arguments are not numbers or `null`. To avoid all that hassle and to keep it dry, we can instead use Ruby's built-in `#even?` method (In Ruby, functions are called "methods" 😉).
