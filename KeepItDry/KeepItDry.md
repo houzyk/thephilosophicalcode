@@ -8,14 +8,9 @@
   Imagine that we have to write a block of code that tells us whether a number is even or odd. For example, we may code the following to check the evenness of 14 and 15.
 
 ```
-# If you're not used to coding or the Ruby programming language, please find comments (like this one) before each line of code explaining what that line does.
-
-# our code checks whether the remainder of dividing 15 by 2 is 0
 if 15 % 2 == 0
-  # our code prints "15 is even" if the remainder is 0
   puts '15 is even'
 else
-  # our code prints "15 is odd" if the remainder isn't 0
   puts '15 is odd'
 end
 
