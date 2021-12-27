@@ -5,17 +5,17 @@
 ### Exploring Code &amp; Computation From A Philosophical Point Of View.
 
   An open-source article series talking about the intersection of Philosophy, Coding and Computer Science.
-  
+
   \#TheoreticalComputerScience
-  
+
   \#PhilosophyOfMind
-  
+
   \#PhilosophyOfLanguage
-  
+
   \#PhilosophyOfAI/ML
-  
+
   \#PhilosophyOfMathematics+Logic
-  
+
   \#ComputationalEthics
 
 
@@ -23,6 +23,7 @@
 
 1. [Hello, Computer!](/HelloComputer/HelloComputer.md)
 2. [Keep It Dry](/KeepItDry/KeepItDry.md)
+2. [Too Much To Handle](/TooMuchToHandle/TooMuchToHandle.md)
 
 ## Contribution Guidelines
 
