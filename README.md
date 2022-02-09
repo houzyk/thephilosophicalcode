@@ -24,7 +24,7 @@
 1. [Hello, Computer!](/HelloComputer/HelloComputer.md)
 2. [Keep It Dry](/KeepItDry/KeepItDry.md)
 3. [Too Much To Handle](/TooMuchToHandle/TooMuchToHandle.md)
-4. [Typescript?!](/Typescript?!/Typescript?!.md)
+4. [TypeScript?!](/TypeScript?!/TypeScript?!.md)
 
 ## Contribution Guidelines
 
