@@ -23,7 +23,7 @@
 
 1. [Hello, Computer!](/HelloComputer/HelloComputer.md)
 2. [Keep It Dry](/KeepItDry/KeepItDry.md)
-3. [Not My TypeScript](/NotMyTypeScript/NotMyTypeScript.md)
+3. [Existence In TypeScript](/ExistenceInTypeScript/ExistenceInTypeScript.md)
 4. [Too Much To Handle](/TooMuchToHandle/TooMuchToHandle.md)
 
 ## Contribution Guidelines
