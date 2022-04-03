@@ -40,10 +40,16 @@
 
 ### 3. Possible Worlds
 
+  Existence is a huge topic in Philosophy, especially for Metaphysicians. In the early 1900's, there was a move in British Philosophy where advances in Logic and Mathematics were applied to solving Philosophical problems. The relationship was not one-sided, there was also lots of Philosophical Ideas affecting the way Logic was carried out. These lead to the emergence of highly exciting fields of Philosophy such as the Philosophy of Mathematics or the Philosophy of Quantum Mechanics started to emerge. Today, this way of doing Philosophy is called 'Analytic Philosophy' and is the predominant way of doing Philosophy in the English-speaking world (sadly). Despite it's limitations, it allowed Philosophers to look at Philosophical concepts, such as Existence, through new lenses. In particular, there was significant advances in the way we understood modal existence. These are issues where we try to philosophically understand how some object *could* exist. It's entirely common-place to say that Unicorns do not exist but they *could* have existed. Understanding how these things could have existed forms the bread and butter of issues surrounding modal existence. To be fair, one may but one can easily imagine the philosophical importance of when we start to think about such as strings from string theory.
+
+  One way that Analytic Philosophy helped us in understanding modal existence is through the mechanisms of Possible World. Beyond all the fancy maths and logic, the idea of a Possible World is quite simple. It's simply another world, quite similar to ours, but with some varying degree of changes. So, to say that 'x could exist' would simply be analyzed and broken down into 'x exists in a possible world'. This means that every single way that the world could be was a Possible World. Anything that exists in these worlds where things that could possibly exist. The idea, despite its simplicity, quickly took off. It helped us answer lots of questions and had a stable mathematical foundation in the form of set theory. We even invented more maths along side with it. We even got new logics such as Modal Logic which are very much used in AI research these days.
+
 ### 4. The Return Of Symbolic Manipulation
 
 ### 5. Contradiction Ergo Error
 
 ### PS
 
-  1. Possible Worlds
+  1. If you want to learn more about the Philosophy and Logic behind Possible Worlds and Modal Logics. I highly recommend [this article](https://plato.stanford.edu/entries/logic-modal/) by Garson and [this other article](https://plato.stanford.edu/entries/possible-worlds/) by Menzel. Additionally, David Lewis' book 'On The Plurality Of Worlds' is a classic.
+
+  2. In section 3, I initially talked about Possible Worlds before introducing Modal Logic. I do not intend this flow to establish any form of historical causation. I am not implying that the development of Possible Worlds led to the development of Modal Logics. Actually, ideas of other possible Worlds and modal systems are scattered across history and are not unique to Analytic Philosophy. For example, we find writings of Islamic Philosophers, such as Ibn Sina, on Modality since the 10th century. [See here](https://plato.stanford.edu/entries/arabic-islamic-language/#ModProModSyl).
