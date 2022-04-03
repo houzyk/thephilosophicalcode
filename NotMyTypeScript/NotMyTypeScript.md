@@ -15,9 +15,28 @@
 
   Given the `thisArticle` object, we may access any of it's key using the dot-notation. Particularly, `thisArticle.title` gives us 'Not My TypeScript' and `thisArticle.author` gives us 'Houzair Koussa'. Quite neat but this is where JavaScript becomes troublesome. If we were to access some inexistent key in the `thisArticle` object, JavaScript would remain calm and do absolutely nothing. For example, `thisArticle.wordLength` woudd simply give us `undefined`. This is odd and quite limiting. Intuitively, we would prefer if JavaScript does not remain stoic and does something about accessing inexistent keys. That's because, due to this oddity, our million dollar JavaScript app that accesses the inexistent key `wordLength` would not yell at us during development but would graciously crash during production. In hindsight, we'd want JavaScript to throw some error messages at us. We'd want it to yell at us.
 
-  Fortunately for our million dollar app, TypeScript would actually yell at us if we were to access `thisArticle.wordLength`. Metaphorically, it would quite candidly say something like "hey bud, I'm not too sure about that key 'wordLength'. It's not really my type. I'm sorry to say but I don't think it exists." On top of that, TypeScript also gives us two additional features to deal with JavaScript's limitations on dealing with objects. These are the optional chaining and non-null assertion operators.
+  Fortunately for our million dollar app, TypeScript would actually yell at us if we were to access `thisArticle.wordLength`. Metaphorically, it would quite candidly say something like "hey bud, I'm not too sure about that key 'wordLength'. It's not really my type. I'm sorry to say but I don't think it exists." On top of that, TypeScript also gives us two additional features to deal with JavaScript's limitations on dealing with objects and things that may or may not exist. These are the optional chaining and non-null assertion operators.
 
 ### 2. Is It Me You're Looking For?!
+
+  Suppose that our million dollar app obtains the `thisArticle` object from an external source, like an API. When working with such external source, we generally do not know how they were implemented and how they behave. It is possible that we externally obtain the `thisArticle` object but, due to some unforeseen errors, we do not get back the `author` key in `thisArticle`. At this point, TypeScript would not yell at us because it thinks that there is such a key as `author`. To help us against these unforeseen circumstances, we may use the optional chaining operation (syntactically, a question mark '?'). So, instead of writing `thisArticle.author` as we would in plain JavaScript, we would write `thisArticle?.author`. In practice, this means that our program would not dig deeper into the `author` key and head into catastrophy down the road. Intuitively, our code short-circuits if it does not find what it's looking for.
+
+  Sometimes, however, we do know what we're looking for and we know where the thing we're looking for is at. TypeScript, on the other hand, may not know that. It may smell danger when there isn't any. For example, let's say we're querying for a button from the DOM and we want to click it.
+
+  `
+    const button = document.querySelector('.nice-button');
+    button.click();
+  `
+
+  This will not make TypeScript happy and reasonably so. The button of class `.nice-button` may not exist. TypeScript would believe that we would be looking for something that is not there. Once again, TypeScript would be like 'hey but, I'm not sure about that button. Looks like a nice button but it's not really my type. Are you sure it even exists?' However, let's suppose that we've actually implemented that button and we know that it's there. Fortunately for us, TypeScript provides us with the non-null assertion operation (syntactically, an exclamation mark '!') with a way of letting it know that we're certain that it exists. In code, we do it as follows:
+
+  `
+    const button = document.querySelector('.nice-button')!;
+  `
+
+  The exclamation mark at the end reassures TypeScript about the button's existence. Generally, I tend to avoid using the non-null assertion operator. It is possible that, sometime in the future, our code base got so big that we forgot that there's a query selector looking for a `.nice-button`. Then, we go on and delete that class in our HTML.
+
+  So far, we've looked at how JavaScript is limited in dealing with issues of existence and how TypeScript allows us to push beyond these limits. Traditionally, the issue of existence has been the business of Philosophers. So, let's take a look about how we may philosophically understanding the way these operators work.
 
 ### 3. Possible Worlds
 
@@ -26,3 +45,5 @@
 ### 5. Contradiction Ergo Error
 
 ### PS
+
+  1. Possible Worlds
