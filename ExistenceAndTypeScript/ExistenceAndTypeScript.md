@@ -73,12 +73,12 @@
 
   2. In section 3, I strictly spoke of Analytic Philosophy. I also talked about Possible Worlds before introducing Modal Logic. I do not intend this flow to establish any form of historical causation. I am not implying that the development of Possible Worlds led to the development of Modal Logics. Actually, ideas of other possible Worlds and modal systems are scattered across history and are not unique to Analytic Philosophy. For example, we find writings of Islamic Philosophers, such as Ibn Sina, on Modality from the 10th century. [See here](https://plato.stanford.edu/entries/arabic-islamic-language/#ModProModSyl).
 
-  3. In section 5, we proposed two theorems. Firstly,  we can prove that if an object exists at a Possible World, then there is no contradiction in if that object exists, or does not exist, in our world Secondly, that we can derive a contradiction if an objects exists across all Possible Worlds but that object does not exist at one Possible World. Respectively, these are their formal representation:
+  3. In section 5, we proposed two theorems. Firstly, that we can prove that if an object exists at a Possible World, then there is no contradiction in if that object exists, or does not exist, in our world Secondly, that we can derive a contradiction if an objects exists across all Possible Worlds but that object does not exist at one Possible World. For those interested in the maths and logic, these are their formal representation respectively.
 
   ```
-    {◇p, p} ⊬ ⊥
+    1. {◇p, p} ⊬ ⊥
 
-    {◇p, ~p} ⊬ ⊥
+    2. {◇p, ~p} ⊬ ⊥
   ```
 
   and
@@ -86,3 +86,5 @@
   ```
     {~p, □p} ⊢ ⊥
   ```
+
+  Given this article's context, any proposition p with a modal operator (◇ and □) refer to assertions about data from TypeScript snippets containing the two operators like `thisArticle?.author?.firstName`. The remaining propositions refer to assertions on whether or not data actually exists.
