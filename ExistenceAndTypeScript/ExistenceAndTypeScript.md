@@ -65,7 +65,7 @@
 
   We also said that the non-null assertion operator in `document.querySelector('button')!` reassures TypeScript that the button exists across all Possible Worlds. Now, imagine the external file that contains that button gets corrupted and that there is no such button. Since we've explicitly told TypeScript that such a button must exist and it does not exist, we would get the following error: `Cannot read properties of null (reading 'classList')`. Now, in Modal Logic, we can derive a contradiction if an objects exists across all Possible Worlds but that object does not exist at one Possible World. In our context, it's like proving a contradiction because the button does not exist at the world where our code is executing but TypeScript believes that it exists across all Possible Worlds. So, that's a road-block and we know that something's fishy. So, an error gets thrown. Once again, the explanatory power of our analysis of `document.querySelector('button')!` comes from drawing a parallel between the presence of a computational error in our code to the presence of contradictions in Modal Logic. So, we may conceptually explain/characterize road-blocks in our metaphorical map to computational errors.
 
-  > At last,
+  > At last, we saw how TypeScript's optional chaining and non-null assertion operator work. Then, we philosophically analyzed these operators in terms of Possible Worlds and Modal Logics. Consequently, we drew bridges between the realm of Possible Worlds and computational errors. We saw how we can easily jump from the presence or absence of contradictions to that of computational errors.
 
 ### PS
 
@@ -73,4 +73,12 @@
 
   2. In section 3, I strictly spoke of Analytic Philosophy. I also talked about Possible Worlds before introducing Modal Logic. I do not intend this flow to establish any form of historical causation. I am not implying that the development of Possible Worlds led to the development of Modal Logics. Actually, ideas of other possible Worlds and modal systems are scattered across history and are not unique to Analytic Philosophy. For example, we find writings of Islamic Philosophers, such as Ibn Sina, on Modality from the 10th century. [See here](https://plato.stanford.edu/entries/arabic-islamic-language/#ModProModSyl).
 
-  3.
+  3. In section 5, we proposed two theorems. Firstly,  we can prove that if an object exists at a Possible World, then there is no contradiction in if that object exists, or does not exist, in our world Secondly, that we can derive a contradiction if an objects exists across all Possible Worlds but that object does not exist at one Possible World. Respectively, these are their formal representation:
+
+  ```
+  ```
+
+  and
+
+  ```
+  ```
