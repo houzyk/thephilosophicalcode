@@ -1,4 +1,4 @@
-# Existence In TypeScript
+# Existence And TypeScript
 
 >   Two handy TypeScript features are the optional chaining and non-null assertion operators. In this article, we'll explore how these two work and why the way they work is philosophically interesting.
 
@@ -60,6 +60,8 @@
   So far, we've provided a philosophical analysis of code snippets containing our two TypeScript operators in terms of Possible Worlds. To showcase the strength of our analysis, let's talk about its explanatory power (conceptually, of course).
 
 ### 5. Contradiction Ergo Error
+
+  Let's begin with the optional chaining operator. We saw how it that something possibly exists.
 
 ### PS
 
