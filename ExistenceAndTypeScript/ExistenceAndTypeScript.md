@@ -49,19 +49,17 @@
 
 ### 4. The Return Of Symbolic Manipulation
 
-  That's enough history. Let's step back into our current subject matter. We said that TypeScript's optional chaining and non-null assertion operators deal with nonexisting or existing data. This is a subtle, but natural, way of saying that these operators deal with the *possible* existence of data, i.e. its modal existence. Given what we covered on Possible Worlds, Modal Logics and modal existence, let's proceed with our philosophical dive by exploiting this subtlety.
+  That's enough history. Let's step back into our current subject matter. We said that TypeScript's optional chaining and non-null assertion operators deal with nonexisting or existing data. This is a subtle, but intuitive, way of saying that these operators deal with the *possible* existence of data, i.e. its modal existence. Given what we covered on Possible Worlds, Modal Logics and modal existence, let's proceed with our philosophical dive by exploiting this subtlety.
 
-  In a [previous article](../HelloComputer/HelloComputer.md), I conceptualized computation as symbolic manipulation. The big picture is that computation conceptually boils down to symbols metaphysically manipulating other symbols (emphasis on 'metaphysically'). So, we may conceptualize a snippet of code, like `thisArticle?.author?.firstName` as a symbol manipulating another symbol (our JSON data).
+  In a [previous article](../HelloComputer/HelloComputer.md), I conceptualized computation as symbolic manipulation. The big picture is that computation conceptually boils down to symbols metaphysically manipulating other symbols (emphasis on 'metaphysically'). So, we may conceptualize a snippet of code, like `thisArticle?.author?.firstName` as a symbol manipulating another symbol (our JSON data). Remember that one of the questions marks prevents our code from digging deeper into the `author` key if it does not exist. Intuitively, the question mark is telling our code that it's possible that the `author` key does not exist! Conceptually, it is telling our code that there is a Possible World where the `author` key does not exist and that the world where our code is executing might not be that Possible World.
 
+  Additionally, we may conceptualize the snippet `document.querySelector('button')!` as a symbol manipulating another symbol (any data relating to our nice button). Remember that the exclamation mark reassures TypeScript about the button's existence. Intuitively, that exclamation mark is telling TypeScript that the button must exist, i.e. it's impossible that the button does not exist! Conceptually, it is reassuring TypeScript that it exists at the world where our code is executing. A fortiori, it reassures TypeScript that the button exists across all Possible Worlds.
 
-  Intuitively, our snippet says that the `author` key and the `firstName` key *could* exist. Then, we may say that there is a Possible World where they keys `author` and `firstName` exist.
-
-  Additionally, we may conceptualize the snippet `document.querySelector('button')!` as a symbol manipulating another symbol (any data relating to our nice button). Intuitively, our snippet says that the nice button necessarily exists. In Possible Worlds talk, to say that something necessarily exists is like saying that it exists across all Possible Worlds. So, we may say that our button exists across all Possible Worlds (This is clearly false - a button does not exist across all Possible Worlds. Just think of a Possible World where there is no technology. However, for this article's sake, let's ignore this issue. We could think of a work-around by getting technical and talking of restricted Possible Worlds but let's not do that).
-
-  So far, we've provided a philosophical analysis of code snippets containing our two TypeScript operators in terms of Possible Worlds. To showcase the strength of our analysis, let's talk about its explanatory power (conceptually, of course).
+  Two quick notes before we proceed. Firstly, our nice button does not exist across all Possible Worlds. However, for this article's sake, let's ignore this issue. We could think of a work-around by getting technical and talking of restricted Possible Worlds but let's not do that. Secondly, one may find the move from TypeScript to Possible Worlds quite dodgy. In response, I invite you to charitably conceptualize computation as symbolic manipulation as a way of grounding computation in a "realm of formal languages" where we can easily paraphrase and translate from one formal language to another.
 
 ### 5. Contradiction Ergo Error
 
+  So far, we've philosophically analyzed two code snippets containing our two TypeScript operators in terms of Possible Worlds. To showcase the strength of our analysis, let's talk about its explanatory.
   Let's begin with the optional chaining operator. We saw how it that something possibly exists.
 
 ### PS
