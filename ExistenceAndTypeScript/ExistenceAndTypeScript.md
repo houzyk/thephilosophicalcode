@@ -76,9 +76,13 @@
   3. In section 5, we proposed two theorems. Firstly,  we can prove that if an object exists at a Possible World, then there is no contradiction in if that object exists, or does not exist, in our world Secondly, that we can derive a contradiction if an objects exists across all Possible Worlds but that object does not exist at one Possible World. Respectively, these are their formal representation:
 
   ```
+    {◇p, p} ⊬ ⊥
+
+    {◇p, ~p} ⊬ ⊥
   ```
 
   and
 
   ```
+    {~p, □p} ⊢ ⊥
   ```
