@@ -4,11 +4,11 @@
 
 ### 1. Is It Me You're Looking For?
 
-  Fetching API data is a classic, but risky, developer move. Such data could be different from what we expected it to be or it could simply not exist. To curb down this risk of working with nonexistent data, we may use TypeScript's optional chaining operator (syntactically, a question mark '?'). For example, let's say that we're fetching the following JSON.
+  Fetching external data is a risky business. The data could be different from what we expected it to be or it could simply not exist. To curb down the risk of working with nonexisting data, we may use TypeScript's optional chaining operator (syntactically, a question mark '?'). For example, let's say that we're fetching the following JSON from an API.
 
   ```
     "thisArticle": {
-      "title": "Existence In TypeScript",
+      "title": "Existence And TypeScript",
       "author": {
         "firstName": "Houzair",
         "lastName": "Koussa"
@@ -16,32 +16,28 @@
     }
   ```
 
-  We may access this JSON's data using the dot-notation. Particularly, `thisArticle.title` is `'Existence In TypeScript'` and `thisArticle.author` returns the author object. However, suppose that we do not get back the `author` key when fetching our humble JSON. Consequently, trying to access the value of `thisArticle.author.firstName` would throw the following error: `Cannot read property 'firstName' of undefined`. To prevent this error, we may use TypeScript's optional chaining operator and write `thisArticle?.author?.firstName`. So, our code would not dig deeper into the `author` key if it does not exist.
-
-  In sum, the optional chaining operator acts as a safety net when dealing with nonexistent data. It saves us from unforeseen errors if we do not find what we're looking for. In contrast, we may use TypeScript's non-null assertion operator (syntactically, an exclamation mark '!') if we do know what we're looking for.
+  In TypeScript, we may access our humble JSON data using the dot-notation - `thisArticle.title` returns `'Existence And TypeScript'` while `thisArticle.author` returns the author object. However, suppose that our API ran into some issues and we do not get back the `author` key. Consequently, trying to access the value of `thisArticle.author.firstName` would throw the following error: `Cannot read property 'firstName' of undefined`. To prevent this error, we may use TypeScript's optional chaining operator and write `thisArticle?.author?.firstName`. In doing so, our code would not dig deeper into the `author` key if it does not exist. So, the optional chaining operator acts as a safety net when dealing with nonexisting data. It saves us from unforeseen errors if we do not find what we're looking for.
 
 ### 2. It Is Me You're Looking For!
 
-  Let's suppose that we have a really nice button and we wanna give it a class name that fits its niceness. We can easily do that by querying for that button and adding the class `'.nice-button'` to it.
+  In contrast, we may use TypeScript's non-null assertion operator (syntactically, an exclamation mark '!') if we do know what we're looking for. For example, let's suppose that we have a really nice button and we wanna give it a class name that fits its niceness. We can easily do that by querying for the button and adding the class `'.nice-button'` to it.
 
   ```
     const niceButton = document.querySelector('button');
     button.classList.add('nice-button');
   ```
 
-  Although the above snippet looks fine, TypeScript is not gonna be happy and would warn us that `'niceButton' is possibly null`. In hindsight, TypeScript's warning is quite reasonable. The button probably lives in an external file and we can't be sure that it exists. Nevertheless, we may dispose of TypeScript's warning by using the non-null assertion operator as follows.
+  Although the above snippet looks fine, TypeScript would warn us that `'niceButton' is possibly null`. In hindsight, TypeScript's warning is quite reasonable. The button probably lives in an external file and we may not always know if it exists. In any case, we may dispose of TypeScript's warning by using the non-null assertion operator as follows.
 
   ```
     const niceButton = document.querySelector('button')!;
   ```
 
-  Notice the exclamation mark at the end. Essentially, it reassures TypeScript about the button's existence and that `niceButton` is not `null` (Personally, i'd say that it's preferable to check for the existence of `niceButton` with an if-statement instead of using the non-null assertion operator).
+  Notice the exclamation mark at the end. Essentially, it reassures TypeScript about the button's existence and that `niceButton` is not null. Personally, I'd rather check for the existence of `niceButton` with an if-statement instead of using the non-null assertion operator. Albeit, the operator is a handy feature to tell TypeScript that we know that some data definitely exists.
 
-  In sum, the non-null assertion operator reassures TypeScript when we know that data exists and is not null.
+  So far, we've seen how the optional chaining and non-null operators work in dealing with nonexisting and existing data. Now, let's take a dive into why the way they work is philosophically interesting.
 
 ### 3. Possible Worlds
-
-  So far, we've seen how the optional chaining and non-null operators work in dealing with nonexistent and existing data. Now, let's take a dive into why the way they work is philosophically interesting.
 
   Let's start with some history. In the early 1900's, a philosophical movement called 'Analytic Philosophy' gained momentum in British Philosophy. In essence, analytic philosophers emphasized for philosophical rigour. So, they fused advances in logic, the natural sciences and mathematics with advances in philosophy. We then witnessed the development of exciting tools and fields such as the Philosophy of Quantum Mechanics or the Philosophy of Mathematics. Eventually, Analytic Philosophy cemented itself as the predominant way of doing Philosophy in the English speaking world (sadly). So, today, we have a plethora of "rigorous" tools to analyze philosophical issues such as existence. One such issue is that of modal existence. Quite simply, 'modal existence' refers to how some object *could* have existed. For example, a parallel universe could exist. Then, we may ask philosophical questions about the modal existence of a parallel universe such as *how is that that a parallel universe could exist?* or *what does it mean to say that 'something could exist'?*. Generally, Analytic Philosophers use two tools to analyze modal existence - the mechanisms of Possible Worlds and Modal Logics.
 
