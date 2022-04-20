@@ -19,6 +19,8 @@
   \#ComputationalEthics
 
 
+Companion Repo: [the-non-philosophical-code](https://github.com/houzyk/thenonphilosophicalcode)
+
 ## Articles
 
 1. [Hello, Computer!](/HelloComputer/HelloComputer.md)
