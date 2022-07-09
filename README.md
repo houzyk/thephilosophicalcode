@@ -42,3 +42,6 @@
   11. Link your article to the articles section list above.
   12. You can publish your article wherever else you want! An article on your linkedIn, Facebook, Twitter... The world is your oyster! Just make sure to link this repo.
   13. Alternatively, if you don't wanna go through all that github faff, just email me your article on houzairmk@icloud.com. However, following the above guidelines is preferable.
+
+
+Companion Repo: [the-non-philosophical-code](https://github.com/houzyk/thenonphilosophicalcode)
