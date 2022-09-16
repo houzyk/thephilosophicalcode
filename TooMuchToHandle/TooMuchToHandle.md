@@ -1,17 +1,16 @@
 
 # Too Much To Handle
 
-> Computers can do infinitely many things and yet, we could never count the things that they can't do. In this short article, we'll explore a neat theorem that proves cannot do.
+> todo
 
-### 1. Unsolvable Problems
+### 1. Programs For Dummies.
 
-### 2. Philosophically Dodgy
+### 2. Problems For Dummies.
 
+### 3. The Struggle Is Real.
 
-### 3. Possible Worlds (Again)
+### 4. Some Infinities Are Bigger Than Other Infinities.
 
-
-### 4.  Possibly Countable
-
+> todo
 
 ### PS
