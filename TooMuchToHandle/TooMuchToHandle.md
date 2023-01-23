@@ -85,7 +85,7 @@ We are not out of the woods yet. Even if the number of programs is less than the
 
 Consequently, if each program solves only one problem and there are less programs than problems, then the size of the set of solvable problems is less that the size of the set of all problems. Intuitively, this means that there are unsolvable problems. So, there are far too many problems for programs to handle.
 
-In summary, we’ve counted the number of programs and problems. We’ve established that there are more problems than programs such that there are more problems than solvable problems. Hence, informally proving that, even if we had an infinite amount of computational power and time, we would not be able to solve every single computational problem.
+>In summary, we’ve counted the number of programs and problems. We’ve established that there are more problems than programs such that there are more problems than solvable problems. Hence, informally proving that, even if we had an infinite amount of computational power and time, we would not be able to solve every single computational problem.
 
 ### PS.
 
