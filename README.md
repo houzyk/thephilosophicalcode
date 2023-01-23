@@ -24,8 +24,7 @@
 1. [Hello, Computer!](/HelloComputer/HelloComputer.md)
 2. [Keep It Dry](/KeepItDry/KeepItDry.md)
 3. [Existence And TypeScript](/ExistenceAndTypeScript/ExistenceAndTypeScript.md)
-4. [To Scale Is To Abstract](/ToScaleIsToAbstract/ToScaleIsToAbstract.md)
-5. [Too Much To Handle](/TooMuchToHandle/TooMuchToHandle.md)
+4. [Too Much To Handle](/TooMuchToHandle/TooMuchToHandle.md)
 
 ## Contribution Guidelines
 
