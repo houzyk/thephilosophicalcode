@@ -25,6 +25,7 @@
 2. [Keep It Dry](/KeepItDry/KeepItDry.md)
 3. [Existence And TypeScript](/ExistenceAndTypeScript/ExistenceAndTypeScript.md)
 4. [Too Much To Handle](/TooMuchToHandle/TooMuchToHandle.md)
+5. [I Am, Therefore I Bug](/IAmThereforeIBug/IAmThereforeIBug.md)
 
 ## Contribution Guidelines
 
