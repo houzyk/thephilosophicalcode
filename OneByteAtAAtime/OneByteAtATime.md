@@ -31,7 +31,9 @@ _c)	Accountability_
     The idea that we are all responsible for our actions
 _d)	The quest for meaning_
     The idea that we are constantly searching for meaning
+    
 **2. Pattern recognition:**
+
 Pattern recognition is a key component of computational thinking.  It can be used to identify patterns and relationships between the pieces we broke down earlier, which can be used to make predictions or identify opportunities.  For instance, pattern recognition can be used to identify trends in stock prices.  This information can then be used to make predictions about the future performance of the stock market.  In philosophy, pattern recognition can be used to identify patterns in human behavior, history and nature.  This information can then be used to develop new insights into these complex issues.
 
 **3. Abstraction**
