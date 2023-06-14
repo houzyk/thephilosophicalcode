@@ -78,11 +78,8 @@ Computational thinking is a way of thinking and a way of being in the world.  Th
 Meaning is a jumper that you have to knit yourself.  Meaning is not easy to find, nor is it fixed.  It changes as we learn and grow.  It is something that we actively build through our engagement with information and ideas.  There is no right way to do it. However, by embracing the fusion of philosophy and computational thinking, we can open up new possibilities to find some sort of meaning in our lives.  We can use computational thinking to explore the world around us, to better understand ourselves and to create new things.  One byte at a time, finding meaning urges us to embrace the fusion of these two disciplines and all of a sudden, everything makes sense.
 
 ## References:
-1.	The man who never fails to give me an existential crisis, https://youtu.be/psaCM1j9LEM
-2.	The very same man https://youtu.be/Jv79l1b-eoI
-3.	My brain (March 2021 – June 2023)
-
-(is this a PR? edit as you wish to)
+1.	[Meaning is a Jumper That You Have to Knit Yourself - exurb1a](https://youtu.be/psaCM1j9LEM)
+2.	[Absurdism | How to Party at the End of Meaning - exurb1a](https://youtu.be/Jv79l1b-eoI)
 
 Wafaa Jaunnoo
 
