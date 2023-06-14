@@ -23,10 +23,10 @@ b)	Get the radius of the circle.
 c)	Calculate the area of the circle.
 
 Let's say you're trying to understand the concept of existentialism in philosophy, you could break it down as follows:
-a)	Personal autonomy - The idea that individuals have the free-will to choose and create meaning
-b)	Authenticity - The idea that individuals should live in accordance with their own values and beliefs
-c)	Accountability - The idea that we are all responsible for our actions
-d)	The quest for meaning - The idea that we are constantly searching for meaning
+a)	Personal autonomy: The idea that individuals have the free-will to choose and create meaning
+b)	Authenticity: The idea that individuals should live in accordance with their own values and beliefs
+c)	Accountability: The idea that we are all responsible for our actions
+d)	The quest for meaning: The idea that we are constantly searching for meaning
 
 
 **2. Pattern recognition:**
