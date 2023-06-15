@@ -25,7 +25,7 @@
 2. [Keep It Dry](/KeepItDry/KeepItDry.md)
 3. [Existence And TypeScript](/ExistenceAndTypeScript/ExistenceAndTypeScript.md)
 4. [Too Much To Handle](/TooMuchToHandle/TooMuchToHandle.md)
-5. [OneByteAtAAtime](/OneByteAtAAtime/OneByteAtAAtime.md) by @wafaajaunnoo
+5. [OneByteAtAAtime](/OneByteAtAAtime/OneByteAtAtime.md) by @wafaajaunnoo
 
 ## Contribution Guidelines
 
