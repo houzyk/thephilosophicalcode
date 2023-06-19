@@ -3,14 +3,14 @@
 Have you ever considered the complexity of problem-solving and the quest for knowledge in our increasingly evolving world? Computational thinking is a relatively new field that's based on the principles of computer science, but it has become a potent framework that may revolutionize the way we make sense of the complexities of our existence.  By combining the principles of computer science with the insights of philosophy, we will explore the philosophy of computational thinking and progressively reveal the deeper meanings of its applications, creating a systematic way of understanding the world. 
 
 ## The Mind of the Machine
-Let's first understand the fundamentals of computational thinking. Imagine coming upon a challenging issue that initially appears to be overwhelming. Computational thinking encompasses a series of skills and thought processes that urges us to walk through the labyrinth of challenges, identify patterns and relationships and using algorithms to solve problems by a filtering process. These are skills which are also essential for philosophical inquiries, like finding meaning in the complexities surrounding us.  
+Let's first understand the fundamentals of computational thinking. Imagine coming upon a challenging issue that initially appears to be overwhelming. Computational thinking encompasses a series of skills and thought processes that urge us to walk through the labyrinth of challenges, identify patterns and relationships and use algorithms to solve problems by a filtering process. These are skills which are also essential for philosophical inquiries, like finding meaning in the complexities surrounding us.  
 
 The study of basic issues in reality, knowledge, morality, and existence is known as philosophy. It is a style of looking at the world that pushes us to question our presumptions and preconceptions.  In order to break down large issues into smaller, more manageable pieces, computational thinking can be a useful technique for philosophical research.  We lay the groundwork for creating meaning by deconstructing the issue and comprehending its core elements.
 
-## Existentialism : It's Not Just a Phase, Mom
-At the core of the philosophical school of existentialism is the idea that human beings are responsible for creating meaning in their own lives.  As humans, we attempt to explore fundamental questions related to freedom, purpose, and existence - the complexities surrounding us.  Existentialists believe that human beings are confronted with the inherent uncertainty and ambiguity of existence, and that we must confront this existential reality with authenticity. There is a sense of responsibility for our own choices and we are all free to create our own meaning of life.
+## Existentialism: It's Not Just a Phase, Mom
+At the core of the philosophical school of existentialism is the idea that human beings are responsible for creating meaning in their own lives.  As humans, we attempt to explore fundamental questions related to freedom, purpose, and existence - the complexities surrounding us.  Existentialists believe that human beings are confronted with the inherent uncertainty and ambiguity of existence and that we must confront this existential reality with authenticity. There is a sense of responsibility for our own choices and we are all free to create our own meaning of life.
 
-Despite the fact that existentialism is a complicated and multifaceted philosophy, using computational thinking in parallel with it might be a complementary approach to develop a more comprehensive and effective methodology to understanding and solving its complexities.
+Despite the fact that existentialism is a complicated and multifaceted philosophy, using computational thinking in parallel with it might be a complementary approach to develop a more comprehensive and effective methodology to understand and solve its complexities.
 
 ## Breaking down complexity 
 Complexity looms in the vast fabric of existence.  We are constantly bombarded with information and it can be difficult to make sense of it all.  However, computational thinking allows us to break down complex notions and ideas, akin to how an expert knitter would do, by using the four steps below:
@@ -23,7 +23,7 @@ b)	Get the radius of the circle.
 c)	Calculate the area of the circle.
 
 Let's say you're trying to understand the concept of existentialism in philosophy, you could break it down as follows:
-a)	Personal autonomy: The idea that individuals have the free-will to choose and create meaning
+a)	Personal autonomy: The idea that individuals have the free will to choose and create meaning
 b)	Authenticity: The idea that individuals should live in accordance with their own values and beliefs
 c)	Accountability: The idea that we are all responsible for our actions
 d)	The quest for meaning: The idea that we are constantly searching for meaning
@@ -31,12 +31,12 @@ d)	The quest for meaning: The idea that we are constantly searching for meaning
 
 **2. Pattern recognition:**
 
-Pattern recognition is a key component of computational thinking.  It can be used to identify patterns and relationships between the pieces we broke down earlier, which can be used to make predictions or identify opportunities.  For instance, pattern recognition can be used to identify trends in stock prices.  This information can then be used to make predictions about the future performance of the stock market.  In philosophy, pattern recognition can be used to identify patterns in human behavior, history and nature.  This information can then be used to develop new insights into these complex issues.
+Pattern recognition is a key component of computational thinking.  It can be used to identify patterns and relationships between the pieces we broke down earlier, which can be used to make predictions or identify opportunities.  For instance, pattern recognition can be used to identify trends in stock prices.  This information can then be used to make predictions about the future performance of the stock market.  In philosophy, pattern recognition can be used to identify patterns in human behaviour, history and nature.  This information can then be used to develop new insights into these complex issues.
 
 **3. Abstraction**
 
-To grasp the essence of existentialism, it is essential to focus on the most important information and ignore the irrelevant details.  This means peeling off particular philosophical defenses or historical context to identify the core concepts, such as the priority of human existence, the subjectivity of meaning, the significance of individual responsibility and choice.  As such, we can obtain a deeper understanding when trying to find meaning in complexity.
-In computational thinking, abstraction can be used to create classes in object-oriented programming.  Classes are templates for creating objects, and they allow us to focus on the important details of the objects without having to worry about the irrelevant details.  In philosophy, abstraction can be used to create categories.  Categories are groups of concepts that share common features.  By creating categories, you can organize your knowledge and make it easier to understand your complexities.
+To grasp the essence of existentialism, it is essential to focus on the most important information and ignore the irrelevant details.  This means peeling off particular philosophical defences or historical context to identify the core concepts, such as the priority of human existence, the subjectivity of meaning, and the significance of individual responsibility and choice.  As such, we can obtain a deeper understanding when trying to find meaning in complexity.
+In computational thinking, abstraction can be used to create classes in object-oriented programming.  Classes are templates for creating objects, and they allow us to focus on the important details of the objects without having to worry about irrelevant details.  In philosophy, abstraction can be used to create categories.  Categories are groups of concepts that share common features.  By creating categories, you can organize your knowledge and make it easier to understand your complexities.
 
 **4. Algorithmic thinking**
 
@@ -45,13 +45,13 @@ For example, Descartes' methodical reasoning could be used to solve a math probl
 
 ## The Machine of the Mind
 
-Meaning-making is a profound personal endeavor.  It involves actively engaging with information, drawing connections and synthesizing knowledge.  In many ways, it is similar to crafting a beautiful jumper where each stitch represents an idea and every thread is enlaced to form a coherent pattern.  As we navigate through the complexities of our existence, it is through this process of meaning-making that we weave together a unique understanding of the world. 
+Meaning-making is a profound personal endeavour.  It involves actively engaging with information, drawing connections and synthesizing knowledge.  In many ways, it is similar to crafting a beautiful jumper where each stitch represents an idea and every thread is enlaced to form a coherent pattern.  As we navigate through the complexities of our existence, it is through this process of meaning-making that we weave together a unique understanding of the world. 
 
 Existentialists have emphasized finding meaning in life through action, relationships, and creativity.
 
 **1. Through action**
 
-Existentialists argue that we find meaning in life through our actions.  When we act, we are making choices and taking responsibility for our actions.  This gives us a sense of purpose and direction.
+Existentialists argue that we find meaning in life through our actions.  When we act, we make choices and take responsibility for our actions.  This gives us a sense of purpose and direction.
 
 **2. Through relationships** 
 
@@ -66,7 +66,7 @@ When we ask ourselves questions about the meaning of life, we can start to explo
 
 _•	What is the meaning of life?_
 
-Such a question indubitably entail a panoply of answers and yet, it is a question always worth asking.  Is it to live a life of virtue?  Is it to seek pleasure, maximizing our own happiness, and avoid pain?  Is the meaning of life ultimately meaningless?  Or is the meaning of life up to each individual to decide?  Or, as Franz Kafka said, "the meaning of life is that it ends" and "the only way to find meaning in life is to create it"?
+Such a question indubitably entails a panoply of answers and yet, it is a question always worth asking.  Is it to live a life of virtue?  Is it to seek pleasure, maximise our own happiness, and avoid pain?  Is the meaning of life ultimately meaningless?  Or is the meaning of life up to each individual to decide?  Or, as Franz Kafka said, "the meaning of life is that it ends" and "the only way to find meaning in life is to create it"?
 
 _•	What is my purpose in life?_
 
