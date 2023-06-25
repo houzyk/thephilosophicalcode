@@ -10,14 +10,14 @@ The study of basic issues in reality, knowledge, morality, and existence is know
 ## Existentialism: It's Not Just a Phase, Mom
 At the core of the philosophical school of existentialism is the idea that human beings are responsible for creating meaning in their own lives.  As humans, we attempt to explore fundamental questions related to freedom, purpose, and existence - the complexities surrounding us.  Existentialists believe that human beings are confronted with the inherent uncertainty and ambiguity of existence and that we must confront this existential reality with authenticity. There is a sense of responsibility for our own choices and we are all free to create our own meaning of life.
 
-Despite the fact that existentialism is a complicated and multifaceted philosophy, using computational thinking in parallel with it might be a complementary approach to develop a more comprehensive and effective methodology to understand and solve its complexities.
+Despite the fact that existentialism is a complicated and multifaceted philosophy, using computational thinking in parallel with it might be a complementary approach to develop a more comprehensive and effective methodology to understand and solve its complexities.  Both fields emphasize an introspection between structure and freedom, determinism and choice, and they both foster in-depth reflection. 
 
 ## Breaking down complexity 
 Complexity looms in the vast fabric of existence.  We are constantly bombarded with data and it can be difficult to make sense of it all.  However, computational thinking allows us to break down complex notions and ideas, akin to how an expert knitter would do, by using the four steps below:
 
 **1. Decomposition** 
 
-Break down the problem into smaller, more manageable pieces.  For example, if you are trying to write a program to calculate the area of a circle, you could break the problem down into the following steps:
+Break down the problem into smaller, more manageable pieces, to decipher the essence of their interconnectedness.  For example, if you are trying to write a program to calculate the area of a circle, you could break the problem down into the following steps:
 a)	Declare the variables.
 b)	Get the radius of the circle.
 c)	Calculate the area of the circle.
@@ -31,7 +31,7 @@ d)	The quest for meaning: The idea that we are constantly searching for meaning
 
 **2. Pattern recognition:**
 
-Pattern recognition is a key component of computational thinking.  It can be used to identify patterns and relationships between the pieces we broke down earlier, which can be used to make predictions or identify opportunities.  For instance, pattern recognition can be used to identify trends in stock prices.  This information can then be used to make predictions about the future performance of the stock market.  In philosophy, pattern recognition can be used to identify patterns in human behaviour, history and nature.  This information can then be used to develop new insights into these complex issues.
+Pattern recognition is a key component of computational thinking.  It can be used to identify patterns and relationships between the pieces we broke down earlier, which can be used to make predictions, identify opportunities and draw parallels between distinct scenarios.  For instance, pattern recognition can be used to identify trends in stock prices.  This information can then be used to make predictions about the future performance of the stock market.  In philosophy, pattern recognition can be used to identify patterns in human behaviour, history and nature.  This information can then be used to develop new insights into these complex issues.
 
 **3. Abstraction**
 
