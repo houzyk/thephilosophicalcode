@@ -13,7 +13,7 @@ At the core of the philosophical school of existentialism is the idea that human
 Despite the fact that existentialism is a complicated and multifaceted philosophy, using computational thinking in parallel with it might be a complementary approach to develop a more comprehensive and effective methodology to understand and solve its complexities.
 
 ## Breaking down complexity 
-Complexity looms in the vast fabric of existence.  We are constantly bombarded with information and it can be difficult to make sense of it all.  However, computational thinking allows us to break down complex notions and ideas, akin to how an expert knitter would do, by using the four steps below:
+Complexity looms in the vast fabric of existence.  We are constantly bombarded with data and it can be difficult to make sense of it all.  However, computational thinking allows us to break down complex notions and ideas, akin to how an expert knitter would do, by using the four steps below:
 
 **1. Decomposition** 
 
@@ -62,6 +62,11 @@ Existentialists also argue that we find meaning in life through our relationship
 Existentialists believe that we can find meaning in life through our creativity.  When we express ourselves creatively, we are tapping into our unique potential.  This can help us to feel fulfilled and alive.
 
 ### A dash of Existential Dread
+
+<p align="center">
+<img src="https://github.com/wafaajaunnoo/thephilosophicalcode/assets/95095359/a7f55791-3299-4ff2-bb71-e6fc2d74c376" height="250">
+</p>
+
 When we ask ourselves questions about the meaning of life, we can start to explore what gives our lives meaning.  Some questions I usually ask myself when trying to find meaning are:
 
 _•	What is the meaning of life?_
