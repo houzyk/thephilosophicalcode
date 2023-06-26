@@ -1,6 +1,10 @@
 # One Byte at a Time
 
-Have you ever considered the complexity of problem-solving and the quest for knowledge in our increasingly evolving world? Computational thinking is a relatively new field that's based on the principles of computer science, but it has become a potent framework that may revolutionize the way we make sense of the complexities of our existence.  By combining the principles of computer science with the insights of philosophy, we will explore the philosophy of computational thinking and progressively reveal the deeper meanings of its applications, creating a systematic way of understanding the world. 
+Have you ever considered the complexity of problem-solving and the quest for knowledge in our increasingly evolving world?  Computational thinking is a relatively new field that's based on the principles of computer science, but it has become a potent framework that may revolutionize the way we make sense of the complexities of our existence.  How do we create algorithms to solve a problem?  Then, how do we know that the solution is really effective?  Even if we are certain that the solution will work, how can we instruct a computer to effect it?  
+
+Fun fact - If you had a hard time contemplating over any of these questions, you might actually be doing philosophy.
+
+By combining the principles of computer science with the insights of philosophy, we will take a look at some intriguing parallels between them and we will explore the philosophy of computational thinking, progressively revealing the deeper meanings of its applications.
 
 ## The Mind of the Machine
 Let's first understand the fundamentals of computational thinking. Imagine coming upon a challenging issue that initially appears to be overwhelming. Computational thinking encompasses a series of skills and thought processes that urge us to walk through the labyrinth of challenges, identify patterns and relationships and use algorithms to solve problems by a filtering process. These are skills which are also essential for philosophical inquiries, like finding meaning in the complexities surrounding us.  
@@ -13,7 +17,7 @@ At the core of the philosophical school of existentialism is the idea that human
 Despite the fact that existentialism is a complicated and multifaceted philosophy, using computational thinking in parallel with it might be a complementary approach to develop a more comprehensive and effective methodology to understand and solve its complexities.  Both fields emphasize an introspection between structure and freedom, determinism and choice, and they both foster in-depth reflection. 
 
 ## Breaking down complexity 
-Complexity looms in the vast fabric of existence.  We are constantly bombarded with data and it can be difficult to make sense of it all.  However, computational thinking allows us to break down complex notions and ideas, akin to how an expert knitter would do, by using the four steps below:
+Complexity looms in the vast fabric of existence.  We are constantly bombarded with data and it can be difficult to make sense of it all.  However, computational thinking allows us to break down complex notions and idea by using the four steps below:
 
 **1. Decomposition** 
 
@@ -21,6 +25,8 @@ Break down the problem into smaller, more manageable pieces, to decipher the ess
 a)	Declare the variables.
 b)	Get the radius of the circle.
 c)	Calculate the area of the circle.
+
+In other words, you write the pseudocode.
 
 Let's say you're trying to understand the concept of existentialism in philosophy, you could break it down as follows:
 a)	Personal autonomy: The idea that individuals have the free will to choose and create meaning
@@ -81,8 +87,9 @@ _•	What is my purpose in life?_
 
 Is it to achieve happiness and knowledge of the good?  Or is it to overcome nihilism?  Ultimately, the purpose of life is to live it.
 
+## Could we do better?
 
-Computational thinking is a way of thinking and a way of being in the world.  The mastery of computational thinking blossoms over time, much like a philosopher's intellectual journey, actually.  I believe that computational thinkers are philosophers in action.  By engaging with the mind of machines, the child becomes a philosopher in action, inquisitive and mentally agile, embarking on a transformative quest for knowledge. 
+Computational thinking is a way of thinking and a way of being in the world.  Followed by programming the instructions, computational thinking is ultimately just an instrument that will take you to the end of the complexity.  The mastery of computational thinking blossoms over time, much like a philosopher's intellectual journey, actually.  I believe that computational thinkers are philosophers in action.  By engaging with the mind of machines, the child becomes a philosopher in action, inquisitive and mentally agile, embarking on a transformative quest for knowledge. 
 
 Meaning is a jumper that you have to knit yourself.  Meaning is not easy to find, nor is it fixed.  It changes as we learn and grow.  It is something that we actively build through our engagement with information and ideas.  There is no right way to do it. However, by embracing the fusion of philosophy and computational thinking, we can open up new possibilities to find some sort of meaning in our lives.  We can use computational thinking to explore the world around us, to better understand ourselves and to create new things.  One byte at a time, finding meaning urges us to embrace the fusion of these two disciplines and all of a sudden, everything makes sense.
 
