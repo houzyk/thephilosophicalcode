@@ -1,8 +1,8 @@
 # One Byte at a Time
 
-Have you ever considered the complexity of problem-solving and the quest for knowledge in our increasingly evolving world?  Computational thinking is a relatively new field that's based on the principles of computer science, but it has become a potent framework that may revolutionize the way we make sense of the complexities of our existence.  How do we create algorithms to solve a problem?  Then, how do we know that the solution is really effective?  Even if we are certain that the solution will work, how can we instruct a computer to effect it?  
+Have you ever considered the complexity of problem-solving and the quest for knowledge in our increasingly evolving world?  Computational thinking is a relatively new field that's based on the principles of computer science, but it has become a potent framework that may revolutionize the way we make sense of the complexities of our existence.  How do we create algorithms to solve a problem?  Then, how do we know that the solution is really effective?  Even if we are certain that the solution will work, how can we instruct a computer to execute it?  
 
-Fun fact - If you had a hard time contemplating over any of these questions, you might actually be doing philosophy.
+Fun fact - If you had a hard time contemplating any of these questions, you might actually be doing philosophy.
 
 By combining the principles of computer science with the insights of philosophy, we will take a look at some intriguing parallels between them and we will explore the philosophy of computational thinking, progressively revealing the deeper meanings of its applications.
 
@@ -17,7 +17,7 @@ At the core of the philosophical school of existentialism is the idea that human
 Despite the fact that existentialism is a complicated and multifaceted philosophy, using computational thinking in parallel with it might be a complementary approach to develop a more comprehensive and effective methodology to understand and solve its complexities.  Both fields emphasize an introspection between structure and freedom, determinism and choice, and they both foster in-depth reflection. 
 
 ## Breaking down complexity 
-Complexity looms in the vast fabric of existence.  We are constantly bombarded with data and it can be difficult to make sense of it all.  However, computational thinking allows us to break down complex notions and idea by using the four steps below:
+Complexity looms in the vast fabric of existence.  We are constantly bombarded with data and it can be difficult to make sense of it all.  However, computational thinking allows us to break down complex notions and ideas by using the four steps below:
 
 **1. Decomposition** 
 
@@ -55,7 +55,7 @@ For example, Descartes' methodical reasoning could be used to solve a math probl
 
 ## The Machine of the Mind
 
-The aim is to improve philosophical study, discovery and arguments by simply using computational models and tools.  Therefore, neither a strong separation between computational and non-computational philosophy, nor between computational philosophy and other computational fields, should be anticipated.  Meaning-making is a profound personal endeavour.  It involves actively engaging with information, drawing connections and synthesizing knowledge.  In many ways, it is similar to crafting a beautiful jumper where each stitch represents an idea and every thread is enlaced to form a coherent pattern.  As we navigate through the complexities of our existence, it is through this process of meaning-making that we weave together a unique understanding of the world. 
+The aim is to improve philosophical study, discovery and arguments by simply using computational models and tools.  Therefore, neither a strong separation between computational and non-computational philosophy nor between computational philosophy and other computational fields should be anticipated.  Meaning-making is a profound personal endeavour.  It involves actively engaging with information, drawing connections and synthesizing knowledge.  In many ways, it is similar to crafting a beautiful jumper where each stitch represents an idea and every thread is enlaced to form a coherent pattern.  As we navigate through the complexities of our existence, it is through this process of meaning-making that we weave together a unique understanding of the world. 
 
 Existentialists have emphasized finding meaning in life through action, relationships, and creativity.
 
