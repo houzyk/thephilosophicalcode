@@ -44,6 +44,7 @@ In philosophy, abstraction can be used to create categories.  Categories are gro
 **4. Algorithmic thinking**
 
 Develop a step-by-step solution to the problem. René Descartes believed that methodical reasoning was the best way to solve problems.  He argued that we should start with a clear and distinct idea of what we are trying to achieve, and then break the problem down into smaller, more manageable steps.  We should, then, work through each step in a logical order and only move on to the next step when the said conditions are met.  The philosopher's syllogism, where truth unfolds through a chain of interconnected propositions, is a method of problem-solving known as algorithmic thinking.
+
 For example, Descartes' methodical reasoning could be used to solve a math problem. Let's say we want to solve the equation 2x + 3 = 7.  We could start by breaking the equation down into smaller steps.  First, we could subtract 3 from both sides of the equation, which would give us 2x = 4.  Then, we could divide both sides of the equation by 2, which would give us x = 2.  Algorithmic thinking could be used to solve a computer programming problem. Let's say we want to write a program that prints the numbers from 1 to 10.  We could start by breaking the problem down into smaller steps.  First, we could create a variable to store the number 1.  Then, we could create a loop that iterates 10 times.  Inside the loop, we could print the value of the variable and then increment the value of the variable by 1.
 
 ## The Machine of the Mind
