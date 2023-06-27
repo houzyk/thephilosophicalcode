@@ -4,7 +4,7 @@ Have you ever considered the complexity of problem-solving and the quest for kno
 
 Fun fact - If you had a hard time contemplating any of these questions, you might actually be doing philosophy.
 
-By combining the principles of computer science with the insights of philosophy, we will take a look at some intriguing parallels between them and we will explore the philosophy of computational thinking, progressively revealing the deeper meanings of its applications.
+While computational thinking might not decode why it takes longer to find matching socks than to solve complex equations,  we are going to combine the principles of computer science with the insights of philosophy and take a look at some intriguing parallels between them to explore the philosophy of computational thinking, progressively revealing the deeper meanings of its applications.
 
 ## The Mind of the Machine
 Let's first understand the fundamentals of computational thinking. Imagine coming upon a challenging issue that initially appears to be overwhelming. Computational thinking encompasses a series of skills and thought processes that urge us to walk through the labyrinth of challenges, identify patterns and relationships and use algorithms to solve problems by a filtering process. These are skills which are also essential for philosophical inquiries, like finding meaning in the complexities surrounding us.  
@@ -81,17 +81,17 @@ When we ask ourselves questions about the meaning of life, we can start to explo
 
 _•	What is the meaning of life?_
 
-Such a question indubitably entails a panoply of answers and yet, it is a question always worth asking.  Is it to live a life of virtue?  Is it to seek pleasure, maximise our own happiness, and avoid pain?  Is the meaning of life ultimately meaningless?  Or is the meaning of life up to each individual to decide?  Or, as Franz Kafka said, "the meaning of life is that it ends" and "the only way to find meaning in life is to create it"?
+Such a question indubitably entails a panoply of answers and yet, it is a question always worth asking.  Is it to live a life of virtue?  Is it to seek pleasure, maximise our own happiness, and avoid pain?  Is the meaning of life ultimately meaningless?  Or is the meaning of life up to each individual to decide?  Franz Kafka's perspective adds an existential flavour to the discourse on life's meaning, stating that "the meaning of life is that it ends", highlighting the transient nature of human existence.  Kafka also suggests that "the only way to find meaning in life is to create it".
 
 _•	What is my purpose in life?_
 
-Is it to achieve happiness and knowledge of the good?  Or is it to overcome nihilism?  Ultimately, the purpose of life is to live it.
+Moving beyond the overarching question of life's meaning, this question takes a more personal and introspective approach, seeking to understand an individual's unique contribution to the world. It is a dynamic process.  Is it to achieve happiness and knowledge of the good?  Or is it to overcome nihilism?  Ultimately, the purpose of life is to live it.
 
 ## Could we do better?
 
 Computational thinking is a way of thinking and a way of being in the world.  Followed by programming the instructions, computational thinking is ultimately just an instrument that will take you to the end of the complexity.  The mastery of computational thinking blossoms over time, much like a philosopher's intellectual journey, actually.  I believe that computational thinkers are philosophers in action.  By engaging with the mind of machines, the child becomes a philosopher in action, inquisitive and mentally agile, embarking on a transformative quest for knowledge. 
 
-Meaning is a jumper that you have to knit yourself.  Meaning is not easy to find, nor is it fixed.  It changes as we learn and grow.  It is something that we actively build through our engagement with information and ideas.  There is no right way to do it. However, by embracing the fusion of philosophy and computational thinking, we can open up new possibilities to find some sort of meaning in our lives.  We can use computational thinking to explore the world around us, to better understand ourselves and to create new things.  One byte at a time, finding meaning urges us to embrace the fusion of these two disciplines and all of a sudden, everything makes sense.
+Meaning is a jumper that you have to knit yourself.  Meaning is not something that is given to us, but something that we have to create for ourselves.  Meaning is not easy to find, nor is it fixed.  It is something that we actively build through our engagement with information and ideas.  It changes as we learn and grow.  There is no right way to do it. However, by embracing the fusion of philosophy and computational thinking, we can open up new possibilities to find some sort of meaning in our lives.  We can use computational thinking to explore the world around us, to better understand ourselves and to create new things.  One byte at a time, finding meaning urges us to embrace the fusion of these two disciplines and all of a sudden, everything makes sense.
 
 ## References:
 1.	[Meaning is a Jumper That You Have to Knit Yourself - exurb1a](https://youtu.be/psaCM1j9LEM)
