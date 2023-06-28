@@ -4,14 +4,14 @@ Have you ever considered the complexity of problem-solving and the quest for kno
 
 Fun fact - if you had a hard time contemplating any of these questions, *you might actually be doing philosophy.* 
 
-While computational thinking might not decode why it takes longer to find matching socks than to solve complex equations,  we are going to combine the principles of computer science with the insights of philosophy and take a look at some intriguing parallels between them to explore the philosophy of computational thinking, progressively revealing the deeper meanings of its applications.
+While computational thinking might not decode why it takes longer to find matching socks than to solve complex equations, we are going to combine the principles of computer science with the insights of philosophy and take a look at some intriguing parallels between them to explore the philosophy of computational thinking, progressively revealing the deeper meanings of its applications.
 
 ## The Mind of the Machine
-Let's first understand the fundamentals of computational thinking. Imagine coming upon a challenging issue that initially appears to be overwhelming. Computational thinking encompasses a series of skills and thought processes that urge us to walk through the labyrinth of challenges, identify patterns and relationships and use algorithms to solve problems by a filtering process. These are skills which are also essential for philosophical inquiries, like finding meaning in the complexities surrounding us.  
+Let's first understand the fundamentals of computational thinking.  Imagine coming upon a challenging issue that initially appears to be overwhelming.  Computational thinking encompasses a series of skills and thought processes that urge us to walk through the labyrinth of challenges, identify patterns and relationships and use algorithms to solve problems by a filtering process.  These are skills which are also essential for philosophical inquiries, like finding meaning in the complexities surrounding us.  
 
 *I'll show you how.*
 
-The study of basic issues in reality, knowledge, morality, and existence is known as philosophy. The theory deals with complex and abstract concepts such as human behaviour, history, and nature.  It is a style of looking at the world that pushes us to question our presumptions and preconceptions.  In order to break down large issues into smaller, more manageable pieces, computational thinking can be a useful technique for philosophical research.  We lay the groundwork for creating meaning by deconstructing the issue and comprehending its core elements.
+The study of basic issues in reality, knowledge, morality, and existence is known as philosophy.  The theory deals with complex and abstract concepts such as human behaviour, history, and nature.  It is a style of looking at the world that pushes us to question our presumptions and preconceptions.  In order to break down large issues into smaller, more manageable pieces, computational thinking can be a useful technique for philosophical research.  We lay the groundwork for creating meaning by deconstructing the issue and comprehending its core elements.
 
 ## Existentialism: It's Not Just a Phase, Mom
 At the core of the philosophical school of existentialism is the idea that human beings are responsible for creating meaning in their own lives.  As humans, we attempt to explore fundamental questions related to freedom, purpose, and existence - the complexities surrounding us.  Existentialists believe that human beings are confronted with the inherent uncertainty and ambiguity of existence and that we must confront this existential reality with authenticity. There is a sense of responsibility for our own choices and we are all free to create our own meaning of life.
@@ -24,17 +24,24 @@ Complexity looms in the vast fabric of existence.  We are constantly bombarded w
 **1. Decomposition** 
 
 Break down the problem into smaller, more manageable pieces, to decipher the essence of their interconnectedness.  For example, if you are trying to write a program to calculate the area of a circle, you could break the problem down into the following steps:
-a)	Declare the variables.
-b)	Get the radius of the circle.
-c)	Calculate the area of the circle.
+
+&ensp;a)	Declare the variables.
+
+&ensp;b)	Get the radius of the circle.
+
+&ensp;c)	Calculate the area of the circle.
 
 In other words, you write the pseudocode.
 
 Let's say you're trying to understand the concept of existentialism in philosophy, you could break it down as follows:
-a)	Personal autonomy: The idea that individuals have the free will to choose and create meaning
-b)	Authenticity: The idea that individuals should live in accordance with their own values and beliefs
-c)	Accountability: The idea that we are all responsible for our actions
-d)	The quest for meaning: The idea that we are constantly searching for meaning
+
+&ensp;a)	Personal autonomy: The idea that individuals have the free will to choose and create meaning
+
+&ensp;b)	Authenticity: The idea that individuals should live in accordance with their own values and beliefs
+
+&ensp;c)	Accountability: The idea that we are all responsible for our actions
+
+&ensp;d)	The quest for meaning: The idea that we are constantly searching for meaning
 
 
 **2. Pattern recognition:**
@@ -49,7 +56,7 @@ By leveraging pattern recognition, computational thinking and philosophy can mut
 
 In Computer Science, abstraction is used to capture crucial characteristics shared by a group of items while obscuring unimportant differences between them.  Abstraction gives us the ability to manage complexity.
 
-An algorithm, for instance, is an abstraction of a procedure that accepts inputs, performs a series of stages, and generates outputs to achieve a certain objective.  An abstract data type specifies an abstract collection of values and methods for working with those values, concealing the real values' representation from the user. Designing abstract data types is fundamentally a part of creating efficient algorithms.  Abstraction can also be used to create classes in object-oriented programming.  Classes are templates for creating objects, and they allow us to focus on the important details of the objects without having to worry about irrelevant details. 
+An algorithm, for instance, is an abstraction of a procedure that accepts inputs, performs a series of stages, and generates outputs to achieve a certain objective.  An abstract data type specifies an abstract collection of values and methods for working with those values, concealing the real values' representation from the user.  Designing abstract data types is fundamentally a part of creating efficient algorithms.  Abstraction can also be used to create classes in object-oriented programming.  Classes are templates for creating objects, and they allow us to focus on the important details of the objects without having to worry about irrelevant details. 
 
 In philosophy, abstraction can be used to create categories.  Categories are groups of concepts that share common features.  By creating categories, you can organize your knowledge and make it easier to understand your complexities.  To grasp the essence of existentialism, it is essential to focus on the most important information and ignore the irrelevant details.  This means peeling off particular philosophical defences or historical context to identify the core concepts, such as the priority of human existence, the subjectivity of meaning, and the significance of individual responsibility and choice.  As such, we can obtain a deeper understanding when trying to find meaning in complexity. 
 
@@ -57,7 +64,7 @@ In philosophy, abstraction can be used to create categories.  Categories are gro
 
 Develop a step-by-step solution to the problem. René Descartes believed that methodical reasoning was the best way to solve problems.  He argued that we should start with a clear and distinct idea of what we are trying to achieve, and then break the problem down into smaller, more manageable steps.  We should, then, work through each step in a logical order and only move on to the next step when the said conditions are met.  The philosopher's syllogism, where truth unfolds through a chain of interconnected propositions, is a method of problem-solving known as algorithmic thinking.
 
-For example, Descartes' methodical reasoning could be used to solve a math problem. Let's say we want to solve the equation 2x + 3 = 7.  We could start by breaking the equation down into smaller steps.  First, we could subtract 3 from both sides of the equation, which would give us 2x = 4.  Then, we could divide both sides of the equation by 2, which would give us x = 2.  Algorithmic thinking could be used to solve a computer programming problem. Let's say we want to write a program that prints the numbers from 1 to 10.  We could start by breaking the problem down into smaller steps.  First, we could create a variable to store the number 1.  Then, we could create a loop that iterates 10 times.  Inside the loop, we could print the value of the variable and then increment the value of the variable by 1.
+For example, Descartes' methodical reasoning could be used to solve a math problem.  Let's say we want to solve the equation 2x + 3 = 7.  We could start by breaking the equation down into smaller steps.  First, we could subtract 3 from both sides of the equation, which would give us 2x = 4.  Then, we could divide both sides of the equation by 2, which would give us x = 2.  Algorithmic thinking could be used to solve a computer programming problem. Let's say we want to write a program that prints the numbers from 1 to 10.  We could start by breaking the problem down into smaller steps.  First, we could create a variable to store the number 1.  Then, we could create a loop that iterates 10 times.  Inside the loop, we could print the value of the variable and then increment the value of the variable by 1.
 
 Essentially, if you break down any complexity, finding a solution should be pretty straightforward, *right*?
 
@@ -75,7 +82,7 @@ Existentialists argue that we find meaning in life through our actions.  When we
 
 **2. Through relationships** 
 
-Existentialists also argue that we find meaning in life through our relationships with others. When we connect with others, we feel a sense of belonging and acceptance.  This can help us to feel grounded and supported.
+Existentialists also argue that we find meaning in life through our relationships with others.  When we connect with others, we feel a sense of belonging and acceptance.  This can help us to feel grounded and supported.
 
 **3. Through creativity** 
 
