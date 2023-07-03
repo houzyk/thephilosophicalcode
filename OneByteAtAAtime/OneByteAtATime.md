@@ -78,15 +78,15 @@ Existentialists have emphasized finding meaning in life through action, relation
 
 **1. Through action**
 
-Existentialists argue that we find meaning in life through our actions.  When we act, we make choices and take responsibility for our actions.  This gives us a sense of purpose and direction.
+When we act, we make choices and take responsibility for our actions.  This gives us a sense of purpose and direction.
 
 **2. Through relationships** 
 
-Existentialists also argue that we find meaning in life through our relationships with others.  When we connect with others, we feel a sense of belonging and acceptance.  This can help us to feel grounded and supported.
+When we connect with others, we feel a sense of belonging and acceptance.  This can help us to feel grounded and supported.
 
 **3. Through creativity** 
 
-Existentialists believe that we can find meaning in life through our creativity.  When we express ourselves creatively, we are tapping into our unique potential.  This can help us to feel fulfilled and alive.
+When we express ourselves creatively, we are tapping into our unique potential.  This can help us to feel fulfilled and alive.
 
 ### A dash of Existential Dread
 
@@ -104,7 +104,7 @@ _•	What is my purpose in life?_
 
 Moving beyond the overarching question of life's meaning, this question takes a more personal and introspective approach, seeking to understand an individual's unique contribution to the world. It is a dynamic process.  Is it to achieve happiness and knowledge of the good?  Or is it to overcome nihilism?  For Kierkegaard, existing meant becoming more and more individual, yet this opportunity is not uniformly available to all individuals, as many may find themselves living in an "inauthentic" manner.  Ultimately, the purpose of life is to live it.
 
-Okay, I know these questions may seem superficial or shallow, like pseudo-problems (which is, by the way, the essence of philosophy), but they have the power to induce existential crises in me, and that's..*amazing*!
+Okay, I know these questions may seem superficial or shallow, like pseudo-problems (which are, by the way, part of the essence of philosophy), but they have the power to induce existential crises in me, and that's..*amazing*!
 
 ## Could we do better?
 
