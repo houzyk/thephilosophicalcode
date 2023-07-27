@@ -2,7 +2,7 @@
 external: false
 title: "Keep It Dry"
 description: "In addition to supporting all basic Markdoc syntax, this template also supports extended markdown syntax to render custom components."
-date: 2022-11-01
+date: 2021-12-19
 ---
 
 > *Don't Repeat Yourself* (DRY for short) is a cherished principle guiding developers world-wide. In this article, we'll take a philosophical dive into what it implies and how it pushes Philosophy to its limits.
