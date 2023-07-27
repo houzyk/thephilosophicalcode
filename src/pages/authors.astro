@@ -1,17 +1,17 @@
 ---
 import { readAll } from "../lib/markdoc/read";
-import { project } from "../lib/markdoc/frontmatter.schema";
+import { author } from "../lib/markdoc/frontmatter.schema";
 import PageLayout from "../layouts/PageLayout.astro";
 import PageMeta from "../components/PageMeta.astro";
 import ExternalLinkIcon from "../components/ui/icons/external-link.astro";
 import { SITE_TITLE } from "../config";
 
-const projects = await readAll({
-  directory: "projects",
-  frontmatterSchema: project,
+const authors = await readAll({
+  directory: "authors",
+  frontmatterSchema: author,
 });
 
-const sortedProjects = projects
+const sortedAuthors = authors
   .filter((p) => p.frontmatter.draft !== true)
   .sort(
     (a, b) =>
@@ -21,35 +21,23 @@ const sortedProjects = projects
 ---
 
 <PageLayout>
-  <PageMeta title={`Projects | ${SITE_TITLE}`} slot="meta" />
+  <PageMeta title={`Authors | ${SITE_TITLE}`} slot="meta" />
   <section slot="main">
     <ul>
       {
-        sortedProjects.map((project) => {
-          const formattedDate = new Date(
-            project.frontmatter.date
-          ).toLocaleDateString("en-us", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-          });
+        sortedAuthors.map((author) => {
           return (
-            <li class="project">
+            <li class="author">
               <div class="title">
-                <a href={project.frontmatter.url} target="_blank">
-                  <span>{project.frontmatter.title}</span>
+                <a href={author.frontmatter.url} target="_blank">
+                  <span>{author.frontmatter.title}</span>
                   <ExternalLinkIcon
                     class="icon-realign"
-                    title="Link to project"
+                    title="Link to author"
                     height={16}
                     width={16}
                   />
                 </a>
-              </div>
-              <div class="publish-date">
-                <time datetime={project.frontmatter.date.toISOString()}>
-                  {formattedDate}
-                </time>
               </div>
             </li>
           );
@@ -65,20 +53,20 @@ const sortedProjects = projects
     padding: unset;
   }
 
-  .project {
+  .author {
     display: grid;
     grid-template-columns: 1fr;
     line-height: 1.5;
   }
 
   @media (min-width: 640px) {
-    .project {
+    .author {
       grid-template-columns: 1fr auto;
       /* gap: 2rem; */
     }
   }
 
-  .project + .project {
+  .author + .author {
     padding-top: 0.5rem;
   }
 
@@ -96,9 +84,4 @@ const sortedProjects = projects
     margin-left: 2px;
   }
 
-  .publish-date {
-    color: var(--text-muted);
-    font-size: 0.875rem;
-    font-style: italic;
-  }
 </style>
