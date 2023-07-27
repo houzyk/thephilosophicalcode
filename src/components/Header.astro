@@ -1,7 +1,6 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
 import GitHubIcon from "../components/ui/icons/github.astro";
-import TwitterIcon from "../components/ui/icons/twitter.astro";
 ---
 
 <header>
@@ -10,25 +9,19 @@ import TwitterIcon from "../components/ui/icons/twitter.astro";
     <section>
       <ul>
         <li><HeaderLink href="/">Home</HeaderLink></li>
-        <li><HeaderLink href="/blog">Articles</HeaderLink></li>
-        <li><HeaderLink href="/projects">Projects</HeaderLink></li>
+        <li><HeaderLink href="/article">Articles</HeaderLink></li>
+        <li><HeaderLink href="/projects">Authors</HeaderLink></li>
       </ul>
     </section>
   </nav>
   <div class="social-handles">
     <a
       class="centered"
-      href="https://github.com/flexdinesh/blogster"
-      aria-label="Blogster on GitHub"
+      href="https://github.com/houzyk/thephilosophicalcode"
+      aria-label="The Philosophical Code on GitHub"
+      target="_blank"
     >
       <GitHubIcon title="GitHub" />
-    </a>
-    <a
-      class="centered"
-      href="https://twitter.com/flexdinesh"
-      aria-label="Dinesh on Twitter"
-    >
-      <TwitterIcon title="Twitter" />
     </a>
   </div>
 </header>
