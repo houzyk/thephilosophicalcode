@@ -1,5 +1,9 @@
-# Existence And TypeScript
-
+---
+external: false
+title: "Existence And TypeScript"
+description: "In addition to supporting all basic Markdoc syntax, this template also supports extended markdown syntax to render custom components."
+date: 2022-11-01
+---
 >   Two handy TypeScript features are the optional chaining and non-null assertion operators. In this article, we'll explore how these two work and why the way they work is philosophically interesting.
 
 ### 1. Is It Me You're Looking For?

@@ -1,5 +1,9 @@
-# One Byte at a Time
-
+---
+external: false
+title: "One Byte at a Time"
+description: "In addition to supporting all basic Markdoc syntax, this template also supports extended markdown syntax to render custom components."
+date: 2022-11-01
+---
 Have you ever considered the complexity of problem-solving and the quest for knowledge in our increasingly evolving world?  Computational thinking is a relatively new field that's based on the principles of computer science, but it has become a potent framework that may revolutionize the way we make sense of the complexities of our existence.  How do we create algorithms to solve a problem?  Then, how do we know that the solution is really effective?  Even if we are certain that the solution will work, how can we instruct a computer to execute it?
 
 Fun fact - if you had a hard time contemplating any of these questions, *you might actually be doing philosophy.*
@@ -90,9 +94,7 @@ When we express ourselves creatively, we are tapping into our unique potential. 
 
 ### A dash of Existential Dread
 
-<p align="center">
-<img src="./assets/Existentialism_Game.gif" height="250" alt="Existentialism Game">
-</p>
+![Existentialism Game.](/images/one-byte-at-a-time/Existentialism_Game.gif)
 
 When we ask ourselves questions about the meaning of life, we can start to explore what gives our lives meaning.  Some (quite dense) questions I usually ask myself when trying to find meaning include:
 
