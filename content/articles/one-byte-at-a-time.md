@@ -117,13 +117,13 @@ Computational thinking is a way of thinking and a way of being in the world.  Co
 Meaning is a jumper that you have to knit yourself.  Meaning is not something that is given to us, but something that we have to create for ourselves.  Meaning is not easy to find, nor is it fixed.  It is something that we actively build through our engagement with information and ideas.  It changes as we learn and grow.  There is no right way to do it. However, by embracing the fusion of philosophy and computational thinking, we can open up new possibilities to find some sort of meaning in our lives.  We can use computational thinking to explore the world around us, to better understand ourselves and to create new things.  One byte at a time, finding meaning urges us to embrace the fusion of these two disciplines and all of a sudden, everything will make sense.
 
 ## References:
-1.	[Meaning is a Jumper That You Have to Knit Yourself - exurb1a](https://youtu.be/psaCM1j9LEM)
-2.	[Absurdism | How to Party at the End of Meaning - exurb1a](https://youtu.be/Jv79l1b-eoI)
+1.	[Meaning is a Jumper That You Have to Knit Yourself - exurb1a](https://youtu.be/psaCM1j9LEM "Meaning is a Jumper That You Have to Knit Yourself - exurb1a")
+2.	[Absurdism | How to Party at the End of Meaning - exurb1a](https://youtu.be/Jv79l1b-eoI "Absurdism | How to Party at the End of Meaning - exurb1a")
 
 Wafaa Jaunnoo
 
 Developer, avid reader and writer
 
-[Let's connect!](https://www.linkedin.com/in/wafaa-al-uzayma-jaunnoo-/){#animated}
+[Let's connect!](https://www.linkedin.com/in/wafaa-al-uzayma-jaunnoo-/ "Let's connect!")
 
-[Read more of what I write](https://medium.com/@wafaajaunnoo)
+[Read more of what I write](https://medium.com/@wafaajaunnoo "Read more of what I write")
