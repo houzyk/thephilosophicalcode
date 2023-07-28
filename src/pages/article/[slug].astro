@@ -8,7 +8,7 @@ import { SITE_URL } from "../../config";
 
 export async function getStaticPaths() {
   const posts = await readAll({
-    directory: "article",
+    directory: "articles",
     frontmatterSchema: article,
   });
 
@@ -28,7 +28,7 @@ if (typeof slug !== "string") {
 }
 
 const { content, frontmatter } = await readOne({
-  directory: "article",
+  directory: "articles",
   slug,
   frontmatterSchema: article,
 });

@@ -7,7 +7,7 @@ import ExternalLinkIcon from "../components/ui/icons/external-link.astro";
 import { SITE_TITLE } from "../config";
 
 const posts = await readAll({
-  directory: "article",
+  directory: "articles",
   frontmatterSchema: article,
 });
 
