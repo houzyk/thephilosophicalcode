@@ -1,0 +1,28 @@
+{
+  "authors": {
+    "houzyk": {
+      "name": "Houzair Koussa",
+      "url": "",
+      "articles": [
+        "/hello-computer",
+        "/keep-It-dry",
+        "/existence-and-typeScript",
+        "/too-much-to-handle"
+      ]
+    },
+    "wafaajaunnoo": {
+      "name": "Wafaa Jaunnoo",
+      "url": "",
+      "articles": [
+        "/one-byte-at-a-time"
+      ]
+    }
+  },
+  "contributors": {
+    "veegishx": {
+      "name": "Veegish Ramdani",
+      "url": "https://github.com/veegishx",
+      "contribution-description": ""
+    }
+  }
+}

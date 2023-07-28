@@ -1,36 +1,27 @@
 ---
-import { readAll } from "../lib/markdoc/read";
-import { author } from "../lib/markdoc/frontmatter.schema";
 import PageLayout from "../layouts/PageLayout.astro";
 import PageMeta from "../components/PageMeta.astro";
 import ExternalLinkIcon from "../components/ui/icons/external-link.astro";
+import Heading from "../components/ui/Heading.astro";
 import { SITE_TITLE } from "../config";
+import { authors, contributors } from "../../content/people.json";
 
-const authors = await readAll({
-  directory: "authors",
-  frontmatterSchema: author,
-});
-
-const sortedAuthors = authors
-  .filter((p) => p.frontmatter.draft !== true)
-  .sort(
-    (a, b) =>
-      new Date(b.frontmatter.date).valueOf() -
-      new Date(a.frontmatter.date).valueOf()
-  );
 ---
 
 <PageLayout>
   <PageMeta title={`Authors | ${SITE_TITLE}`} slot="meta" />
   <section slot="main">
+    <Heading as="h2">
+      Authors
+    </Heading>
     <ul>
       {
-        sortedAuthors.map((author) => {
-          return (
+        Object.entries(authors).map((author) => {
+          return !!author ? (
             <li class="author">
               <div class="title">
-                <a href={author.frontmatter.url} target="_blank">
-                  <span>{author.frontmatter.title}</span>
+                <a href={author[1]?.url || ''} target="_blank">
+                  <span>{author[1]?.name || ''}</span>
                   <ExternalLinkIcon
                     class="icon-realign"
                     title="Link to author"
@@ -40,7 +31,31 @@ const sortedAuthors = authors
                 </a>
               </div>
             </li>
-          );
+          ) : null;
+        })
+      }
+    </ul>
+    <Heading as="h2">
+      Contributors
+    </Heading>
+    <ul>
+      {
+        Object.entries(contributors).map((contributor) => {
+          return !!contributor ? (
+            <li class="author">
+              <div class="title">
+                <a href={contributor[1]?.url || ''} target="_blank">
+                  <span>{contributor[1]?.name || ''}</span>
+                  <ExternalLinkIcon
+                    class="icon-realign"
+                    title="Link to author"
+                    height={16}
+                    width={16}
+                  />
+                </a>
+              </div>
+            </li>
+          ) : null;
         })
       }
     </ul>
