@@ -27,9 +27,13 @@ npm run dev
 ### Routes
 
 About/Home page - `localhost:3000/`
+
 Articles page - `localhost:3000/articles`
+
 People page - `localhost:3000/people`
+
 Specific article page - `localhost:3000/articles/article-title`
+
 
 ## Contribution Guidelines
 
