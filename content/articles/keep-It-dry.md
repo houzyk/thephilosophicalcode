@@ -6,6 +6,7 @@ author: "Houzair Koussa"
 authorUrl: "https://github.com/houzyk"
 date: 2021-12-19
 ---
+![Keep It Dry](/images/keep-it-dry/cover.webp)
 
 > *Don't Repeat Yourself* (DRY for short) is a cherished principle guiding developers world-wide. In this article, we'll take a philosophical dive into what it implies and how it pushes Philosophy to its limits.
 

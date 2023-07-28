@@ -6,6 +6,8 @@ author: "Houzair Koussa"
 authorUrl: "https://github.com/houzyk"
 date: 2023-01-22
 ---
+![Too Much To Handle](/images/too-much-to-handle/cover.webp)
+
 > Here’s an interesting fact — even if we had an infinite amount of computational power and time, we would not be able to solve every single computational problem that can exist. In this article, we’ll informally prove this fact by showing that there are far too many problems for programs to handle.
 
 ### 1. The Road Ahead.

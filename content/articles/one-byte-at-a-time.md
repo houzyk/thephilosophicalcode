@@ -6,7 +6,9 @@ author: "Wafaa Jaunnoo"
 authorUrl: "https://github.com/wafaajaunnoo"
 date: 2023-07-09
 ---
-Have you ever considered the complexity of problem-solving and the quest for knowledge in our increasingly evolving world?  Computational thinking is a relatively new field that's based on the principles of computer science, but it has become a potent framework that may revolutionize the way we make sense of the complexities of our existence.  How do we create algorithms to solve a problem?  Then, how do we know that the solution is really effective?  Even if we are certain that the solution will work, how can we instruct a computer to execute it?
+![One Byte at a Time](/images/one-byte-at-a-time/cover.webp)
+
+> Have you ever considered the complexity of problem-solving and the quest for knowledge in our increasingly evolving world?  Computational thinking is a relatively new field that's based on the principles of computer science, but it has become a potent framework that may revolutionize the way we make sense of the complexities of our existence.  How do we create algorithms to solve a problem?  Then, how do we know that the solution is really effective?  Even if we are certain that the solution will work, how can we instruct a computer to execute it?
 
 Fun fact - if you had a hard time contemplating any of these questions, *you might actually be doing philosophy.*
 
