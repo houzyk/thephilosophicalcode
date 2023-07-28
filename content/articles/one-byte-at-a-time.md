@@ -127,6 +127,6 @@ Wafaa Jaunnoo
 
 Developer, avid reader and writer
 
-[Let's connect!](https://www.linkedin.com/in/wafaa-al-uzayma-jaunnoo-/ "Let's connect!")
+[Let's connect!](https://www.instagram.com/wafaaism_/ "Let's connect!")
 
 [Read more of what I write](https://medium.com/@wafaajaunnoo "Read more of what I write")
