@@ -1,0 +1,100 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import PageMeta from "../components/seo/PageMeta.astro";
+import ExternalLinkIcon from "../components/ui/icons/external-link.astro";
+import Heading from "../components/ui/Heading.astro";
+import { SITE_TITLE } from "../config";
+import { authors, contributors } from "../../content/people.json";
+---
+
+<PageLayout>
+  <PageMeta title={`People | ${SITE_TITLE}`} slot="meta" />
+  <section slot="main">
+    <Heading as="h2">
+      Authors
+    </Heading>
+    <ul>
+      {
+        !!authors && authors.map((author) => {
+          return !!author ? (
+            <li class="author">
+              <div class="title">
+                <a href={author?.url || ''} target="_blank">
+                  <span>{author?.name || ''}</span>
+                  <ExternalLinkIcon
+                    class="icon-realign"
+                    title="Link to author"
+                    height={16}
+                    width={16}
+                  />
+                </a>
+              </div>
+            </li>
+          ) : null;
+        })
+      }
+    </ul>
+    <Heading as="h2">
+      Contributors
+    </Heading>
+    <ul>
+      {
+        !!contributors && contributors.map((contributor) => {
+          return !!contributor ? (
+            <li class="author">
+              <div class="title">
+                <a href={contributor?.url || ''} target="_blank">
+                  <span>{contributor?.name || ''}</span>
+                  <ExternalLinkIcon
+                    class="icon-realign"
+                    title="Link to author"
+                    height={16}
+                    width={16}
+                  />
+                </a>
+              </div>
+            </li>
+          ) : null;
+        })
+      }
+    </ul>
+  </section>
+</PageLayout>
+
+<style>
+  ul {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  .author {
+    display: grid;
+    grid-template-columns: 1fr;
+    line-height: 1.5;
+  }
+
+  @media (min-width: 640px) {
+    .author {
+      grid-template-columns: 1fr auto;
+    }
+  }
+
+  .author + .author {
+    padding-top: 0.5rem;
+  }
+
+  .title a {
+    color: var(--text);
+    border-bottom: none;
+  }
+
+  .title a:hover {
+    color: var(--text-link);
+  }
+
+  .icon-realign {
+    margin-bottom: -1.5px;
+    margin-left: 2px;
+  }
+
+</style>

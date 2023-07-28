@@ -1,5 +1,12 @@
-
-# Too Much To Handle
+---
+external: false
+title: "Too Much To Handle"
+description: "Here’s an interesting fact — even if we had an infinite amount of computational power and time, we would not be able to solve every single computational problem that can exist. In this article, we’ll informally prove this fact by showing that there are far too many problems for programs to handle."
+author: "Houzair Koussa"
+authorUrl: "https://github.com/houzyk"
+date: 2023-01-22
+---
+![Too Much To Handle](/images/too-much-to-handle/cover.webp)
 
 > Here’s an interesting fact — even if we had an infinite amount of computational power and time, we would not be able to solve every single computational problem that can exist. In this article, we’ll informally prove this fact by showing that there are far too many problems for programs to handle.
 
@@ -25,7 +32,7 @@ In order to count these programs, let’s assign a unique natural number to ever
 
 With our mapping in hand, it’s easy to imagine how every possible sentence in JavaScript can be mapped to a unique number. Consequently, we can also map every single JavaScript program to a unique number. For example, let’s visualise our mapping as follows.
 
-<img src="./assets/JS_Mapping.webp" alt="JS Mapping" />
+![JS Mapping.](/images/too-much-to-handle/JS_Mapping.webp)
 
 Intuitively, we can assign a program, like let x = 0;, to a unique number like 1234546478 . Since JavaScript is Turing complete and every JavaScript program can be mapped onto a unique natural number, we can deduce that the number of JavaScript programs is less or equal to the size of the set of natural numbers. So, we may establish our first statement.
 
@@ -35,7 +42,7 @@ a. The size of the set of computational programs is less or equal to the size of
 
 An intuitive way of picturing a computational problem is like a black-box that takes some input and has some associated desired output [1]. Then, to solve that problem is to find a program that gives the desired output based on the given input.
 
-<img src="./assets/Picturing A Computational_Problem_As A_Black-Box.webp" alt="Picturing A Computational Problem As A Black-Box" />
+![Picturing A Computational Problem As A Black-Box.](/images/too-much-to-handle/Picturing_A_Computational_Problem_As_A_Black-Box.webp)
 
 With this picture in mind, we can intuitively say that the set of inputs and the set of desired outputs could be any amount of strings of numbers. In other words, we can view a problem as a mathematical function that maps from the set of natural numbers to the set of natural numbers. So, to count the number of problems is to count the number of functions that maps from natural to natural numbers. Since we know that the size of the set of all such functions is equal to the size of the set of all real numbers, we may establish our second statement.
 
@@ -47,19 +54,19 @@ Let’s visually establish that the there are more real than natural numbers by 
 
 Intuitively, there are infinitely many natural numbers. So, let’s suppose that we’ve written all of them in an infinite table as follows.
 
-<img src="./assets/Writing_All_Natural_Numbers_In_A_Table.webp" alt="Writing All Natural Numbers In A Table" />
+![Writing All Natural Numbers In A Table.](/images/too-much-to-handle/Writing_All_Natural_Numbers_In_A_Table.webp)
 
 In the second column, let’s try to write every real number such that we match a unique real number to every single natural number in our “Nat” column.
 
-<img src="./assets/Matching_Natural_And_Real_Numbers.webp" alt="Matching Natural And Real Numbers" />
+![Matching Natural And Real Numbers.](/images/too-much-to-handle/Matching_Natural_And_Real_Numbers.webp)
 
 Subsequently, imagine a diagonal line that runs through each real number. Particularly, the line goes through the first digit in the first real number, the second digit in the second real number, and so on (ad infinitum).
 
-<img src="./assets/Diagonal_Line_Running_Through_Each_Real_Number.webp" alt="Diagonal Line Running Through Each Real Number" />
+![Diagonal Line Running Through Each Real Number.](/images/too-much-to-handle/Diagonal_Line_Running_Through_Each_Real_Number.webp)
 
 Finally, let’s apply a simple rule to our diagonal line — We will add 1 to every digit on our line. If it’s a 9, we will subtract 1. Once our rule is applied, we will generate a “new” real number and we may write it in the very last row of our infinite table.
 
-<img src="./assets/Generating_A_“New”_Real_Number.webp" alt="Generating A “New” Real Number" />
+![Generating A “New” Real Number.](/images/too-much-to-handle/Generating_A_“New”_Real_Number.webp)
 
 Crucially, notice that this newly generated real number differs from every other real number in our infinite table. In particular, it differs from every other real number by at least one digit. Importantly, we can keep on generating such “new” real numbers by applying our rule over and over again.
 
@@ -91,7 +98,7 @@ Consequently, if each program solves only one problem and there are less program
 
 1. Instead of picturing a computational problem like a black-box, we can formally define a problem as follows.
 
-<img src="./assets/Formal_Definition_Of_A_Computational_Problem.webp" alt="Formal Definition Of A Computational Problem" />
+![Formal Definition Of A Computational Problem.](/images/too-much-to-handle/Formal_Definition_Of_A_Computational_Problem.webp)
 
 This defines every problem as a decision problem. However, for our current purposes, I believe that it’s more intuitive to see a problem as a black-box than purely as a decision problem.
 

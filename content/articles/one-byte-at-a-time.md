@@ -1,6 +1,14 @@
-# One Byte at a Time
+---
+external: false
+title: "One Byte at a Time"
+description: "Have you ever considered the complexity of problem-solving and the quest for knowledge in our increasingly evolving world?  Computational thinking is a relatively new field that's based on the principles of computer science, but it has become a potent framework that may revolutionize the way we make sense of the complexities of our existence.  How do we create algorithms to solve a problem?  Then, how do we know that the solution is really effective?  Even if we are certain that the solution will work, how can we instruct a computer to execute it?"
+author: "Wafaa Jaunnoo"
+authorUrl: "https://github.com/wafaajaunnoo"
+date: 2023-07-09
+---
+![One Byte at a Time](/images/one-byte-at-a-time/cover.webp)
 
-Have you ever considered the complexity of problem-solving and the quest for knowledge in our increasingly evolving world?  Computational thinking is a relatively new field that's based on the principles of computer science, but it has become a potent framework that may revolutionize the way we make sense of the complexities of our existence.  How do we create algorithms to solve a problem?  Then, how do we know that the solution is really effective?  Even if we are certain that the solution will work, how can we instruct a computer to execute it?
+> Have you ever considered the complexity of problem-solving and the quest for knowledge in our increasingly evolving world?  Computational thinking is a relatively new field that's based on the principles of computer science, but it has become a potent framework that may revolutionize the way we make sense of the complexities of our existence.  How do we create algorithms to solve a problem?  Then, how do we know that the solution is really effective?  Even if we are certain that the solution will work, how can we instruct a computer to execute it?
 
 Fun fact - if you had a hard time contemplating any of these questions, *you might actually be doing philosophy.*
 
@@ -90,9 +98,7 @@ When we express ourselves creatively, we are tapping into our unique potential. 
 
 ### A dash of Existential Dread
 
-<p align="center">
-<img src="./assets/Existentialism_Game.gif" height="250" alt="Existentialism Game">
-</p>
+![Existentialism Game.](/images/one-byte-at-a-time/Existentialism_Game.gif)
 
 When we ask ourselves questions about the meaning of life, we can start to explore what gives our lives meaning.  Some (quite dense) questions I usually ask myself when trying to find meaning include:
 
@@ -113,13 +119,13 @@ Computational thinking is a way of thinking and a way of being in the world.  Co
 Meaning is a jumper that you have to knit yourself.  Meaning is not something that is given to us, but something that we have to create for ourselves.  Meaning is not easy to find, nor is it fixed.  It is something that we actively build through our engagement with information and ideas.  It changes as we learn and grow.  There is no right way to do it. However, by embracing the fusion of philosophy and computational thinking, we can open up new possibilities to find some sort of meaning in our lives.  We can use computational thinking to explore the world around us, to better understand ourselves and to create new things.  One byte at a time, finding meaning urges us to embrace the fusion of these two disciplines and all of a sudden, everything will make sense.
 
 ## References:
-1.	[Meaning is a Jumper That You Have to Knit Yourself - exurb1a](https://youtu.be/psaCM1j9LEM)
-2.	[Absurdism | How to Party at the End of Meaning - exurb1a](https://youtu.be/Jv79l1b-eoI)
+1.	[Meaning is a Jumper That You Have to Knit Yourself - exurb1a](https://youtu.be/psaCM1j9LEM "Meaning is a Jumper That You Have to Knit Yourself - exurb1a")
+2.	[Absurdism | How to Party at the End of Meaning - exurb1a](https://youtu.be/Jv79l1b-eoI "Absurdism | How to Party at the End of Meaning - exurb1a")
 
 Wafaa Jaunnoo
 
 Developer, avid reader and writer
 
-[Let's connect!](https://www.linkedin.com/in/wafaa-al-uzayma-jaunnoo-/)
+[Let's connect!](https://www.linkedin.com/in/wafaa-al-uzayma-jaunnoo-/ "Let's connect!")
 
-[Read more of what I write](https://medium.com/@wafaajaunnoo)
+[Read more of what I write](https://medium.com/@wafaajaunnoo "Read more of what I write")
