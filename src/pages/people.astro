@@ -5,7 +5,6 @@ import ExternalLinkIcon from "../components/ui/icons/external-link.astro";
 import Heading from "../components/ui/Heading.astro";
 import { SITE_TITLE } from "../config";
 import { authors, contributors } from "../../content/people.json";
-
 ---
 
 <PageLayout>
@@ -16,12 +15,12 @@ import { authors, contributors } from "../../content/people.json";
     </Heading>
     <ul>
       {
-        Object.entries(authors).map((author) => {
+        !!authors && authors.map((author) => {
           return !!author ? (
             <li class="author">
               <div class="title">
-                <a href={author[1]?.url || ''} target="_blank">
-                  <span>{author[1]?.name || ''}</span>
+                <a href={author?.url || ''} target="_blank">
+                  <span>{author?.name || ''}</span>
                   <ExternalLinkIcon
                     class="icon-realign"
                     title="Link to author"
@@ -40,12 +39,12 @@ import { authors, contributors } from "../../content/people.json";
     </Heading>
     <ul>
       {
-        Object.entries(contributors).map((contributor) => {
+        !!contributors && contributors.map((contributor) => {
           return !!contributor ? (
             <li class="author">
               <div class="title">
-                <a href={contributor[1]?.url || ''} target="_blank">
-                  <span>{contributor[1]?.name || ''}</span>
+                <a href={contributor?.url || ''} target="_blank">
+                  <span>{contributor?.name || ''}</span>
                   <ExternalLinkIcon
                     class="icon-realign"
                     title="Link to author"
@@ -77,7 +76,6 @@ import { authors, contributors } from "../../content/people.json";
   @media (min-width: 640px) {
     .author {
       grid-template-columns: 1fr auto;
-      /* gap: 2rem; */
     }
   }
 

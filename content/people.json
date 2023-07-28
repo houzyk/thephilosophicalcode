@@ -1,28 +1,18 @@
 {
-  "authors": {
-    "houzyk": {
+  "authors": [
+    {
       "name": "Houzair Koussa",
-      "url": "",
-      "articles": [
-        "/hello-computer",
-        "/keep-It-dry",
-        "/existence-and-typeScript",
-        "/too-much-to-handle"
-      ]
+      "url": "https://github.com/houzyk"
     },
-    "wafaajaunnoo": {
+    {
       "name": "Wafaa Jaunnoo",
-      "url": "",
-      "articles": [
-        "/one-byte-at-a-time"
-      ]
+      "url": "https://github.com/wafaajaunnoo"
     }
-  },
-  "contributors": {
-    "veegishx": {
+  ],
+  "contributors": [
+    {
       "name": "Veegish Ramdani",
-      "url": "https://github.com/veegishx",
-      "contribution-description": ""
+      "url": "https://github.com/veegishx"
     }
-  }
+  ]
 }
