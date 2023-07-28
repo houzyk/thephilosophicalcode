@@ -14,6 +14,27 @@ The Philosophical Code is an open-source article series exploring the intersecti
 4. [Too Much To Handle](https://thephilosophicalcode.com/articles/too-much-to-handle/) by @houzyk
 5. [OneByteAtAAtime](https://thephilosophicalcode.com/articles/one-byte-at-a-time/) by @wafaajaunnoo
 
+## Setup
+
+```
+npm install
+```
+
+```
+npm run dev
+```
+
+### Routes
+
+About/Home page - `localhost:3000/`
+
+Articles page - `localhost:3000/articles`
+
+People page - `localhost:3000/people`
+
+Specific article page - `localhost:3000/articles/article-title`
+
+
 ## Contribution Guidelines
 
 Please note that any contribution to this article series, whether in terms of an article or engineering, will result in your details (github name and github username) to be displayed on the people section [here](https://thephilosophicalcode.com/people/)  
