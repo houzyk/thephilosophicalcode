@@ -1,5 +1,5 @@
 ---
-/* 
+/*
   This layout is used in pages that render markdoc content
   - pages/blog/[slug].astro
 */
@@ -13,10 +13,12 @@ import Favicon from "./Favicon.astro";
 
 export interface Props {
   title: string;
+  author: string;
+  authorUrl: string;
   date: Date;
 }
 
-const { title, date } = Astro.props;
+const { title, date, author, authorUrl } = Astro.props;
 const formattedDate = new Date(date).toLocaleDateString("en-us", {
   year: "numeric",
   month: "short",
@@ -40,6 +42,9 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
     <main id="main">
       <section class="blog-post">
         <h1 class="title">{title}</h1>
+        <a href={authorUrl || ''} target="_blank" class="animated">
+          <span>{author || ''}</span>
+        </a>
         <time class="publish-date">{formattedDate}</time>
         <slot name="content" />
       </section>

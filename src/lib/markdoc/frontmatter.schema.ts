@@ -7,6 +7,14 @@ const baseSchema = z.object({
     required_error: "Required frontmatter missing: title",
     invalid_type_error: "title must be a string",
   }),
+  author: z.string({
+    required_error: "Required frontmatter missing: author",
+    invalid_type_error: "author must be a string",
+  }),
+  authorUrl: z.string({
+    required_error: "Required frontmatter missing: authorUrl",
+    invalid_type_error: "authorUrl must be a string",
+  }),
   date: z.date({
     required_error: "Required frontmatter missing: date",
     invalid_type_error:
@@ -41,4 +49,3 @@ export const article = z.discriminatedUnion("external", [
     }),
   }),
 ]);
-
