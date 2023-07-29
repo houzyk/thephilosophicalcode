@@ -117,6 +117,24 @@ const generateArticle = async () => {
     fs.writeFile("./content/people.json", JSON.stringify(peopleData,  null, 2), 'utf8', () => {})
   }
 
+
+  const result = [
+    {
+      "File": `Your new article "${articleInfo.articleNormalTitle}".`,
+      "Path": newArticlePath
+    },
+    {
+      "File": `the image folder for your article "${articleInfo.articleNormalTitle}".`,
+      "Path": newArticleCoverPath
+    },
+    {
+      "File": "Check the people list as well.",
+      "Path": "content/people.json"
+    },
+  ];
+
+  console.table(result);
+
   } catch (error) {
     console.log("Template creation failed.");
   }
