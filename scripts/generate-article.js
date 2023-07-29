@@ -114,7 +114,7 @@ const generateArticle = async () => {
       url: userInfo.githubURL
     });
 
-    fs.writeFile("./content/people.json", JSON.stringify(peopleData), 'utf8', () => {})
+    fs.writeFile("./content/people.json", JSON.stringify(peopleData,  null, 2), 'utf8', () => {})
   }
 
   } catch (error) {
