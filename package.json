@@ -1,5 +1,5 @@
 {
-  "name": "The Philosophical Code",
+  "name": "the-philosophical-code",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "generate-article": "node ./scripts/generate-article.js"
   },
   "dependencies": {
     "@astrojs/prism": "^1.0.2",
@@ -23,6 +24,8 @@
     "zod": "^3.20.2"
   },
   "devDependencies": {
+    "enquirer": "^2.4.1",
+    "figlet": "^1.6.0",
     "prettier-plugin-astro": "^0.7.2",
     "typescript": "^4.9.4"
   }
