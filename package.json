@@ -1,5 +1,5 @@
 {
-  "name": "The Philosophical Code",
+  "name": "the-philosophical-code",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -24,6 +24,7 @@
     "zod": "^3.20.2"
   },
   "devDependencies": {
+    "enquirer": "^2.4.1",
     "prettier-plugin-astro": "^0.7.2",
     "typescript": "^4.9.4"
   }
