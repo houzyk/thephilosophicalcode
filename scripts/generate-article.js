@@ -85,13 +85,22 @@ const generateArticle = async () => {
   // Copy cover.webp into iamge directory
   const templateCoverPath = path.join("./scripts/templates", "cover.webp");
   const newArticleCoverPath = path.join(newImageDirectoryPath, "cover.webp");
+  fs.copyFileSync(templateCoverPath, newArticleCoverPath);
 
-  const readStream = fs.createReadStream(templateCoverPath);
-  const writeStream = fs.createWriteStream(newArticleCoverPath);
+  // Make template article.md
+  const templateArticlePath = path.join("./scripts/templates", "article.md");
+  const newArticlePath = path.join("./content/articles", `${articleInfo.articleKebabTitle}.md`);
+  fs.copyFileSync(templateArticlePath, newArticlePath);
 
-  writeStream.on('finish', () => {});
-  readStream.pipe(writeStream);
+  fs.readFile(newArticlePath, 'utf8', (_, data) => {
+    const modifiedContent = data
+                            .replaceAll("{#articleNormalTitle}", articleInfo.articleNormalTitle)
+                            .replaceAll("{#articleKebabTitle}", articleInfo.articleKebabTitle)
+                            .replaceAll("{#githubName}", userInfo.githubName)
+                            .replaceAll("{#githubURL}", userInfo.githubURL);
 
+    fs.writeFile(newArticlePath, modifiedContent, 'utf8', () => {});
+  });
 
   } catch (error) {
     console.log("Template creation failed.");
