@@ -9,8 +9,19 @@ const generateArticle = async () => {
       name: "username",
       message: "What is your Github username?",
       validate: async (value) => {
+
+        // Checks if username format is valid
+        if (!/^[a-zA-Z\d](?:[a-zA-Z\d]|-(?=[a-zA-Z\d])){0,37}$/.test(value)) {
+          return "Github username does not have a valid format.";
+        }
+
+        // Checks if username exists on Github
         const response = await fetch(`https://api.github.com/users/${value}`);
-        return response.status === 200 || "Github username is invalid or does not exist.";
+        if (response.status !== 200 ) {
+          return "Github username does not exist.";
+        }
+
+        return true;
       }
     },
     {
