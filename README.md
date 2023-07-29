@@ -41,6 +41,25 @@ Please note that any contribution to this article series, whether in terms of an
 
 ### Adding An Article
 
+Scaffold a dummy article using:
+
+```
+npm run generate-article
+```
+
+This will prompt you for:
+
+1. Your Github username
+2. Your article title
+
+It will scaffold:
+
+1. A dummy article.
+2. An image folder for your article.
+3. Add you to the list of contributors unless you're already there.
+
+Alternatively, follow the below manually
+
   1. To add an article, add an `{your-article-name-in-kebab-case}.md` in the `./contents/articles` directory.
   2. Add your details in `./contents/people.json`
   5. The article name strictly equals the article's title.
