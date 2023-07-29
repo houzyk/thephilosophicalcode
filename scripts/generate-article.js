@@ -1,7 +1,10 @@
 const fs = require('fs')
 const { prompt } = require('enquirer');
+const figlet = require("figlet");
 
 const generateArticle = async () => {
+
+  console.log(figlet.textSync("The Philosophical Code")); // Ascii Art
 
   const questions = [
     {
