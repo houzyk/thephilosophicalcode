@@ -92,6 +92,7 @@ const generateArticle = async () => {
   const newArticlePath = path.join("./content/articles", `${articleInfo.articleKebabTitle}.md`);
   fs.copyFileSync(templateArticlePath, newArticlePath);
 
+  // Modify article data
   fs.readFile(newArticlePath, 'utf8', (_, data) => {
     const modifiedContent = data
                             .replaceAll("{#articleNormalTitle}", articleInfo.articleNormalTitle)
@@ -101,6 +102,20 @@ const generateArticle = async () => {
 
     fs.writeFile(newArticlePath, modifiedContent, 'utf8', () => {});
   });
+
+  // Add user in people data
+  const peopleDataStream = fs.readFileSync("./content/people.json");
+  const peopleData = JSON.parse(peopleDataStream);
+  const doesAuthorExist =peopleData.authors.some((author) => author.url === userInfo.githubURL);
+
+  if (!doesAuthorExist) {
+    peopleData.authors.push({
+      name: userInfo.githubName,
+      url: userInfo.githubURL
+    });
+
+    fs.writeFile("./content/people.json", JSON.stringify(peopleData), 'utf8', () => {})
+  }
 
   } catch (error) {
     console.log("Template creation failed.");
