@@ -25,8 +25,8 @@ const generateArticle = async () => {
         }
 
         // Checks if username exists on Github
-        const response = await fetch(`https://api.github.com/users/${value}`);
-        if (response.status !== 200 ) {
+        const userStatus = (await fetch(`https://api.github.com/users/${value}`, { method: 'HEAD' })).status;
+        if (userStatus !== 200) {
           return "Github username does not exist.";
         }
 
@@ -59,6 +59,27 @@ const generateArticle = async () => {
   ];
 
   const { username,  articleInfo } = await prompt(questions);
+
+  const userInfo = {
+    githubName: username,
+    githubURL: `https://github.com/${username}`
+  }
+
+  // Get Github name
+  const userDataResponse = await fetch(`https://api.github.com/users/${username}`);
+  if (userDataResponse.status === 200) {
+    const userData = await userDataResponse.json();
+    if (userData?.name) {
+      userInfo.githubName = userData?.name;
+    }
+  }
+
+
+  try {
+
+  } catch (error) {
+    console.log("Template creation failed.");
+  }
 
 }
 
