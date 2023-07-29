@@ -2,6 +2,12 @@ const fs = require('fs')
 const { prompt } = require('enquirer');
 const figlet = require("figlet");
 
+const kebabToNormalCase = (kebabCaseString) => {
+  const words = kebabCaseString.split('-');
+  const normalCaseString = words.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  return normalCaseString;
+}
+
 const generateArticle = async () => {
 
   console.log(figlet.textSync("The Philosophical Code")); // Ascii Art
@@ -29,7 +35,7 @@ const generateArticle = async () => {
     },
     {
       type: 'input',
-      name: 'articleTitle',
+      name: 'articleInfo',
       message: "What is your article's title ? (kebab-case-only)",
       validate: (value) => {
 
@@ -44,11 +50,15 @@ const generateArticle = async () => {
         }
 
         return true;
-      }
+      },
+      result: (value) => ({
+        articleKebabTitle: value,
+        articleNormalTitle: kebabToNormalCase(value)
+      })
     }
   ];
 
-  const answers = await prompt(questions);
+  const { username,  articleInfo } = await prompt(questions);
 
 }
 
