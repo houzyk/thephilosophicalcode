@@ -1,4 +1,5 @@
-const fs = require('fs')
+const fs = require('fs');
+const path = require('path');
 const { prompt } = require('enquirer');
 const figlet = require("figlet");
 
@@ -76,6 +77,21 @@ const generateArticle = async () => {
 
 
   try {
+
+  // Create folder in image directory
+  const newImageDirectoryPath = `./public/images/${articleInfo.articleKebabTitle}`;
+  fs.mkdirSync(newImageDirectoryPath, () => {});
+
+  // Copy cover.webp into iamge directory
+  const templateCoverPath = path.join("./scripts/templates", "cover.webp");
+  const newArticleCoverPath = path.join(newImageDirectoryPath, "cover.webp");
+
+  const readStream = fs.createReadStream(templateCoverPath);
+  const writeStream = fs.createWriteStream(newArticleCoverPath);
+
+  writeStream.on('finish', () => {});
+  readStream.pipe(writeStream);
+
 
   } catch (error) {
     console.log("Template creation failed.");
