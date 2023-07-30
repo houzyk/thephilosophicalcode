@@ -56,10 +56,36 @@ const generateArticle = async () => {
         articleKebabTitle: value,
         articleNormalTitle: kebabToNormalCase(value)
       })
+    },
+    {
+      type: 'input',
+      name: 'defaultCover',
+      message: "Please specify the path for the cover (type default to use the default cover)",
+      validate: (value) => {        
+        
+        // Checks if cover exist
+        if (!fs.existsSync(value === "default" ? "./scripts/templates/cover.webp" : value)) {
+          return "File does not exist. Please verify the path or type 'default'";
+        }
+
+        return true;
+      },
+      result: (value) => ({
+        generalPath: value === "default"
+          ? "./scripts/templates/cover.webp" : value
+      })
     }
   ];
 
-  const { username,  articleInfo } = await prompt(questions);
+  const { username,  articleInfo, defaultCover } = await prompt(questions);
+
+  // get coverFileName and Path from defaultCover.generalPath
+  const getCoverPath = (argGeneralPath) => {
+    const _path = argGeneralPath.split("/");
+    return [_path.slice(0, -1).join("/"), _path.at(-1)];
+  };
+  [ defaultCover.coverPath, defaultCover.coverFileName ] = getCoverPath(defaultCover.generalPath);
+
 
   const userInfo = {
     githubName: username,
@@ -83,8 +109,8 @@ const generateArticle = async () => {
   fs.mkdirSync(newImageDirectoryPath, () => {});
 
   // Copy cover.webp into iamge directory
-  const templateCoverPath = path.join("./scripts/templates", "cover.webp");
-  const newArticleCoverPath = path.join(newImageDirectoryPath, "cover.webp");
+  const templateCoverPath = path.join(defaultCover.coverPath, defaultCover.coverFileName);
+  const newArticleCoverPath = path.join(newImageDirectoryPath, defaultCover.coverFileName);
   fs.copyFileSync(templateCoverPath, newArticleCoverPath);
 
   // Make template article.md
@@ -98,7 +124,8 @@ const generateArticle = async () => {
                             .replaceAll("{#articleNormalTitle}", articleInfo.articleNormalTitle)
                             .replaceAll("{#articleKebabTitle}", articleInfo.articleKebabTitle)
                             .replaceAll("{#githubName}", userInfo.githubName)
-                            .replaceAll("{#githubURL}", userInfo.githubURL);
+                            .replaceAll("{#githubURL}", userInfo.githubURL)
+                            .replaceAll("{#coverFileName}", defaultCover.coverFileName);
 
     fs.writeFile(newArticlePath, modifiedContent, 'utf8', () => {});
   });
@@ -136,7 +163,7 @@ const generateArticle = async () => {
   console.table(result);
 
   } catch (error) {
-    console.log("Template creation failed.");
+    console.log("Template creation failed.", error);
   }
 
 }
