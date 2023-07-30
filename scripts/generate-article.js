@@ -13,6 +13,8 @@ const generateArticle = async () => {
 
   console.log(figlet.textSync("The Philosophical Code")); // Ascii Art
 
+  let useDefaultCover = true;
+
   const questions = [
     {
       type: "input",
@@ -58,20 +60,33 @@ const generateArticle = async () => {
       })
     },
     {
+      type: 'toggle',
+      name: "proceed",
+      message: "Would you like to use our default article cover for now? You can always change it later.",
+      enabled: "Yep",
+      disabled: "Nope",
+      result: (value) => {
+        useDefaultCover = value;
+        return value;
+      }
+    },
+    {
+      skip: () => useDefaultCover,
       type: 'input',
       name: 'defaultCover',
-      message: "Please specify the path for the cover (type default to use the default cover)",
-      validate: (value) => {        
-        
+      initial: "./scripts/templates/cover.webp",
+      message: "Please specify the path for the cover you want to use. Type 'skip' if you still want to use the default.",
+      validate: (value) => {
+
         // Checks if cover exist
-        if (!fs.existsSync(value === "default" ? "./scripts/templates/cover.webp" : value)) {
-          return "File does not exist. Please verify the path or type 'default'";
+        if (!fs.existsSync(value === "skip" ? "./scripts/templates/cover.webp" : value)) {
+          return "File does not exist. Please verify the path or type 'skip'";
         }
 
         return true;
       },
       result: (value) => ({
-        generalPath: value === "default"
+        generalPath: value === "skip"
           ? "./scripts/templates/cover.webp" : value
       })
     }
