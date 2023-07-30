@@ -197,18 +197,22 @@ a.animated:after {
 	content: "";
 	height: 2px;
 	position: absolute;
-	transform: translateZ(0) scaleX(0);
-	transform-origin: left center;
+	transform:translateY(2px);
+	opacity: 0;
+	transform-origin: center center;
 	transition: all 0.15s ease-in-out;
 	background-image: linear-gradient(to right, var(--animated-underline-from), var(--animated-underline-to));
 }
 
 a.animated:hover:after {
-	transform: translateZ(0) scale(1);
+	transform: translateY(0);
+	opacity: 0.5;
 }
 
 a.animated.active:after {
-	transform: translateZ(0) scale(1);
-}
+	transform: translateY(0);
+	view-transition-name: underline;
+	opacity: 1;
+} 
 
 /* ------ REUSABLE UTIL STYLES - START ------ */
