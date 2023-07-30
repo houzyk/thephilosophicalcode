@@ -1,4 +1,4 @@
-/* 
+/*
 	THEMING
 	Mode: light/dark is automatically determined by system color scheme.
 	There is no mode toggle.
@@ -161,7 +161,7 @@ ul li {
 
 /* ------ REUSABLE UTIL STYLES - START ------ */
 
-/* 
+/*
 	class: gradient-text
 	The text will be gradient.
 	To use this, just set the css vars using a custom class in your component
@@ -178,7 +178,7 @@ ul li {
 	background-image: linear-gradient(135deg, var(--gradient-text-from), var(--gradient-text-via), var(--gradient-text-to));
 }
 
-/* 
+/*
 	class: a.animated
 	Animated links. An animated underline on hover.
 */
@@ -211,8 +211,8 @@ a.animated:hover:after {
 
 a.animated.active:after {
 	transform: translateY(0);
-	view-transition-name: underline;
+	/* view-transition-name: underline; */
 	opacity: 1;
-} 
+}
 
 /* ------ REUSABLE UTIL STYLES - START ------ */
