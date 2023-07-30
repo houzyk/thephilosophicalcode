@@ -9,7 +9,8 @@ import "../styles/markdown.css";
 
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import Favicon from "./Favicon.astro";
+import BaseHead from "src/components/BaseHead.astro";
+import { generateTransitionName } from "scripts/helpers";
 
 export interface Props {
   title: string;
@@ -28,20 +29,13 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
 
 <!DOCTYPE html>
 <html class="theme-sleek" lang="en">
-  <head>
-    <!-- Global Metadata -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="generator" content="Blogster" />
-    <Favicon />
-    <slot name="meta" />
-  </head>
+  <BaseHead />
 
   <body class="text-text-body bg-bg-body max-w-3xl mx-auto px-4 sm:px-8">
     <Header />
     <main id="main">
       <section class="blog-post">
-        <h1 class="title">{title}</h1>
+        <h1 class="title" style={generateTransitionName('article-title', title)}>{title}</h1>
         <a href={authorUrl || ''} target="_blank" class="animated">
           <span>{author || ''}</span>
         </a>

@@ -5,6 +5,7 @@ import PageLayout from "../layouts/PageLayout.astro";
 import PageMeta from "../components/seo/PageMeta.astro";
 import ExternalLinkIcon from "../components/ui/icons/external-link.astro";
 import { SITE_TITLE } from "../config";
+import { generateTransitionName } from "scripts/helpers";
 
 const posts = await readAll({
   directory: "articles",
@@ -47,7 +48,7 @@ const sortedPosts = posts
                     />
                   </a>
                 ) : (
-                  <a href={`/articles/${post.slug}`}>{post.frontmatter.title}</a>
+                  <a href={`/articles/${post.slug}`} style={generateTransitionName('article-title', post.frontmatter.title)}>{post.frontmatter.title}</a>
                 )}
               </div>
               <div class="publish-date">
