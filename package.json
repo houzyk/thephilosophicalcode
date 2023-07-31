@@ -24,6 +24,7 @@
     "zod": "^3.20.2"
   },
   "devDependencies": {
+    "cypress": "^12.17.2",
     "enquirer": "^2.4.1",
     "figlet": "^1.6.0",
     "prettier-plugin-astro": "^0.7.2",
