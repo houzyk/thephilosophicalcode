@@ -11,7 +11,7 @@ date: 2023-01-22
 
 > Here’s an interesting fact — even if we had an infinite amount of computational power and time, we would not be able to solve every single computational problem that can exist. In this article, we’ll informally prove this fact by showing that there are far too many problems for programs to handle.
 
-### 1. The Road Ahead.
+## 1. The Road Ahead.
 
 Essentially, we have to show that the number of problems is greater than the number of programs available to solve them. Naturally, we need a way to count these programs and problems. So, we’ll count these by comparing the sets of all programs and problems to the sets of natural and real numbers respectively. In particular, we’ll establish the following statements.
 
@@ -25,7 +25,7 @@ c. The size of the set of natural numbers is less than the size of the set of re
 
 Finally, with the help of our established statements (a, b and c), we’ll show that there are far too many problems for programs to handle.
 
-### 2. How To Count Programs For Dummies.
+## 2. How To Count Programs For Dummies.
 
 JavaScript is a Turing complete language. This means that any program that a Turing machine can compute can be written in JavaScript. Alternatively, any program that can be written in JavaScript can be computed by a Turing machine. So, it is theoretically fair to assume that the set of all JavaScript programs corresponds to the set of all possible programs.
 
@@ -39,7 +39,7 @@ Intuitively, we can assign a program, like let x = 0;, to a unique number like 1
 
 a. The size of the set of computational programs is less or equal to the size of the set of natural numbers.
 
-### 3. How To Count Problems For Dummies.
+## 3. How To Count Problems For Dummies.
 
 An intuitive way of picturing a computational problem is like a black-box that takes some input and has some associated desired output [1]. Then, to solve that problem is to find a program that gives the desired output based on the given input.
 
@@ -49,7 +49,7 @@ With this picture in mind, we can intuitively say that the set of inputs and the
 
 b. The size of the set of computational problems is equal to the size of the set of real numbers.
 
-### 4. The Struggle Is Real.
+## 4. The Struggle Is Real.
 
 Let’s visually establish that the there are more real than natural numbers by following a version of Cantor’s diagonal proof.
 
@@ -75,7 +75,7 @@ Since our table is infinitely big, every newly generated real number will not be
 
 c. The size of the set of natural numbers is less than the size of the set of real numbers.
 
-### 5. Wrapping Up.
+## 5. Wrapping Up.
 
 So far, we’ve established the following three statements.
 
@@ -95,7 +95,7 @@ Consequently, if each program solves only one problem and there are less program
 
 >In summary, we’ve counted the number of programs and problems. We’ve established that there are more problems than programs such that there are more problems than solvable problems. Hence, informally proving that, even if we had an infinite amount of computational power and time, we would not be able to solve every single computational problem.
 
-### PS.
+## PS.
 
 1. Instead of picturing a computational problem like a black-box, we can formally define a problem as follows.
 
