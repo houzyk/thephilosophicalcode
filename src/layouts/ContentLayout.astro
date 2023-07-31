@@ -7,9 +7,10 @@
 import "../styles/global.css";
 import "../styles/markdown.css";
 
+import { ViewTransitions } from 'astro:transitions';
+import Favicon from "../components/Favicon.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import BaseHead from "src/components/BaseHead.astro";
 import { generateTransitionName } from "scripts/helpers";
 
 export interface Props {
@@ -29,7 +30,15 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
 
 <!DOCTYPE html>
 <html class="theme-sleek" lang="en">
-  <BaseHead />
+  <head>
+    <!-- Global Metadata -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <Favicon />
+    <slot name="meta" />
+
+    <ViewTransitions />
+  </head>
 
   <body class="text-text-body bg-bg-body max-w-3xl mx-auto px-4 sm:px-8">
     <Header />
