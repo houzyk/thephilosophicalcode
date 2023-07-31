@@ -3,8 +3,7 @@ import { getBlogPostMeta } from "../../lib/seo";
 import {
   SITE_TITLE,
   SITE_DESCRIPTION,
-  SITE_URL,
-  MY_NAME,
+  SITE_URL
 } from "../../config";
 
 export interface Props {
@@ -16,6 +15,7 @@ export interface Props {
   ogImageAltText?: string;
   ogImageWidth?: number;
   ogImageHeight?: number;
+  author?: string;
 }
 
 const {
@@ -27,13 +27,14 @@ const {
   ogImageAltText,
   ogImageWidth,
   ogImageHeight,
+  author
 } = Astro.props;
 
 const { meta, og, twitter } = getBlogPostMeta({
   title: title || SITE_TITLE,
   description: description || SITE_DESCRIPTION,
   pageUrl: pagePath ? new URL(pagePath, SITE_URL).toString() : undefined,
-  authorName: MY_NAME,
+  authorName: author,
   publishDate,
   ogImageAbsoluteUrl,
   ogImageAltText,
