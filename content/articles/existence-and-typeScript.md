@@ -11,7 +11,7 @@ date: 2022-04-16
 
 >   Two handy TypeScript features are the optional chaining and non-null assertion operators. In this article, we'll explore how these two work and why the way they work is philosophically interesting.
 
-### 1. Is It Me You're Looking For?
+## 1. Is It Me You're Looking For?
 
   Fetching external data is a risky business. The data could be different from what we expected it to be or it could simply not exist. To curb down the risk of working with non-existent data, we may use TypeScript's optional chaining operator (syntactically, a question mark '?'). For example, let's say that we're fetching the following JSON from an API.
 
@@ -27,7 +27,7 @@ date: 2022-04-16
 
   In TypeScript, we may access our humble JSON data using the dot-notation - `thisArticle.title` returns `'Existence And TypeScript'` while `thisArticle.author` returns the author object. However, suppose that our API ran into some issues and we do not get back the `author` key. Consequently, trying to access the value of `thisArticle.author.firstName` would throw the following error: `Cannot read property 'firstName' of undefined`. To prevent this error, we may use TypeScript's optional chaining operator and write `thisArticle?.author?.firstName`. In doing so, our code would not dig deeper into the `author` key if it does not exist. So, the optional chaining operator acts as a safety net when dealing with non-existent data. It saves us from unforeseen errors if we do not find what we're looking for.
 
-### 2. It Is Me You're Looking For!
+## 2. It Is Me You're Looking For!
 
   In contrast, we may use TypeScript's non-null assertion operator (syntactically, an exclamation mark '!') if we *do* know what we're looking for. For example, let's suppose that we have a really nice button and that we wanna give it a class name that suits its niceness. We can easily do that by querying for the button and adding the class `'.nice-button'` to it.
 
@@ -46,7 +46,7 @@ date: 2022-04-16
 
   So far, we've seen how the optional chaining and non-null assertion operators work in dealing with non-existent or existing data. Now, let's take a dive into why the way they work is philosophically interesting.
 
-### 3. Possible Worlds
+## 3. Possible Worlds
 
   Let's start with some history. In the early 1900's, a philosophical movement called 'Analytic Philosophy' gained momentum in British Philosophy. In essence, analytic philosophers aimed for rigour by fusing advances in logic, the natural sciences and mathematics with advances in philosophy. We then witnessed the development of exciting tools and fields such as the Philosophy of Quantum Mechanics. Eventually, Analytic Philosophy cemented itself as the predominant way of doing philosophy in the English speaking world (sadly). So, today, we have a plethora of "rigorous" tools to analyze philosophical issues such as modal existence. Briefly, 'modal existence' refers to how some objects *could* exist. For example, a parallel universe could exist. Then, we may ask philosophical questions about the modal existence of a parallel universe such as *how is that that a parallel universe could exist?* or *what does it mean to say that 'something could exist'?*. Generally, analytic philosophers use two tools to analyze modal existence - the mechanisms of Possible Worlds and Modal Logics.
 
@@ -56,7 +56,7 @@ date: 2022-04-16
 
   For example, if we say that 'a parallel universe could exist', then we mean that there is a possible world where there is a parallel universe. Quite neat. Secondly, a Modal Logic is a formal language/system that allows us to deduce conclusions about these Possible Worlds (mostly in the form of proofs, arguments or theorems). Metaphorically, a Modal Logic is like a mathematical map which guides us through our explorations of the infinitely many Possible Worlds. For example, we can use a Modal Logic to derive contradictions on Possible Worlds. Think of a contradiction as a road-block in our map. If we come across one, then something's fishy.
 
-### 4. The Return Of Symbolic Manipulation
+## 4. The Return Of Symbolic Manipulation
 
   That's enough history - let's step back into our current subject matter. We said that TypeScript's optional chaining and non-null assertion operators deal with non-existent or existing data. This is a subtle, but intuitive, way of saying that these operators deal with the *possible* existence of data, i.e. its modal existence. Given what we covered on Possible Worlds, Modal Logics and modal existence, let's proceed with our philosophical dive by exploiting this subtlety.
 
@@ -66,7 +66,7 @@ date: 2022-04-16
 
   Two quick notes before we proceed. Firstly, our nice button does not exist across all Possible Worlds. However, for this article's sake, let's ignore this issue. We could think of a work-around by getting technical and talking of restricted Possible Worlds but let's not do that. Secondly, one may find the move from TypeScript to Possible Worlds quite dodgy. In response, I invite you to charitably conceptualize computation as symbolic manipulation as a way of grounding computation in a "paradise of formal languages" where we can easily paraphrase and translate from one formal language to another.
 
-### 5. Contradiction Ergo Error
+## 5. Contradiction Ergo Error
 
   So far, we've philosophically analyzed two code snippets containing our two TypeScript operators in terms of Possible Worlds. In Analytic Philosophy, it's common practice to showcase the strength of an analysis by talking about its explanatory power. Essentially, the goal is to show how we can explain some phenomenon associated with the object under analysis using the analysis itself. Think of how we analyze matter as atoms and molecules. We may then flex the explanatory power of our analysis by showing how the heating up of matter is *explained* by the faster vibration of atoms.
 
@@ -76,7 +76,7 @@ date: 2022-04-16
 
   > In sum, we saw how TypeScript's optional chaining and non-null assertion operators work. We philosophically analyzed the way they work in terms of Possible Worlds and Modal Logics. Consequently, we were able to draw parallels between the realm of Possible Worlds and that of computational errors. In particular, we saw how we can easily jump from the presence/absence of contradictions in Modal Logic and across Possible Worlds to the presence/absence of computational errors in our code.
 
-### PS
+## PS
 
   1. If you want to learn more about the philosophy, mathematics and logic behind Possible Worlds or Modal Logics, I highly recommend [this article](https://plato.stanford.edu/entries/logic-modal/ "this article") by Garson and [this article](https://plato.stanford.edu/entries/possible-worlds/ "this article") by Menzel. Additionally, David Lewis' book 'On The Plurality Of Worlds' is a classic. Personally, the last area of logical research I dived into was about the Topological Semantics of Modal Logics. It was a tough but really rewarding journey. So, I'd highly recommend that if you want something really juicy.
 
