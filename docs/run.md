@@ -5,7 +5,7 @@
 1. Node: LTS / 18+.
 2. Docker (optional).
 
-# Run
+## Run
 
 Clone this repo.
 
