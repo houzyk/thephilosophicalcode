@@ -46,6 +46,7 @@ const ogImageAbsoluteUrl =
     publishDate={frontmatter.date.toISOString()}
     pagePath={`/articles/${slug}`}
     ogImageAbsoluteUrl={ogImageAbsoluteUrl}
+    author={frontmatter.author}
     slot="meta"
   />
   <Renderer content={content} slot="content" />

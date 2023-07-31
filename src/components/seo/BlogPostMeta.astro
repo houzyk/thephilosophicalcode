@@ -3,9 +3,7 @@ import { getBlogPostMeta } from "../../lib/seo";
 import {
   SITE_TITLE,
   SITE_DESCRIPTION,
-  SITE_URL,
-  TWITTER_HANDLE,
-  MY_NAME,
+  SITE_URL
 } from "../../config";
 
 export interface Props {
@@ -17,6 +15,7 @@ export interface Props {
   ogImageAltText?: string;
   ogImageWidth?: number;
   ogImageHeight?: number;
+  author?: string;
 }
 
 const {
@@ -28,20 +27,20 @@ const {
   ogImageAltText,
   ogImageWidth,
   ogImageHeight,
+  author
 } = Astro.props;
 
 const { meta, og, twitter } = getBlogPostMeta({
   title: title || SITE_TITLE,
   description: description || SITE_DESCRIPTION,
   pageUrl: pagePath ? new URL(pagePath, SITE_URL).toString() : undefined,
-  authorName: MY_NAME,
+  authorName: author,
   publishDate,
   ogImageAbsoluteUrl,
   ogImageAltText,
   ogImageWidth,
   ogImageHeight,
-  siteOwnerTwitterHandle: TWITTER_HANDLE,
-  contentAuthorTwitterHandle: TWITTER_HANDLE,
+  canonicalUrl: pagePath ? new URL(pagePath, SITE_URL).toString() : undefined
 });
 ---
 
@@ -74,12 +73,6 @@ const { meta, og, twitter } = getBlogPostMeta({
     <meta property="twitter:description" content={twitter.description} />
   )
 }
-{twitter.site && <meta property="twitter:site" content={twitter.site} />}
-{
-  twitter.creator && (
-    <meta property="twitter:creator" content={twitter.creator} />
-  )
-}
 <meta property="twitter:card" content="summary_large_image" />
 {twitter.image && <meta property="twitter:image" content={twitter.image} />}
 {
@@ -87,4 +80,3 @@ const { meta, og, twitter } = getBlogPostMeta({
     <meta property="twitter:image:alt" content={twitter.imageAlt} />
   )
 }
-<!-- {twitter.url && <meta property="twitter:url" content={twitter.url} />} -->
