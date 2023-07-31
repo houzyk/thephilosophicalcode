@@ -1,0 +1,9 @@
+services:
+  generate-article-script:
+    build:
+      context: .
+      dockerfile: ./docker/generate-article-script/Dockerfile
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
