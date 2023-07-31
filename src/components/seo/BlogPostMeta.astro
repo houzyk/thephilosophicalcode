@@ -39,7 +39,8 @@ const { meta, og, twitter } = getBlogPostMeta({
   ogImageAbsoluteUrl,
   ogImageAltText,
   ogImageWidth,
-  ogImageHeight
+  ogImageHeight,
+  canonicalUrl: pagePath ? new URL(pagePath, SITE_URL).toString() : undefined
 });
 ---
 
