@@ -19,8 +19,6 @@ type PageTwitterMeta = {
   title: string; // same as og:title
   description?: string; // same as og:description
   card: "summary_large_image";
-  site?: string; // twitter handle (@username) of blog owner
-  creator?: string; // twitter handle (@username) of content owner (usually same as blog owner)
   image?: string; // same as og:image
   imageAlt?: string; // same as og:image:alt
 };
@@ -31,7 +29,6 @@ type BlogPostOgMeta = {
   type: "article";
   url?: string; // blog post url
   author?: string; // post author name
-  // siteName?: string; // page title
   publishDate: string; // ISO string
   image?: string; // preview image
   imageAlt?: string; // alt text for preview image
@@ -56,9 +53,7 @@ export function getPageMeta({
   ogImageAbsoluteUrl,
   ogImageAltText,
   ogImageWidth,
-  ogImageHeight,
-  siteOwnerTwitterHandle,
-  contentAuthorTwitterHandle,
+  ogImageHeight
 }: {
   title: string;
   description: string;
@@ -67,18 +62,14 @@ export function getPageMeta({
   ogImageAltText?: string;
   ogImageWidth?: number;
   ogImageHeight?: number;
-  siteOwnerTwitterHandle?: string;
-  contentAuthorTwitterHandle?: string;
 }): { meta: PageMeta; og: PageOgMeta; twitter: PageTwitterMeta } {
   if (!pageTitle) {
     throw Error("title is required for page SEO");
   }
   if (ogImageAbsoluteUrl) {
     ogImageAltText = !ogImageAltText
-      ? `Preview image for ${pageTitle}`
+      ? `${pageTitle}`
       : ogImageAltText;
-    // ogImageWidth = !ogImageWidth ? 1200 : ogImageWidth;
-    // ogImageHeight = !ogImageHeight ? 627 : ogImageHeight;
   }
 
   const meta: PageMeta = { title: pageTitle, description: description };
@@ -98,8 +89,6 @@ export function getPageMeta({
     title: pageTitle,
     description: description,
     card: "summary_large_image",
-    site: siteOwnerTwitterHandle,
-    creator: contentAuthorTwitterHandle || siteOwnerTwitterHandle,
     image: ogImageAbsoluteUrl,
     imageAlt: ogImageAltText,
   };
@@ -121,9 +110,7 @@ export function getBlogPostMeta({
   ogImageAbsoluteUrl,
   ogImageAltText,
   ogImageWidth,
-  ogImageHeight,
-  siteOwnerTwitterHandle,
-  contentAuthorTwitterHandle,
+  ogImageHeight
 }: {
   title: string;
   description: string;
@@ -142,7 +129,7 @@ export function getBlogPostMeta({
     throw Error("title is required for page SEO");
   }
   if (ogImageAbsoluteUrl && !ogImageAltText) {
-    ogImageAltText = `Preview image for ${pageTitle}`;
+    ogImageAltText = `${pageTitle}`;
   }
 
   const meta: PageMeta = {
@@ -168,8 +155,6 @@ export function getBlogPostMeta({
     title: pageTitle,
     description: description,
     card: "summary_large_image",
-    site: siteOwnerTwitterHandle,
-    creator: contentAuthorTwitterHandle || siteOwnerTwitterHandle,
     image: ogImageAbsoluteUrl,
     imageAlt: ogImageAltText,
   };
