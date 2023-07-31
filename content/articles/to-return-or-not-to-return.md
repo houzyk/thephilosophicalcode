@@ -17,16 +17,23 @@ date: 2023-08-08
 
 ## 3. Paradox!
 
-## 4. Drawing A Parallel.
+### 3.1. Is "Heterological" Autological Or Heterological?
+
+### 3.1. Is "Autological" Autological Or Heterological?
+
+
+## 4. Paradox Meets Code.
 
 ## 5. Bug?
 
 ## 6. A Few Observations.
 
-### a. "Infinite" Params.
+### 6.1. "Infinite" Params.
 
-### b. TypeScript.
-
-### c. To Return And To Describe.
+### 6.2. TypeScript.
 
 ## PS.
+
+1. Here's the code if you want to try it yourself.
+
+{% githubgist id="841362716e4085099aaed05aaea58ab4" /%}
