@@ -45,7 +45,7 @@ Go to `/dist`. You can serve it locally with `npx serve ./dist`
 
 ## Docker
 
-This repo contains two Docker files. Find them in `/docker`.
+This repo contains two Docker files. Find them in `./docker`.
 
 Build the Docker image for the app itself and the generate-article.js script.
 
