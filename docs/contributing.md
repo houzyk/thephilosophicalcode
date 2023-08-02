@@ -30,4 +30,4 @@ Alternatively, you can go ahead and code it without any discussion. Then, please
 
 ## Credit
 
-I highly appreciate any contribution. There's true magic behind open source. So, I will be adding your name to the [people's section](https://thephilosophicalcode.com/people/) to show appreciation.
+I highly appreciate any contribution. There's true magic behind open source. So, I will be adding your name under the "Contributors" section to the [people's section](https://thephilosophicalcode.com/people/) to show appreciation.
