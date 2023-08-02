@@ -11,7 +11,7 @@ date: 2021-12-19
 
 > *Don't Repeat Yourself* (DRY for short) is a cherished principle guiding developers world-wide. In this article, we'll take a philosophical dive into what it implies and how it pushes Philosophy to its limits.
 
-### 1. Don't Repeat Yourself
+## 1. Don't Repeat Yourself
 
   Imagine that we have to write a block of code that tells us whether a number is even or odd. For example, we may code the following to check the evenness of 14 and 15.
 
@@ -43,7 +43,7 @@ end
 
   We can now check whether 14 and 15 are even. `even(14)` prints `14 is even` and `even(15)` prints `15 is odd`. Notice that we didn't code repeating conditionals. We don't repeat ourselves anymore!
 
-### 2. Layers Of Abstractions
+## 2. Layers Of Abstractions
 
   In the wild, there are obviously way more complex scenarios than checking for evenness. Irrespective of such complexity, the *raison d'être* of the DRY principle stays the same. *We don't waste our time in writing repeating code because our code should be adaptable, scalable and re-usable.* We've seen that functions are a neat way to keep our code dry. Intriguingly, functions seem to *abstract* away from unnecessary and repeating details. On this note, I believe that it is also intriguing to notice that this abstraction behind programming functions is analogous to how nicknaming works in human languages.
 
@@ -55,7 +55,7 @@ end
 
   In sum, the `even()` function and the nickname "Toto" both give rise to complex and layered pyramids of abstractions. Among all this complexity, a very intuitive and interesting question pops up- "what's the bottom layer of pyramids of abstractions like?". We said that each pyramidal layer is preserving the information from its bottom layer. However, we'll enter paradox-land if we say that the last layer of a pyramid is preserving information from its bottom layer. By definition, there is no bottom layer to the last layer. The latter contains information at its purest state. It contains information that cannot be broken down- a sort of atomic information. Alternatively, there could be no last layer. A pyramid of abstractions may not have a bottom after all. It's just turtles all the way down! There is no atomic information. Instead, there's a wild and infinite chain of information cascading down towards nowhere (absurd, but logically possible).
 
-### 3. Can The Last Layer Please Stand Up?
+## 3. Can The Last Layer Please Stand Up?
 
   We've reached a philosophical fork-road (I'm not suggesting that our road only forks into two. That would be fallacious but I'll simply stick to two in this article). On one hand, pyramids of abstractions have a last layer. On the other hand, it's just turtles stacked on top of each other and there's no last layer. Let's continue our philosophical dive by going through an argument for believing in each of these two options.
 
@@ -65,13 +65,13 @@ end
 
   We could anticipate counter-arguments to our two aforementioned arguments. One could say that the first argument says more about our mental capabilities than pyramids of abstractions. One could also say that the second argument puts the epistemological cart before the metaphysical horse (That's a philosopher's way of saying we're chatting tosh). However, let's not pay too much attention to these possible counter-arguments. Instead, let's take a pause and think about the question that we're trying to answer. *What's the bottom layer of pyramids of abstractions like?* Maybe that question itself is ill-posed... There is no answer! In trying to find such an answer, we're confusing ourselves. We've reached the limits of Philosophy.
 
-### 4. Confused Philosophy
+## 4. Confused Philosophy
 
   Take the question "what brand of sock did the big bad wolf, from the Red Riding Hood story, wear?". Before even trying to answer that question, let's take a pause and ponder on whether our question is well-posed. Is there even an answer to that question? It seems highly unlikely that we can know the brand of sock given that it isn't even mentioned in the story. The point that I'm trying to get across is that a well-formed question does not entail that the question is well-posed. Thinking that any question isn't ill-posed is what Analytic philosophers call "linguistic confusion". Especially in Philosophy, we should restrain ourselves from hastily answering a question without thinking on whether that question is ill-posed or not. Linguistic confusion only leads to confused Philosophy! We may not always know whether our question is ill-posed before trying to answer it. Sometimes, we may find out about the ill-posed nature of a question only after we've tried answering it. To me, this seems to be the case with our question "what's the bottom layer of pyramids of abstractions like?". In fairness, I believe that there's some philosophical interest in *trying to* answer that question but we should restrain ourselves from believing that we *have* an answer. This is because the act of abstraction is a deeply human one. It is also deeply human to ask questions. Given that abstraction is deeply human, it seems futile to try and find an *objective* answer to a human-focused question like "what's the bottom layer of pyramids of abstractions like?". It's not because there isn't any layer, it's simply because we've stumbled on an ill-posed question. It's a question whose answer lies outside the realm of Philosophy.
 
   > At last, we saw that the DRY principle guides not only developers but can be cheekily connected to mostly anyone engaged with a human language. It is fascinating how such a simple coding principle gives rise to highly complex pyramids of abstractions. Instead of confusing ourselves with asking questions about these amazing connections and complexity, we should simple take a pause and not push Philosophy to its limits.
 
-### PS
+## PS
 
   Here's three quick, but important, disclaimers before you leave.
 
