@@ -2,10 +2,48 @@
 import PageMeta from "../components/seo/PageMeta.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 import { SITE_TITLE } from "../config";
+import { readOne } from "../lib/markdoc/read";
+import { stuffSchema } from "../lib/markdoc/frontmatter.schema";
+import Renderer from "../components/embed/Renderer.astro";
+
+const {
+  content,
+  frontmatter:{
+    date,
+    title
+  }
+} = await readOne({
+  directory: "/",
+  slug: "stuff",
+  frontmatterSchema: stuffSchema
+});
+
+const formattedDate = new Date(date).toLocaleDateString("en-us", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+});
 ---
 
 <PageLayout>
-  <PageMeta title={`${SITE_TITLE}`} slot="meta" />
-  <Fragment slot="main">
-  </Fragment>
+  <PageMeta title={`Stuff | ${SITE_TITLE}`} slot="meta" publishDate={formattedDate}/>
+  <section slot="main">
+    <h2 class="title">{title}</h2>
+    <time class="publish-date" datetime={date.toISOString()}>Last Updated: {formattedDate}</time>
+    <Renderer content={content} slot="content" />
+  </section>
 </PageLayout>
+
+<style>
+  .title {
+    font-size: 1.5em;
+    line-height: 1.2 !important;
+    margin: 0.25em 0 0;
+  }
+  .publish-date {
+    font-size: 0.875em;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    display: block;
+  }
+</style>
