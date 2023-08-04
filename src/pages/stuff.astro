@@ -28,7 +28,7 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
 <PageLayout>
   <PageMeta title={`Stuff | ${SITE_TITLE}`} slot="meta" publishDate={formattedDate}/>
   <section slot="main">
-    <h2 class="title">{title}</h2>
+    <h1 class="title">{title}</h1>
     <time class="publish-date" datetime={date.toISOString()}>Last Updated: {formattedDate}</time>
     <Renderer content={content} slot="content" />
   </section>
@@ -36,7 +36,7 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
 
 <style>
   .title {
-    font-size: 1.5em;
+    font-size: 2.5em;
     line-height: 1.2 !important;
     margin: 0.25em 0 0;
   }
