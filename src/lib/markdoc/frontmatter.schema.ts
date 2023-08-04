@@ -51,7 +51,6 @@ export const article = z.discriminatedUnion("external", [
 ]);
 
 export const stuffSchema = z.object({
-  draft: z.boolean().default(false),
   title: z.string({
     required_error: "Required frontmatter missing: title",
     invalid_type_error: "title must be a string",
@@ -62,4 +61,3 @@ export const stuffSchema = z.object({
       "date must be written in yyyy-mm-dd format without quotes: For example, Jan 22, 2000 should be written as 2000-01-22.",
   })
 });
-

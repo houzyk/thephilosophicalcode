@@ -13,6 +13,7 @@ type PageOgMeta = {
   imageAlt?: string; // alt text for preview image
   imageWidth?: string; // preview image width - 1200px standard
   imageHeight?: string; // preview image height - 627px standard
+  publishDate?: string; // date when page was last updated
 };
 
 type PageTwitterMeta = {
@@ -53,7 +54,8 @@ export function getPageMeta({
   ogImageAbsoluteUrl,
   ogImageAltText,
   ogImageWidth,
-  ogImageHeight
+  ogImageHeight,
+  publishDate
 }: {
   title: string;
   description: string;
@@ -62,6 +64,7 @@ export function getPageMeta({
   ogImageAltText?: string;
   ogImageWidth?: number;
   ogImageHeight?: number;
+  publishDate?: string;
 }): { meta: PageMeta; og: PageOgMeta; twitter: PageTwitterMeta } {
   if (!pageTitle) {
     throw Error("title is required for page SEO");
@@ -83,6 +86,7 @@ export function getPageMeta({
     imageAlt: ogImageAltText,
     imageWidth: ogImageWidth ? String(ogImageWidth) : undefined,
     imageHeight: ogImageHeight ? String(ogImageHeight) : undefined,
+    publishDate,
   };
 
   const twitter: PageTwitterMeta = {
