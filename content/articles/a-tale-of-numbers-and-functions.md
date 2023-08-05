@@ -30,11 +30,86 @@ Naturally, in their search of the mathematical atoms, they pondered on numbers a
 
 For our current purposes, we do not need to understand the technical details and terms behind these axioms. The only idea to keep in mind is that numbers are built on top of simpler structures. In particular, we can derive them from the "simpler" Peano axioms. More importantly, we *can break down numbers into simpler things*.
 
-![Mathematical Pyramid Of Complex And Simple Things With The Peano Axioms](/images/a-tale-of-numbers-and-functions/Mathematical_Pyramid_Of_Complex_And_Simple_Things_With_The_Peano_Axioms.webp)
-
 ## 2. Numbers As Functions.
 
+So far, we've seen that numbers do not have to be just numbers. We can break them down into simpler things. So, intuitively, numbers are mere fictions which can be represented by simpler things. For example, numbers can be represented by functions! To clarify, we say that a function is a blackbox that takes an input and gives back an output. Then, we follow [Alonzo Church](https://plato.stanford.edu/entries/church/ "Alonzo Church") in proposing that a number represents the number of times that an arbitrary function is called. So, a number N calls an arbitrary function N times.
+
+  **In essence, a number N is a function that calls another arbitrary function N times.**
+
+  So, the number `0` is a function that calls an arbitrary function zero times. In particular, it takes an arbitrary function F and an arbitrary value V . Then, it only returns that value without calling the function. It completely ignores the function F.
+
+  ```
+  0 = F => V => V
+  ```
+
+  In the same line of thought, the number `1` is a function that calls an arbitrary function one time. In particular, it takes an arbitrary function F and an arbitrary value V. Then, it returns that function with the value as argument.
+
+  ```
+  1 = F => V => F(V)
+  ```
+
+  Naturally, the number `2` is a function that calls an arbitrary function two times. In particular, it takes an arbitrary function F and an arbitrary value V. Then, it returns the function with the function with the value as argument.
+
+  ```
+  2 = F => V => F(F(V))
+  ```
+
+  Finally, we can recursively define other numbers as follows.
+
+  ```
+  3 = F => V => F(F(F(V)))
+  4 = F => V => F(F(F(F(V))))
+  ...
+  ```
+
+Intuitively, we may also visualise a number as the number of times that our arbitrary function is added to a stack. So, the number `3` would call the function F thrice and add it to the stack thrice.
+
+![Adding Three Functions To The Stack](/images/a-tale-of-numbers-and-functions/Adding_Three_Functions_To_The_Stack.webp)
+
 ## 3. Numbers As JS Functions.
+
+In JavaScript, we may now define the first four numbers as follows.
+
+```
+const zero = F => V => V;
+const one = F => V => F(V);
+const two = F => V => F(F(V));
+const three = F => V => F(F(F(V)));
+```
+In order to test our definitions, we define our arbitrary function as `trackerFunc` and a variable `trackerFuncCallCount` that will count the number of times that `trackerFunc` is called.
+
+```
+let trackerFuncCallCount = 0;
+
+const trackerFunc = () => {
+  trackerFuncCallCount++; // increments for each function call
+}
+```
+
+To test the definition of `zero`, we call it with `trackerFunc` as the arbitrary function argument and log the value of `trackerFuncCallCount`. We see that `trackerFuncCallCount` remains `0`.
+
+```
+zero(trackerFunc)();
+console.log(trackerFuncCallCount); // => 0
+```
+
+Additionally, to test the definition of `one`, we call it with `trackerFunc` as the arbitrary function argument and log the value of `trackerFuncCallCount`. We see that `trackerFuncCallCount` is `1`!
+
+```
+one(trackerFunc)();
+console.log(trackerFuncCallCount); // => 1
+```
+
+
+Moreover, we also see that the function `two` calls `trackerFunc` twice and `three` calls `trackerFunc` thrice!
+
+```
+two(trackerFunc)(); // trackerFuncCallCount => 2
+three(trackerFunc)(); // trackerFuncCallCount => 3
+```
+
+In sum, we can easily see that any number N is a function that calls another arbitrary function N times. So, we've broken down numbers into simpler things. In particular, we've seen how numbers can be built on top of simple blackboxes that takes an input and gives an output. Hence, numbers can be represented by nothing but functions!
+
 
 ## 4. Basic Arithmetic Operations With Functions.
 
@@ -46,7 +121,7 @@ For our current purposes, we do not need to understand the technical details and
 
 A. It turns out that we cannot derive all mathematical structures. This is because of [Gödel's Incompleteness Theorems](https://plato.stanford.edu/entries/goedel/#IncThe "Gödel's Incompleteness Theorems"). This implies that, firstly, there are true mathematical statements that cannot be proven. Secondly, it also implies that we cannot prove that mathematics is consistent. In other words, we cannot prove that mathematics itself does not lead to a contradiction.
 
-B. If you want to dive deeper into these axioms. I highly recommend Bertrand Russell's Introduction To Mathematical Philosophy. Interestingly, we can also prove that all Peano Axioms are derivable from Hume's Principle in Second-Order Logic. This is called Frege's Theorem. Check out my proof [here](https://www.academia.edu/49584456/Freges_Theorem "here").
+B. If you want to dive deeper into the Peano Axioms. I highly recommend Bertrand Russell's Introduction To Mathematical Philosophy. Interestingly, we can also prove that all Peano Axioms are derivable from Hume's Principle in Second-Order Logic. This is called Frege's Theorem. Check out my proof [here](https://www.academia.edu/49584456/Freges_Theorem "here").
 
 C. We can go even further and derive numbers from just sets. In particular, we define 0 as the empty set "∅" and recursively define numbers as follows.
 
@@ -59,4 +134,8 @@ C. We can go even further and derive numbers from just sets. In particular, we d
 ...
 ```
 
-D. Here's all the code that we've seen in one place.
+D. Representing a number N as a function that calls another arbitrary function N times is commonly known as the Church Numerals.
+
+E. Here's all the code that we've seen in one place.
+
+{% githubgist id="d38c66f1efcb62ea9e2803bd75812c73" /%}
