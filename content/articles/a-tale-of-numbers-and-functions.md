@@ -5,7 +5,7 @@ description: "In theory, anything computational is a function - including number
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://github.com/houzyk"
 ogImagePath: "/images/a-tale-of-numbers-and-functions/cover.webp"
-date: 2023-08-05
+date: 2023-08-06
 ---
 ![A Tale Of Numbers And Functions](/images/a-tale-of-numbers-and-functions/cover.webp)
 
@@ -199,7 +199,7 @@ D. Representing a number N as a function that calls another arbitrary function N
 
 E. We can represent other arithmetic operations such as substraction and division using Church Encodings. Find out more [here](https://en.wikipedia.org/wiki/Church_encoding "here").
 
-f. Notice that the Peano Axioms has a "successor" predicate. We can also represent this as a function as follows:
+F. Notice that the Peano Axioms has a "successor" predicate. We can also represent this as a function as follows:
 
 ```
 "succ" = N => F => V => F(N(F)(V))
@@ -215,3 +215,5 @@ H. Here's all the code that we've seen (and more) in one place (Reload the page 
 
 
 {% githubgist id="d38c66f1efcb62ea9e2803bd75812c73" /%}
+
+I. I may have, unintentionally, left some technical or mathematical errors in this article. If you spot them, kindly send a PR to this [repo](https://github.com/houzyk/thephilosophicalcode "repo") or send me an email - houzairmk@icloud.con

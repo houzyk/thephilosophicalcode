@@ -1,6 +1,6 @@
 ---
 title: "Resources & Reading List"
-date: 2023-08-05
+date: 2023-08-06
 ---
 
 This is a non-exhaustive list of resources to further explore the intersection of philosophy and code. It's updated whenever possible.
@@ -8,14 +8,13 @@ This is a non-exhaustive list of resources to further explore the intersection o
 ## Philosophy Of Mathematics
 
 1. [Philosophy of Mathematics - SEP](https://plato.stanford.edu/entries/philosophy-mathematics/ "Philosophy of Mathematics - SEP")
-
 2. Introduction to Mathematical Philosophy - Bertrand Russell
 
 ## Philosophy Of Computer Science
 
 1. [Philosophy of Computer Science - SEP](https://plato.stanford.edu/Archives/Win2017/entries/computer-science/#:~:text=The%20philosophy%20of%20computer%20science%20also%20considers%20the%20analysis%20of,and%20testing%20of%20those%20systems. "Philosophy of Computer Science - SEP")
-
 2. The Blackwell Guide to the Philosophy of Computing and Information - Edited by Luciano Floridi
+3. [Gödel's Incompleteness Theorems](https://plato.stanford.edu/entries/goedel/#IncThe "Gödel's Incompleteness Theorems")
 
 ## Functional Programming
 
@@ -35,3 +34,9 @@ This is a non-exhaustive list of resources to further explore the intersection o
 ## Lambda Calculus
 
 1. [Lambda Calculus - Computerphile](https://www.youtube.com/watch?v=eis11j_iGMs "Lambda Calculus - Computerphile")
+2. [Church Encodings](https://en.wikipedia.org/wiki/Church_encoding "Church Encodings")
+
+## People
+
+1. [Alonzo Church](https://plato.stanford.edu/entries/church/ "Alonzo Church")
+2. [Giuseppe Peano](https://en.wikipedia.org/wiki/Giuseppe_Peano "Giuseppe Peano")
