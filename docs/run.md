@@ -43,6 +43,8 @@ npm run build
 
 Go to `/dist`. You can serve it locally with `npx serve ./dist`
 
+Alternatively, `npm run preview`.
+
 ## Docker
 
 This repo contains two Docker files. Find them in `./docker`.

@@ -9,9 +9,10 @@ import {
 export interface Props {
   title?: string;
   description?: string;
+  publishDate?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, publishDate } = Astro.props;
 
 const { meta, og, twitter } = getPageMeta({
   title: title || SITE_TITLE,
@@ -20,7 +21,8 @@ const { meta, og, twitter } = getPageMeta({
   ogImageAbsoluteUrl: `${SITE_URL}/images/og.webp`,
   ogImageAltText: "The Philosophical Code",
   ogImageWidth: 1640,
-  ogImageHeight: 924
+  ogImageHeight: 924,
+  publishDate
 });
 ---
 
@@ -38,6 +40,11 @@ const { meta, og, twitter } = getPageMeta({
 {og.imageAlt && <meta property="og:image:alt" content={og.imageAlt} />}
 {og.imageWidth && <meta property="og:image:width" content={og.imageWidth} />}
 {og.imageHeight && <meta property="og:image:height" content={og.imageHeight} />}
+{
+  og.publishDate && (
+    <meta property="article:published_time" content={og.publishDate} />
+  )
+}
 
 <!-- Twitter -->
 {twitter.title && <meta property="twitter:title" content={twitter.title} />}
