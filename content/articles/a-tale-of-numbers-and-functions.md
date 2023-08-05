@@ -110,12 +110,73 @@ three(trackerFunc)(); // trackerFuncCallCount => 3
 
 In sum, we can easily see that any number N is a function that calls another arbitrary function N times. So, we've broken down numbers into simpler things. In particular, we've seen how numbers can be built on top of simple blackboxes that takes an input and gives an output. Hence, numbers can be represented by nothing but functions!
 
+## 4. Basic Arithmetic Operations As Functions.
 
-## 4. Basic Arithmetic Operations With Functions.
+So far, we know how to represent numbers as functions. However, we can't do much with these numbers as functions yet. We wanna be able to carry out some basic arithmetic operations with them. For our current scope, we only look at how to represent addition and multiplication as functions. If you're curious about the rest, check the references at the end of this article.
 
-## 5. Basic Arithmetic Operations With JS Functions.
+### 4.1 Addition
 
-## 6. Wrap Up.
+Following Alonzo Church, let's propose that adding two numbers N and M together is like calling an arbitrary function N times and then calling it again M times. So, addition is a function that takes two functions N and M, an arbitrary function F and an arbitrary value V and returns the function N that calls `F` N times with `M(F)(V)` as value. In turn, `M(F)(V)` is the function M that calls `F` M times.
+
+```
+"+" = N => M => F => V => N(F)(M(F)(V))
+```
+
+Let's clarify `N(F)(M(F)(V))`. Let's not forget that N and M *represent* numbers as functions and that a number is a function that calls an arbitrary functions for some amount of times equal to that number. So, `N(F)(M(F)(V))` is passing the function `F` and `M(F)(V)` as arguments to the number `N`. So, `N` will call `F` N times with `M(F)(V)` as value. Remember that the F is called with that value only on the last function call! Visually;
+
+
+![N Function Calls](/images/a-tale-of-numbers-and-functions/N_Function_Calls.webp)
+
+
+Since `M(F)(V)` is the left after F is called N times. So, We have to evaluate it. Again, remember that M is a function that *represents* a number M that calls an arbitrary function M times!. So, `M(F)(V)` will simply call F for an M amout of times. Visually;
+
+![M Function Calls](/images/a-tale-of-numbers-and-functions/M_Function_Calls.webp)
+
+### 4.2 Multiplication
+
+
+## 5. Basic Arithmetic Operations As JS Functions.
+
+In JavaScript, we may now define addition and multiplication as follows.
+
+```
+const add = N => M => F => V => N(F)(M(F)(V));
+const multiply = N => M => F => V => N(M(F))(V);
+```
+
+As we previously did to test our definitions, we use `trackerFunc` and the variable `trackerFuncCallCount` to count the number of times that `trackerFunc` is called.
+
+### 5.1 Addition
+
+To test the definition of `add`, firstly, we call it with `one`, `two` and `trackerFunc` as arguments. Secondly, we also try `three`, `three` and `trackerFunc`  as arguments.
+
+```
+add(one)(two)(trackerFunc)(); // trackerFuncCallCount => 3
+add(three)(three)(trackerFunc)(); // trackerFuncCallCount => 6
+```
+
+
+Amazingly enough, we see that `trackerFuncCallCount` is `3` for `one` and `two`. This means that, as expected, `trackerFunc` has been called thrice.
+
+We also see that `trackerFuncCallCount` is `6` for `three` and `three`. This means that, as expected, `trackerFunc` has been called 6 times.
+
+Hence, we can easily see that addition of two numbers N and M is simply calling an arbitrary function N times and then M times.
+
+### 5.1 Mutiplication
+
+To test the definition of `multiply`, firstly, we call it with `one`, `two` and `trackerFunc` as arguments. Secondly, we also try `three`, `three` and `trackerFunc`  as arguments.
+
+```
+multiply(one)(two)(trackerFunc)(); // trackerFuncCallCount => 2
+multiply(three)(three)(trackerFunc)(); // trackerFuncCallCount => 9
+```
+
+
+Amazingly enough, we see that `trackerFuncCallCount` is `2` for `one` and `two`. This means that, as expected, `trackerFunc` has been called twice.
+
+We also see that `trackerFuncCallCount` is `9` for `three` and `three`. This means that, as expected, `trackerFunc` has been called 9 times.
+
+> In sum, we saw that numbers can be broken down into simple Peano Axioms. This opened the possibility that numbers are mere fictions that can be represented by simple functions. Finally, following Alonzo Church, we represented numbers, addition and multiplication as nothing but functions.
 
 ## PS.
 
@@ -127,15 +188,30 @@ C. We can go even further and derive numbers from just sets. In particular, we d
 
 
 ```
-0 <=> ∅
-1 <=> {∅}
-2 <=> {∅, {∅}}
-3 <=> {∅, {∅}, {∅, {∅}}}
+0 = ∅
+1 = {∅}
+2 = {∅, {∅}}
+3 = {∅, {∅}, {∅, {∅}}}
 ...
 ```
 
 D. Representing a number N as a function that calls another arbitrary function N times is commonly known as the Church Numerals.
 
-E. Here's all the code that we've seen in one place.
+E. We can represent other arithmetic operations such as substraction and division using Church Encodings. Find out more [here](https://en.wikipedia.org/wiki/Church_encoding "here").
+
+f. Notice that the Peano Axioms has a "successor" predicate. We can also represent this as a function as follows:
+
+```
+"succ" = N => F => V => F(N(F)(V))
+```
+
+G. Notice that the Peano Axioms also talks of equality "=". We can also represent identity as function as follows:
+
+```
+"=" = V => V
+```
+
+H. Here's all the code that we've seen (and more) in one place (Reload the page if you can't see the code or go [here](https://gist.github.com/houzyk/d38c66f1efcb62ea9e2803bd75812c73 "here")).
+
 
 {% githubgist id="d38c66f1efcb62ea9e2803bd75812c73" /%}
