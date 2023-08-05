@@ -1,6 +1,6 @@
 ---
 title: "Resources & Reading List"
-date: 2023-08-04
+date: 2023-08-05
 ---
 
 This is a non-exhaustive list of resources to further explore the intersection of philosophy and code. It's updated whenever possible.
@@ -17,7 +17,21 @@ This is a non-exhaustive list of resources to further explore the intersection o
 
 2. The Blackwell Guide to the Philosophy of Computing and Information - Edited by Luciano Floridi
 
-
 ## Functional Programming
 
-1. ["What is a Monad? - Computerphile"](https://www.youtube.com/watch?v=t1e8gqXLbsU "What is a Monad? - Computerphile")
+1. [What Is Functional Programming and Why Use It?](https://www.codingdojo.com/blog/what-is-functional-programming#:~:text=Functional%20programming%20(FP)%20is%20an,by%20applying%20and%20composing%20functions. "What Is Functional Programming and Why Use It?")
+2. [Functional Programming Paradigm](https://www.geeksforgeeks.org/functional-programming-paradigm/ "Functional Programming Paradigm")
+3. Why Functional Programming Matters ? - John Hughes, University Of Glasgow
+4. [Why Isn't Functional Programming the Norm? – Richard Feldman](https://www.youtube.com/watch?v=QyJZzq0v7Z4 "Why Isn't Functional Programming the Norm? – Richard Feldman")
+5. [Functional Programming in 40 Minutes • Russ Olsen • GOTO 2018](https://www.youtube.com/watch?v=0if71HOyVjY "Functional Programming in 40 Minutes • Russ Olsen • GOTO 2018")
+6. [Functional Programming & Haskell - Computerphile](https://www.youtube.com/watch?v=LnX3B9oaKzw "Functional Programming & Haskell - Computerphile")
+7. [Elixir in 100 Seconds](https://www.youtube.com/watch?v=R7t7zca8SyM "Elixir in 100 Seconds")
+8. [Learning Functional Programming with JavaScript - Anjana Vakil - JSUnconf](https://www.youtube.com/watch?v=e-5obm1G_FY "Learning Functional Programming with JavaScript - Anjana Vakil - JSUnconf")
+9. [Haskell in 100 Seconds](https://www.youtube.com/watch?v=Qa8IfEeBJqk "Haskell in 100 Seconds")
+10. [Haskell for Imperative Programmers](https://www.youtube.com/playlist?list=PLe7Ei6viL6jGp1Rfu0dil1JH1SHk9bgDV "Haskell for Imperative Programmers")
+11. [A Gentle Introduction To Haskell - About Monads](https://www.haskell.org/tutorial/monads.html "A Gentle Introduction To Haskell - About Monads")
+12. ["What is a Monad? - Computerphile"](https://www.youtube.com/watch?v=t1e8gqXLbsU "What is a Monad? - Computerphile")
+
+## Lambda Calculus
+
+1. [Lambda Calculus - Computerphile](https://www.youtube.com/watch?v=eis11j_iGMs "Lambda Calculus - Computerphile")
