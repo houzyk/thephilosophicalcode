@@ -13,7 +13,7 @@ date: 2023-08-06
 
 ## 1. Breaking Down Numbers.
 
-A basic, but crucial, idea in mathematics is that complex things are built on top of simpler things. In other words, complex mathematical structures are derivable from simpler ones. So, for any reasonably complex mathematical structure, we can break it down into its simpler substructure. For example, the real numbers are built on top of the rational numbers. In turn, these are derived from the rational numbers which can be broken down into the integers and the natural numbers.
+A basic, but crucial, idea in mathematics is that complex things are built on top of simpler things. In other words, complex mathematical structures are derivable from simpler ones. So, for any reasonably complex mathematical structure, we can break it down into its simpler substructures. For example, the real numbers are built on top of the rational numbers. In turn, these are derived from the rational numbers which can be broken down into the integers and the natural numbers.
 
 In the late 19th and early 20th century, mathematicians and philosophers alike pondered on our crucial idea. In particular, they pondered on the extent to which we can break down mathematical structures. Crucially, they were in search of a foundation for all of mathematics. They pondered on whether there was any such thing as the *simplest* mathematical structure - a sort of mathematical atom. These atoms would be the foundations upon which all other mathematical structures are built. They thought that, with this foundation in hand, we would be able to mechanically/programatically derive any mathematical structure irrespective of its complexity. As a result, all mathematical structures would be broken down into these atoms. In other words, we can picture mathematics itself as a pyramid of structures stacked on top of each other. Complex mathematical structures are on top while the 'simpler' structures are nearer to the foundation.
 
@@ -28,27 +28,27 @@ Naturally, in their search of the mathematical atoms, they pondered on numbers a
 5. Equality '=' is reflexive, symmetric, transitive and closed.
 
 
-For our current purposes, we do not need to understand the technical details and terms behind these axioms. The only idea to keep in mind is that numbers are built on top of simpler structures. In particular, we can derive them from the "simpler" Peano axioms. More importantly, we *can break down numbers into simpler things*.
+For our current purposes, we do not need to understand the technical details and terms behind these axioms. The only idea to keep in mind is that numbers are built on top of simpler structures. Particularly, we can derive them from the "simpler" Peano axioms. More importantly, we *can break down numbers into simpler things*.
 
 ## 2. Numbers As Functions.
 
-So far, we've seen that numbers do not have to be just numbers. We can break them down into simpler things. So, intuitively, numbers are mere fictions which can be represented by simpler things. For example, numbers can be represented by functions! To clarify, we say that a function is a blackbox that takes an input and gives back an output. Then, we follow [Alonzo Church](https://plato.stanford.edu/entries/church/ "Alonzo Church") in proposing that a number represents the number of times that an arbitrary function is called. So, a number N calls an arbitrary function N times.
+Since we can break down numbers into simpler things, this intuitvely means that numbers do not have to be just numbers. They are mere fictions which can be represented by simpler things. In particular, numbers can be represented by functions! To clarify, we say that a function is a blackbox that takes an input and gives back an output. Then, we follow [Alonzo Church](https://plato.stanford.edu/entries/church/ "Alonzo Church") in proposing that a number represents the amount of times that an arbitrary function is called. So, a number N calls that function N times.
 
-  **In essence, a number N is a function that calls another arbitrary function N times.**
+  **In essence, a number N is a *function* that calls another arbitrary function N times.**
 
-  So, the number `0` is a function that calls an arbitrary function zero times. In particular, it takes an arbitrary function F and an arbitrary value V . Then, it only returns that value without calling the function. It completely ignores the function F.
+  So, the number `0` is a function that calls some other function zero times. In particular, it takes an arbitrary function F and a value V as inputs. Then, it only returns that value without calling the function. It completely ignores the function F.
 
   ```
   0 = F => V => V
   ```
 
-  In the same line of thought, the number `1` is a function that calls an arbitrary function one time. In particular, it takes an arbitrary function F and an arbitrary value V. Then, it returns that function with the value as argument.
+  In the same line of thought, the number `1` is a function that calls some other function one time. In particular, it takes an arbitrary function F and a value V as inputs. Then, it returns that function with the value as its argument.
 
   ```
   1 = F => V => F(V)
   ```
 
-  Naturally, the number `2` is a function that calls an arbitrary function two times. In particular, it takes an arbitrary function F and an arbitrary value V. Then, it returns the function with the function with the value as argument.
+  Naturally, the number `2` is a function that calls some other function two times. In particular, it takes an arbitrary function F and a value V as inputs. Then, it returns the function with the value as its argument within the function itself.
 
   ```
   2 = F => V => F(F(V))
@@ -66,6 +66,8 @@ Intuitively, we may also visualise a number as the number of times that our arbi
 
 ![Adding Three Functions To The Stack](/images/a-tale-of-numbers-and-functions/Adding_Three_Functions_To_The_Stack.webp)
 
+In particular, since `3` is `F(F(F(V)))`, it adds `F` to the stack and returns `F(F(V))`. The latter calls `F` a second time, adds it to the stack and returns `F(V)`. Finally, `F` is called and added to the stack for a total of 3 times.
+
 ## 3. Numbers As JS Functions.
 
 In JavaScript, we may now define the first four numbers as follows.
@@ -76,7 +78,7 @@ const one = F => V => F(V);
 const two = F => V => F(F(V));
 const three = F => V => F(F(F(V)));
 ```
-In order to test our definitions, we define our arbitrary function as `trackerFunc` and a variable `trackerFuncCallCount` that will count the number of times that `trackerFunc` is called.
+In order to test our definitions, we define our arbitrary function as `trackerFunc` and a variable `trackerFuncCallCount` that counts the amount of times that `trackerFunc` is called.
 
 ```
 let trackerFuncCallCount = 0;
@@ -86,14 +88,14 @@ const trackerFunc = () => {
 }
 ```
 
-To test the definition of `zero`, we call it with `trackerFunc` as the arbitrary function argument and log the value of `trackerFuncCallCount`. We see that `trackerFuncCallCount` remains `0`.
+To test the definition of `zero`, we call it with `trackerFunc` as the arbitrary function and log the value of `trackerFuncCallCount`. We see that `trackerFuncCallCount` remains `0`.
 
 ```
 zero(trackerFunc)();
 console.log(trackerFuncCallCount); // => 0
 ```
 
-Additionally, to test the definition of `one`, we call it with `trackerFunc` as the arbitrary function argument and log the value of `trackerFuncCallCount`. We see that `trackerFuncCallCount` is `1`!
+Additionally, to test the definition of `one`, we call it with `trackerFunc` as the arbitrary function and log the value of `trackerFuncCallCount`. We see that `trackerFuncCallCount` is `1`!
 
 ```
 one(trackerFunc)();
@@ -108,7 +110,17 @@ two(trackerFunc)(); // trackerFuncCallCount => 2
 three(trackerFunc)(); // trackerFuncCallCount => 3
 ```
 
-In sum, we can easily see that any number N is a function that calls another arbitrary function N times. So, we've broken down numbers into simpler things. In particular, we've seen how numbers can be built on top of simple blackboxes that takes an input and gives an output. Hence, numbers can be represented by nothing but functions!
+In sum, we can track the amount of times that a number calls the function `trackerFunc` in the following table.
+
+| Number    | # of `trackerFunc` calls |
+| - | - |
+| `[Function: zero]` | 0 |
+| `[Function: one]` | 1 |
+| `[Function: two]` | 2 |
+| `[Function: three]` | 3 |
+
+
+From our table, we can easily see that any number N is a function that calls another arbitrary function N times. So, we've broken down numbers into simpler things. In particular, we've seen how numbers can be built on top of simple blackboxes that takes an input and gives an output. Hence, numbers can be represented by nothing but functions!
 
 ## 4. Basic Arithmetic Operations As Functions.
 
