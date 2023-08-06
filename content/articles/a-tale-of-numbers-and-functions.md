@@ -124,28 +124,51 @@ From our table, we can easily see that any number N is a function that calls ano
 
 ## 4. Basic Arithmetic Operations As Functions.
 
-So far, we know how to represent numbers as functions. However, we can't do much with these numbers as functions yet. We wanna be able to carry out some basic arithmetic operations with them. For our current scope, we only look at how to represent addition and multiplication as functions. If you're curious about the rest, check the references at the end of this article.
+So far, we can't do much with these numbers as functions yet. We wanna be able to carry out some basic arithmetic operations with them as well. For our current scope, we only look at how to represent addition and multiplication as functions. If you're curious about the rest, check out the references at the end of this article.
 
 ### 4.1 Addition
 
-Following Alonzo Church, let's propose that adding two numbers N and M together is like calling an arbitrary function N times and then calling it again M times. So, addition is a function that takes two functions N and M, an arbitrary function F and an arbitrary value V and returns the function N that calls `F` N times with `M(F)(V)` as value. In turn, `M(F)(V)` is the function M that calls `F` M times.
+Following Alonzo Church, let's propose that adding two numbers N and M together is like calling an arbitrary function N times and then calling it again M times. So, addition is a function that takes two numbers-as-functions N and M, an arbitrary function F and a value V and returns the function N that calls F for N amout of times times with M(F)(V) as its value. In turn, M(F)(V) is the function M that calls F for an M amount of times with V as its value.
 
 ```
 "+" = N => M => F => V => N(F)(M(F)(V))
 ```
 
-Let's clarify `N(F)(M(F)(V))`. Let's not forget that N and M *represent* numbers as functions and that a number is a function that calls an arbitrary functions for some amount of times equal to that number. So, `N(F)(M(F)(V))` is passing the function `F` and `M(F)(V)` as arguments to the number `N`. So, `N` will call `F` N times with `M(F)(V)` as value. Remember that the F is called with that value only on the last function call! Visually;
+Let's clarify the return of our addition function - `N(F)(M(F)(V))`. Let's not forget that `N` and `M` *represent* numbers as functions. Remember that a number N is a function that calls an arbitrary function F for N amount of times.
+
+So, `N(F)(M(F)(V))` is simply passing the function `F` and `M(F)(V)` as arguments to the number-as-function `N`. So, `N` will call `F` N times with `M(F)(V)` as the value of `F`. Importantly, remember that `F` is called with the value `M(F)(V)` only on the last call of F. In other words, `N(F)(M(F)(V))` evaluates to something like `...F(F(F(M(F)(V))))`. Visually:
 
 
 ![N Function Calls](/images/a-tale-of-numbers-and-functions/N_Function_Calls.webp)
 
 
-Since `M(F)(V)` is the left after F is called N times. So, We have to evaluate it. Again, remember that M is a function that *represents* a number M that calls an arbitrary function M times!. So, `M(F)(V)` will simply call F for an M amout of times. Visually;
+Now, `M(F)(V)` is the left after F is called N times. To evaluate `M(F)(V)`, remember that a number M is a function that calls an arbitrary function F for M amount of times. So, `M(F)(V)` is simply passing the function `F` and `V` as arguments to the number-as-function `M`. So, `M` will call `F` M times with `V` as the value of `F`.  Importantly, remember that `F` is called with the value `V` only on the last call of F. In other words, `M(F)(V)` evaluates to something like `...F(F(V))`. Visually:
 
 ![M Function Calls](/images/a-tale-of-numbers-and-functions/M_Function_Calls.webp)
 
+Hence, we can see how our addition function calls an arbitraty function for a total of (N + M) amount of times.
+
 ### 4.2 Multiplication
 
+For multiplication, let's propose that multiplying two numbers N and M together is like calling an arbitraty function N times. Then, for each time that it is called during these N times, we call it for an M amout of times. So, multiplication is a function that takes two numbers-as-functions N and M, an arbitrary function F and a value V and returns the function N that calls M for an N amout of times times with the value V. In particular, M is called with the function F as argument. In turn, for each time that M is called during these N times, M calls the function F for an M amount of times with V as its value.
+
+```
+"x" = N => M => F => V => N(M(F))(V)
+```
+
+Let's clarify the return of our multiplication function - `N(M(F))(V)`. Let's not forget that `N` and `M` *represent* numbers as functions. Remember that a number N is a function that calls an arbitrary function F for N amount of times.
+
+So, `N(M(F))(V)` is simply passing the function `M(F)` and `V` as arguments to the number-as-function `N`. So, `N` will call `M(F)` N times. Visually:
+
+![Calling MF N Times](/images/a-tale-of-numbers-and-functions/Calling_MF_N_Times.webp)
+
+
+Now, for each time that `N` calls `M(F)`, we call `F` for an M amout of times. Visually:
+
+![Calling F M Times](/images/a-tale-of-numbers-and-functions/Calling_F_M_Times.webp)
+
+
+Intuitively, we have a multiplicate table made up of N columns and M rows. Hence, we can see how our multiplication function calls an arbitrary function for a total of (N X M) amout of times.
 
 ## 5. Basic Arithmetic Operations As JS Functions.
 
@@ -188,7 +211,18 @@ Amazingly enough, we see that `trackerFuncCallCount` is `2` for `one` and `two`.
 
 We also see that `trackerFuncCallCount` is `9` for `three` and `three`. This means that, as expected, `trackerFunc` has been called 9 times.
 
-> In sum, we saw that numbers can be broken down into simple Peano Axioms. This opened the possibility that numbers are mere fictions that can be represented by simple functions. Finally, following Alonzo Church, we represented numbers, addition and multiplication as nothing but functions.
+So, we can track the number of times that an arithmetic operation calls `trackerFunc` the in the following table.
+
+| Operation | # of `trackerFunc` calls |
+| - | - |
+| 1 + 2 | 3 |
+| 3 + 3 | 6 |
+| 1 x 2 | 2 |
+| 3 x 3 | 9 |
+
+From our table, we can easily see that any number N is a function that calls another arbitrary function N times. So, we've broken down some basic arithmetic operation into simpler things. In particular, we've seen how numbers can be built on top of simple blackboxes that takes an input and gives an output. Hence, basic arithmetic operations can be represented by nothing but functions!
+
+> In sum, we saw that numbers can be broken down into the simple Peano Axioms. This opened the possibility that numbers are mere fictions that can be represented by simple functions. Finally, following Alonzo Church, we represented numbers, addition and multiplication as nothing but functions.
 
 ## PS.
 
@@ -209,12 +243,22 @@ C. We can go even further and derive numbers from just sets. In particular, we d
 
 D. Representing a number N as a function that calls another arbitrary function N times is commonly known as the Church Numerals.
 
-E. We can represent other arithmetic operations such as substraction and division using Church Encodings. Find out more [here](https://en.wikipedia.org/wiki/Church_encoding "here").
+E. We can represent other arithmetic operations such as substraction and division using Church Encodings. Find out more [here](https://en.wikipedia.org/wiki/Church_encoding "here"). We can do exponentiation as follows:
+
+```
+"^" = N => M => F => V => (M(N))(F)(V)
+```
 
 F. Notice that the Peano Axioms has a "successor" predicate. We can also represent this as a function as follows:
 
 ```
 "succ" = N => F => V => F(N(F)(V))
+```
+
+We can also represent the precedecessor of a number as follows:
+
+```
+"pred" = N => F => V => N(g => h => h(g(F)))(u => V)(u => u)
 ```
 
 G. Notice that the Peano Axioms also talks of equality "=". We can also represent identity as function as follows:
@@ -223,9 +267,11 @@ G. Notice that the Peano Axioms also talks of equality "=". We can also represen
 "=" = V => V
 ```
 
-H. Here's all the code that we've seen (and more) in one place (Reload the page if you can't see the code or go [here](https://gist.github.com/houzyk/d38c66f1efcb62ea9e2803bd75812c73 "here")).
+H. The philosophical interest of representing numbers as functions is ontological abstraction and its implication about the nature of computation. In other words, we see that functions are ontologically prior to numbers and arithmetic. Moreover, despite the heavy use of numbers in computer programs, we see that we could, in principle, re-write all programs without any explicit reference to numbers themselves. This is exactly what happens in the Lambda Calculus. So, in a way, we could conclude that the essence of computation does not need numbers at its core.
+
+I. Here's all the code that we've seen (and more) in one place (Reload the page if you can't see the code or go [here](https://gist.github.com/houzyk/d38c66f1efcb62ea9e2803bd75812c73 "here")).
 
 
 {% githubgist id="d38c66f1efcb62ea9e2803bd75812c73" /%}
 
-I. I may have, unintentionally, left some technical or mathematical errors in this article. If you spot them, kindly send a PR to this [repo](https://github.com/houzyk/thephilosophicalcode "repo") or send me an email - houzairmk@icloud.con
+J. I may have, unintentionally, left some technical or mathematical errors in this article. If you spot them, kindly send a PR to this [repo](https://github.com/houzyk/thephilosophicalcode "repo") or send me an email - houzairmk@icloud.con
