@@ -54,7 +54,7 @@ Since we can break down numbers into simpler things, this intuitively means that
   2 = F => V => F(F(V))
   ```
 
-  Finally, we can recursively define other numbers as follows.
+  Finally, we can recursively define other numbers as follows:
 
   ```
   3 = F => V => F(F(F(V)))
@@ -70,7 +70,7 @@ In particular, since `3` is `F(F(F(V)))`, it adds `F` to the stack and returns `
 
 ## 3. Numbers As JS Functions.
 
-In JavaScript, we may now define the first four numbers as follows.
+In JavaScript, we may now define the first four numbers as follows:
 
 ```
 const zero = F => V => V;
@@ -172,7 +172,7 @@ Intuitively, we have a multiplication table made up of N columns and M rows. Hen
 
 ## 5. Basic Arithmetic Operations As JS Functions.
 
-In JavaScript, we may now define addition and multiplication as follows.
+In JavaScript, we may now define addition and multiplication as follows:
 
 ```
 const add = N => M => F => V => N(F)(M(F)(V));
@@ -186,7 +186,10 @@ As we previously did, we use `trackerFunc` and the variable `trackerFuncCallCoun
 To test the definition of `add`, firstly, we call it with `one`, `two` and `trackerFunc` as arguments. Secondly, we also try `three`, `three` and `trackerFunc`  as arguments.
 
 ```
+// 1 + 2
 add(one)(two)(trackerFunc)(); // trackerFuncCallCount => 3
+
+// 3 + 3
 add(three)(three)(trackerFunc)(); // trackerFuncCallCount => 6
 ```
 Amazingly enough, we see that `trackerFuncCallCount` is `3` for `one` and `two`. This means that, as expected, `trackerFunc` has been called thrice.
@@ -200,7 +203,10 @@ Hence, we can easily see that addition of two numbers N and M is simply calling 
 To test the definition of `multiply`, firstly, we call it with `one`, `two` and `trackerFunc` as arguments. Secondly, we also try `three`, `three` and `trackerFunc`  as arguments.
 
 ```
+// 1 * 2
 multiply(one)(two)(trackerFunc)(); // trackerFuncCallCount => 2
+
+// 3 * 3
 multiply(three)(three)(trackerFunc)(); // trackerFuncCallCount => 9
 ```
 Amazingly enough, we see that `trackerFuncCallCount` is `2` for `one` and `two`. This means that, as expected, `trackerFunc` has been called twice.
@@ -230,7 +236,7 @@ A. It turns out that we cannot derive all mathematical structures. This is becau
 
 B. If you want to dive deeper into the Peano Axioms. I highly recommend Bertrand Russell's Introduction To Mathematical Philosophy. Interestingly, we can also prove that all Peano Axioms are derivable from Hume's Principle in Second-Order Logic. This is called Frege's Theorem. Check out my proof [here](https://www.academia.edu/49584456/Freges_Theorem "here").
 
-C. We can go even further and derive numbers from just sets. In particular, we define `0` as the empty set "∅" and recursively define numbers as follows.
+C. We can go even further and derive numbers from just sets. In particular, we define `0` as the empty set "∅" and recursively define numbers as follows:
 
 
 ```
@@ -243,7 +249,7 @@ C. We can go even further and derive numbers from just sets. In particular, we d
 
 D. Representing a number N as a function that calls another arbitrary function N times is commonly known as the Church Numerals.
 
-E. We can represent other arithmetic operations such as subtraction and division using Church Encodings. Find out more [here](https://en.wikipedia.org/wiki/Church_encoding "here"). We can do exponentiation as follows:
+E. We can represent other arithmetic operations such as subtraction and division using Church Encodings. Find out more [here](https://en.wikipedia.org/wiki/Church_encoding "here"). For example, we can do exponentiation as follows:
 
 ```
 "^" = N => M => F => V => (M(N))(F)(V)
@@ -261,7 +267,7 @@ We can also represent the predecessor of a number as follows:
 "predecessor" = N => F => V => N(g => h => h(g(F)))(u => V)(u => u)
 ```
 
-G. Notice that the Peano Axioms also talks of equality "=". We can also represent identity as function as follows:
+G. Notice that the Peano Axioms also talks of equality "=". We can also represent identity as a function as follows:
 
 ```
 "=" = V => V
