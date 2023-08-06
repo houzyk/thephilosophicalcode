@@ -1,7 +1,7 @@
 ---
 external: false
 title: "A Tale Of Numbers And Functions"
-description: "In theory, anything computational is a function - including numbers. In this article, we'll explore how to represent numbers and carry out basic arithmetic operations using nothing but functions."
+description: "In theory, anything computational is a function - including numbers. In this article, we'll explore how to represent numbers and carry out some basic arithmetic operations using nothing but functions."
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://github.com/houzyk"
 ogImagePath: "/images/a-tale-of-numbers-and-functions/cover.webp"
@@ -9,17 +9,17 @@ date: 2023-08-06
 ---
 ![A Tale Of Numbers And Functions](/images/a-tale-of-numbers-and-functions/cover.webp)
 
-> In theory, anything computational is a function - including numbers. In this article, we'll explore how to represent numbers and carry out basic arithmetic operations using nothing but functions.
+> In theory, anything computational is a function - including numbers. In this article, we'll explore how to represent numbers and carry out some basic arithmetic operations using nothing but functions.
 
 ## 1. Breaking Down Numbers.
 
-A basic, but crucial, idea in mathematics is that complex things are built on top of simpler things. In other words, complex mathematical structures are derivable from simpler ones. So, for any reasonably complex mathematical structure, we can break it down into its simpler substructures. For example, the real numbers are built on top of the rational numbers. In turn, these are derived from the rational numbers which can be broken down into the integers and the natural numbers.
+A basic, but crucial, idea in mathematics is that complex things are built on top of simpler things. In other words, complex mathematical structures are derivable from simpler ones. So, for any reasonably complex mathematical structure, we can break it down into its simpler substructures. For example, the real numbers are built on top of the rational numbers. In turn, these are derived from the integers which can be broken down into the natural numbers.
 
-In the late 19th and early 20th century, mathematicians and philosophers alike pondered on our crucial idea. In particular, they pondered on the extent to which we can break down mathematical structures. Crucially, they were in search of a foundation for all of mathematics. They pondered on whether there was any such thing as the *simplest* mathematical structure - a sort of mathematical atom. These atoms would be the foundations upon which all other mathematical structures are built. They thought that, with this foundation in hand, we would be able to mechanically/programatically derive any mathematical structure irrespective of its complexity. As a result, all mathematical structures would be broken down into these atoms. In other words, we can picture mathematics itself as a pyramid of structures stacked on top of each other. Complex mathematical structures are on top while the 'simpler' structures are nearer to the foundation.
+In the late 19th and early 20th century, mathematicians and philosophers alike pondered on our basic and crucial idea. In particular, they pondered on the extent to which we can break down all mathematical structures. Crucially, they were in search of a foundation for all of mathematics. They pondered on whether there was any such thing as the *simplest* mathematical structure - a sort of mathematical atom. These atoms would be the foundations upon which all other mathematical structures are built. They thought that, with this foundation in hand, we would be able to mechanically/programatically derive any mathematical structure irrespective of its complexity. As a result, all mathematical structures would be broken down into these atoms. In other words, we can picture mathematics itself as a pyramid of structures stacked on top of each other. Complex mathematical structures are on top while the 'simpler' structures are nearer to the foundation.
 
 ![Mathematical Pyramid Of Complex And Simple Things](/images/a-tale-of-numbers-and-functions/Mathematical_Pyramid_Of_Complex_And_Simple_Things.webp)
 
-Naturally, in their search of the mathematical atoms, they pondered on numbers and how to break them down into simpler substructures. In particular, thanks to the work of [Giuseppe Peano](https://en.wikipedia.org/wiki/Giuseppe_Peano "Giuseppe Peano"), we were able to derive numbers from a simpler structure called the Peano Axioms. These are as follows.
+Naturally, in their search of the mathematical atoms, they pondered on numbers and how to break them down into simpler substructures. In particular, thanks to the work of [Giuseppe Peano](https://en.wikipedia.org/wiki/Giuseppe_Peano "Giuseppe Peano"), we were able to derive numbers from a simpler structure called the Peano Axioms. These are as follows:
 
 1. Zero is a number.
 2. The successor of a number is a number.
@@ -32,23 +32,23 @@ For our current purposes, we do not need to understand the technical details and
 
 ## 2. Numbers As Functions.
 
-Since we can break down numbers into simpler things, this intuitvely means that numbers do not have to be just numbers. They are mere fictions which can be represented by simpler things. In particular, numbers can be represented by functions! To clarify, we say that a function is a blackbox that takes an input and gives back an output. Then, we follow [Alonzo Church](https://plato.stanford.edu/entries/church/ "Alonzo Church") in proposing that a number represents the amount of times that an arbitrary function is called. So, a number N calls that function N times.
+Since we can break down numbers into simpler things, this intuitively means that numbers do not have to be just numbers. They are mere fictions which can be represented by simpler things. In particular, numbers can be represented by functions! To clarify, we say that a function is a blackbox that takes an input and returns an output. Then, we follow [Alonzo Church](https://plato.stanford.edu/entries/church/ "Alonzo Church") in proposing that a number represents the amount of times that an arbitrary function is called. So, a number N calls that function N times.
 
   **In essence, a number N is a *function* that calls another arbitrary function N times.**
 
-  So, the number `0` is a function that calls some other function zero times. In particular, it takes an arbitrary function F and a value V as inputs. Then, it only returns that value without calling the function. It completely ignores the function F.
+  So, the number 0 is a function that calls some other function zero times. In particular, it takes an arbitrary function `F` and a value `V` as inputs. Then, it only returns that value without calling the function. It completely ignores the function `F`.
 
   ```
   0 = F => V => V
   ```
 
-  In the same line of thought, the number `1` is a function that calls some other function one time. In particular, it takes an arbitrary function F and a value V as inputs. Then, it returns that function with the value as its argument.
+  In the same line of thought, the number `1` is a function that calls some other function one time. In particular, it takes an arbitrary function `F` and a value `V` as inputs. Then, it returns that function with the value as its argument.
 
   ```
   1 = F => V => F(V)
   ```
 
-  Naturally, the number `2` is a function that calls some other function two times. In particular, it takes an arbitrary function F and a value V as inputs. Then, it returns the function with the value as its argument within the function itself.
+  Naturally, the number `2` is a function that calls some other function two times. In particular, it takes an arbitrary function `F` and a value `V` as inputs. Then, it returns the function with the value as its argument within the function itself.
 
   ```
   2 = F => V => F(F(V))
@@ -62,7 +62,7 @@ Since we can break down numbers into simpler things, this intuitvely means that 
   ...
   ```
 
-Intuitively, we may also visualise a number as the number of times that our arbitrary function is added to a stack. So, the number `3` would call the function F thrice and add it to the stack thrice.
+Intuitively, we may also visualise a number as the amount of times that our arbitrary function is added to a stack. So, the number `3` would call the function F thrice and add it to the stack thrice.
 
 ![Adding Three Functions To The Stack](/images/a-tale-of-numbers-and-functions/Adding_Three_Functions_To_The_Stack.webp)
 
@@ -128,7 +128,7 @@ So far, we can't do much with these numbers as functions yet. We wanna be able t
 
 ### 4.1 Addition.
 
-Following Alonzo Church, let's propose that adding two numbers N and M together is like calling an arbitrary function N times and then calling it again M times. So, addition is a function that takes two numbers-as-functions N and M, an arbitrary function F and a value V and returns the function N that calls F for N amout of times times with M(F)(V) as its value. In turn, M(F)(V) is the function M that calls F for an M amount of times with V as its value.
+Following Alonzo Church, let's propose that adding two numbers N and M together is like calling an arbitrary function N times and then calling it again M times. So, addition is a function that takes two numbers-as-functions `N` and `M`, an arbitrary function `F` and a value `V` and returns the function `N` that calls `F` for N amount of times times with `M(F)(V)` as its value. In turn, `M(F)(V)` is the function `M` that calls `F` for an M amount of times with `V` as its value.
 
 ```
 "+" = N => M => F => V => N(F)(M(F)(V))
@@ -142,7 +142,7 @@ So, `N(F)(M(F)(V))` is simply passing the function `F` and `M(F)(V)` as argument
 ![N Function Calls](/images/a-tale-of-numbers-and-functions/N_Function_Calls.webp)
 
 
-Now, `M(F)(V)` is the left after F is called N times. To evaluate `M(F)(V)`, remember that a number M is a function that calls an arbitrary function F for M amount of times. So, `M(F)(V)` is simply passing the function `F` and `V` as arguments to the number-as-function `M`. So, `M` will call `F` M times with `V` as the value of `F`.  Importantly, remember that `F` is called with the value `V` only on the last call of F. In other words, `M(F)(V)` evaluates to something like `...F(F(V))`. Visually:
+Now, `M(F)(V)` is the left after `F` is called N times. To evaluate `M(F)(V)`, remember that a number `M` is a function that calls an arbitrary function `F` for M amount of times. So, `M(F)(V)` is simply passing the function `F` and `V` as arguments to the number-as-function `M`. So, `M` will call `F` M times with `V` as the value of `F`.  Importantly, remember that `F` is called with the value `V` only on the last call of `F`. In other words, `M(F)(V)` evaluates to something like `...F(F(V))`. Visually:
 
 ![M Function Calls](/images/a-tale-of-numbers-and-functions/M_Function_Calls.webp)
 
@@ -150,7 +150,7 @@ Hence, we can see how our addition function calls an arbitraty function for a to
 
 ### 4.2 Multiplication.
 
-For multiplication, let's propose that multiplying two numbers N and M together is like calling an arbitraty function N times. Then, for each time that it is called during these N times, we call it for an M amout of times. So, multiplication is a function that takes two numbers-as-functions N and M, an arbitrary function F and a value V and returns the function N that calls M for an N amout of times times with the value V. In particular, M is called with the function F as argument. In turn, for each time that M is called during these N times, M calls the function F for an M amount of times with V as its value.
+For multiplication, let's propose that multiplying two numbers N and M together is like calling an arbitraty function N times. Then, for each time that it is called during these N times, we call it for an M amount of times. So, multiplication is a function that takes two numbers-as-functions `N` and `M`, an arbitrary function `F` and a value `V` and returns the function `N` that calls `M` for an N amout of times times with the value `V`. In particular, `M` is called with the function `F` as argument. In turn, for each time that `M` is called during these N times, `M` calls the function F for an M amount of times with `V` as its value.
 
 ```
 "x" = N => M => F => V => N(M(F))(V)
@@ -179,7 +179,7 @@ const add = N => M => F => V => N(F)(M(F)(V));
 const multiply = N => M => F => V => N(M(F))(V);
 ```
 
-As we previously did to test our definitions, we use `trackerFunc` and the variable `trackerFuncCallCount` to count the number of times that `trackerFunc` is called.
+As we previously did, we use `trackerFunc` and the variable `trackerFuncCallCount` to count the number of times that `trackerFunc` is called.
 
 ### 5.1 Addition.
 
@@ -211,18 +211,20 @@ Amazingly enough, we see that `trackerFuncCallCount` is `2` for `one` and `two`.
 
 We also see that `trackerFuncCallCount` is `9` for `three` and `three`. This means that, as expected, `trackerFunc` has been called 9 times.
 
-So, we can track the number of times that an arithmetic operation calls `trackerFunc` the in the following table.
+Hence, we can easily see that multiplication of two numbers N and M is simply calling an arbitrary function N times and for each call, we call that function M times.
+
+Finally, we can track the number of times that an arithmetic operation calls `trackerFunc` the in the following table.
 
 | Operation | # of `trackerFunc` calls |
 | - | - |
 | 1 + 2 | 3 |
 | 3 + 3 | 6 |
-| 1 x 2 | 2 |
-| 3 x 3 | 9 |
+| 1 X 2 | 2 |
+| 3 X 3 | 9 |
 
-From our table, we can easily see that, firstly, addition between two numbers N and M is like calling an arbitrary function N times and then M times. Secondly, multiplication between two numbers N and M is like calling an arbitrary function N times and for each call, we call that function M times. So, we've broken down some basic arithmetic operation into simpler things. In particular, we've seen how arithmetic can be built on top of simple blackboxes that takes an input and gives an output. Hence, basic arithmetic operations can be represented by nothing but functions!
+From our table, we can easily see that, firstly, addition of two numbers N and M is simply calling an arbitrary function N times and then M times. Secondly, multiplication of two numbers N and M is simply calling an arbitrary function N times and for each call, we call that function M times. So, we've broken down some basic arithmetic operation into simpler things. In particular, we've seen how arithmetic can be built on top of simple blackboxes that takes an input and gives an output. Hence, basic arithmetic operations can be carried out using nothing but functions!
 
-> In sum, we saw that numbers can be broken down into the simple Peano Axioms. This opened the possibility that numbers are mere fictions that can be represented by simple functions. Finally, following Alonzo Church, we represented numbers, addition and multiplication as nothing but functions.
+> In sum, we saw that numbers can be broken down into the simple Peano Axioms. This opened the possibility that numbers are mere fictions that can be represented by functions. Finally, following Alonzo Church, we represented numbers and carried out some basic arithmetic operations, like addition and multiplication, using nothing but functions.
 
 ## PS.
 
@@ -267,9 +269,11 @@ G. Notice that the Peano Axioms also talks of equality "=". We can also represen
 "=" = V => V
 ```
 
-H. The philosophical interest of representing numbers as functions is ontological abstraction and its implication about the nature of computation. In other words, we see that functions are ontologically prior to numbers and arithmetic. Moreover, despite the heavy use of numbers in computer programs, we see that we could, in principle, re-write all programs without any explicit reference to numbers themselves. This is exactly what happens in the Lambda Calculus. So, in a way, we could conclude that the essence of computation does not need numbers at its core.
+It's interesting to see that `V => V` is also reflexive, symmetric, transitive and closed.
 
-I. Here's all the code that we've seen (and more) in one place (Reload the page if you can't see the code or go [here](https://gist.github.com/houzyk/d38c66f1efcb62ea9e2803bd75812c73 "here")).
+H. The philosophical interest of representing numbers as functions is ontological abstraction and its implication about the nature of computation. In other words, we see that functions are ontologically prior to numbers and arithmetic. Moreover, despite the heavy use of numbers in computer programs, we see that we could (in principle) re-write all programs without any explicit reference to numbers themselves. This is exactly what happens in the Lambda Calculus. So, in a way, we could say that numbers are not in the essence of computation itself.
+
+I. Here's all the code that we've seen (and more) in one place (Reload the page if you can't see the code or see the gist [here](https://gist.github.com/houzyk/d38c66f1efcb62ea9e2803bd75812c73 "here")).
 
 
 {% githubgist id="d38c66f1efcb62ea9e2803bd75812c73" /%}
