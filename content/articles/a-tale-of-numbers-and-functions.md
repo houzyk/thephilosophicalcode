@@ -153,7 +153,7 @@ Hence, we can see how our addition function calls an arbitrary function for a to
 For multiplication, let's propose that multiplying two numbers N and M together is like calling an arbitrary function N times. Then, for each time that it is called during these N times, we call it for an M amount of times. So, multiplication is a function that takes two numbers-as-functions `N` and `M`, an arbitrary function `F` and a value `V` and returns the function `N` that calls `M` for an N amount of times times with the value `V`. In particular, `M` is called with the function `F` as argument. In turn, for each time that `M` is called during these N times, `M` calls the function `F` for an M amount of times with `V` as its value.
 
 ```
-"x" = N => M => F => V => N(M(F))(V)
+"*" = N => M => F => V => N(M(F))(V)
 ```
 
 Let's clarify the return of our multiplication function - `N(M(F))(V)`. Let's not forget that `N` and `M` *represent* numbers as functions. Remember that a number N is a function that calls an arbitrary function F for an N amount of times.
@@ -168,7 +168,7 @@ Now, for each time that `N` calls `M(F)`, we call `F` for an M amount of times. 
 ![Calling F M Times](/images/a-tale-of-numbers-and-functions/Calling_F_M_Times.webp)
 
 
-Intuitively, we have a multiplication table made up of N columns and M rows. Hence, we can see how our multiplication function calls an arbitrary function for a total of (N X M) times.
+Intuitively, we have a multiplication table made up of N columns and M rows. Hence, we can see how our multiplication function calls an arbitrary function for a total of (N * M) times.
 
 ## 5. Basic Arithmetic Operations As JS Functions.
 
@@ -221,8 +221,8 @@ Finally, we can track the number of times that an arithmetic operation calls `tr
 | - | - |
 | 1 + 2 | 3 |
 | 3 + 3 | 6 |
-| 1 X 2 | 2 |
-| 3 X 3 | 9 |
+| 1 * 2 | 2 |
+| 3 * 3 | 9 |
 
 From our table, we can easily see that, firstly, addition of two numbers N and M is simply calling an arbitrary function N times and then M times. Secondly, multiplication of two numbers N and M is simply calling an arbitrary function N times and for each call, we call that function M times.
 
