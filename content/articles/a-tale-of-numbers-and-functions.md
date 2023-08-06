@@ -126,7 +126,7 @@ From our table, we can easily see that any number N is a function that calls ano
 
 So far, we can't do much with these numbers as functions yet. We wanna be able to carry out some basic arithmetic operations with them as well. For our current scope, we only look at how to represent addition and multiplication as functions. If you're curious about the rest, check out the references at the end of this article.
 
-### 4.1 Addition
+### 4.1 Addition.
 
 Following Alonzo Church, let's propose that adding two numbers N and M together is like calling an arbitrary function N times and then calling it again M times. So, addition is a function that takes two numbers-as-functions N and M, an arbitrary function F and a value V and returns the function N that calls F for N amout of times times with M(F)(V) as its value. In turn, M(F)(V) is the function M that calls F for an M amount of times with V as its value.
 
@@ -148,7 +148,7 @@ Now, `M(F)(V)` is the left after F is called N times. To evaluate `M(F)(V)`, rem
 
 Hence, we can see how our addition function calls an arbitraty function for a total of (N + M) amount of times.
 
-### 4.2 Multiplication
+### 4.2 Multiplication.
 
 For multiplication, let's propose that multiplying two numbers N and M together is like calling an arbitraty function N times. Then, for each time that it is called during these N times, we call it for an M amout of times. So, multiplication is a function that takes two numbers-as-functions N and M, an arbitrary function F and a value V and returns the function N that calls M for an N amout of times times with the value V. In particular, M is called with the function F as argument. In turn, for each time that M is called during these N times, M calls the function F for an M amount of times with V as its value.
 
@@ -181,7 +181,7 @@ const multiply = N => M => F => V => N(M(F))(V);
 
 As we previously did to test our definitions, we use `trackerFunc` and the variable `trackerFuncCallCount` to count the number of times that `trackerFunc` is called.
 
-### 5.1 Addition
+### 5.1 Addition.
 
 To test the definition of `add`, firstly, we call it with `one`, `two` and `trackerFunc` as arguments. Secondly, we also try `three`, `three` and `trackerFunc`  as arguments.
 
@@ -197,7 +197,7 @@ We also see that `trackerFuncCallCount` is `6` for `three` and `three`. This mea
 
 Hence, we can easily see that addition of two numbers N and M is simply calling an arbitrary function N times and then M times.
 
-### 5.1 Mutiplication
+### 5.2 Mutiplication.
 
 To test the definition of `multiply`, firstly, we call it with `one`, `two` and `trackerFunc` as arguments. Secondly, we also try `three`, `three` and `trackerFunc`  as arguments.
 
@@ -220,7 +220,7 @@ So, we can track the number of times that an arithmetic operation calls `tracker
 | 1 x 2 | 2 |
 | 3 x 3 | 9 |
 
-From our table, we can easily see that any number N is a function that calls another arbitrary function N times. So, we've broken down some basic arithmetic operation into simpler things. In particular, we've seen how numbers can be built on top of simple blackboxes that takes an input and gives an output. Hence, basic arithmetic operations can be represented by nothing but functions!
+From our table, we can easily see that, firstly, addition between two numbers N and M is like calling an arbitrary function N times and then M times. Secondly, multiplication between two numbers N and M is like calling an arbitrary function N times and for each call, we call that function M times. So, we've broken down some basic arithmetic operation into simpler things. In particular, we've seen how arithmetic can be built on top of simple blackboxes that takes an input and gives an output. Hence, basic arithmetic operations can be represented by nothing but functions!
 
 > In sum, we saw that numbers can be broken down into the simple Peano Axioms. This opened the possibility that numbers are mere fictions that can be represented by simple functions. Finally, following Alonzo Church, we represented numbers, addition and multiplication as nothing but functions.
 
@@ -274,4 +274,4 @@ I. Here's all the code that we've seen (and more) in one place (Reload the page 
 
 {% githubgist id="d38c66f1efcb62ea9e2803bd75812c73" /%}
 
-J. I may have, unintentionally, left some technical or mathematical errors in this article. If you spot them, kindly send a PR to this [repo](https://github.com/houzyk/thephilosophicalcode "repo") or send me an email - houzairmk@icloud.con
+J. I may have, unintentionally, left some technical or mathematical errors in this article. If you spot them, kindly send a PR to this [repo](https://github.com/houzyk/thephilosophicalcode "repo") or send me an email - houzairmk@icloud.com.
