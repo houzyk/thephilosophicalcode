@@ -15,6 +15,7 @@ Live: [thephilosophicalcode.com](https://thephilosophicalcode.com)
 3. [Existence And TypeScript](https://thephilosophicalcode.com/articles/existence-and-typescript/) by @houzyk.
 4. [Too Much To Handle](https://thephilosophicalcode.com/articles/too-much-to-handle/) by @houzyk.
 5. [OneByteAtAAtime](https://thephilosophicalcode.com/articles/one-byte-at-a-time/) by @wafaajaunnoo.
+6. [A Tale Of Numbers And Functions](https://thephilosophicalcode.com/articles/a-tale-of-numbers-and-functions) by @houzyk.
 
 ## Contributing
 
