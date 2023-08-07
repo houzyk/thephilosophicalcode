@@ -1,6 +1,6 @@
 ---
 title: "Resources & Reading List"
-date: 2023-08-06
+date: 2023-08-07
 ---
 
 This is a non-exhaustive list of resources to further explore the intersection of philosophy and code. It's updated whenever possible.
@@ -35,6 +35,8 @@ This is a non-exhaustive list of resources to further explore the intersection o
 
 1. [Lambda Calculus - Computerphile](https://www.youtube.com/watch?v=eis11j_iGMs "Lambda Calculus - Computerphile")
 2. [Church Encodings](https://en.wikipedia.org/wiki/Church_encoding "Church Encodings")
+3. [Lambda Calculus - Fundamentals of Lambda Calculus & Functional Programming in JavaScript](https://www.youtube.com/watch?v=3VQ382QG-y4 "Lambda Calculus - Fundamentals of Lambda Calculus & Functional Programming in JavaScript")
+4. [A Flock of Functions: Combinators, Lambda Calculus, & Church Encodings in JS - Part II](https://www.youtube.com/watch?v=pAnLQ9jwN-E "A Flock of Functions: Combinators, Lambda Calculus, & Church Encodings in JS - Part II")
 
 ## People
 
