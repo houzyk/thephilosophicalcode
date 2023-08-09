@@ -1,9 +1,4 @@
 ---
-/*
-  This layout is used in pages that render markdoc content
-  - pages/blog/[slug].astro
-*/
-// Import the global.css file here so that it is included on
 import "../styles/global.css";
 import "../styles/markdown.css";
 
@@ -48,7 +43,7 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
         <a href={authorUrl || ''} target="_blank" class="animated">
           <span>{author || ''}</span>
         </a>
-        <time class="publish-date">{formattedDate}</time>
+        <time class="publish-date" datetime={date.toISOString()}>{formattedDate}</time>
         <slot name="content" />
       </section>
     </main>
