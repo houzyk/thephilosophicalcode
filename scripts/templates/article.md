@@ -5,7 +5,7 @@ description: "Please add your description here. This should match the one below.
 author: "{#githubName}"
 authorUrl: "{#githubURL}"
 ogImagePath: "/images/{#articleKebabTitle}/{#coverFileName}"
-date: 2000-01-01
+date: {#dateToday}
 ---
 ![{#articleNormalTitle}](/images/{#articleKebabTitle}/{#coverFileName})
 

@@ -135,12 +135,14 @@ const generateArticle = async () => {
 
   // Modify article data
   fs.readFile(newArticlePath, 'utf8', (_, data) => {
+    const dateToday = `${new Date().getFullYear()}-${("0" + (new Date().getMonth() + 1)).slice(-2)}-${new Date().getDate()}`;
     const modifiedContent = data
                             .replaceAll("{#articleNormalTitle}", articleInfo.articleNormalTitle)
                             .replaceAll("{#articleKebabTitle}", articleInfo.articleKebabTitle)
                             .replaceAll("{#githubName}", userInfo.githubName)
                             .replaceAll("{#githubURL}", userInfo.githubURL)
-                            .replaceAll("{#coverFileName}", defaultCover.coverFileName);
+                            .replaceAll("{#coverFileName}", defaultCover.coverFileName)
+                            .replaceAll("{#dateToday}", dateToday);
 
     fs.writeFile(newArticlePath, modifiedContent, 'utf8', () => {});
   });
