@@ -25,3 +25,7 @@ def stuff():
 @app.route("/articles")
 def articles():
 	return ""
+
+@app.route("/articles/<string:title>")
+def article(title):
+	return ""
