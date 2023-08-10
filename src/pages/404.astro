@@ -1,11 +1,15 @@
 ---
 import Favicon from "../components/Favicon.astro";
+import {
+  SITE_DESCRIPTION,
+} from "../config"
 ---
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={SITE_DESCRIPTION}>
   <Favicon />
   <title>404 - Page Not Found</title>
 </head>
