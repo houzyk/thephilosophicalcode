@@ -1,5 +1,6 @@
 # build output
 dist/
+__pycache__
 
 # dependencies
 node_modules/
@@ -7,6 +8,7 @@ node_modules/
 # environment variables
 .env
 .env.production
+.venv
 
 # macOS-specific files
 .DS_Store
