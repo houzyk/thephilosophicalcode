@@ -5,15 +5,15 @@ type PageMeta = {
 };
 
 type PageOgMeta = {
-  title: string; // page title
-  description?: string; // page description
+  title: string;
+  description?: string;
   type: "website";
-  url?: string; // site URL
-  image?: string; // preview image
-  imageAlt?: string; // alt text for preview image
-  imageWidth?: string; // preview image width - 1200px standard
-  imageHeight?: string; // preview image height - 627px standard
-  publishDate?: string; // date when page was last updated
+  url?: string;
+  image?: string;
+  imageAlt?: string;
+  imageWidth?: string;
+  imageHeight?: string;
+  publishDate?: string;
 };
 
 type PageTwitterMeta = {
@@ -25,26 +25,26 @@ type PageTwitterMeta = {
 };
 
 type BlogPostOgMeta = {
-  title: string; // page title
-  description?: string; // page description
+  title: string;
+  description?: string;
   type: "article";
-  url?: string; // blog post url
-  author?: string; // post author name
+  url?: string;
+  author?: string;
   publishDate: string; // ISO string
-  image?: string; // preview image
-  imageAlt?: string; // alt text for preview image
-  imageWidth?: string; // preview image width - 1200px standard
-  imageHeight?: string; // preview image height - 627px standard
+  image?: string;
+  imageAlt?: string;
+  imageWidth?: string;
+  imageHeight?: string;
 };
 
 type BlogPostTwitterMeta = {
-  title: string; // same as blog post og:title
-  description?: string; // same as blog post og:description
+  title: string;
+  description?: string;
   card: "summary_large_image";
-  site?: string; // twitter handle (@username) of blog owner
-  creator?: string; // twitter handle (@username) of content owner (usually same as blog owner)
-  image?: string; // same as blog post  og:image
-  imageAlt?: string; // same as blog post  og:image:alt
+  site?: string;
+  creator?: string;
+  image?: string;
+  imageAlt?: string;
 };
 
 export function getPageMeta({
@@ -60,7 +60,7 @@ export function getPageMeta({
   title: string;
   description: string;
   baseUrl?: string;
-  ogImageAbsoluteUrl?: string; // should always be absolute
+  ogImageAbsoluteUrl?: string;
   ogImageAltText?: string;
   ogImageWidth?: number;
   ogImageHeight?: number;
@@ -122,7 +122,7 @@ export function getBlogPostMeta({
   pageUrl?: string;
   authorName?: string;
   publishDate: string;
-  ogImageAbsoluteUrl?: string; // should always be absolute
+  ogImageAbsoluteUrl?: string;
   ogImageAltText?: string;
   ogImageWidth?: number;
   ogImageHeight?: number;
