@@ -1,6 +1,5 @@
 import type { APIRoute } from 'astro';
 
-
 import { readAll } from "../../lib/markdoc/read";
 import { article } from "../../lib/markdoc/frontmatter.schema";
 import { SITE_URL } from "../../config";
@@ -20,7 +19,6 @@ export const get: APIRoute = async () => {
       routes: {
         _: `${SITE_URL}/api/routes.json`,
         people: `${SITE_URL}/api/people.json`,
-        stuff: `${SITE_URL}/api/stuff.json`,
         articles: {
           index: `${SITE_URL}/api/articles.json`,
           shows: filteredArticles.map(({ slug }) => `${SITE_URL}/api/articles/${slug}.json`)
