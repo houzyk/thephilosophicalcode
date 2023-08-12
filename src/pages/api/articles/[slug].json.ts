@@ -1,16 +1,55 @@
 import type { APIRoute } from 'astro';
 
-export const get:APIRoute = async ({ params }) => {
-  const slug = params.slug;
+import { readAll } from "../../../lib/markdoc/read";
+import { article } from "../../../lib/markdoc/frontmatter.schema";
+import { SITE_URL } from "../../../config";
+
+export const get:APIRoute = async ({ params, props }) => {
+  const { slug } = params;
+
+  const {
+    title,
+    description,
+    date,
+    author,
+    authorUrl,
+    ogImagePath,
+  } = props;
+
   return {
     body: JSON.stringify({
-      name: slug
+      title,
+      description,
+      author,
+      author_url: authorUrl,
+      date_published: date,
+      cover_photo: `${SITE_URL}/${ogImagePath}`,
+      live_url: `${SITE_URL}/articles/${slug}`
     })
   }
 }
 
-export const getStaticPaths = () => {
-  return [
-    { params: { slug: "0"} }
-  ]
+export const getStaticPaths = async () => {
+  const articles = await readAll({
+    directory: "articles",
+    frontmatterSchema: article,
+  });
+
+  const filteredPosts = articles
+    .filter((p) => p.frontmatter.draft !== true)
+    .filter(({ frontmatter }) => !frontmatter.external);
+
+  return filteredPosts.map((article) => {
+    const {
+      slug,
+      frontmatter
+    } = article;
+
+    return ({
+      params: { slug },
+      props: {
+        ...frontmatter
+      }
+    });
+  });
 }

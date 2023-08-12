@@ -7,18 +7,17 @@ import ContentLayout from "../../layouts/ContentLayout.astro";
 import { SITE_URL } from "../../config";
 
 export async function getStaticPaths() {
-  const posts = await readAll({
+  const articles = await readAll({
     directory: "articles",
     frontmatterSchema: article,
   });
 
-  // we don't want to generate pages for posts that link to external websites
-  const filteredPosts = posts
+  const filteredPosts = articles
     .filter((p) => p.frontmatter.draft !== true)
     .filter(({ frontmatter }) => !frontmatter.external);
 
-  return filteredPosts.map((post) => {
-    return { params: { slug: post.slug } };
+  return filteredPosts.map((article) => {
+    return { params: { slug: article.slug } };
   });
 }
 
