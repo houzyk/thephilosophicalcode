@@ -2,7 +2,7 @@
 external: false
 title: "Keep It Dry"
 description: "Don't Repeat Yourself (DRY for short) is a cherished principle guiding developers world-wide. In this article, we'll take a philosophical dive into what it implies and how it pushes Philosophy to its limits."
-author: "Houzair Koussa"
+author: "Muhammad Houzair Koussa"
 authorUrl: "https://github.com/houzyk"
 ogImagePath: "/images/keep-it-dry/cover.webp"
 date: 2021-12-19

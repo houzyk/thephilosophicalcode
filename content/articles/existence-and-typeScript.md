@@ -2,7 +2,7 @@
 external: false
 title: "Existence And TypeScript"
 description: "Two handy TypeScript features are the optional chaining and non-null assertion operators. In this article, we'll explore how these two work and why the way they work is philosophically interesting."
-author: "Houzair Koussa"
+author: "Muhammad Houzair Koussa"
 authorUrl: "https://github.com/houzyk"
 ogImagePath: "/images/existence-and-typescript/cover.webp"
 date: 2022-04-16
