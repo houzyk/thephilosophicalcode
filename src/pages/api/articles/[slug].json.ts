@@ -23,7 +23,7 @@ export const get:APIRoute = async ({ params, props }) => {
       author,
       author_url: authorUrl,
       date_published: date,
-      cover_photo: `${SITE_URL}/${ogImagePath}`,
+      cover_photo: `${SITE_URL}${ogImagePath}`,
       live_url: `${SITE_URL}/articles/${slug}`
     })
   }
