@@ -35,11 +35,11 @@ export const getStaticPaths = async () => {
     frontmatterSchema: article,
   });
 
-  const filteredPosts = articles
+  const filteredArticles = articles
     .filter((p) => p.frontmatter.draft !== true)
     .filter(({ frontmatter }) => !frontmatter.external);
 
-  return filteredPosts.map((article) => {
+  return filteredArticles.map((article) => {
     const {
       slug,
       frontmatter
