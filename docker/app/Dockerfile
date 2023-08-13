@@ -8,7 +8,7 @@ COPY tsconfig.json ./
 
 COPY astro.config.mjs ./
 
-COPY ./scripts/helpers.ts ./scripts/helpers.ts
+COPY ./utils ./utils
 
 COPY ./src ./src
 
