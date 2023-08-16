@@ -13,7 +13,7 @@ jobs:
         run: |
           echo "$GITHUB_CONTEXT"
       - name: install-dependencies
-        run: npm ci && npm i cypress
+        run: npm install --loglevel verbose
       - name: run-tests
         run: npm run cypress-test-on-vercel-preview
         env:
