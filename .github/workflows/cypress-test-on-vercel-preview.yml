@@ -1,6 +1,6 @@
 name: cypress-test-on-vercel-preview
 
-on: [push, deployment, deployment_status]
+on: [deployment, deployment_status]
 
 jobs:
   e2e:
@@ -13,12 +13,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: use-node-${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      - name: dump-context
+      - name: dump-github-context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
