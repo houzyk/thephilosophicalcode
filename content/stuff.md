@@ -19,8 +19,8 @@ This is a non-exhaustive list of resources to further explore the intersection o
 ## Philosophy of Artificial Intelligence
 
 1.  Superintelligence: Paths, Dangers, Strategies - Nick Bostrom
-2.  [In defense of philosophy: a review of Nick Bostrom, Superintelligence: Paths, Dangers, Strategies - Joel Thomas](https://www.tandfonline.com/doi/full/10.1080/0952813X.2015.1055829)
-3.  [The Chinese Room Argument - SEP](https://plato.stanford.edu/entries/chinese-room/)
+2.  [In defense of philosophy: a review of Nick Bostrom, Superintelligence: Paths, Dangers, Strategies - Joel Thomas](https://www.tandfonline.com/doi/full/10.1080/0952813X.2015.1055829 "In defense of philosophy: a review of Nick Bostrom, Superintelligence: Paths, Dangers, Strategies - Joel Thomas")
+3.  [The Chinese Room Argument - SEP](https://plato.stanford.edu/entries/chinese-room/ "The Chinese Room Argument - SEP")
 4.  Artificial Intelligence: A Modern Approach (3<sup>rd</sup> Edition onwards) - Stuart Jonathan Russell and Peter Norvig
    
 ## Functional Programming
