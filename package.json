@@ -10,7 +10,8 @@
     "astro": "astro",
     "clean": "rm -rf dist",
     "generate-article": "node ./scripts/generate-article.js",
-    "cypress-test-on-vercel-preview": "npx cypress run --spec 'cypress/e2e/vercel-preview.cy.ts'"
+    "cypress-test-on-vercel-preview": "npx cypress run --spec 'cypress/e2e/vercel-preview.cy.ts'",
+    "cypress-test-on-vercel-prod": "npx cypress run --spec 'cypress/e2e/vercel-prod.cy.ts'"
   },
   "dependencies": {
     "@astrojs/prism": "^1.0.2",

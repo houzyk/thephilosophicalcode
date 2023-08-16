@@ -1,4 +1,4 @@
-describe('Vercel Preview - E2E', () => {
+describe('Vercel Prod - E2E', () => {
 
   it('mock', () => {
     cy.visit("/");

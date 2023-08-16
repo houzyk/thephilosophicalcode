@@ -1,10 +1,10 @@
-name: cypress-test-on-vercel-preview
+name: cypress-test-on-vercel-prod
 
 on: [deployment_status]
 
 jobs:
-  vercel-preview-e2e:
-    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success' && github.event.deployment_status.environment == 'Preview'
+  vercel-prod-e2e:
+    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success' && github.event.deployment_status.environment == 'Production'
 
     runs-on: ubuntu-latest
 
@@ -30,10 +30,10 @@ jobs:
       - name: install-dependencies
         run: npm ci --loglevel verbose
 
-      - name: print-preview-url
+      - name: print-prod-url
         run: echo ${{ github.event.deployment_status.target_url }}
 
-      - name: run-cypress-tests-on-vercel-preview
-        run: npm run cypress-test-on-vercel-preview
+      - name: run-cypress-tests-on-vercel-prod
+        run: npm run cypress-test-on-vercel-prod
         env:
-          VERCEL_PREVIEW_URL: ${{ github.event.deployment_status.target_url }}
+          VERCEL_PROD_URL: ${{ github.event.deployment_status.target_url }}
