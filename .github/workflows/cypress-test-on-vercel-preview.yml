@@ -6,14 +6,25 @@ jobs:
   e2e:
     if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+
     steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
       - name: dump-context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
           echo "$GITHUB_CONTEXT"
       - name: install-dependencies
-        run: npm install --loglevel verbose
+        run: npm ci --loglevel verbose
       - name: run-tests
         run: npm run cypress-test-on-vercel-preview
         env:
