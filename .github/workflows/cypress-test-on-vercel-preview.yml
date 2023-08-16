@@ -1,0 +1,20 @@
+name: cypress-test-on-vercel-preview
+
+on: [push, deployment, deployment_status]
+
+jobs:
+  e2e:
+    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub Context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Run Cypress
+        uses: cypress-io/github-action@v2
+        env:
+          CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
