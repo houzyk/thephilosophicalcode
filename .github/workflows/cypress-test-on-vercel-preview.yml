@@ -30,4 +30,4 @@ jobs:
       - name: echo-env
         run: echo ${{ github.event.deployment_status.target_url }}
         env:
-          CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
+          VERCEL_PREVIEW_URL: ${{ github.event.deployment_status.target_url }}

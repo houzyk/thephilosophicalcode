@@ -1,5 +1,5 @@
 describe('template spec', () => {
   it('passes', () => {
-    cy.visit('https://github.com/')
+    cy.visit(Cypress.env('vercel_preview_url'))
   })
 })
