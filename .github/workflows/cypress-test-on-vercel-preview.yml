@@ -4,7 +4,7 @@ on: [push, deployment, deployment_status]
 
 jobs:
   e2e:
-    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success'
+    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success' && github.event.deployment_status.production_environment == false
     runs-on: ubuntu-latest
 
     strategy:
