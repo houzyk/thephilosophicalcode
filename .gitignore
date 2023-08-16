@@ -10,3 +10,5 @@ node_modules/
 
 # macOS-specific files
 .DS_Store
+
+cypress/videos
