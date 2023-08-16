@@ -4,7 +4,7 @@ on: [deployment, deployment_status]
 
 jobs:
   vercel-preview-e2e:
-    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success' && github.event.deployment_status.production_environment == false
+    if: github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success' && github.event.deployment_status.environment == 'Preview'
 
     runs-on: ubuntu-latest
 
