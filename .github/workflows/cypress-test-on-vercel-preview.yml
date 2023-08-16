@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [18.x]
 
     steps:
       - uses: actions/checkout@v3
@@ -29,3 +29,4 @@ jobs:
         run: npm run cypress-test-on-vercel-preview
         env:
           CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
+          run: echo ${{ github.event.deployment_status.target_url }}
