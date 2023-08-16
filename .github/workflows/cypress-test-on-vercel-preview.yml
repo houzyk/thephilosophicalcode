@@ -27,6 +27,7 @@ jobs:
         run: npm ci --loglevel verbose
       - name: run-tests
         run: npm run cypress-test-on-vercel-preview
+      - name: echo-env
+        run: echo ${{ github.event.deployment_status.target_url }}
         env:
           CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url }}
-          run: echo ${{ github.event.deployment_status.target_url }}
