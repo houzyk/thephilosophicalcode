@@ -91,14 +91,14 @@ npm run cypress-test-on-vercel-preview
 To run Vercel Preview locally on a specific Vercel preview url:
 
 ```
-npx run cypress --spec 'cypress/e2e/vercel-preview.cy.ts' --config baseUrl='<PREVIEW-URL>'
+npx cypress run --spec 'cypress/e2e/vercel-preview.cy.ts' --config baseUrl='<PREVIEW-URL>'
 ```
 
 To run Vercel Preview locally on a local app:
 
 1. Run the app locally
 
-2. `npx run cypress --spec 'cypress/e2e/vercel-preview.cy.ts' --config baseUrl='http://localhost:3000/'`
+2. `npm run cypress-test-on-vercel-preview-local`
 
 
 To run Vercel Prod locally on the prod app:
@@ -111,4 +111,4 @@ To run Vercel Prod locally on a local app:
 
 1. Run the app locally
 
-2. `npx run cypress --spec 'cypress/e2e/vercel-prod.cy.ts' --config baseUrl='http://localhost:3000/'`
+2. `npm run cypress-test-on-vercel-prod-local`
