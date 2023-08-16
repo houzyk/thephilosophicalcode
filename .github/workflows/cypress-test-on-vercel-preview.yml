@@ -28,6 +28,6 @@ jobs:
       - name: echo-env
         run: echo ${{ github.event.deployment_status.target_url }}
       - name: run-tests
+        env:
+          VERCEL_PREVIEW_URL: ${{ github.event.deployment_status.target_url }}
         run: npm run cypress-test-on-vercel-preview
-        with:
-          env: VERCEL_PREVIEW_URL=${{ github.event.deployment_status.target_url }}
