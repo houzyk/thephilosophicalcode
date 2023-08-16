@@ -73,3 +73,30 @@ Run a `thephilosophicalcode-generate-article-script` container.
 ```
 docker run --interactive -v ABSOLUTE-LOCAL-PATH-TO-THIS-REPO:/generate-article-script thephilosophicalcode-generate-article-script
 ```
+
+## Cypress
+
+There are currently two automated test suites:
+
+1. Vercel Preview - runs on any vercel preview url
+2. Vercel Prod - runs on the live website
+
+
+To run Vercel Preview locally on a local app:
+
+1. Run the app locally
+
+2. `npm run cypress-test-on-vercel-preview`
+
+
+To run Vercel Prod locally on the prod app:
+
+```
+npm run cypress-test-on-vercel-prod
+```
+
+To run Vercel Prod locally on a local app:
+
+1. Run the app locally
+
+2. `npm run cypress-test-on-vercel-prod`
