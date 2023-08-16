@@ -1,5 +1,7 @@
-describe('template spec', () => {
-  it('passes', () => {
-    cy.visit(Cypress.env('vercel_preview_url'))
-  })
+describe('Preview - E2E', () => {
+
+  it('mock', () => {
+    cy.visit(Cypress.env('vercel_preview_url'));
+  });
+
 })
