@@ -25,9 +25,9 @@ jobs:
           echo "$GITHUB_CONTEXT"
       - name: install-dependencies
         run: npm ci --loglevel verbose
-      - name: run-tests
-        run: npm run cypress-test-on-vercel-preview
       - name: echo-env
         run: echo ${{ github.event.deployment_status.target_url }}
         env:
           VERCEL_PREVIEW_URL: ${{ github.event.deployment_status.target_url }}
+      - name: run-tests
+        run: npm run cypress-test-on-vercel-preview
