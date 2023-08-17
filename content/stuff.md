@@ -1,6 +1,6 @@
 ---
 title: "Resources & Reading List"
-date: 2023-08-07
+date: 2023-08-17
 ---
 
 This is a non-exhaustive list of resources to further explore the intersection of philosophy and code. It's updated whenever possible.
@@ -14,7 +14,14 @@ This is a non-exhaustive list of resources to further explore the intersection o
 
 1. [Philosophy of Computer Science - SEP](https://plato.stanford.edu/Archives/Win2017/entries/computer-science/#:~:text=The%20philosophy%20of%20computer%20science%20also%20considers%20the%20analysis%20of,and%20testing%20of%20those%20systems. "Philosophy of Computer Science - SEP")
 2. The Blackwell Guide to the Philosophy of Computing and Information - Edited by Luciano Floridi
-3. [Gödel's Incompleteness Theorems](https://plato.stanford.edu/entries/goedel/#IncThe "Gödel's Incompleteness Theorems")
+3. [Gödel's Incompleteness Theorems - SEP](https://plato.stanford.edu/entries/goedel/#IncThe "Gödel's Incompleteness Theorems - SEP")
+
+## Philosophy Of Artificial Intelligence
+
+1.  Superintelligence: Paths, Dangers, Strategies - Nick Bostrom
+2.  [In defense of philosophy: a review of Nick Bostrom, Superintelligence: Paths, Dangers, Strategies - Joel Thomas](https://www.tandfonline.com/doi/full/10.1080/0952813X.2015.1055829 "In defense of philosophy: a review of Nick Bostrom, Superintelligence: Paths, Dangers, Strategies - Joel Thomas")
+3.  [The Chinese Room Argument - SEP](https://plato.stanford.edu/entries/chinese-room/ "The Chinese Room Argument - SEP")
+4.  Artificial Intelligence: A Modern Approach (3rd Edition onwards) - Stuart Jonathan Russell and Peter Norvig
 
 ## Functional Programming
 
