@@ -18,7 +18,7 @@ export const get: APIRoute = async () => {
     body: JSON.stringify({
       articles: filteredArticles.map(({ slug, frontmatter: { title } }) => ({
           title,
-          api_route: `${SITE_URL}/api/articles/${slug}.json`
+          api_route: `${SITE_URL}/data/articles/${slug}.json`
         })
       )
     })
