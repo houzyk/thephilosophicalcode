@@ -13,6 +13,8 @@ Clone this repo.
 git clone https://github.com/houzyk/thephilosophicalcode.git
 ```
 
+Or fork it.
+
 Run the app locally with the following commands.
 
 ```
@@ -30,6 +32,11 @@ Go to `localhost:3000`.
 | Articles | `/articles` |
 | People | `/people` |
 | A Specific Article | `/articles/<article-title-goes-here>` |
+| Stuff | `/stuff` |
+| Endpoints - Entry | `/data/entry.json` |
+| Endpoints - People | `/data/people.json` |
+| Endpoints - Articles | `/data/articles.json` |
+| Endpoints - Specific Article | `/data/articles/<article-title-goes-here>` |
 | RSS | `/rss.xml` |
 | Sitemap | `/sitemap-0.xml` |
 
