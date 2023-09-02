@@ -8,15 +8,6 @@ The Philosophical Code is an open-source article series exploring the intersecti
 
 Live: [thephilosophicalcode.com](https://thephilosophicalcode.com)
 
-## Articles
-
-1. [Hello, Computer!](https://thephilosophicalcode.com/articles/hello-computer/) by @houzyk.
-2. [Keep It Dry](https://thephilosophicalcode.com/articles/keep-it-dry/) by @houzyk.
-3. [Existence And TypeScript](https://thephilosophicalcode.com/articles/existence-and-typescript/) by @houzyk.
-4. [Too Much To Handle](https://thephilosophicalcode.com/articles/too-much-to-handle/) by @houzyk.
-5. [One Byte At A A time](https://thephilosophicalcode.com/articles/one-byte-at-a-time/) by @wafaajaunnoo.
-6. [A Tale Of Numbers And Functions](https://thephilosophicalcode.com/articles/a-tale-of-numbers-and-functions) by @houzyk.
-
 ## Contributing
 
 There are multiple ways to contribute:
