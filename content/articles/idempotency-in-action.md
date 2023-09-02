@@ -1,7 +1,7 @@
 ---
 external: false
 title: "Idempotency In Action"
-description: "Imagine a chill Monday  rning, after a relaxing weekend, while going to work, you enter an empty elevator. Your destination is the 11th floor. Just before the door closes, a guy hastily enters. After a brief greeting, he impatiently presses the button for the 3rd floor a few times. The elevator soon moves to this floor and he enters the office. It then continues upwards to the next intended floor. Notice that despite that person pressing the elevator button multiple times, it stopped only once at the intended destination. Why do you think this happens? Is it by design or by default? Welcome to idempotency in action!"
+description: "Imagine a chill Monday morning after a relaxing weekend, while going to work, you enter an empty elevator. Your destination is the 11th floor. Just before the door closes, a guy hastily enters. After a brief greeting, he impatiently presses the button for the 3rd floor a few times. The elevator soon moves to this floor and he enters his office. It then continues upwards to the next intended floor. Notice that despite that person pressing the elevator button multiple times, it only stopped once at the intended destination. Why do you think this happens? Is it by design or by default? Welcome to idempotency in action!"
 author: "Abdallah Yashir Ramsing"
 authorUrl: "https://github.com/abdallahYashir"
 ogImagePath: "/images/idempotency-in-action/cover.webp"
@@ -10,7 +10,7 @@ date: 2023-09-02
 
 ![Idempotency In Action](/images/idempotency-in-action/cover.webp)
 
-> Imagine a chill Monday morning after a relaxing weekend, while going to work, you enter an empty elevator. Your destination is the 11th floor. Just before the door closes, a guy hastily enters. After a brief greeting, he impatiently presses the button for the 3rd floor a few times. The elevator soon moves to this floor and he enters the office. It then continues upwards to the next intended floor. Notice that despite that person pressing the elevator button multiple times, it stopped only once at the intended destination. Why do you think this happens? Is it by design or by default? Welcome to idempotency in action!
+> Imagine a chill Monday morning after a relaxing weekend, while going to work, you enter an empty elevator. Your destination is the 11th floor. Just before the door closes, a guy hastily enters. After a brief greeting, he impatiently presses the button for the 3rd floor a few times. The elevator soon moves to this floor and he enters his office. It then continues upwards to the next intended floor. Notice that despite that person pressing the elevator button multiple times, it only stopped once at the intended destination. Why do you think this happens? Is it by design or by default? Welcome to idempotency in action!
 
 ## 1. Hello Idempotency.
 
@@ -36,7 +36,7 @@ In philosophy, idempotency can be seen as a principle of non-interference. It me
 
 Let’s consider an example of ethics, which is the study of what’s right and wrong. Here, idempotency is seen as a means of understanding repeated actions that do not increase or decrease their harm/goodness on each repetition. In particular, we can think of an idempotent ethical action as one that does not cause more harm or good even if it’s performed multiple times.
 
-In law, the role of an idempotent action is a way of ensuring fairness without disadvantaging anyone even if performed multiple times. For example, many legal systems guard against double jeopardy, which prevents someone from being tried for the same crime twice.
+In law, the role of an idempotent action is a way of ensuring fairness without disadvantaging anyone even if that action is performed multiple times. For example, many legal systems guard against double jeopardy, which prevents someone from being tried for the same crime twice.
 
 Furthermore, when we talk about philosophy, we also think about logic, which is highly relevant to idempotency. In logic, an operation is idempotent if applying it on the same value results in that value itself. So, applying it multiple times, on a particular value, doesn't change the result after the first application.
 
@@ -58,7 +58,7 @@ The fourth column represents the result of applying the AND operation (`A ⋀ B`
 1. Click on any article on [Wikipedia](https://www.wikipedia.org/ "Wikipedia").
 2. Click on the first non-parenthesized, non-italicized link.
 3. Ignore external links.
-4. You will eventually reach the Wikipedia article on “[Philosophy](https://en.wikipedia.org/wiki/Philosophy "Philosophy")”.
+4. You will eventually reach the Wikipedia article about “[Philosophy](https://en.wikipedia.org/wiki/Philosophy "Philosophy")”.
 5. Fun exercise: try to automate steps 1 to 4.
 
 ## 3. Idempotency In Maths.
@@ -102,7 +102,7 @@ Several years ago, some friends and cousins sat down on a cosy sofa to play figh
 
 We’ve all done that.
 
-The reality is, once a button was pressed, the game was going to load another state and the remaining presses — despite how enthusiastic we were — wouldn’t change a thing. We can picture that button as the following automaton state. Once we leave that state, we cannot get back to it.
+The reality is, once a button was pressed, the game was going to load another state and the remaining presses — despite how enthusiastic we were — wouldn’t change a thing. We can picture that button as the following automaton state. Once we leave that state, we do not get back to it.
 
 ![Idempotency Automaton State](/images/idempotency-in-action/idempotency-automaton-state.webp)
 
@@ -128,7 +128,7 @@ Generally, in computer science, idempotency refers to a property of certain oper
 
 Let’s look at a simple example using the Set data structure.
 
-```
+```ruby
 require 'set'
 
 # Create a set of unique numbers
@@ -138,7 +138,7 @@ numbers_set = Set.new([1, 2, 3, 4])
 puts "Numbers set before adding: #{numbers_set}"
 # Output: Numbers set before adding: #<Set: {1, 2, 3, 4}>
 
-# Add an existing number to the set
+# Add an existing number to the set twice
 numbers_set.add(3)
 numbers_set.add(3)
 
@@ -151,15 +151,15 @@ If we add an existing value to a set, nothing changes.
 
 ### 6. REST API
 
-Some Restful APIs are designed to be idempotent with requests such as GET, HEAD, OPTIONS and TRACE. They don’t change the data.
+Some Restful APIs are designed to be idempotent with requests such as `GET`, `HEAD`, `OPTIONS` and `TRACE`. They don’t change the data.
 
 ```ruby
 GET /api/users/12345
 ```
 
-This GET request does not alter the server's state, and even if executed repeatedly, the user data will be returned consistently.
+This `GET` request does not alter the server's state, and even if executed repeatedly, the user data will be returned consistently.
 
-PUT & DELETE despite changing the data does so only once i.e. if you delete a resource once or many times, the resource is deleted only once. Same with PUT which is an update operation.
+`PUT` & `DELETE` despite changing the data does so only once i.e. if you delete a resource once or many times, the resource is deleted only once. Same with `PUT` which is an update operation.
 
 Consider an example using HTTParty in Ruby:
 
@@ -222,13 +222,13 @@ This function takes a message as input and logs the message to the console. The 
 
 The `@logged_message` variable is used to track whether the message has already been logged. The first time the function is called, the value of `@logged_message` is `false`. The function then sets the value of `@logged_message` to `true` and logs the message to the console. The next time the function is called, the value of `@logged_message` is still `true`, so the function does not log the message again.
 
-> Idempotency is a phenomenon that’s reflected everywhere in our daily lives similar to the [Golden Ratio](https://www.notion.so/Draft-bbf6ec99f11c43a990837da3ac79187d?pvs=21). Each time you turn on a switch, that’s idempotency in action. In this post, we’ve seen how it originates in Philosophy and is nowadays an important discussion in the design of Computer Systems. From Distributed Architecture, Test Automation, and Payment Gateways to building resilient and efficient systems, idempotency is incredibly relevant.
+> Idempotency is a phenomenon that’s reflected everywhere in our daily lives similar to the [Golden Ratio](https://www.notion.so/Draft-bbf6ec99f11c43a990837da3ac79187d?pvs=21 "Golden Ratio"). Each time you turn on a switch, that’s idempotency in action. In this post, we’ve seen how it applies to Philosophy and is an important discussion in the design of Computer Systems. From Distributed Architecture, Test Automation, and Payment Gateways to building resilient and efficient systems, idempotency is incredibly relevant.
 
 ## PS.
 
-1. [Philosophy](https://en.wikipedia.org/wiki/Philosophy "Philosophy") (2023, August 3).
+1. [Philosophy](https://en.wikipedia.org/wiki/Philosophy "Philosophy") (Wikipedia - 2023, August 3).
 2. [Idempotent Operations](https://www.baeldung.com/cs/idempotent-operations "Idempotent Operations").
-3. [Prettyprint](https://en.wikipedia.org/wiki/Prettyprint "Prettyprint") (2023, June 1).
+3. [Prettyprint](https://en.wikipedia.org/wiki/Prettyprint "Prettyprint") (Wikipedia - 2023, June 1).
 4. Aristotle - Nicomachean Ethics. Translated by W.D. Ross. Oxford: Oxford University Press, 1925.
 5. [What Is Idempotence?](https://www.computerhope.com/jargon/i/idempotence.htm "What Is Idempotence?").
-6. [Idempotence](https://en.wikipedia.org/wiki/Idempotence "Idempotence") (2023, July 22).
+6. [Idempotence](https://en.wikipedia.org/wiki/Idempotence "Idempotence") (Wikipedia - 2023, July 22).
