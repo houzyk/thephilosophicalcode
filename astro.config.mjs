@@ -22,8 +22,5 @@ if (process.env.VERCEL_ENV === "preview" || process.env.VERCEL_ENV === "developm
 export default defineConfig({
   server: { port: SERVER_PORT },
   site: BASE_URL,
-  integrations: [sitemap()],
-  experimental: {
-    viewTransitions: true
-  }
+  integrations: [sitemap()]
 });
