@@ -3,6 +3,7 @@
   "display": "theme/minimal",
   "compilerOptions": {
     "types": ["astro/client"],
-    "baseUrl": "."
+    "baseUrl": ".",
+    "moduleResolution": "Node10"
   }
 }
