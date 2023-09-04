@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 
 import { SITE_URL } from "../../config";
 
-export const get: APIRoute = async () => {
+export const GET: APIRoute = async () => {
   return ({
     body: JSON.stringify({
       routes: {
