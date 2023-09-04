@@ -13,7 +13,7 @@ const filteredArticles = articles
   .filter((p) => p.frontmatter.draft !== true)
   .filter(({ frontmatter }) => !frontmatter.external);
 
-export const get: APIRoute = async () => {
+export const GET: APIRoute = async () => {
   return ({
     body: JSON.stringify({
       articles: filteredArticles.map(({ slug, frontmatter: { title } }) => ({

@@ -4,7 +4,7 @@ import { readAll } from "../../../lib/markdoc/read";
 import { article } from "../../../lib/markdoc/frontmatter.schema";
 import { SITE_URL } from "../../../config";
 
-export const get:APIRoute = async ({ params, props }) => {
+export const GET:APIRoute = async ({ params, props }) => {
   const { slug } = params;
 
   const {
