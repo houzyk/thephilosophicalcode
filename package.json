@@ -16,12 +16,11 @@
     "cypress-test-on-vercel-prod-local": "npx cypress run --spec 'cypress/e2e/vercel-prod.cy.ts' --config baseUrl='http://localhost:3000/'"
   },
   "dependencies": {
-    "@astrojs/prism": "^3.0.0",
-    "@astrojs/rss": "^4.0.1",
-    "@astrojs/sitemap": "^3.0.3",
-    "@astrojs/vercel": "^6.1.0",
+    "@astrojs/prism": "^1.0.2",
+    "@astrojs/rss": "^2.0.0",
+    "@astrojs/sitemap": "^1.0.0",
     "@markdoc/markdoc": "^0.2.1",
-    "astro": "^4.0.5",
+    "astro": "^3.0.8",
     "astro-markdoc-renderer": "0.0.1-alpha.1",
     "globby": "^13.1.3",
     "gray-matter": "^4.0.3",
