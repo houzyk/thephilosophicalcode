@@ -1,10 +1,9 @@
-import type { APIRoute } from 'astro';
-
 import { readAll } from "../../../lib/markdoc/read";
 import { article } from "../../../lib/markdoc/frontmatter.schema";
 import { SITE_URL } from "../../../config";
 
-export const GET:APIRoute = async ({ params, props }) => {
+//@ts-ignore
+export const GET = ({ params, props }) => {
   const { slug } = params;
 
   const {
@@ -16,8 +15,7 @@ export const GET:APIRoute = async ({ params, props }) => {
     ogImagePath,
   } = props;
 
-  return {
-    body: JSON.stringify({
+  return new Response(JSON.stringify({
       title,
       description,
       author,
@@ -26,7 +24,7 @@ export const GET:APIRoute = async ({ params, props }) => {
       cover_photo: `${SITE_URL}${ogImagePath}`,
       live_url: `${SITE_URL}/articles/${slug}`
     })
-  }
+  );
 }
 
 export const getStaticPaths = async () => {

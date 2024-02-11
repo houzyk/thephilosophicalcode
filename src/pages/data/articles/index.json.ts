@@ -1,5 +1,3 @@
-import type { APIRoute } from 'astro';
-
 import { readAll } from "../../../lib/markdoc/read";
 import { article } from "../../../lib/markdoc/frontmatter.schema";
 import { SITE_URL } from "../../../config";
@@ -13,14 +11,13 @@ const filteredArticles = articles
   .filter((p) => p.frontmatter.draft !== true)
   .filter(({ frontmatter }) => !frontmatter.external);
 
-export const GET: APIRoute = async () => {
-  return ({
-    body: JSON.stringify({
+export const GET = () => {
+  return new Response(JSON.stringify({
       articles: filteredArticles.map(({ slug, frontmatter: { title } }) => ({
           title,
           api_route: `${SITE_URL}/data/articles/${slug}.json`
         })
       )
     })
-  });
+  );
 }
