@@ -1,6 +1,6 @@
 {
   "name": "the-philosophical-code",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -9,11 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "clean": "rm -rf dist",
-    "generate-article": "node ./scripts/generate-article.js",
-    "cypress-test-on-vercel-preview": "npx cypress run --spec 'cypress/e2e/vercel-preview.cy.ts'",
-    "cypress-test-on-vercel-preview-local": "npx cypress run --spec 'cypress/e2e/vercel-preview.cy.ts' --config baseUrl='http://localhost:3000/'",
-    "cypress-test-on-vercel-prod": "npx cypress run --spec 'cypress/e2e/vercel-prod.cy.ts'",
-    "cypress-test-on-vercel-prod-local": "npx cypress run --spec 'cypress/e2e/vercel-prod.cy.ts' --config baseUrl='http://localhost:3000/'"
+    "generate-article": "node ./scripts/generate-article.js"
   },
   "dependencies": {
     "@astrojs/prism": "^3.0.0",
@@ -28,7 +24,6 @@
     "zod": "^3.20.2"
   },
   "devDependencies": {
-    "cypress": "^12.17.2",
     "enquirer": "^2.4.1",
     "figlet": "^1.6.0",
     "prettier-plugin-astro": "^0.7.2",

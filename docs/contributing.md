@@ -20,7 +20,7 @@ Alternatively, you can go ahead and code it without any discussion. Then, please
 
 ## Scripts
 
-At the time of writing, scripts are of two kinds - automation test scripts and command line tool. Find them in `./cypress` and `./scripts` respectively.
+At the time of writing, scripts are only command line tool related. Find them in `./scripts` respectively.
 
 If you have any suggestion in mind, please create an issue and/or send a PR associated with it.
 
