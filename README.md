@@ -13,8 +13,7 @@ Live: [thephilosophicalcode.com](https://thephilosophicalcode.com)
 There are multiple ways to contribute:
 
 1. You can write and add your own article. Learn more about contributing an article [here](./docs/contributing-an-article.md).
-2. You can add a resource in the reading/resource list. More info [here](./docs/contributing-in-stuff.md).
-3. You can help in enhancing the app or fixing bugs. More info [here](./docs/contributing.md).
+2. You can help in enhancing the app or fixing bugs. More info [here](./docs/contributing.md).
 
 Please note that any contribution to this repository will result in your details (Github name and Github username) to be displayed on the people's section [here](https://thephilosophicalcode.com/people/).
 

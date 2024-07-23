@@ -32,7 +32,6 @@ Go to `localhost:3000`.
 | Articles | `/articles` |
 | People | `/people` |
 | A Specific Article | `/articles/<article-title-goes-here>` |
-| Stuff | `/stuff` |
 | Endpoints - Entry | `/data/entry.json` |
 | Endpoints - People | `/data/people.json` |
 | Endpoints - Articles | `/data/articles.json` |
