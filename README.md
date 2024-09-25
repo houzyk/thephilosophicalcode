@@ -4,7 +4,7 @@
 
 Exploring Code From A Philosophical Point Of View.
 
-The Philosophical Code is an open-source article series exploring the intersection of philosophy and computation. Our raison d'être is quite simple - think of code like a Ferrari! It's a very powerful car and we can go to a lot of places with it. The job of the Engineer is to drive that car; the job of the "Philosopher Of Code" is to open its hood and study the engines. In other words, our goal is to conceptually break down computation itself.
+The Philosophical Code is an article series exploring the intersection of philosophy and computation. Our raison d'être is quite simple - think of code like a Ferrari! It's a very powerful car and we can go to a lot of places with it. The job of the Engineer is to drive that car; the job of the "Philosopher Of Code" is to open its hood and study the engines. In other words, our goal is to conceptually break down computation itself.
 
 Live: [thephilosophicalcode.com](https://thephilosophicalcode.com)
 
