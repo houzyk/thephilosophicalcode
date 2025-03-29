@@ -50,32 +50,3 @@ npm run build
 Go to `/dist`. You can serve it locally with `npx serve ./dist`
 
 Alternatively, `npm run preview`.
-
-## Docker
-
-This repo contains two Docker files. Find them in `./docker`.
-
-Build the Docker image for the app itself and the generate-article.js script.
-
-```
-docker-compose up
-
-```
-
-After the build, you should have two images- `thephilosophicalcode-app` and `thephilosophicalcode-generate-article-script`
-
-Run a `thephilosophicalcode-app` container.
-
-```
-docker run -p YOUR-PREFERED-PORT:80 thephilosophicalcode-app
-```
-
-Go to `localhost:YOUR-PREFERED-PORT`
-
-Run a `thephilosophicalcode-generate-article-script` container.
-
-(This should be used if you do not have node 18+. We should also make the container interactive and bind it to the root directory)
-
-```
-docker run --interactive -v ABSOLUTE-LOCAL-PATH-TO-THIS-REPO:/generate-article-script thephilosophicalcode-generate-article-script
-```

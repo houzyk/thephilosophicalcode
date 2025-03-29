@@ -8,8 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "clean": "rm -rf dist",
-    "generate-article": "node ./scripts/generate-article.js"
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "@astrojs/prism": "^3.0.0",

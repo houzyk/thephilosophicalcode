@@ -18,16 +18,6 @@ Please describe the idea that you have in the issue. Possibly with diagrams. We 
 
 Alternatively, you can go ahead and code it without any discussion. Then, please send your PR and we can check the deploy preview together. You can also upload photos/videos of the enhancement along with a quick description of what you did.
 
-## Scripts
-
-At the time of writing, scripts are only command line tool related. Find them in `./scripts` respectively.
-
-If you have any suggestion in mind, please create an issue and/or send a PR associated with it.
-
-Please describe the idea that you have in the issue. Possibly with diagrams. We can then chat about it.
-
-Alternatively, you can go ahead and code it without any discussion. Then, please send your PR and we can check the script together. You can also upload photos/videos of the script in action along with a quick description of what you did.
-
 ## Credit
 
 I highly appreciate any contribution. There's true magic behind open source. So, I will be adding your name under the "Contributors" section to the [people's section](https://thephilosophicalcode.com/people/) to show appreciation.
