@@ -15,7 +15,7 @@ export const GET = () => {
   return new Response(JSON.stringify({
       articles: filteredArticles.map(({ slug, frontmatter: { title } }) => ({
           title,
-          api_route: `${SITE_URL}/data/articles/${slug}.json`
+          route: `${SITE_URL}/data/articles/${slug}.json`
         })
       )
     })
