@@ -40,7 +40,7 @@ const ogImageAbsoluteUrl =
 
 <ContentLayout title={frontmatter.title} date={frontmatter.date} author={frontmatter.author} authorUrl={frontmatter.authorUrl}>
   <BlogPostMeta
-    title={frontmatter.title}
+    title={`${frontmatter.title} | The Philosophical Code`}
     description={frontmatter.external ? undefined : frontmatter.description}
     publishDate={frontmatter.date.toISOString()}
     pagePath={`/articles/${slug}`}
