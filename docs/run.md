@@ -32,10 +32,10 @@ Go to `localhost:3000`.
 | Articles | `/articles` |
 | People | `/people` |
 | A Specific Article | `/articles/<article-title-goes-here>` |
-| Endpoints - Entry | `/data/entry.json` |
-| Endpoints - People | `/data/people.json` |
-| Endpoints - Articles | `/data/articles.json` |
-| Endpoints - Specific Article | `/data/articles/<article-title-goes-here>` |
+| Open Data - Index | `/data.json` |
+| Open Data - People | `/data/people.json` |
+| Open Data - Articles | `/data/articles.json` |
+| Open Data - Specific Article | `/data/articles/<article-title-goes-here>` |
 | RSS | `/rss.xml` |
 | Sitemap | `/sitemap-0.xml` |
 
