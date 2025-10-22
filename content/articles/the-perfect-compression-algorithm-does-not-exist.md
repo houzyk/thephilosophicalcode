@@ -1,23 +1,23 @@
 ---
 external: false
 title: "The Perfect Compression Algorithm Does Not Exist"
-description: "In this article, we'll informally prove the claim that the perfect compression algorithm does not exist."
+description: "In this article, we'll informally prove that the perfect compression algorithm does not (and cannot) exist."
 authorUrl: "https://github.com/houzyk"
 ogImagePath: "/images/the-perfect-compression-algorithm-does-not-exist/cover.webp"
-date: 2025-10-21
+date: 2025-10-22
 author: "Muhammad Houzair Koussa"
 ---
 ![The Perfect Compression Algorithm Does Not Exist](/images/the-perfect-compression-algorithm-does-not-exist/cover.webp)
 
-> In this article, we'll informally prove the claim that the perfect compression algorithm does not exist.
+> In this article, we'll informally prove that the perfect compression algorithm does not (and cannot) exist.
 
 ## 1. Preliminaries
 
-To make our upcoming proof as clear and concise as possible, we'll start by clarifying our claim and contrasting it with some related but subtley different ideas. Finally, we'll sketch a brief outline of our proof to give a sense of how it unfolds.
+To make the upcoming proof as clear and concise as possible, we'll start by clarifying the claim, that the perfect compression algorithm does not exist, and contrasting it with some related but subtley different ideas. After that, we'll sketch a brief outline of the proof to give a sense of how it unfolds.
 
-### Clarifying Our Claim
+### Clarifying The Claim
 
-Intuitively, our claim contains three ambigious terms that require clarification - 'perfect', 'compression' and 'algorithm'. 
+Intuitively, the claim contains three ambigious terms that require clarification - 'perfect', 'compression' and 'algorithm'. 
 
 #### Algorithm
 
@@ -31,7 +31,7 @@ Secondly, let's characterise compression as follows:
 
     b. If a string `S` is compressed into a string `S1`, then the length of `S1` is strictly less than the length of `S`.
 
-    c. `S1` encodes `S`. In other words, there is a procedure to decode the information contained in `S` from `S1`. Formally, there exists a function `F` such that `S = F(S1)`.
+    c. `S1` encodes `S`. In other words, the information contained in `S` is retrievable from `S1` even if `S1` is smaller in length. So, there is a procedure to decode/retrieve the information contained in `S` from `S1`. Formally, there exists a "decoding" function `F` such that `S = F(S1)`.
 
 As an illustration, consider the string `11111111110000000000` (10 `1`'s followed by 10 `0`'s). Intuitively, `1(10)0(10)` compresses `11111111110000000000`. Notice how our compressed string meets all of the aforementioned characterisations.
 
@@ -39,9 +39,9 @@ As an illustration, consider the string `11111111110000000000` (10 `1`'s followe
 
     b. The length of `1(10)0(10)` is strictly less than the length of `11111111110000000000`.
 
-    c. We can easily write a function that returns `11111111110000000000` given `1(10)0(10)`.
+    c. We can easily write a "decoding" function that returns `11111111110000000000` given `1(10)0(10)`.
 
-Notice that our characterisation applies to any kind of strings. Crucially, this means that we can compress programs and compress strings into programs. Moreover, we did not impose any limit on the length of the strings. So, we can talk of compressing strings of arbitrary length that tend to infinity. For example, the digits of pi "3.14..." is infinitely long but we can easily compress it into a program that generates the n'th digits of PI. In this case, the digits of pi up to n is of arbitrary length and the program is of finite length.
+Our characterisation applies to all kinds of strings - without restriction. This is crucial because it means we can not only compress arbitrary strings but also compress programs themselves, and even compress strings into programs. Moreover, we have not imposed any limit on string length, allowing us to compress strings of arbitrary and unbounded length. For instance, consider the sequence of digits of π up to its `n`th digit. As `n` tends to infinity, the corresponding string grows arbitrarily long. Yet, this infinite family of strings can be compressed into a finite [program](https://en.wikipedia.org/wiki/Chudnovsky_algorithm "program") that returns the `n`th digit of π. In effect, we have compressed an unbounded sequence of strings into a single finite and bounded program.
 
 #### Perfect
 
