@@ -4,7 +4,7 @@ title: "The Perfect Compression Algorithm Does Not Exist"
 description: "In this article, we'll informally prove that the perfect compression algorithm does not (and cannot) exist."
 authorUrl: "https://github.com/houzyk"
 ogImagePath: "/images/the-perfect-compression-algorithm-does-not-exist/cover.webp"
-date: 2025-10-22
+date: 2025-10-23
 author: "Muhammad Houzair Koussa"
 ---
 ![The Perfect Compression Algorithm Does Not Exist](/images/the-perfect-compression-algorithm-does-not-exist/cover.webp)
@@ -13,7 +13,7 @@ author: "Muhammad Houzair Koussa"
 
 ## 1. Preliminaries
 
-To make the upcoming proof as clear and concise as possible, we'll start by clarifying the claim, that the perfect compression algorithm does not exist, and contrasting it with some related but subtley different ideas. After that, we'll sketch a brief outline of the proof to give a sense of how it unfolds.
+To make the upcoming proof as clear and concise as possible, we'll start by clarifying the claim (that the perfect compression algorithm does not exist) and contrasting it with some related but subtley different ideas. After that, we'll sketch a brief outline of the proof to give a sense of how it unfolds.
 
 ### Clarifying The Claim
 
@@ -29,9 +29,9 @@ Secondly, let's characterise compression as follows:
 
     a. Compression is essentially about strings.
 
-    b. If a string `S` is compressed into a string `S1`, then the length of `S1` is strictly less than the length of `S`.
+    b. If a string `SS` is compressed into a string `S`, then the length of `S` is strictly less than the length of `SS`.
 
-    c. `S1` encodes `S`. In other words, the information contained in `S` is retrievable from `S1` even if `S1` is smaller in length. So, there is a procedure to decode/retrieve the information contained in `S` from `S1`. Formally, there exists a "decoding" function `F` such that `S = F(S1)`.
+    c. `S` encodes `SS`. In other words, the information contained in `SS` is retrievable from `S` even if `S` is smaller in length. So, there is a procedure to decode/retrieve/decompress the information contained in `SS` from `S`. Formally, there exists a decompression function `decompress` such that `SS = decompress(S)`.
 
 As an illustration, consider the string `11111111110000000000` (10 `1`'s followed by 10 `0`'s). Intuitively, `1(10)0(10)` compresses `11111111110000000000`. Notice how our compressed string meets all of the aforementioned characterisations.
 
@@ -39,19 +39,19 @@ As an illustration, consider the string `11111111110000000000` (10 `1`'s followe
 
     b. The length of `1(10)0(10)` is strictly less than the length of `11111111110000000000`.
 
-    c. We can easily write a "decoding" function that returns `11111111110000000000` given `1(10)0(10)`.
+    c. We can easily write a decompression function that returns `11111111110000000000` given `1(10)0(10)`.
 
-Our characterisation applies to all kinds of strings - without restriction. This is crucial because it means we can not only compress arbitrary strings but also compress programs themselves, and even compress strings into programs. Moreover, we have not imposed any limit on string length, allowing us to compress strings of arbitrary and unbounded length. For instance, consider the sequence of digits of π up to its `n`th digit. As `n` tends to infinity, the corresponding string grows arbitrarily long. Yet, this infinite family of strings can be compressed into a finite [program](https://en.wikipedia.org/wiki/Chudnovsky_algorithm "program") that returns the `n`th digit of π. In effect, we have compressed an unbounded sequence of strings into a single finite and bounded program.
+Our characterisation applies to all kinds of strings - without restriction. This is crucial because it means that we can not only compress arbitrary strings but also compress programs themselves, and even compress strings into programs. Moreover, we have not imposed any limit on string length, allowing us to compress strings of arbitrary and unbounded length. For instance, consider the sequence of digits of π up to _n_ digits. As _n_ tends to infinity, the corresponding string grows arbitrarily long. Yet, this infinite family of strings can be compressed into a finite [program](https://en.wikipedia.org/wiki/Chudnovsky_algorithm "program") that returns π up to _n_ digits. In effect, we have compressed an unbounded sequence of strings into a single finite and bounded program.
 
 #### Perfect
 
-Thirdly, a compression algorithm is perfect if it returns the smallest possible compression of any given string. In other words, given a string S, the compression function `compress` is perfect if and only if `compress(S)` returns a compressed string S1 such that, for all compressions of S, S1 has the smallest length. For simplicity, we'll say that S1 is the minimal compression of S.
+Thirdly, a compression algorithm is perfect if it returns the smallest possible compression of any given string. In other words, given a string `SS`, the compression function `compress` is perfect if and only if `compress(SS)` returns a compressed string `S` such that, for all compressions of `SS`, `S` has the smallest length. For simplicity, we'll say that `S` is the minimal compression of `SS`.
 
-For example, `1(5*2)0(5*2)` also compresses `11111111110000000000`. Intuitively, `1(10)0(10)` is the better compression because it's shorter in length. Colloquially, `1(10)0(10)` is a more "perfect" compression than `1(5*2)0(5*2)`.
+For example, `1(5*2)0(5*2)` also compresses `11111111110000000000`. Intuitively, `1(10)0(10)` is a better compression because it's shorter in length. Colloquially, `1(10)0(10)` is a "more perfect" compression than `1(5*2)0(5*2)`.
 
-Before wraping things up, note that our proof will only be considering binary strings, i.e. strings that only contains `0`'s and `1`'s. Actually, we will be proving that the perfect compression algorithm does not exist by considering the set of all possible binary strings denotated as `{0,1}*`. The latter is an infinite set that contains all possible pieces of information including all possible programs and data (It also includes the empty string). Consequently, we've unpacked our claim into:
+Before wraping things up, note that our proof will only be considering binary strings, i.e. strings that only contains `0`'s and `1`'s. Actually, we will be proving that the perfect compression algorithm does not exist by considering the set of all possible binary strings denotated as `{0,1}*`. Despite this simple set The latter is an infinite set that contains all possible pieces of information including all possible programs and data (it also includes the empty string). This keeps our proof theoretically robust as one can easily imagine transition functions which maps any strings to the strings in `{0,1}*` Consequently, we've unpacked our claim into:
 
-> For all strings `S` in `{0,1}*`, there is no compression function `compress` such that `compress(S)` is the minimal compression of `S`. 
+> For all strings `SS` in `{0,1}*`, there is no compression function `compress` such that `compress(S)` is the minimal compression of `SS`. 
 
 This means that we cannot have a compression algorithm that will output the smallest possible compression of any given piece of data.
 
@@ -73,7 +73,7 @@ Thirdly, this gives rise to a "no free lunch" princple concerning compression al
 
 ### Proof Outline
 
-Our proof is a _reductio ad absurdum_ (proof by contradiction). Essentially, we will assume that the perfect compression algorithm exists and derive a contradiction. In particular, with our algorithm in hand, we will be able to build a function whose job is to return the smallest string that can be compressed to at least n bits. In other words, given some arbitrary number n, our made-up function will return the smallest string that can be compressed with at least n bits.
+Our proof is a _reductio ad absurdum_ (proof by contradiction). Essentially, we will assume that the perfect compression function exists to derive a contradiction. In particular, with our assumption in hand, we will be able to build a function `berry` which returns the smallest string that can be compressed to at least `n` bits. Finally, we will build another function that yields all strings in `{0,1}*` to show that `berry` is inconsistent. Hence, a perfect compression algorithm cannot exist. 
 
 
 ## 2. Kolmogorov Complexity
