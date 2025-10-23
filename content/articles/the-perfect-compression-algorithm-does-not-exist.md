@@ -17,11 +17,13 @@ To make the upcoming proof as clear and concise as possible, we'll start by clar
 
 ### Clarifying The Claim
 
-Intuitively, the claim contains three ambigious terms that require clarification - 'perfect', 'compression' and 'algorithm'. 
+Intuitively, the claim contains three ambigious terms that require clarification - 'perfect', 'compression' and 'algorithm'.
 
 #### Algorithm
 
-Starting with the latter, let's characterise an algorithm as a function - a black-box that takes an input and returns an output. The primary motivation behind this characterisation is theoretical. At its core, the [Lambda Calculus](https://plato.stanford.edu/entries/lambda-calculus/ "Lambda Calculus") consists entirely of black-box functions that can be created and applied. Despite this simplicity, it's a well-established result that the Lambda Calculus is a universal model of computation equivalent to Turing Machines. In other words, anything that can be computed by a conventional computer can be represented within the Lambda Calculus. So, characterising 'algorithm' as 'function' seems like a theoretically robust way to clarify what an algorithm is.
+Starting with the latter, let's characterise an algorithm as a function - a black-box that takes an input and returns an output. The primary motivation behind this characterisation is the [Lambda Calculus](https://plato.stanford.edu/entries/lambda-calculus/ "Lambda Calculus"). At its core, the Lambda Calculus consists entirely of black-box functions that can be created and applied. Despite this simplicity, it's a well-established result that the Lambda Calculus is a universal model of computation equivalent to Turing Machines. In other words, anything that can be computed by a conventional computer can be represented within the Lambda Calculus.
+
+Thus, characterising an algorithm as a function seems like a theoretically robust way to clarify what an algorithm is. Importantly, this means that a proof demonstrating that a perfect compression algorithm does not exist would carry universal and objective validity. Regardless of computational power, model or physical implementation - whether classical, quantum or otherwise - no such algorithm could exist.
 
 #### Compression
 
@@ -31,7 +33,7 @@ Secondly, let's characterise compression as follows:
 
     b. If a string `SS` is compressed into a string `S`, then the length of `S` is strictly less than the length of `SS`.
 
-    c. `S` encodes `SS`. In other words, the information contained in `SS` is retrievable from `S` even if `S` is smaller in length. So, there is a procedure to decode/retrieve/decompress the information contained in `SS` from `S`. Formally, there exists a decompression function `decompress` such that `SS = decompress(S)`.
+    c. `S` encodes `SS`. In other words, the information contained in `SS` is retrievable from `S` even if `S` is smaller in length. So, there is a procedure to decode/decompress the information contained in `SS` from `S`. Formally, there exists a decompression function `decompress` such that `SS = decompress(S)`.
 
 As an illustration, consider the string `11111111110000000000` (10 `1`'s followed by 10 `0`'s). Intuitively, `1(10)0(10)` compresses `11111111110000000000`. Notice how our compressed string meets all of the aforementioned characterisations.
 
@@ -41,7 +43,7 @@ As an illustration, consider the string `11111111110000000000` (10 `1`'s followe
 
     c. We can easily write a decompression function that returns `11111111110000000000` given `1(10)0(10)`.
 
-Our characterisation applies to all kinds of strings - without restriction. This is crucial because it means that we can not only compress arbitrary strings but also compress programs themselves, and even compress strings into programs. Moreover, we have not imposed any limit on string length, allowing us to compress strings of arbitrary and unbounded length. For instance, consider the sequence of digits of π up to _n_ digits. As _n_ tends to infinity, the corresponding string grows arbitrarily long. Yet, this infinite family of strings can be compressed into a finite [program](https://en.wikipedia.org/wiki/Chudnovsky_algorithm "program") that returns π up to _n_ digits. In effect, we have compressed an unbounded sequence of strings into a single finite and bounded program.
+Notice that our characterisation applies to all kinds of strings - without restriction. This is crucial because it means that we can not only compress arbitrary strings but also compress programs themselves, and even compress strings into programs. Moreover, we have not imposed any limit on string length, allowing us to compress strings of arbitrary and unbounded length. For instance, consider the sequence of digits of π up to _n_ digits. As _n_ tends to infinity, the corresponding string grows arbitrarily long. Yet, this infinite set of strings can be compressed into a finite [program](https://en.wikipedia.org/wiki/Chudnovsky_algorithm "program") that returns π up to _n_ digits. In effect, we have compressed an unbounded sequence of strings into a single finite and bounded program.
 
 #### Perfect
 
@@ -80,8 +82,11 @@ Our proof is a _reductio ad absurdum_ (proof by contradiction). Essentially, we 
 
 ## 3. Berry's Paradox
 
-## 4. Berry's Paradox As A Function
-
-## 5. Wrapping Up
+## 4. Quod Erat Demonstrandum
 
 ## Footnotes
+
+1. Inspired by Kolmogorov and Solomonoff
+2. Church Turing Thesis & non-classical computers
+3. a note on compression. necessary but not sufficient
+4. a note about transition functions
