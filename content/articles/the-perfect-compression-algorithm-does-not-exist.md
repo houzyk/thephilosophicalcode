@@ -69,18 +69,19 @@ Having clarified the claim, let's now constrast it with some related but subtley
 
 One such idea is the impossibility of compressing *all* strings. This is quite easy to prove. 
 
-Let's consider all binary strings of length `n`. Since we're in binary, the total number of such strings is `2 ** n` (`2` to the power of `n`). Given one of the aforementioned characterisations of compression, the length of a compressed string `S` is strictly less than the length of the original string `SS` itself. So, the total number of strings available to compress all strings of length `n` is at most `2 ** (n-1)`. Trivially, `2 ** (n-1)` is less than `2 ** n`. Hence, there are more strings of length `n` than strings of length `n-1` available to compress them into. By mathematical induction, it's impossible to compress all strings. So, the set of all binary strings can be strictly divided into the set of incompressible strings and the set of compressible strings.
+Let's consider all binary strings of length `n`. Since we're in binary, the total number of such strings is `2 ** n` (`2` to the power of `n`). Given one of the aforementioned characterisations of compression, the length of a compressed string `S` is strictly less than the length of the original string `SS` itself. So, the total number of strings available to compress all strings of length `n` is at most `2 ** (n-1)`. Trivially, `2 ** (n-1)` is less than `2 ** n`. Hence, there are more strings of length `n` than strings of length `n-1` available to compress them into. By mathematical induction, it's impossible to compress all strings. So, the set of all binary strings `{0,1}*` can be strictly divided into the subset of incompressible strings and the subset of compressible strings.
 
-In contrast, we're not claiming that we cannot compress all strings. Instead, our claim is slightly stronger. We're claiming that there is no perfect compression algorithm even for the set of compressible strings.
+In contrast, we're not claiming that we cannot compress all strings. Instead, our claim is slightly stronger. We're claiming that there is no perfect compression algorithm even for the subset of compressible strings.
 
 #### General Compression Algorithms
 
-Secondly, our claim is not that there cannot exist general compression algorithms. We do have . The crucial point is that these general compressions algorithms are not perfect. In other words, they will never be able to produce the smallesst possible compression of any piece of data. 
+Secondly, we're not claiming that there are no general compression algorithm. These are algorithms that compress any piece of data. In fact, there are several programs that implement such algorithms (like [gzip](https://www.gzip.org/ "gzip")). In contrast, we're claiming that there are no _perfect_ general compression algorithms. This means that any general compression algorithm has a hard limit - they will never be able to output the smallest possible compression of any piece of data.
 
 #### Specialised Compression Algorithms
 
-Thirdly, this gives rise to a "no free lunch" princple concerning compression algorithms.Specialised compressions algorithm will always have a limit. We could, for example, theoretically come up with the perfect compression algorith
+Thirdly, we're not claiming that there are no specialised compression algorithm. These are algorithms that compress any piece of data of a given type. For example, [WebP](https://developers.google.com/speed/webp "WebP") can be considered as a specialised compression algorithim for image data. Moreover, we're also not claiming that there are no perfect and specialised compression algorithm. To understand this subtlety, recall that our claim is that there is no perfect compression algorithm for the subset of compressible strings in `{0,1}*`. A specialised compression algorithm does not focus on that whole subset. Instead, it focuses on compressing strings drawn from a smaller subset (corresponding to a particular type of data) within that subset of compressible strings. In contrast, our claim concerns the whole subset of compressible strings, not the smaller subsets on which specialised algorithms focus.
 
+However, our claim does have implications specialised compression algorithm. In particular, they are subject to a no-free-lunch limit - even if these algorithms may be perfect within their specialised subset, they will never be perfect for compressing anything beyond that subset. Morever, it is impossible to simply merge multiple perfect specialised algorithms to create a perfect “master compression algorithm” across all data types.
 
 ### Proof Outline
 
