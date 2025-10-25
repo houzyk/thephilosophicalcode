@@ -92,9 +92,9 @@ Our proof is a _reductio ad absurdum_ (proof by contradiction). Essentially, we 
 ## Footnotes
 
 1. This article is heavily inspired by the ideas and works of [Andrey Kolmogorov
-](https://en.wikipedia.org/wiki/Andrey_Kolmogorov, "Andrey Kolmogorov"), [Ray Solomonoff](https://en.wikipedia.org/wiki/Ray_Solomonoff, "Ray Solomonoff") and [Gregory Chaitin](https://en.wikipedia.org/wiki/Gregory_Chaitin, "Gregory Chaitin").
+](https://en.wikipedia.org/wiki/Andrey_Kolmogorov "Andrey Kolmogorov"), [Ray Solomonoff](https://en.wikipedia.org/wiki/Ray_Solomonoff "Ray Solomonoff") and [Gregory Chaitin](https://en.wikipedia.org/wiki/Gregory_Chaitin "Gregory Chaitin").
 
-2. Our proof's universal and objective validity is fully dependent on the supposed veracity of [The Church-Turing Thesis](https://plato.stanford.edu/entries/church-turing/, "The Church-Turing Thesis").
+2. Our proof's universal and objective validity is fully dependent on the supposed veracity of [The Church-Turing Thesis](https://plato.stanford.edu/entries/church-turing/ "The Church-Turing Thesis").
 
 3. Our three characterisations of compression are meant to only be necessary and not sufficient.
 
