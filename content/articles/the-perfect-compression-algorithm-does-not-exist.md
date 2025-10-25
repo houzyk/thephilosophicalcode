@@ -85,8 +85,7 @@ However, our claim does have implications specialised compression algorithm. In 
 
 ### Proof Outline
 
-Our proof is a _reductio ad absurdum_ (proof by contradiction). Essentially, we will assume that the perfect compression function exists to derive a contradiction. In particular, with our assumption in hand, we will be able to build a function `berry` which returns the smallest string that can be compressed to at least `n` bits. Finally, we will build another function that yields all strings in `{0,1}*` to show that `berry` is inconsistent. Hence, a perfect compression algorithm cannot exist. 
-
+Our proof is a _reductio ad absurdum_ (proof by contradiction). Essentially, we'll assume that the perfect compression function exists to derive a contradiction. With our assumption in hand, we'll be able to build a function `berry` which returns the smallest string that can be compressed with at least `n` bits. In particular, `berry` is composed of the perfection compression function and another function that yields all strings in `{0,1}*`. Our contradiction arises in showing that, given some input `i`, the length of the `berry` function is inconsistent with the return value of `berry(i)`.
 
 ## 2. Kolmogorov Complexity
 
