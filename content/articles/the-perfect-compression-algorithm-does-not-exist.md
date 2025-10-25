@@ -65,9 +65,13 @@ Informally, this means that:
 
 Having clarified the claim, let's now constrast it with some related but subtley different ideas.
 
-#### Compressing All Possible Strings
+#### Compressing All Strings
 
-It's also noteworthy to contrast our claim with the similar but subtley different claim that it's impossible to compress **all** strings. Actually, that is quite easy to prove. Let's consider all binary strings of length _n_. Since we're in binary, the total number of such strings is 2^_n_ (2 to the power of _n_). By definition, the length of a compressed string is strictly less than the length of the string itself. So, for all strings of length _n_, the total number of compressed strings available is at most 2^(_n_-1). Trivially, 2^(_n_-1) is less than 2^_n_. Hence, there are more strings of length _n_ than strings available to compress them. By mathematical induction, it's impossible to compress all strings.
+One such idea is the impossibility of compressing *all* strings. This is quite easy to prove. 
+
+Let's consider all binary strings of length `n`. Since we're in binary, the total number of such strings is `2 ** n` (`2` to the power of `n`). Given one of the aforementioned characterisations of compression, the length of a compressed string `S` is strictly less than the length of the original string `SS` itself. So, the total number of strings available to compress all strings of length `n` is at most `2 ** (n-1)`. Trivially, `2 ** (n-1)` is less than `2 ** n`. Hence, there are more strings of length `n` than strings of length `n-1` available to compress them into. By mathematical induction, it's impossible to compress all strings. So, the set of all binary strings can be strictly divided into the set of incompressible strings and the set of compressible strings.
+
+In contrast, we're not claiming that we cannot compress all strings. Instead, our claim is slightly stronger. We're claiming that there is no perfect compression algorithm even for the set of compressible strings.
 
 #### General Compression Algorithms
 
