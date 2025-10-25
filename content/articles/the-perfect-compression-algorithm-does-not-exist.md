@@ -4,7 +4,7 @@ title: "The Perfect Compression Algorithm Does Not Exist"
 description: "In this article, we'll informally prove that the perfect compression algorithm does not (and cannot) exist."
 authorUrl: "https://github.com/houzyk"
 ogImagePath: "/images/the-perfect-compression-algorithm-does-not-exist/cover.webp"
-date: 2025-10-23
+date: 2025-10-25
 author: "Muhammad Houzair Koussa"
 ---
 ![The Perfect Compression Algorithm Does Not Exist](/images/the-perfect-compression-algorithm-does-not-exist/cover.webp)
@@ -13,7 +13,7 @@ author: "Muhammad Houzair Koussa"
 
 ## 1. Preliminaries
 
-To make the upcoming proof as clear and concise as possible, we'll start by clarifying the claim (that the perfect compression algorithm does not exist) and contrasting it with some related but subtley different ideas. After that, we'll sketch a brief outline of the proof to give a sense of how it unfolds.
+To make the upcoming proof [1] as clear and concise as possible, we'll start by clarifying the claim, that the perfect compression algorithm does not exist, and contrasting it with some related but subtley different ideas. After that, we'll sketch a brief outline of the proof to give a sense of how it unfolds.
 
 ### Clarifying The Claim
 
@@ -23,11 +23,11 @@ Intuitively, the claim contains three ambigious terms that require clarification
 
 Starting with the latter, let's characterise an algorithm as a function - a black-box that takes an input and returns an output. The primary motivation behind this characterisation is the [Lambda Calculus](https://plato.stanford.edu/entries/lambda-calculus/ "Lambda Calculus"). At its core, the Lambda Calculus consists entirely of black-box functions that can be created and applied. Despite this simplicity, it's a well-established result that the Lambda Calculus is a universal model of computation equivalent to Turing Machines. In other words, anything that can be computed by a conventional computer can be represented within the Lambda Calculus.
 
-Thus, characterising an algorithm as a function seems like a theoretically robust way to clarify what an algorithm is. Importantly, this means that a proof demonstrating that a perfect compression algorithm does not exist would carry universal and objective validity. Regardless of computational power, model or physical implementation - whether classical, quantum or otherwise - no such algorithm could exist.
+Thus, characterising an algorithm as a function seems like a theoretically robust way to clarify what an algorithm is. Importantly, this means that a proof demonstrating that a perfect compression algorithm does not exist would carry universal and objective validity. Regardless of computational power, model or physical implementation - whether classical, quantum or otherwise - no such algorithm could exist [2].
 
 #### Compression
 
-Secondly, let's characterise compression as follows:
+Secondly, let's characterise compression as follows [3]:
 
     a. Compression is essentially about strings.
 
@@ -43,22 +43,27 @@ As an illustration, consider the string `11111111110000000000` (10 `1`'s followe
 
     c. We can easily write a decompression function that returns `11111111110000000000` given `1(10)0(10)`.
 
-Notice that our characterisation applies to all kinds of strings - without restriction. This is crucial because it means that we can not only compress arbitrary strings but also compress programs themselves, and even compress strings into programs. Moreover, we have not imposed any limit on string length, allowing us to compress strings of arbitrary and unbounded length. For instance, consider the sequence of digits of π up to _n_ digits. As _n_ tends to infinity, the corresponding string grows arbitrarily long. Yet, this infinite set of strings can be compressed into a finite [program](https://en.wikipedia.org/wiki/Chudnovsky_algorithm "program") that returns π up to _n_ digits. In effect, we have compressed an unbounded sequence of strings into a single finite and bounded program.
+Notice that our characterisation applies to all kinds of strings - without restriction. This means that, not only can we compress arbitrary strings, but also compress programs themselves, and even compress strings into programs. Moreover, we have not imposed any limit on string length, allowing us to compress strings of arbitrary and unbounded length. For instance, consider the sequence of digits of π up to _n_ digits. As _n_ tends towards infinity, the corresponding string grows arbitrarily long. Yet, this infinite set of strings can be compressed into a finite [program](https://en.wikipedia.org/wiki/Chudnovsky_algorithm "program") that returns π up to _n_ digits. In effect, we have compressed an unbounded sequence of strings into a single finite and bounded program.
 
 #### Perfect
 
-Thirdly, a compression algorithm is perfect if it returns the smallest possible compression of any given string. In other words, given a string `SS`, the compression function `compress` is perfect if and only if `compress(SS)` returns a compressed string `S` such that, for all compressions of `SS`, `S` has the smallest length. For simplicity, we'll say that `S` is the minimal compression of `SS`.
+Thirdly, a compression algorithm is perfect if it returns the smallest possible compression of any given string. In other words, given a string `SS`, the compression function `compress` is perfect if and only if `compress(SS)` returns a compressed string `s` such that, for all compressions of `SS`, `s` has the smallest length. For simplicity, we'll say that `s` is the minimal compression of `SS`.
 
 For example, `1(5*2)0(5*2)` also compresses `11111111110000000000`. Intuitively, `1(10)0(10)` is a better compression because it's shorter in length. Colloquially, `1(10)0(10)` is a "more perfect" compression than `1(5*2)0(5*2)`.
 
-Before wraping things up, note that our proof will only be considering binary strings, i.e. strings that only contains `0`'s and `1`'s. Actually, we will be proving that the perfect compression algorithm does not exist by considering the set of all possible binary strings denotated as `{0,1}*`. Despite this simple set The latter is an infinite set that contains all possible pieces of information including all possible programs and data (it also includes the empty string). This keeps our proof theoretically robust as one can easily imagine transition functions which maps any strings to the strings in `{0,1}*` Consequently, we've unpacked our claim into:
+Before wraping things up, note that we will only be considering binary strings throughout our proof, i.e. strings that only contains `0`'s and `1`'s. In particular, our proof demonstrates that there is no perfect compression algorithm for all strings within the set of all binary strings denotated as `{0,1}*` (including the empty string). This is in line with ensuring the universal and objective validity of our proof since `{0,1}*` is an infinite set that contains all possible pieces of data and computer programs [4]. 
 
-> For all strings `SS` in `{0,1}*`, there is no compression function `compress` such that `compress(S)` is the minimal compression of `SS`. 
+To wrap things up, we may now clarify the claim as follows:
 
-This means that we cannot have a compression algorithm that will output the smallest possible compression of any given piece of data.
+> For all strings `SS` in `{0,1}*`, there is no compression function `compress` such that `compress(S)` returns the minimal compression of `SS` 
 
+Informally, this means that:
+
+> We cannot have a compression algorithm that will output the smallest possible compression of any given piece of data. 
 
 ### Contrasting Our Claim
+
+Having clarified the claim, let's now constrast it with some related but subtley different ideas.
 
 #### Compressing All Possible Strings
 
@@ -86,7 +91,11 @@ Our proof is a _reductio ad absurdum_ (proof by contradiction). Essentially, we 
 
 ## Footnotes
 
-1. Inspired by Kolmogorov and Solomonoff
-2. Church Turing Thesis & non-classical computers
-3. a note on compression. necessary but not sufficient
-4. a note about transition functions
+1. This article is heavily inspired by the ideas and works of [Andrey Kolmogorov
+]("https://en.wikipedia.org/wiki/Andrey_Kolmogorov", "Andrey Kolmogorov"), [Ray Solomonoff]("https://en.wikipedia.org/wiki/Ray_Solomonoff", "Ray Solomonoff") and [Gregory Chaitin]("https://en.wikipedia.org/wiki/Gregory_Chaitin", "Gregory Chaitin").
+
+2. Our proof's universal and objective validity is fully dependent on the supposed veracity of [The Church-Turing Thesis]("https://plato.stanford.edu/entries/church-turing/", "The Church-Turing Thesis").
+
+3. Our three characterisations of compression are meant to only be necessary and not sufficient.
+
+4. To understand how `{0,1}*` contains all possible pieces of data and computer programs, we have to come up with transition functions. In practice, these are mappings from one set of characters to another. For example, given the set of all possible characters in Python, a transition function would map each character to a substring containing only `0`'s and `1`'s'. Consequently, we would then get the binary substring representing any particular Python program.
