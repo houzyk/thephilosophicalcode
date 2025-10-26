@@ -81,7 +81,7 @@ Secondly, we're not claiming that there are no general compression algorithm. Th
 
 Thirdly, we're not claiming that there are no specialised compression algorithm. These are algorithms that can compress any piece of data of a given type. For example, [WebP](https://developers.google.com/speed/webp "WebP") can be considered as a specialised compression algorithm for image data. Moreover, we're also not claiming that there are no perfect and specialised compression algorithm [5]. To understand this subtlety, recall that our claim is that there is no perfect compression algorithm for the subset of compressible strings in `{0,1}*`. A specialised compression algorithm does not focus on that whole subset. Instead, it focuses on compressing strings drawn from a smaller subset (corresponding to a particular type of data) within that subset of compressible strings. In contrast, our claim concerns the whole subset of compressible strings, not the smaller subsets on which specialised algorithms focus.
 
-However, our claim does have implications on specialised compression algorithm. In particular, they are subject to a no-free-lunch limit - even if these algorithms may be perfect within their specialised subset, they cannot be perfect in compressing anything beyond that subset. Moreover, it is impossible to simply merge multiple potentially perfect specialised algorithms to create a perfect “master compression algorithm” across all data types.
+However, our claim does have implications on specialised compression algorithm. In particular, they are subject to a no-free-lunch limit - even if these algorithms may be perfect within their specialised subset, they cannot be perfect in compressing anything beyond that subset. Moreover, it's impossible to simply merge multiple potentially perfect specialised algorithms to create a perfect “master compression algorithm” across all data types.
 
 ### Proof Outline
 
@@ -98,7 +98,7 @@ def perfect_compress(SS: str) -> str:
 
 Recall that `perfect_compress` takes any string `SS` and returns the minimal compression `s` of `SS`. In other words, for all possible compressions of `SS`, `s` is the smallest in length.
 
-Since, for some arbitrary string `SS`, `perfect_compress(SS)` returns a string, we may find the length of the minimal compression of `SS` by calling `len(perfect_compress(SS))`. In fact, that particular length is called the [Kolmogorov Complexity](https://en.wikipedia.org/wiki/Kolmogorov_complexity "Kolmogorov Complexity") of any arbitrary string. So, given that `perfect_compress` supposedly exists, we may not write another function that returns the Kolmogorov Complexity of any string.
+Since, for some arbitrary string `SS`, `perfect_compress(SS)` returns a string, we may find the length of the minimal compression of `SS` by calling `len(perfect_compress(SS))`. In fact, that particular length is called the [Kolmogorov Complexity](https://en.wikipedia.org/wiki/Kolmogorov_complexity "Kolmogorov Complexity") of any arbitrary string. So, given that `perfect_compress` supposedly exists, we may now write another function that returns the Kolmogorov Complexity of any string.
 
 ```py
 def kolmogorov_complexity(SS: str) -> int:
