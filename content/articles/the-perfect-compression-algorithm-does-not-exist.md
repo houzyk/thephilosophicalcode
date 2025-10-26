@@ -161,7 +161,7 @@ In particular, `all_binary_strings_in_ascending_order` is finite in length (in o
 
 Moreover, the loop and check are both of finite length. The check contains the `kolmogorov_complexity` function which itself contains the `perfect_compress` function. We need to impose that `perfect_compress` is of finite length. If it's not, then we would have a function infinite in length which already proves our claim that there is no perfect compression algorithm.
 
-Secondly, let's call `berry` with some input `2 * BERRY_LENGTH`. So, `berry(2 * BERRY_LENGTH)` returns the smallest possible string `b` that can be compressed with at least `2 * BERRY_LENGTH` characters. In other words, `b` cannot be compressed in fewer than `2 * BERRY_LENGTH` characters
+Secondly, let's call `berry` with some input `2 * BERRY_LENGTH`. So, `berry(2 * BERRY_LENGTH)` returns the smallest possible string `b` that can be compressed with at least `2 * BERRY_LENGTH` characters. In other words, `b` cannot be compressed in fewer than `2 * BERRY_LENGTH` characters.
 
 Similar in spirit to Berry's Paradox, notice that the function call `berry(2 * BERRY_LENGTH)` is itself a compression of `b` since `berry(2 * BERRY_LENGTH)` returns `b`.
 
