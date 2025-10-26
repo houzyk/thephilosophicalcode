@@ -183,3 +183,5 @@ Thus, we've compressed a string `b`, which by definition cannot be compressed in
 5. To say that we're "not claiming that there are no perfect and specialised compression algorithm" does not imply that there are such algorithms nor that they do not exist.
 
 6. In hindsight, our proof not only shows that the perfect compression algorithm does not exist but also that it's impossible to compute the Kolmogorov Complexity of any string.
+
+I may have, unintentionally, left some technical or mathematical errors in this article. If you spot them, kindly send a PR to this [repo](https://github.com/houzyk/thephilosophicalcode "repo") or send me an email - houzairmk@icloud.com.
