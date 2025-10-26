@@ -153,6 +153,22 @@ def berry(n: int) -> str:
 
 ## 4. Quod Erat Demonstrandum
 
+With `berry` in hand, we may now derive a contradiction and reject our assumption that the perfect compression algorithm `perfect_compress` exists.
+
+Firstly, notice that `berry` is of some finite length (call it `BERRY_LENGTH`). This is because all of it's components are finite in length.
+
+In particular, `all_binary_strings_in_ascending_order` is finite in length (in our case, it's the number of characters taken to write our Python snippet once converted to binary).
+
+Moreover, the loop and check are both of finite length. The check contains the `kolmogorov_complexity` function which itself contains the `perfect_compress` function. We need to impose that `perfect_compress` is of finite length. If it's not, then we would have a function infinite in length which already proves our claim that there is no perfect compression algorithm.
+
+Secondly, let's call `berry` with some input `2 * BERRY_LENGTH`. So, `berry(2 * BERRY_LENGTH)` returns the smallest possible string `b` that can be compressed with at least `2 * BERRY_LENGTH` bits. In other words, `b` cannot be compressed in fewer than `2 * BERRY_LENGTH` bits
+
+Similar in spirit to Berry's Paradox, notice that the function call `berry(2 * BERRY_LENGTH)` is itself a compression of `b` since `berry(2 * BERRY_LENGTH)` returns `b`.
+
+Crucially, `berry(2 * BERRY_LENGTH)` is of length `BERRY_LENGTH` and `BERRY_LENGTH` is less than `2 * BERRY_LENGTH`.
+
+Thus, we've compressed a string `b`, which by definition cannot be compressed in fewer than `2 * BERRY_LENGTH` bits, with a program of `BERRY_LENGTH` bits in length. That's a contradiction. So, our assumption that `perfect_compress` exists is false. Hence, the perfect compression algorithm does not exist.
+
 ## Footnotes
 
 1. This article is heavily inspired by the ideas and works of [Andrey Kolmogorov
