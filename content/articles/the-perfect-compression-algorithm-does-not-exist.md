@@ -157,7 +157,7 @@ With `berry` in hand, we may now derive a contradiction and reject our assumptio
 
 Firstly, notice that `berry` is of some finite length (call it `BERRY_LENGTH`). This is because all of it's components are finite in length.
 
-In particular, `all_binary_strings_in_ascending_order` is finite in length (in our case, it's the number of characters taken to write our Python snippet once converted to binary).
+In particular, `all_binary_strings_in_ascending_order` is finite in length (in our case, it's the number of characters taken to write our Python snippet once converted to binary). One should distinguish between the fact that `all_binary_strings_in_ascending_order` generates infinitely many strings and that its code is finite in length. We're solely concerned with its finite code length.
 
 Moreover, the loop and check are both of finite length. The check contains the `kolmogorov_complexity` function which itself contains the `perfect_compress` function. We need to impose that `perfect_compress` is of finite length. If it's not, then we would have a function infinite in length which already proves our claim that there is no perfect compression algorithm.
 
@@ -178,7 +178,7 @@ Thus, we've compressed a string `b`, which by definition cannot be compressed in
 
 3. Our three characterisations of compression are meant to only be necessary and not sufficient.
 
-4. To understand how `{0,1}*` contains all possible pieces of data and computer programs, we have to come up with transition functions. In practice, these are mappings from one set of characters to another. For example, given the set of all possible characters in Python, a transition function would map each character to a substring containing only `0`'s and `1`'s'. Consequently, we would then get the binary substring representing any particular Python program.
+4. To understand how `{0,1}*` contains all possible pieces of data and computer programs, we have to come up with transition functions. In practice, these are mappings from one set of characters to another. For example, given the set of all possible characters in Python, a transition function would map each character to a substring containing only `0`'s and `1`'s. Consequently, we would then get the binary substring representing any particular Python program.
 
 5. To say that we're "not claiming that there are no perfect and specialised compression algorithm" does not imply that there are such algorithms nor that they do not exist.
 
