@@ -85,7 +85,7 @@ However, our claim does have implications on specialised compression algorithm. 
 
 ### Proof Outline
 
-Our proof is a _reductio ad absurdum_ (proof by contradiction). Essentially, we'll assume that the perfect compression function exists to derive a contradiction. With our assumption in hand, we'll build a function `berry` which returns the smallest string that can be compressed with at least `n` bits. In particular, `berry` is composed of the perfection compression function and another function that yields all strings in `{0,1}*`. Our contradiction arises in showing that, given some input, the length of the `berry` function is inconsistent with its return value.
+Our proof is a _reductio ad absurdum_ (proof by contradiction). Essentially, we'll assume that the perfect compression function exists to derive a contradiction. With our assumption in hand, we'll build a function `berry` which returns the smallest string that can be compressed with at least `n` characters. In particular, `berry` is composed of the perfection compression function and another function that yields all strings in `{0,1}*`. Our contradiction arises in showing that, given some input, the length of the `berry` function is inconsistent with its return value.
 
 ## 2. Kolmogorov Complexity
 
@@ -121,11 +121,11 @@ Consider the following "Berry Statement":
 
 Let's say that there is such an integer and let's call it `B`. So, `B` is the smallest positive integer that cannot be described in fewer than 15 English words. In other words, we need at least 15 English words to describe `B`. To witness Berry's Paradox, notice that the Berry Statement itself is a description of `B`. Crucially, the Berry Statement only contains 14 words. Thus, we've described an integer `B`, which by definition cannot be described in fewer than 15 words, with just 14 words. This is the essence of Berry's Paradox.
 
-We may now build the `berry` function which is quite close in spirit to the Berry Statement. In particular, `berry` is a function that returns the smallest possible string that can be compressed with at least `n` bits. Given an input `n`, `berry(n)` returns the smallest string that can be compressed using strings of at least `n` in length. 
+We may now build the `berry` function which is quite close in spirit to the Berry Statement. In particular, `berry` is a function that returns the smallest possible string that can be compressed with at least `n` characters. Given an input `n`, `berry(n)` returns the smallest string that can be compressed using strings of at least `n` in length. 
 
-For example, if `berry(n)` returns `SSB`, then we need at least `n` bits to compress `SSB`. So, any compression `SB` of `SSB` is at least `n` in length. So, `SB` compresses `SSB` such that `len(SB)` is less than `len(SSB)` and `len(SB)` is at least `n`.
+For example, if `berry(n)` returns `SSB`, then we need at least `n` characters to compress `SSB`. So, any compression `SB` of `SSB` is at least `n` in length. So, `SB` compresses `SSB` such that `len(SB)` is less than `len(SSB)` and `len(SB)` is at least `n`.
 
-In terms of implementation, for some input `n`, `berry` loops through every possible binary strings in ascending order. For each binary string, it checks whether the Kolmogorov Complexity of that string is at least `n`. If that's the case, it returns that string, else the loop continues. In particular, if some string `SS` meets our check, then the Kolmogorov Complexity of `SS` is at least `n`. So, the minimal compression `s` of `SS` is at least `n` in length. Since we're looping through all strings in ascending order, the first string that meets our check and which `berry` returns is the smallest possible string that can be compressed with at least `n` bits.
+In terms of implementation, for some input `n`, `berry` loops through every possible binary strings in ascending order. For each binary string, it checks whether the Kolmogorov Complexity of that string is at least `n`. If that's the case, it returns that string, else the loop continues. In particular, if some string `SS` meets our check, then the Kolmogorov Complexity of `SS` is at least `n`. So, the minimal compression `s` of `SS` is at least `n` in length. Since we're looping through all strings in ascending order, the first string that meets our check and which `berry` returns is the smallest possible string that can be compressed with at least `n` characters.
 
 In essence, `berry` requires two components - a function that yields all binary string in ascending order and a check for each binary string using `kolmogorov_complexity`.
 
@@ -161,13 +161,13 @@ In particular, `all_binary_strings_in_ascending_order` is finite in length (in o
 
 Moreover, the loop and check are both of finite length. The check contains the `kolmogorov_complexity` function which itself contains the `perfect_compress` function. We need to impose that `perfect_compress` is of finite length. If it's not, then we would have a function infinite in length which already proves our claim that there is no perfect compression algorithm.
 
-Secondly, let's call `berry` with some input `2 * BERRY_LENGTH`. So, `berry(2 * BERRY_LENGTH)` returns the smallest possible string `b` that can be compressed with at least `2 * BERRY_LENGTH` bits. In other words, `b` cannot be compressed in fewer than `2 * BERRY_LENGTH` bits
+Secondly, let's call `berry` with some input `2 * BERRY_LENGTH`. So, `berry(2 * BERRY_LENGTH)` returns the smallest possible string `b` that can be compressed with at least `2 * BERRY_LENGTH` characters. In other words, `b` cannot be compressed in fewer than `2 * BERRY_LENGTH` characters
 
 Similar in spirit to Berry's Paradox, notice that the function call `berry(2 * BERRY_LENGTH)` is itself a compression of `b` since `berry(2 * BERRY_LENGTH)` returns `b`.
 
 Crucially, `berry(2 * BERRY_LENGTH)` is of length `BERRY_LENGTH` and `BERRY_LENGTH` is less than `2 * BERRY_LENGTH`.
 
-Thus, we've compressed a string `b`, which by definition cannot be compressed in fewer than `2 * BERRY_LENGTH` bits, with a program of `BERRY_LENGTH` bits in length. That's a contradiction! So, our assumption that `perfect_compress` exists is false. Hence, the perfect compression algorithm does not exist [6].
+Thus, we've compressed a string `b`, which by definition cannot be compressed in fewer than `2 * BERRY_LENGTH` characters, with a program of `BERRY_LENGTH` characters in length. That's a contradiction! So, our assumption that `perfect_compress` exists is false. Hence, the perfect compression algorithm does not exist [6].
 
 ## Footnotes
 
