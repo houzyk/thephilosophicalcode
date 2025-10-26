@@ -89,6 +89,28 @@ Our proof is a _reductio ad absurdum_ (proof by contradiction). Essentially, we'
 
 ## 2. Kolmogorov Complexity
 
+Let's begin our proof by assuming that the perfect compression function exists (call that function `perfect_compress`). We'll be writing most of the proof in Python to make it easier to follow along.
+
+```py
+def perfect_compress(SS: str) -> str:
+    pass
+```
+
+Recall that `perfect_compress` takes any string `SS` and returns the minimal compression `s` of `SS`. In other words, for all possible compressions of `SS`, `s` is the smallest in length.
+
+Since, for some arbitrary string `SS`, `perfect_compress(SS)` returns a string, we may find the length of the minimal compression of `SS` by calling `len(perfect_compress(SS))`. In fact, that particular length is called the [Kolmogorov Complexity](https://en.wikipedia.org/wiki/Kolmogorov_complexity "Kolmogorov Complexity") of any arbitrary string [6]. So, given that `perfect_compress` supposedly exists, we may not write another function that returns the Kolmogorov Complexity of any string.
+
+```py
+def kolmogorov_complexity(SS: str) -> int:
+    return len(perfect_compress(SS))
+```
+
+As a side node, the Kolmogorov Complexity of a string `SS` is often defined as the length of the shortest _computer program_ in some _fixed language_ that returns `SS`. There are two points worth unpacking here. 
+
+Firstly, the shortest computer programs that returns `SS` is essentially the minimal compression of `SS`. To see why, recall that our aformentioned characterisations of compression applies to all strings without restriction such that we may compress strings into programs. 
+
+Secondly, the impossibility of a perfect compression algorithm implies the impossibility of computing the Kolmogorov Complexity of any string. At first glace, one might suspect that the dependence of the Kolmogorov Complexity on some fixed language impacts the  universal and objective validity of our proof, Perhaps, we could avoid these impossibilities by changing the language. However, this is a no-go. The crucial point to understand is that the numerical _value_ of the Kolmogorov Complexity changes with respect to the chosen language. However, the computation of that value remains impossible independent of the language. In other words, although the value is language-relative, the impossibility of computing it is universal, objective and language-independent.
+
 ## 3. Berry's Paradox
 
 ## 4. Quod Erat Demonstrandum
