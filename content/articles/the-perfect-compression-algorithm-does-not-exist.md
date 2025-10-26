@@ -113,7 +113,7 @@ Secondly, the impossibility of a perfect compression algorithm implies the impos
 
 ## 3. Berry's Paradox
 
-With `kolmogorov_complexity` in hand, we may now build the `berry` function. Before doing that, we have to take a look at Berry's Paradox. 
+With `kolmogorov_complexity` in hand, we may now build the `berry` function. Before doing that, let's take a look at Berry's Paradox. 
 
 Consider the following "Berry Statement":
 
@@ -127,7 +127,7 @@ For example, if `berry(n)` returns `SSB`, then we need at least `n` bits to comp
 
 In terms of implementation, for some input `n`, `berry` loops through every possible binary strings in ascending order. For each binary string, it checks whether the Kolmogorov Complexity of that string is at least `n`. If that's the case, it returns that string, else the loop continues. In particular, if some string `SS` meets our check, then the Kolmogorov Complexity of `SS` is at least `n`. So, the minimal compression `s` of `SS` is at least `n` in length. Since we're looping through all strings in ascending order, the first string that meets our check and which `berry` returns is the smallest possible string that can be compressed with at least `n` bits.
 
-In essence, `berry` requires two components - a function that yields all binary string in ascending order and a conditional check for each binary string using `kolmogorov_complexity`.
+In essence, `berry` requires two components - a function that yields all binary string in ascending order and a check for each binary string using `kolmogorov_complexity`.
 
 The function that yields all binary strings can be implemented in Python as follows:
 
