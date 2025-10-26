@@ -155,7 +155,7 @@ def berry(n: int) -> str:
 
 With `berry` in hand, we may now derive a contradiction and reject our assumption that the perfect compression algorithm `perfect_compress` exists.
 
-Firstly, notice that `berry` is of some finite length (call it `BERRY_LENGTH`). This is because all of it's components are finite in length.
+Firstly, notice that `berry` is of some finite length (call it `BERRY_LENGTH`). This is because all of its components are finite in length.
 
 In particular, `all_binary_strings_in_ascending_order` is finite in length (in our case, it's the number of characters taken to write our Python snippet once converted to binary). One should distinguish between the fact that `all_binary_strings_in_ascending_order` generates infinitely many strings and that its code is finite in length. We're solely concerned with its finite code length.
 
