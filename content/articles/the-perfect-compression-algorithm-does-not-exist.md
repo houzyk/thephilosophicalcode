@@ -4,7 +4,7 @@ title: "The Perfect Compression Algorithm Does Not Exist"
 description: "In this article, we'll informally prove that the perfect compression algorithm does not (and cannot) exist."
 authorUrl: "https://github.com/houzyk"
 ogImagePath: "/images/the-perfect-compression-algorithm-does-not-exist/cover.webp"
-date: 2025-10-25
+date: 2025-10-26
 author: "Muhammad Houzair Koussa"
 ---
 ![The Perfect Compression Algorithm Does Not Exist](/images/the-perfect-compression-algorithm-does-not-exist/cover.webp)
@@ -13,11 +13,11 @@ author: "Muhammad Houzair Koussa"
 
 ## 1. Preliminaries
 
-To make the upcoming proof [1] as clear and concise as possible, we'll start by clarifying the claim, that the perfect compression algorithm does not exist, and contrasting it with some related but subtley different ideas. After that, we'll sketch a brief outline of the proof to give a sense of how it unfolds.
+To make the upcoming proof [1] as clear and concise as possible, we'll start by clarifying the claim, that the perfect compression algorithm does not exist, and contrasting it with some related but subtly different ideas. After that, we'll sketch a brief outline of the proof to give a sense of how it unfolds.
 
 ### Clarifying The Claim
 
-Intuitively, the claim contains three ambigious terms that require clarification - 'perfect', 'compression' and 'algorithm'.
+Intuitively, the claim contains three ambiguous terms that require clarification - 'perfect', 'compression' and 'algorithm'.
 
 #### Algorithm
 
@@ -51,7 +51,7 @@ Thirdly, a compression algorithm is perfect if it returns the smallest possible 
 
 For example, `1(5*2)0(5*2)` also compresses `11111111110000000000`. Intuitively, `1(10)0(10)` is a better compression because it's shorter in length. Colloquially, `1(10)0(10)` is a "more perfect" compression than `1(5*2)0(5*2)`.
 
-Before wraping things up, note that we will only be considering binary strings throughout our proof, i.e. strings that only contains `0`'s and `1`'s. In particular, our proof demonstrates that there is no perfect compression algorithm for all strings within the set of all binary strings denotated as `{0,1}*` (including the empty string). This is in line with ensuring the universal and objective validity of our proof since `{0,1}*` is an infinite set that contains all possible pieces of data and computer programs [4]. 
+Before wrapping things up, note that we will only be considering binary strings throughout our proof, i.e. strings that only contains `0`'s and `1`'s. In particular, our proof demonstrates that there is no perfect compression algorithm for all strings within the set of all binary strings denoted as `{0,1}*` (including the empty string). This is in line with ensuring the universal and objective validity of our proof since `{0,1}*` is an infinite set that contains all possible pieces of data and computer programs [4]. 
 
 To wrap things up, we may now clarify the claim as follows:
 
@@ -63,7 +63,7 @@ Informally, this means that:
 
 ### Contrasting Our Claim
 
-Having clarified the claim, let's now constrast it with some related but subtley different ideas.
+Having clarified the claim, let's now contrast it with some related but subtly different ideas.
 
 #### Compressing All Strings
 
@@ -79,9 +79,9 @@ Secondly, we're not claiming that there are no general compression algorithm. Th
 
 #### Specialised Compression Algorithms
 
-Thirdly, we're not claiming that there are no specialised compression algorithm. These are algorithms that compress any piece of data of a given type. For example, [WebP](https://developers.google.com/speed/webp "WebP") can be considered as a specialised compression algorithim for image data. Moreover, we're also not claiming that there are no perfect and specialised compression algorithm. To understand this subtlety, recall that our claim is that there is no perfect compression algorithm for the subset of compressible strings in `{0,1}*`. A specialised compression algorithm does not focus on that whole subset. Instead, it focuses on compressing strings drawn from a smaller subset (corresponding to a particular type of data) within that subset of compressible strings. In contrast, our claim concerns the whole subset of compressible strings, not the smaller subsets on which specialised algorithms focus.
+Thirdly, we're not claiming that there are no specialised compression algorithm. These are algorithms that compress any piece of data of a given type. For example, [WebP](https://developers.google.com/speed/webp "WebP") can be considered as a specialised compression algorithm for image data. Moreover, we're also not claiming that there are no perfect and specialised compression algorithm. To understand this subtlety, recall that our claim is that there is no perfect compression algorithm for the subset of compressible strings in `{0,1}*`. A specialised compression algorithm does not focus on that whole subset. Instead, it focuses on compressing strings drawn from a smaller subset (corresponding to a particular type of data) within that subset of compressible strings. In contrast, our claim concerns the whole subset of compressible strings, not the smaller subsets on which specialised algorithms focus.
 
-However, our claim does have implications specialised compression algorithm. In particular, they are subject to a no-free-lunch limit - even if these algorithms may be perfect within their specialised subset, they will never be perfect for compressing anything beyond that subset. Morever, it is impossible to simply merge multiple perfect specialised algorithms to create a perfect “master compression algorithm” across all data types.
+However, our claim does have implications on specialised compression algorithm. In particular, they are subject to a no-free-lunch limit - even if these algorithms may be perfect within their specialised subset, they will never be perfect for compressing anything beyond that subset. Moreover, it is impossible to simply merge multiple perfect specialised algorithms to create a perfect “master compression algorithm” across all data types.
 
 ### Proof Outline
 
@@ -96,9 +96,9 @@ Our proof is a _reductio ad absurdum_ (proof by contradiction). Essentially, we'
 ## Footnotes
 
 1. This article is heavily inspired by the ideas and works of [Andrey Kolmogorov
-](https://en.wikipedia.org/wiki/Andrey_Kolmogorov "Andrey Kolmogorov"), [Ray Solomonoff](https://en.wikipedia.org/wiki/Ray_Solomonoff "Ray Solomonoff") and [Gregory Chaitin](https://en.wikipedia.org/wiki/Gregory_Chaitin "Gregory Chaitin").
+](https://en.wikipedia.org/wiki/Andrey_Kolmogorov "Andrey Kolmogorov"), [Ray Solomonoff](https://en.wikipedia.org/wiki/Ray_Solomonoff "Ray Solomonoff"), [G. G. Berry](https://en.wikipedia.org/wiki/Berry_paradox "G. G. Berry") and [Gregory Chaitin](https://en.wikipedia.org/wiki/Gregory_Chaitin "Gregory Chaitin").
 
-2. Our proof's universal and objective validity is fully dependent on the supposed veracity of [The Church-Turing Thesis](https://plato.stanford.edu/entries/church-turing/ "The Church-Turing Thesis").
+2. In my opinion, our proof's universal and objective validity is fully dependent on the supposed veracity of [The Church-Turing Thesis](https://plato.stanford.edu/entries/church-turing/ "The Church-Turing Thesis").
 
 3. Our three characterisations of compression are meant to only be necessary and not sufficient.
 
