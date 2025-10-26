@@ -159,7 +159,7 @@ Firstly, notice that `berry` is of some finite length (call it `BERRY_LENGTH`). 
 
 In particular, `all_binary_strings_in_ascending_order` is finite in length (in our case, it's the number of characters taken to write our Python snippet once converted to binary). One should distinguish between the fact that `all_binary_strings_in_ascending_order` generates infinitely many strings and that its code is finite in length. We're solely concerned with its finite code length.
 
-Moreover, the loop and check are both of finite length. The check contains the `kolmogorov_complexity` function which itself contains the `perfect_compress` function. We need to impose that `perfect_compress` is of finite length. If it's not, then we would have a function infinite in length which already proves our claim that there is no perfect compression algorithm.
+Moreover, the loop and check are both of finite length. The check contains the `kolmogorov_complexity` function which itself contains the `perfect_compress` function. We need to impose that `perfect_compress` is of finite length. If it's not, then we would have a function infinite in length which woulf already prove our claim that there is no perfect compression algorithm.
 
 Secondly, let's call `berry` with some input `2 * BERRY_LENGTH`. So, `berry(2 * BERRY_LENGTH)` returns the smallest possible string `b` that can be compressed with at least `2 * BERRY_LENGTH` characters. In other words, `b` cannot be compressed in fewer than `2 * BERRY_LENGTH` characters.
 
