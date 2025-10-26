@@ -35,7 +35,7 @@ Secondly, let's characterise compression as follows [3]:
 
     c. `S` encodes `SS`. In other words, the information contained in `SS` is retrievable from `S` even if `S` is smaller in length. So, there is a procedure to decode/decompress the information contained in `SS` from `S`. Formally, there exists a decompression function `decompress` such that `SS = decompress(S)`.
 
-As an illustration, consider the string `11111111110000000000` (10 `1`'s followed by 10 `0`'s). Intuitively, `1(10)0(10)` compresses `11111111110000000000`. Notice how our two strings meet all of the aforementioned characterisations.
+As an illustration, consider the string `11111111110000000000` (10 `1`'s followed by 10 `0`'s). Intuitively, `1(10)0(10)` compresses `11111111110000000000`. Notice how our two strings meet our aforementioned characterisation.
 
     a. `11111111110000000000` and `1(10)0(10)` are both strings.
 
@@ -69,7 +69,7 @@ Having clarified the claim, let's now contrast it with some related but subtly d
 
 One such idea is the impossibility of compressing *all* strings. As a side note, this impossibility is quite easy to prove. 
 
-Consider all binary strings of length `n`. Since we're in binary, the total number of such strings is `2 ** n` (`2` to the power of `n`). Given one of the aforementioned characterisations of compression, the length of a compressed string `S` is strictly less than the length of the original string `SS` itself. So, the total number of strings available to compress all strings of length `n` is at most `2 ** (n-1)`. Trivially, `2 ** (n-1)` is less than `2 ** n`. Hence, there are more strings of length `n` than strings of length at most `n-1` available to compress them into. By mathematical induction, it's impossible to compress all strings. So, the set of all binary strings `{0,1}*` can be partitioned into the subset of incompressible strings and the subset of compressible strings.
+Consider all binary strings of length `n`. Since we're in binary, the total number of such strings is `2 ** n` (`2` to the power of `n`). Given the aforementioned characterisation of compression, the length of a compressed string `S` is strictly less than the length of the original string `SS` itself. So, the total number of strings available to compress all strings of length `n` is at most `2 ** (n-1)`. Trivially, `2 ** (n-1)` is less than `2 ** n`. Hence, there are more strings of length `n` than strings of length at most `n-1` available to compress them into. By mathematical induction, it's impossible to compress all strings. So, the set of all binary strings `{0,1}*` can be partitioned into the subset of incompressible strings and the subset of compressible strings.
 
 In contrast, we're not claiming that we cannot compress all strings. Instead, our claim is slightly stronger. We're claiming that there is no perfect compression algorithm even for the subset of compressible strings.
 
@@ -85,7 +85,7 @@ However, our claim does have implications on specialised compression algorithms.
 
 ### Proof Outline
 
-Our proof is a _reductio ad absurdum_ (proof by contradiction). Essentially, we'll assume that the perfect compression function exists to derive a contradiction. With our assumption in hand, we'll build a function `berry` which returns the smallest string that can be compressed with at least `n` characters. In particular, `berry` is composed of the perfection compression function and another function that yields all strings in `{0,1}*`. Our contradiction arises in showing that, given some input, the length of the `berry` function is inconsistent with its return value.
+Our proof is a _reductio ad absurdum_ (proof by contradiction). Essentially, we'll assume that the perfect compression function exists to derive a contradiction. With our assumption in hand, we'll build a function `berry` which returns the smallest string that can be compressed with at least `n` characters. In particular, `berry` is composed of the perfect compression function and another function that yields all strings in `{0,1}*`. Our contradiction arises in showing that, given some input, the length of the `berry` function is inconsistent with its return value.
 
 ## 2. Kolmogorov Complexity
 
@@ -107,7 +107,7 @@ def kolmogorov_complexity(SS: str) -> int:
 
 As a side node, the Kolmogorov Complexity of a string `SS` is often defined as the length of the shortest _computer program_ in some _fixed language_ that returns `SS`. There are two points worth unpacking here. 
 
-Firstly, the shortest computer programs that returns `SS` is essentially the minimal compression of `SS`. To see why, recall that our aforementioned characterisations of compression applies to all strings without restriction such that we may compress strings into programs. 
+Firstly, the shortest computer programs that returns `SS` is essentially the minimal compression of `SS`. To see why, recall that our aforementioned characterisation of compression applies to all strings without restriction such that we may compress strings into programs. 
 
 Secondly, the impossibility of a perfect compression algorithm implies the impossibility of computing the Kolmogorov Complexity of any string. At first glance, one might suspect that the dependence of the Kolmogorov Complexity on some fixed language impacts the  universal and objective validity of our proof. Perhaps, we could avoid these impossibilities by changing the language. However, this is a no-go. The crucial point to understand is that the numerical _value_ of the Kolmogorov Complexity changes with respect to the chosen language. However, the computation of that value remains impossible independent of the language. In other words, although the value is language-relative, the impossibility of computing it is universal, objective and language-independent.
 
@@ -176,7 +176,7 @@ Thus, we've compressed a string `b`, which by definition cannot be compressed in
 
 2. In my opinion, our proof's universal and objective validity is fully dependent on the supposed veracity of [The Church-Turing Thesis](https://plato.stanford.edu/entries/church-turing/ "The Church-Turing Thesis").
 
-3. Our three characterisations of compression are meant to only be necessary and not sufficient.
+3. Our characterisation of compression is meant to only be necessary and not sufficient.
 
 4. To understand how `{0,1}*` contains all possible pieces of data and computer programs, we have to come up with transition functions. In practice, these are mappings from one set of characters to another. For example, given the set of all possible characters in Python, a transition function would map each character to a substring containing only `0`'s and `1`'s. Consequently, we would then get the binary substring representing any particular Python program.
 
