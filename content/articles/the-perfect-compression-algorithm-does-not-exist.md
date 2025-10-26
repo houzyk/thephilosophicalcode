@@ -171,7 +171,7 @@ Thus, we've compressed a string `b`, which by definition cannot be compressed in
 
 ## Footnotes
 
-1. This article is heavily inspired by the ideas and works of [Andrey Kolmogorov
+1. This article is heavily inspired by the ideas and work of [Andrey Kolmogorov
 ](https://en.wikipedia.org/wiki/Andrey_Kolmogorov "Andrey Kolmogorov"), [Ray Solomonoff](https://en.wikipedia.org/wiki/Ray_Solomonoff "Ray Solomonoff"), [G. G. Berry](https://en.wikipedia.org/wiki/Berry_paradox "G. G. Berry") and [Gregory Chaitin](https://en.wikipedia.org/wiki/Gregory_Chaitin "Gregory Chaitin"). Our proof itself is an informal adaptation of their ideas and work.
 
 2. In my opinion, our proof's universal and objective validity is fully dependent on the supposed veracity of [The Church-Turing Thesis](https://plato.stanford.edu/entries/church-turing/ "The Church-Turing Thesis").
