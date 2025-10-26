@@ -98,7 +98,7 @@ def perfect_compress(SS: str) -> str:
 
 Recall that `perfect_compress` takes any string `SS` and returns the minimal compression `s` of `SS`. In other words, for all possible compressions of `SS`, `s` is the smallest in length.
 
-Since, for some arbitrary string `SS`, `perfect_compress(SS)` returns a string, we may find the length of the minimal compression of `SS` by calling `len(perfect_compress(SS))`. In fact, that particular length is called the [Kolmogorov Complexity](https://en.wikipedia.org/wiki/Kolmogorov_complexity "Kolmogorov Complexity") of any arbitrary string [6]. So, given that `perfect_compress` supposedly exists, we may not write another function that returns the Kolmogorov Complexity of any string.
+Since, for some arbitrary string `SS`, `perfect_compress(SS)` returns a string, we may find the length of the minimal compression of `SS` by calling `len(perfect_compress(SS))`. In fact, that particular length is called the [Kolmogorov Complexity](https://en.wikipedia.org/wiki/Kolmogorov_complexity "Kolmogorov Complexity") of any arbitrary string. So, given that `perfect_compress` supposedly exists, we may not write another function that returns the Kolmogorov Complexity of any string.
 
 ```py
 def kolmogorov_complexity(SS: str) -> int:
