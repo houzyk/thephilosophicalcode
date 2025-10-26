@@ -167,7 +167,7 @@ Similar in spirit to Berry's Paradox, notice that the function call `berry(2 * B
 
 Crucially, `berry(2 * BERRY_LENGTH)` is of length `BERRY_LENGTH` and `BERRY_LENGTH` is less than `2 * BERRY_LENGTH`.
 
-Thus, we've compressed a string `b`, which by definition cannot be compressed in fewer than `2 * BERRY_LENGTH` bits, with a program of `BERRY_LENGTH` bits in length. That's a contradiction. So, our assumption that `perfect_compress` exists is false. Hence, the perfect compression algorithm does not exist.
+Thus, we've compressed a string `b`, which by definition cannot be compressed in fewer than `2 * BERRY_LENGTH` bits, with a program of `BERRY_LENGTH` bits in length. That's a contradiction! So, our assumption that `perfect_compress` exists is false. Hence, the perfect compression algorithm does not exist [6].
 
 ## Footnotes
 
@@ -181,3 +181,5 @@ Thus, we've compressed a string `b`, which by definition cannot be compressed in
 4. To understand how `{0,1}*` contains all possible pieces of data and computer programs, we have to come up with transition functions. In practice, these are mappings from one set of characters to another. For example, given the set of all possible characters in Python, a transition function would map each character to a substring containing only `0`'s and `1`'s'. Consequently, we would then get the binary substring representing any particular Python program.
 
 5. To say that we're "not claiming that there are no perfect and specialised compression algorithm" does not imply that there are such algorithms nor that they do not exist.
+
+6. In hindsight, our proof not only shows that the perfect compression algorithm does not exist but also that it's imposible to compute the Kolmogorov Complexity of any string.
