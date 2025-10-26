@@ -35,7 +35,7 @@ Secondly, let's characterise compression as follows [3]:
 
     c. `S` encodes `SS`. In other words, the information contained in `SS` is retrievable from `S` even if `S` is smaller in length. So, there is a procedure to decode/decompress the information contained in `SS` from `S`. Formally, there exists a decompression function `decompress` such that `SS = decompress(S)`.
 
-As an illustration, consider the string `11111111110000000000` (10 `1`'s followed by 10 `0`'s). Intuitively, `1(10)0(10)` compresses `11111111110000000000`. Notice how our compressed string meets all of the aforementioned characterisations.
+As an illustration, consider the string `11111111110000000000` (10 `1`'s followed by 10 `0`'s). Intuitively, `1(10)0(10)` compresses `11111111110000000000`. Notice how our two strings meet all of the aforementioned characterisations.
 
     a. `11111111110000000000` and `1(10)0(10)` are both strings.
 
@@ -43,7 +43,7 @@ As an illustration, consider the string `11111111110000000000` (10 `1`'s followe
 
     c. We can easily write a decompression function that returns `11111111110000000000` given `1(10)0(10)`.
 
-Notice that our characterisation applies to all kinds of strings - without restriction. This means that, not only can we compress arbitrary strings, but also compress programs themselves, and even compress strings into programs. Moreover, we have not imposed any limit on string length, allowing us to compress strings of arbitrary and unbounded length. For instance, consider the sequence of digits of π up to _n_ digits. As _n_ tends towards infinity, the corresponding string grows arbitrarily long. Yet, this infinite set of strings can be compressed into a finite [program](https://en.wikipedia.org/wiki/Chudnovsky_algorithm "program") that returns π up to _n_ digits. In effect, we have compressed an unbounded sequence of strings into a single finite and bounded program.
+Notice that our characterisation applies to all kinds of strings - without restriction. This means that, not only can we compress arbitrary strings, but also compress programs themselves, and even compress strings into programs. Moreover, we have not imposed any limit on string length, allowing us to compress strings of arbitrary and unbounded length. For instance, consider the sequence of digits of π up to _n_ digits. As _n_ tends towards infinity, the corresponding string grows arbitrarily long. Yet, this infinite set of strings can be compressed into a finite [program](https://en.wikipedia.org/wiki/Chudnovsky_algorithm "program") that returns π up to _n_ digits. In effect, we have compressed an unbounded set of strings into a single finite and bounded program.
 
 #### Perfect
 
@@ -51,41 +51,41 @@ Thirdly, a compression algorithm is perfect if it returns the smallest possible 
 
 For example, `1(5*2)0(5*2)` also compresses `11111111110000000000`. Intuitively, `1(10)0(10)` is a better compression because it's shorter in length. Colloquially, `1(10)0(10)` is a "more perfect" compression than `1(5*2)0(5*2)`.
 
-Before wrapping things up, note that we will only be considering binary strings throughout our proof, i.e. strings that only contains `0`'s and `1`'s. In particular, our proof demonstrates that there is no perfect compression algorithm for all strings within the set of all binary strings denoted as `{0,1}*` (including the empty string). This is in line with ensuring the universal and objective validity of our proof since `{0,1}*` is an infinite set that contains all possible pieces of data and computer programs [4]. 
+Before wrapping things up, note that we'll only be considering binary strings throughout our proof, i.e. strings that only contains `0`'s and `1`'s. In particular, our proof demonstrates that there is no perfect compression algorithm for all strings within the set of all binary strings denoted as `{0,1}*` (including the empty string). This is in line with ensuring the universal and objective validity of our proof since `{0,1}*` is an infinite set that contains all possible pieces of data and computer programs [4]. 
 
 To wrap things up, we may now clarify the claim as follows:
 
-> For all strings `SS` in `{0,1}*`, there is no compression function `compress` such that `compress(S)` returns the minimal compression of `SS` 
+> For all strings `SS` in `{0,1}*`, there is no compression function `perfect_compress` such that `perfect_compress(SS)` returns the minimal compression of `SS`.
 
 Informally, this means that:
 
 > We cannot have a compression algorithm that will output the smallest possible compression of any given piece of data. 
 
-### Contrasting Our Claim
+### Contrasting The Claim
 
 Having clarified the claim, let's now contrast it with some related but subtly different ideas.
 
 #### Compressing All Strings
 
-One such idea is the impossibility of compressing *all* strings. This is quite easy to prove. 
+One such idea is the impossibility of compressing *all* strings. As a side note, this impossibility is quite easy to prove. 
 
-Let's consider all binary strings of length `n`. Since we're in binary, the total number of such strings is `2 ** n` (`2` to the power of `n`). Given one of the aforementioned characterisations of compression, the length of a compressed string `S` is strictly less than the length of the original string `SS` itself. So, the total number of strings available to compress all strings of length `n` is at most `2 ** (n-1)`. Trivially, `2 ** (n-1)` is less than `2 ** n`. Hence, there are more strings of length `n` than strings of length `n-1` available to compress them into. By mathematical induction, it's impossible to compress all strings. So, the set of all binary strings `{0,1}*` can be strictly divided into the subset of incompressible strings and the subset of compressible strings.
+Consider all binary strings of length `n`. Since we're in binary, the total number of such strings is `2 ** n` (`2` to the power of `n`). Given one of the aforementioned characterisations of compression, the length of a compressed string `S` is strictly less than the length of the original string `SS` itself. So, the total number of strings available to compress all strings of length `n` is at most `2 ** (n-1)`. Trivially, `2 ** (n-1)` is less than `2 ** n`. Hence, there are more strings of length `n` than strings of length at most `n-1` available to compress them into. By mathematical induction, it's impossible to compress all strings. So, the set of all binary strings `{0,1}*` can be partitioned into the subset of incompressible strings and the subset of compressible strings.
 
 In contrast, we're not claiming that we cannot compress all strings. Instead, our claim is slightly stronger. We're claiming that there is no perfect compression algorithm even for the subset of compressible strings.
 
 #### General Compression Algorithms
 
-Secondly, we're not claiming that there are no general compression algorithm. These are algorithms that compress any piece of data. In fact, there are several programs that implement such algorithms (like [gzip](https://www.gzip.org/ "gzip")). In contrast, we're claiming that there are no _perfect_ general compression algorithms. This means that any general compression algorithm has a hard limit - they will never be able to output the smallest possible compression of any piece of data.
+Secondly, we're not claiming that there are no general compression algorithm. These are algorithms that can compress any piece of data. In fact, there are several programs that implement such algorithms (like [gzip](https://www.gzip.org/ "gzip")). In contrast, we're claiming that there are no _perfect_ general compression algorithms. This means that any general compression algorithm has a hard limit - they cannot output the smallest possible compression of any piece of data.
 
 #### Specialised Compression Algorithms
 
-Thirdly, we're not claiming that there are no specialised compression algorithm. These are algorithms that compress any piece of data of a given type. For example, [WebP](https://developers.google.com/speed/webp "WebP") can be considered as a specialised compression algorithm for image data. Moreover, we're also not claiming that there are no perfect and specialised compression algorithm. To understand this subtlety, recall that our claim is that there is no perfect compression algorithm for the subset of compressible strings in `{0,1}*`. A specialised compression algorithm does not focus on that whole subset. Instead, it focuses on compressing strings drawn from a smaller subset (corresponding to a particular type of data) within that subset of compressible strings. In contrast, our claim concerns the whole subset of compressible strings, not the smaller subsets on which specialised algorithms focus.
+Thirdly, we're not claiming that there are no specialised compression algorithm. These are algorithms that can compress any piece of data of a given type. For example, [WebP](https://developers.google.com/speed/webp "WebP") can be considered as a specialised compression algorithm for image data. Moreover, we're also not claiming that there are no perfect and specialised compression algorithm [5]. To understand this subtlety, recall that our claim is that there is no perfect compression algorithm for the subset of compressible strings in `{0,1}*`. A specialised compression algorithm does not focus on that whole subset. Instead, it focuses on compressing strings drawn from a smaller subset (corresponding to a particular type of data) within that subset of compressible strings. In contrast, our claim concerns the whole subset of compressible strings, not the smaller subsets on which specialised algorithms focus.
 
-However, our claim does have implications on specialised compression algorithm. In particular, they are subject to a no-free-lunch limit - even if these algorithms may be perfect within their specialised subset, they will never be perfect for compressing anything beyond that subset. Moreover, it is impossible to simply merge multiple perfect specialised algorithms to create a perfect “master compression algorithm” across all data types.
+However, our claim does have implications on specialised compression algorithm. In particular, they are subject to a no-free-lunch limit - even if these algorithms may be perfect within their specialised subset, they cannot be perfect in compressing anything beyond that subset. Moreover, it is impossible to simply merge multiple potentially perfect specialised algorithms to create a perfect “master compression algorithm” across all data types.
 
 ### Proof Outline
 
-Our proof is a _reductio ad absurdum_ (proof by contradiction). Essentially, we'll assume that the perfect compression function exists to derive a contradiction. With our assumption in hand, we'll be able to build a function `berry` which returns the smallest string that can be compressed with at least `n` bits. In particular, `berry` is composed of the perfection compression function and another function that yields all strings in `{0,1}*`. Our contradiction arises in showing that, given some input `i`, the length of the `berry` function is inconsistent with the return value of `berry(i)`.
+Our proof is a _reductio ad absurdum_ (proof by contradiction). Essentially, we'll assume that the perfect compression function exists to derive a contradiction. With our assumption in hand, we'll build a function `berry` which returns the smallest string that can be compressed with at least `n` bits. In particular, `berry` is composed of the perfection compression function and another function that yields all strings in `{0,1}*`. Our contradiction arises in showing that, given some input, the length of the `berry` function is inconsistent with its return value.
 
 ## 2. Kolmogorov Complexity
 
@@ -103,3 +103,5 @@ Our proof is a _reductio ad absurdum_ (proof by contradiction). Essentially, we'
 3. Our three characterisations of compression are meant to only be necessary and not sufficient.
 
 4. To understand how `{0,1}*` contains all possible pieces of data and computer programs, we have to come up with transition functions. In practice, these are mappings from one set of characters to another. For example, given the set of all possible characters in Python, a transition function would map each character to a substring containing only `0`'s and `1`'s'. Consequently, we would then get the binary substring representing any particular Python program.
+
+5. To say that we're "not claiming that there are no perfect and specialised compression algorithm" does not imply that there are such algorithms nor that they do not exist.
