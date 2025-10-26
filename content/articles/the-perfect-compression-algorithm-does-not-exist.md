@@ -113,7 +113,7 @@ Secondly, the impossibility of a perfect compression algorithm implies the impos
 
 ## 3. Berry's Paradox
 
-With `perfect_compress` and `kolmogorov_complexity` in hand, we may now build the `berry` function. Before doing that, we have to take a look at Berry's Paradox. 
+With `kolmogorov_complexity` in hand, we may now build the `berry` function. Before doing that, we have to take a look at Berry's Paradox. 
 
 Consider the following "Berry Statement":
 
@@ -121,9 +121,15 @@ Consider the following "Berry Statement":
 
 Let's say that there is such an integer and let's call it `B`. So, `B` is the smallest positive integer that cannot be described in fewer than 15 English words. In other words, we need at least 15 English words to describe `B`. To witness Berry's Paradox, notice that the Berry Statement itself is a description of `B`. Crucially, the Berry Statement only contains 14 words. Thus, we've described an integer `B`, which by definition cannot be described in fewer than 15 words, with just 14 words. This is the essence of Berry's Paradox.
 
-We may now build the `berry` function which is quite close in spirit to the Berry Statement. In particular, `berry` is a function that returns the smallest possible string that can be compressed with at least `n` bits. Given an input `i`, `berry(i)` returns the smallest string that can be compressed using strings of at least `i` in length. 
+We may now build the `berry` function which is quite close in spirit to the Berry Statement. In particular, `berry` is a function that returns the smallest possible string that can be compressed with at least `n` bits. Given an input `n`, `berry(n)` returns the smallest string that can be compressed using strings of at least `n` in length. 
 
-For example, if `berry(i)` returns `SSB`, then we need at least `i` bits to compress `SSB`. So, any compression `SB` of `SSB` is at least `i` in length. So, `SB` compresses `SSB` such that `len(SB)` is less than `len(SSB)` and `len(SB)` is at least `i`.
+For example, if `berry(n)` returns `SSB`, then we need at least `n` bits to compress `SSB`. So, any compression `SB` of `SSB` is at least `n` in length. So, `SB` compresses `SSB` such that `len(SB)` is less than `len(SSB)` and `len(SB)` is at least `n`.
+
+In terms of implementation, for some input `n`, `berry` loops through every possible binary strings in ascending order. For each binary string, it checks whether the Kolmogorov Complexity of that string is at least `n`. If that's the case, it returns that string, else the loop continues. In particular, if some string `SS` meets our check, then the Kolmogorov Complexity of `SS` is at least `n`. So, the minimal compression `s` of `SS` is at least `n` in length. Since we're looping through all strings in ascending order, the first string that meets our check and which `berry` returns is the smallest possible string that can be compressed with at least `n` bits.
+
+In essence, `berry` requires two components - a function that yields all binary string in ascending order and a conditional check for each binary string using `kolmogorov_complexity`.
+
+The function that yields all binary strings can be implemented in Python as follows:
 
 ```py
 from typing import Iterable
@@ -135,6 +141,8 @@ def all_binary_strings_in_ascending_order() -> Iterable[str]:
             yield f"{i:0{n}b}" if n > 0 else ''
         n += 1
 ```
+
+Once we have `all_binary_strings_in_ascending_order`, we can use `kolmogorov_complexity` to implement `berry` in Python as follows:
 
 ```py
 def berry(n: int) -> str:
