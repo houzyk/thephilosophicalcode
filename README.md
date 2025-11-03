@@ -2,9 +2,7 @@
 
 # The Philosophical Code
 
-Exploring Code From A Philosophical Point Of View.
-
-The Philosophical Code is an article series exploring the intersection of philosophy and computation.
+The Philosophical Code is an open-source article series exploring the intersection of philosophy.
 
 Live: [thephilosophicalcode.com](https://thephilosophicalcode.com)
 
