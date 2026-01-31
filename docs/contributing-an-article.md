@@ -4,25 +4,7 @@ Please follow the below if you want to add a new article to the repo.
 
 ## Script
 
-You can run the following to scaffold a dummy article.
-
-```
-npm run generate-article
-```
-
-This will prompt for:
-
-1. Your Github username.
-2. Your article's title.
-3. A path to your cover photo (optional).
-
-It will scaffold the following:
-
-1. A dummy article at `./content/articles/<your-article-title>.md`.
-2. A cover image for your article at `./public/images/<your-article-title>/cover.webp`.
-2. Add you to the list of contributors unless you're already there (`./content/people.json`).
-
-Alternatively, you can add an article manually as follows:
+You can add an article as follows:
 
 1. Add a `{your-article-title-in-kebab-case}.md` in the `./contents/articles` directory.
 2. Add your cover photo `cover.webp` in `./public/image/<your-article-title>`.
