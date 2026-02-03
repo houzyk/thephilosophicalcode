@@ -5,7 +5,7 @@ description: "The MDN reference on JavaScript regular expressions notes that \"J
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://github.com/houzyk"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
-date: 2026-02-01
+date: 2026-02-03
 ---
 
 ![(Ir)regular JavaScript Expressions](/images/irregular-javascript-expressions/cover.webp)
@@ -22,9 +22,9 @@ By drawing on ideas from this note, our examination is organised into three sect
 
 In section 1, we show how regular expressions act as syntactic sugar for a class of languages called 'regular languages'. We then discuss how these languages are recognised by and are intrinsically tied to a class of *finite state* machines called 'Deterministic Finite Automata' (DFA).
 
-In section 2, we take a look at Chomsky's hierarchy. Each hierarchy hints at how different classes of languages are recognised by different classes of machines. This gives us a way to cash out the aforementioned tension by talking about the different levels in the hierarchy. Essentially, to understand why JavaScript regular expressions are not regular *is* to understand how they recognise a larger (hence different) class of languages than actual regular expressions.
+In section 2, we take a look at Chomsky's hierarchy. The latter hints at how different classes of languages are recognised by different classes of machines. This gives us a way to cash out the aforementioned tension by talking about the different levels in the hierarchy. Essentially, to understand why JavaScript regular expressions are not regular *is* to understand how they recognise a larger (hence different) class of languages than actual regular expressions.
 
-In section 3, we dive into some code to understand what backreferences are and how they work in practice. We then conceptually analyse the way they work to abduct that they rely on memory. A fortiori, JavaScript regular expressions rely on memory. In contrast, DFA's are state machines without memory that are intrinsically tied to regular languages. So, JavaScript regular expressions are not regular because they recognise a different class of languages than DFA's.
+In section 3, we dive into some code to understand what backreferences are and how they work in practice. We then conceptually analyse the way they work to abduct that they rely on memory. A fortiori, JavaScript regular expressions rely on memory. In contrast, DFAs are state machines without memory that are intrinsically tied to regular languages. So, JavaScript regular expressions are not regular because they recognise a different class of languages compared to DFAs.
 
 ## 1. The Theory Behind Regular Expressions
 
