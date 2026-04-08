@@ -65,9 +65,25 @@ Secondly, some regular expressions can match more than one string (some even hav
 So far, we've observed that regular expressions obey strict syntax rules over an alphabet, and that they serve as a shorthand way of talking about a set of strings. Formally, a set of strings over an alphabet is called a language. With that in mind, regular expressions are characteristically syntactic sugar for a particular class of languages called 'regular languages' [2].
 
 
-### 1.2 Regular Languages
+### 1.2 Regular Languages and Deterministic Finite Automata (DFA)
 
-### 1.3 Deterministic Finite Automata (DFA)
+A common example of a regular language is the set of all strings of even length over an alphabet like `{'a'}`. It contains strings like `'aa'`, `'aaaa'` or `''` (the empty string). Its corresponding regular expression is `(aa)*`. 
+
+There are some interesting formal properties that govern these languages (like the union of two regular languages is also a regular language) [3]. For our current purposes, another such an interesting property is their relationship to Deterministic Finite Automata (DFA) [4]. In particular, all regular languages are recognised by DFAs. All DFAs only recognise regular languages.
+
+To properly understand DFAs, let's build one that recognises the aformentioned regular language expressed by the regular expression `(aa)*`. Visually [5], a DFA is made up a set of states with transitions between them. Some of these states are "final" and others are not. There's always a "start" state. We "feed" a string into that machine. We feed the machine via the start state. As we feed the string, on each character in the string, we will transition to a particular state depending on the machine's configuration.
+
+As we feed the input string and parse character-by-character, if we're able to reach a final state, then we will say that the DFA recognises that string. If we somehow land on a final state when we reach the end of our string, we'll say that the DFA recognises that string. So, for a given alphabet, we can feed all of it's potential strings into a DFA. We will then be able to form two distinct sets of strings - those which the DFA recognises and that which it does not. We'll call the set of all strings that a DFA recognises, the language of that DFA. Various DFAs will accept different classes of languages. It's possible that the same machine, albeit with seemingly different configurations, will accept the same set.
+
+In order to constract a DFA for our given regular language containing all even length strings over the alphabet `{'a'}`. 
+
+![DFA for language over a of even length](/images/irregular-javascript-expressions/dfa_for_language_over_a_of_even_length.webp)
+
+Let's walk through how the machine recognises our language by taking two example strings: `'aaa'` and `'aaaa'`. Ideally, the machine should accept `'aaaa'` and reject `'aaa'`.
+
+Given `'aaaa'`
+
+A key insight is that, if we that something is in tension with a regular language, then that thing must be in tension with regular expressions.
 
 ## 2. An Issue Of Language Recognition
 
@@ -91,3 +107,7 @@ So far, we've observed that regular expressions obey strict syntax rules over an
 
 3. ...
 ![Relation between regular expressions, DFAs, NFAs, regular languages and regular grammar](/images/irregular-javascript-expressions/relation_between_regexp_dfa_nfa_reg_lang_reg_gram.webp)
+
+4. add the formal definition of a DFA here
+
+5. add a the website for turning regexp into dfas
