@@ -5,7 +5,7 @@ description: "The MDN reference on JavaScript regular expressions notes that \"J
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://github.com/houzyk"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
-date: 2026-04-05
+date: 2026-04-10
 ---
 
 ![(Ir)regular JavaScript Expressions](/images/irregular-javascript-expressions/cover.webp)
@@ -83,11 +83,17 @@ Let's walk through how the machine recognises our language by taking two example
 
 Given `'aaaa'`
 
-A key insight is that, if we that something is in tension with a regular language, then that thing must be in tension with regular expressions.
+For any regular language, there exists a DFA. Any DFA will correspond to a regular language.
+
+A key insight is that, if we that something is in tension with a regular language, then that thing must be in tension with regular expressions. In other words, if we find that X is incomptabile with a dfa, then X cannot lead to regular languages. Since, regular expressions are syntactic sugar for regular languages, then X cannot be compatible with regular expressions.
 
 ## 2. An Issue Of Language Recognition
 
+The tension between JS regular expressions and actual regular expressions will bear on the aformentioned insight. To properly understand this, we will look at Chomsky's hierarchy of languages and what they mean. Then, we will concentrate on two levels in our hierarchy - regular languages and context free languages. We will see how each language reguire different machines. one is the DFA which we already saw and the other is the PDA. We will see how a DFA works and, informally, show that the difference is - a form of memory. With this in mind, we will use our insight and see that if something uses memory, then that thing is iincomptabile with regular languages, DFAs and hence, regular expressions.
+
 ### 2.1 Chomsky's Hierarchy
+
+![Chomsky's Hierarchy](/images/irregular-javascript-expressions/chomsky_hierarchy.webp)
 
 ### 2.2 Language Recognition
 
@@ -111,3 +117,5 @@ A key insight is that, if we that something is in tension with a regular languag
 4. add the formal definition of a DFA here
 
 5. add a the website for turning regexp into dfas
+
+6. Explain that there is a DFA for all strings. That does not mean that the DFA is all powerful. The issue comes in dealineation. Talk of overgeneration and undergeneration.
