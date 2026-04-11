@@ -67,31 +67,31 @@ So far, we've observed that regular expressions obey strict syntax rules over an
 
 ### 1.2 Regular Languages and DFAs
 
-A common example of a regular language is the set of all strings of even length over an alphabet like `{'a'}`. It contains strings like `'aa'`, `'aaaa'` or `''` (the empty string). Its corresponding regular expression is `(aa)*`. 
+A classic example of a regular language is the set of all strings of even length over an alphabet like `{'a'}`. It contains strings like `'aa'`, `'aaaa'` or `''` (the empty string). Its corresponding regular expression is `(aa)*`. 
 
-There are many interesting formal properties that govern these languages (like the union of two regular languages is also a regular language). However, for our current purposes, one such interesting property is their intrinsinct tie to the DFA class of finite state machines:
+There are many interesting formal properties that govern these languages (like the union of two regular languages is also a regular language). However, for our current purposes, one such interesting property is their intrinsic tie to the DFA class of finite state machines:
 
 All regular languages are recognised by DFAs and DFAs only recognise regular languages.
 
 A DFA is a theoretical machine that recognises a set of strings. This set is the language of that machine. In particular, for all strings over an alphabet, the machine will either accept or reject it. The set of all strings that the machine accepts _is_ the language of that machine. 
 
-Visually, a DFA is made up a set of finite states with transitions between them. Some of these states are "accepting" and others are "rejecting". One of these states must be the start state. Any string over an alphabet is fed into the machine via that start state. As it's fed through, the machine transitions through its state by parsing the string's characters. Once all characters are parsed, the machine either lands in an accepting or rejecting state. If it's an accepting state, then the machine accepts the string. Conversely, it rejects it. So, the language of the DFA is the set of all strings that, after being parsed character by character, lands in an accepting state. To further clarify, let's construct a DFA that recognises the aformentioned regular language expressed by the regular expression `(aa)*`.
+Visually, a DFA is made up of a set of finite states with transitions among them. Some of these states are "accepting" and others are "rejecting". One of these states must be the start state. Any string over an alphabet is fed into the machine via that start state. As it's fed through, the machine transitions through its states by individually parsing the string's characters. Once all characters are parsed, the machine stops. It either lands in an accepting or rejecting state. If it's an accepting state, then the machine accepts the string. Conversely, it rejects it. So, the language of the DFA is the set of all strings that, after being parsed character-by-character, lands in an accepting state. To further clarify, let's construct a DFA that recognises the aforementioned regular language expressed by the regular expression `(aa)*`.
 
 ![DFA for language over a of even length](/images/irregular-javascript-expressions/dfa_for_language_over_a_of_even_length.webp)
 
-Let's walk through how the machine recognises our language by taking two example strings: `'a'` and `'aa'`. Ideally, the machine should accept `'aa'` and reject `'a'`.
+Let's walk through how the machine recognises our language by looking at two example strings: `'a'` and `'aa'`. Ideally, the machine should accept `'aa'` and reject `'a'`.
 
-Given `'aa'`, we begin in the start state "even length", parse the first `'a'` and transition to the "odd length" state. We then parse the last `'a'`. We land back into the "even length" state. Since there are no more characrers to parse, the machine stops. So, we're in an accepting state, our DFA accepts the string `'aa'` which is of even length. 
+`'aa'` begins in the start state "even length". The machine parses the first `'a'` and transitions to the "odd length" state. It then parses the last `'a'` and lands back into the "even length" state. Since there are no more characters to parse, the machine stops. So, the machine lands in an accepting state and accepts the string `'aa'`. 
 
-Given `a`, we being in the state state and transition into the the "odd length" state once we parse the only character `'a'`. Since there are not characters left to parse and we're in a rejecting state, our DFA rejects `'a'`. 
+Given `a`, it begins in the start state and transitions into the the "odd length" state once it parses the only character `'a'`. Since there are no characters left, the machine lands in a rejecting state and rejects `'a'`.
 
-On a side note, different configurations of states and transitions yields different regular languages. It's possible that the same machine, albeit with seemingly different configurations, will accept the same set. This is how we may have different regular expressions that act as syntactic sugar for the same set of strings. 
+On a side note, different configurations of states and transitions yields different regular languages. It's possible that DFAs with seemingly different configurations accept the same set of strings. Intuitively, this is how seemingly different regular expressions act as syntactic sugar for the same regular language (like `(aa)*` and `(a{2})*`). 
 
-So, we have constructed a DFA that recognises the same regular language which the regular expression illustrating the intrinsct link between DFAs, regular languages and regular expressions. A key insight from this link is that if some concept/object is incompatible with a DFA, then it must be incompatible with regular languages and regular expressions. S. To properly cash out this incompatible as an issue of language recognition by taking a look at Chomsky's Hierarchy.
+So far, we've discussed how regular languages are recognised by and are intrinsically tied to DFAs. Since regular expressions act as syntactic for regular languages, we've also illustrated an intrinsic tie between DFAs and regular expressions. A key insight from this tie is that if some concept/object is incompatible with a DFA, then it must be incompatible with regular languages and regular expressions. To further illustrate this incompatibility, let's take a look at Chomsky's Hierarchy.
 
 ## 2. An Issue Of Language Recognition
 
-The tension between JS regular expressions and actual regular expressions will bear on the aformentioned insight. To properly understand this, we will look at Chomsky's hierarchy of languages and what they mean. Then, we will concentrate on two levels in our hierarchy - regular languages and context free languages. We will see how each language reguire different machines. one is the DFA which we already saw and the other is the PDA. We will see how a DFA works and, informally, show that the difference is - a form of memory. With this in mind, we will use our insight and see that if something uses memory, then that thing is iincomptabile with regular languages, DFAs and hence, regular expressions.
+The tension between JS regular expressions and actual regular expressions will bear on the aforementioned insight. To properly understand this, we will look at Chomsky's hierarchy of languages and what they mean. Then, we will concentrate on two levels in our hierarchy - regular languages and context free languages. We will see how each language reguire different machines. one is the DFA which we already saw and the other is the PDA. We will see how a DFA works and, informally, show that the difference is - a form of memory. With this in mind, we will use our insight and see that if something uses memory, then that thing is iincomptabile with regular languages, DFAs and hence, regular expressions.
 
 ### 2.1 Chomsky's Hierarchy
 
