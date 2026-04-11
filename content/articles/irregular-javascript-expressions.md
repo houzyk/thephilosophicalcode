@@ -20,7 +20,7 @@ For context, here's the full note from MDN:
 
 By drawing on ideas from this note, this article is organised into three sections. Firstly, we explore the theory behind actual regular expressions to understand why they must have finite states. Secondly, we cash out the underlying tension (between actual and JavaScript regular expressions) as an issue of *language recognition*. Finally, we demonstrate the usefulness of backreferences and conceptually understand how they make JavaScript regular expressions irregular.
 
-In section 1, we show how regular expressions act as syntactic sugar for a class of languages called 'regular languages'. We then discuss how these languages are recognised by and are intrinsically tied to a class of *finite state* machines called 'Deterministic Finite Automata' (DFA).
+In section 1, we show how regular expressions act as syntactic sugar for a class of languages called 'regular languages'. We then discuss how these languages are recognised by and are intrinsically tied to a class of *finite state* machines called Deterministic Finite Automata (DFA).
 
 In section 2, we take a look at Chomsky's hierarchy. The latter hints at how different classes of languages are recognised by different classes of machines. This gives us a way to cash out the aforementioned tension by talking about the different levels in the hierarchy. Essentially, to understand why JavaScript regular expressions are irregular *is* to understand how they recognise a larger (hence different) class of languages than actual regular expressions.
 
@@ -65,27 +65,29 @@ Secondly, some regular expressions can match more than one string (some even hav
 So far, we've observed that regular expressions obey strict syntax rules over an alphabet, and that they serve as a shorthand way of talking about a set of strings. Formally, a set of strings over an alphabet is called a language. With that in mind, regular expressions are characteristically syntactic sugar for a particular class of languages called 'regular languages' [2].
 
 
-### 1.2 Regular Languages and Deterministic Finite Automata (DFA)
+### 1.2 Regular Languages and DFAs
 
 A common example of a regular language is the set of all strings of even length over an alphabet like `{'a'}`. It contains strings like `'aa'`, `'aaaa'` or `''` (the empty string). Its corresponding regular expression is `(aa)*`. 
 
-There are some interesting formal properties that govern these languages (like the union of two regular languages is also a regular language) [3]. For our current purposes, another such an interesting property is their relationship to Deterministic Finite Automata (DFA) [4]. In particular, all regular languages are recognised by DFAs. All DFAs only recognise regular languages.
+There are many interesting formal properties that govern these languages (like the union of two regular languages is also a regular language). However, for our current purposes, one such interesting property is their intrinsinct tie to the DFA class of finite state machines:
 
-To properly understand DFAs, let's build one that recognises the aformentioned regular language expressed by the regular expression `(aa)*`. Visually [5], a DFA is made up a set of states with transitions between them. Some of these states are "final" and others are not. There's always a "start" state. We "feed" a string into that machine. We feed the machine via the start state. As we feed the string, on each character in the string, we will transition to a particular state depending on the machine's configuration.
+All regular languages are recognised by DFAs and DFAs only recognise regular languages.
 
-As we feed the input string and parse character-by-character, if we're able to reach a final state, then we will say that the DFA recognises that string. If we somehow land on a final state when we reach the end of our string, we'll say that the DFA recognises that string. So, for a given alphabet, we can feed all of it's potential strings into a DFA. We will then be able to form two distinct sets of strings - those which the DFA recognises and that which it does not. We'll call the set of all strings that a DFA recognises, the language of that DFA. Various DFAs will accept different classes of languages. It's possible that the same machine, albeit with seemingly different configurations, will accept the same set.
+A DFA is a theoretical machine that recognises a set of strings. This set is the language of that machine. In particular, for all strings over an alphabet, the machine will either accept or reject it. The set of all strings that the machine accepts _is_ the language of that machine. 
 
-In order to constract a DFA for our given regular language containing all even length strings over the alphabet `{'a'}`. 
+Visually, a DFA is made up a set of finite states with transitions between them. Some of these states are "accepting" and others are "rejecting". One of these states must be the start state. Any string over an alphabet is fed into the machine via that start state. As it's fed through, the machine transitions through its state by parsing the string's characters. Once all characters are parsed, the machine either lands in an accepting or rejecting state. If it's an accepting state, then the machine accepts the string. Conversely, it rejects it. So, the language of the DFA is the set of all strings that, after being parsed character by character, lands in an accepting state. To further clarify, let's construct a DFA that recognises the aformentioned regular language expressed by the regular expression `(aa)*`.
 
 ![DFA for language over a of even length](/images/irregular-javascript-expressions/dfa_for_language_over_a_of_even_length.webp)
 
-Let's walk through how the machine recognises our language by taking two example strings: `'aaa'` and `'aaaa'`. Ideally, the machine should accept `'aaaa'` and reject `'aaa'`.
+Let's walk through how the machine recognises our language by taking two example strings: `'a'` and `'aa'`. Ideally, the machine should accept `'aa'` and reject `'a'`.
 
-Given `'aaaa'`
+Given `'aa'`, we begin in the start state "even length", parse the first `'a'` and transition to the "odd length" state. We then parse the last `'a'`. We land back into the "even length" state. Since there are no more characrers to parse, the machine stops. So, we're in an accepting state, our DFA accepts the string `'aa'` which is of even length. 
 
-For any regular language, there exists a DFA. Any DFA will correspond to a regular language.
+Given `a`, we being in the state state and transition into the the "odd length" state once we parse the only character `'a'`. Since there are not characters left to parse and we're in a rejecting state, our DFA rejects `'a'`. 
 
-A key insight is that, if we that something is in tension with a regular language, then that thing must be in tension with regular expressions. In other words, if we find that X is incomptabile with a dfa, then X cannot lead to regular languages. Since, regular expressions are syntactic sugar for regular languages, then X cannot be compatible with regular expressions.
+On a side note, different configurations of states and transitions yields different regular languages. It's possible that the same machine, albeit with seemingly different configurations, will accept the same set. This is how we may have different regular expressions that act as syntactic sugar for the same set of strings. 
+
+So, we have constructed a DFA that recognises the same regular language which the regular expression illustrating the intrinsct link between DFAs, regular languages and regular expressions. A key insight from this link is that if some concept/object is incompatible with a DFA, then it must be incompatible with regular languages and regular expressions. S. To properly cash out this incompatible as an issue of language recognition by taking a look at Chomsky's Hierarchy.
 
 ## 2. An Issue Of Language Recognition
 
@@ -119,3 +121,5 @@ The tension between JS regular expressions and actual regular expressions will b
 5. add a the website for turning regexp into dfas
 
 6. Explain that there is a DFA for all strings. That does not mean that the DFA is all powerful. The issue comes in dealineation. Talk of overgeneration and undergeneration.
+
+7. ref ARJ article
