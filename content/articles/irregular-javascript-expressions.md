@@ -5,7 +5,7 @@ description: "The MDN reference on JavaScript regular expressions notes that \"J
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://github.com/houzyk"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
-date: 2026-04-10
+date: 2026-04-14
 ---
 
 ![(Ir)regular JavaScript Expressions](/images/irregular-javascript-expressions/cover.webp)
@@ -25,6 +25,24 @@ In section 1, we show how regular expressions act as syntactic sugar for a class
 In section 2, we take a look at Chomsky's hierarchy. The latter hints at how different classes of languages are recognised by different classes of machines. This gives us a way to cash out the aforementioned tension by talking about the different levels in the hierarchy. Essentially, to understand why JavaScript regular expressions are irregular *is* to understand how they recognise a larger (hence different) class of languages than actual regular expressions.
 
 In section 3, we dive into some code to demonstrate the usefulness of backreferences. We then conceptually analyse the way they work to abduct that they rely on memory. A fortiori, JavaScript regular expressions rely on memory. In contrast, DFAs are finite state machines without memory that are intrinsically tied to regular languages. So, JavaScript regular expressions are not regular because they recognise a different class of languages compared to DFAs.
+
+## 1. Backreferences
+
+In JavaScript regular expressions, backreferences allow us to explicitly refer to some previously defined capturing group in the expression. We may refer to that or by using named backreferences.
+
+To clarify, a capturing group syntactically is `(pattern)`. Intuitively, the first occurence of a match in a string will be saved as a capturing group. Capturing groups create a one-to-one relation between the match and the regular expression.
+
+![Capturing groups in JS](/images/irregular-javascript-expressions/capturing_groups_in_js.webp)
+
+With backreferences, we do not need to write the same capturing groups multiple times.
+
+We can even have a dynamic way of capturing.
+
+For example, we can dynamically capture HTML tag elements with a capturing group. This is helpful as I do not need to specify a whole list of potential HTML tags that need to be matched on both sides. We just know that a match is any HTML tag as log as it respects the format.
+
+Intuitively, backreferences requires memory. We somehow need to be able to capture a group and refer back to it while at the same time know its current value. For example, in the HTML tag regex, we need to know what kind of tag we've matched at runtime. Say that we've matched a picture tag, we need to have the value picture in memory to match it later to with. 
+
+JavaScript regular expressions rely on memory during computation.
 
 ## 1. The Theory Behind Regular Expressions
 
@@ -87,7 +105,7 @@ Given `a`, it begins in the start state and transitions into the the "odd length
 
 On a side note, different configurations of states and transitions yields different regular languages. It's possible that DFAs with seemingly different configurations accept the same set of strings. Intuitively, this is how seemingly different regular expressions act as syntactic sugar for the same regular language (like `(aa)*` and `(a{2})*`). 
 
-So far, we've discussed how regular languages are recognised by and are intrinsically tied to DFAs. Since regular expressions act as syntactic for regular languages, we've also illustrated an intrinsic tie between DFAs and regular expressions. A key insight from this tie is that if some concept/object is incompatible with a DFA, then it must be incompatible with regular languages and regular expressions. To further illustrate this incompatibility, let's take a look at Chomsky's Hierarchy.
+So far, we've discussed how regular languages are recognised by and are intrinsically tied to DFAs. Since regular expressions act as syntactic for regular languages, we've also illustrated an intrinsic tie between DFAs and regular expressions. A key insight from this tie is that if some concept/object is incompatible with a DFA, then it must be incompatible with regular languages and regular expressions.
 
 ## 2. An Issue Of Language Recognition
 
@@ -97,13 +115,22 @@ The tension between JS regular expressions and actual regular expressions will b
 
 ![Chomsky's Hierarchy](/images/irregular-javascript-expressions/chomsky_hierarchy.webp)
 
-### 2.2 Language Recognition
+Chomsky's hierarchy contains subsets of formal languages. At the very bottom, we have regular languages and just above we have context-free languages. The interesting feature of this language is that each language in the hierarchy needs a different type of machine to recognise it. For our current purposes, we will be focusing on the difference between the machines used to recognise regular languages and context-free languages.
 
-## 3. Backreferences
+As a side note, the last layer are those languages recognised by Turing Machines.
 
-### 3.1 The usefulness of backreferences
+### 2.2 Context-free languages and PDAs
 
-### 3.2 Conceptual Analysis
+A classic example of a context-free language is 
+
+### 2.3 Language Recognition (DFA vs PDA)
+
+Given the aforementioned context-free language, it's impossible to create a DFA for it.
+
+One crucial difference between a DFA and a PDA is the addition of a form of memory. Essentially, DFAs do not have any external memory. They only have states. At any point in their computation, the DFA only knows about its current state, the character that its reading and its transitions. It does not have memory of what it has seen before. 
+
+Hence, we can how to cash out
+
 
 ### 3.3 Memory And Finite States
 
@@ -123,3 +150,7 @@ The tension between JS regular expressions and actual regular expressions will b
 6. Explain that there is a DFA for all strings. That does not mean that the DFA is all powerful. The issue comes in dealineation. Talk of overgeneration and undergeneration.
 
 7. ref ARJ article
+
+8. talk of regex to DFA/NFA conversion and vice versa
+
+9. named backreferences and named caputring groups
