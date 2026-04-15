@@ -5,7 +5,7 @@ description: "The MDN reference on JavaScript regular expressions notes that \"J
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://github.com/houzyk"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
-date: 2026-04-14
+date: 2026-04-15
 ---
 
 ![(Ir)regular JavaScript Expressions](/images/irregular-javascript-expressions/cover.webp)
@@ -85,7 +85,7 @@ So far, we've observed that regular expressions obey strict syntax rules over an
 
 ### 1.2 Regular Languages and DFAs
 
-A classic example of a regular language is the set of all strings of even length over an alphabet like `{'a'}`. It contains strings like `'aa'`, `'aaaa'` or `''` (the empty string). Its corresponding regular expression is `(aa)*`. 
+A classic example of a regular language is the set of all strings of even length over an alphabet like `{'a'}`. It contains strings like `'aa'`, `'aaaa'` or `''` (the empty string). Its corresponding regular expression is `(aa)*`.
 
 There are many interesting formal properties that govern these languages (like the union of two regular languages is also a regular language). However, for our current purposes, one such interesting property is their intrinsic tie to the DFA class of finite state machines:
 
@@ -121,7 +121,17 @@ As a side note, the last layer are those languages recognised by Turing Machines
 
 ### 2.2 Context-free languages and PDAs
 
-A classic example of a context-free language is 
+A classic example of a context-free language is the set of all strings of the form `aⁿbⁿ` over an alphabet like `{'a', 'b'}`. This is the set of strings starting with some number of `a` strictly followed by the same number of `b`. It contains strings like `'ab'`, `'aabb'` or `''` (the empty string). Its corresponding regular expression is `(aa)*`.
+
+Similarly to regular languages, one such interesting property is their intrinsic tie to the PDA (Pushdown Automata) class of finite state machines:
+
+All context-free languages are recognised by PDAs and PDAs only recognise context-free languages.
+
+Like a DFA, a PDA is a theoretical machine that recognises a set of strings. For all strings over an alphabet, the machine will either accept or reject it. The set of all strings that the machine accepts is the language of that machine.
+
+The key difference from a DFA is that a PDA is equipped with an unbounded stack. This stack is what gives PDAs their extra expressive power as illustrated by Chomsky's hierarcy. This acts as a memory that a DFA simply does not have. 
+
+Visually, a PDA is made up of a set of finite states with transitions among them, just like a DFA. However, each transition can also inspect and manipulate the stack: pushing symbols onto it, popping symbols off it, or both. One state is the start state, some states are accepting. A string is fed into the machine via the start state, and the machine transitions through its states by individually parsing the string's characters and managing its stack. Once all characters are parsed, the machine stops. If it lands in an accepting state (with some formulations also requiring an empty stack), the machine accepts the string. So, the language of the PDA is the set of all strings that, after being parsed character-by-character, lands in an accepting state. To further clarify, let's construct a PDA that recognises the aforementioned context-free language aⁿbⁿ.
 
 ### 2.3 Language Recognition (DFA vs PDA)
 
@@ -130,9 +140,6 @@ Given the aforementioned context-free language, it's impossible to create a DFA 
 One crucial difference between a DFA and a PDA is the addition of a form of memory. Essentially, DFAs do not have any external memory. They only have states. At any point in their computation, the DFA only knows about its current state, the character that its reading and its transitions. It does not have memory of what it has seen before. 
 
 Hence, we can how to cash out
-
-
-### 3.3 Memory And Finite States
 
 ## Footnotes
 
