@@ -5,7 +5,7 @@ description: "The MDN reference on JavaScript regular expressions notes that \"J
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://github.com/houzyk"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
-date: 2026-04-15
+date: 2026-04-16
 ---
 
 ![(Ir)regular JavaScript Expressions](/images/irregular-javascript-expressions/cover.webp)
@@ -34,11 +34,23 @@ To clarify, a capturing group syntactically is `(pattern)`. Intuitively, the fir
 
 ![Capturing groups in JS](/images/irregular-javascript-expressions/capturing_groups_in_js.webp)
 
+Let's look at some code as examples. Syntactically, a backreference has the format `\N` where `N` is a positive whole number referencing some previously occuring coapturing group. For example, in the regex `/(a)(b)\2\1\2/`, we have two capturing groups: firstly, `(a)`. Secondly, `(b)`. So, in our regex, the backreferece `\1` is refering to whatever value would have matched the first capturing group `(a)`. Morevoer, the two backreferences `\2` both refer to whatever value has matched the second capturing group `(b)`. For example, `/(a)(b)\2\1\2/` would match the string `'abbab'`. In this case, the first backreference is the first `'a'` while the second backreference is the `'b'`. However, the regex would not march a string like `'abaab'` since the value at the first backreference does not match the value of the first capturing group. To see this clearer, imagine `/(\d+)a\1/`. This. In other words, we have kept the value of the digit in memory and then matched it afterwards. If there was another number at the backreference spot, there would be not match.
+
 With backreferences, we do not need to write the same capturing groups multiple times.
 
-We can even have a dynamic way of capturing.
+Given this, a useful case for
 
 For example, we can dynamically capture HTML tag elements with a capturing group. This is helpful as I do not need to specify a whole list of potential HTML tags that need to be matched on both sides. We just know that a match is any HTML tag as log as it respects the format.
+
+```js
+function parseTitle(metastring) {
+  return metastring.match(/title=(["'])(.*?)\1/)[2];
+}
+
+parseTitle('title="foo"'); // 'foo'
+parseTitle("title='foo' lang='en'"); // 'foo'
+parseTitle('title="Named capturing groups\' advantages"');
+```
 
 Intuitively, backreferences requires memory. We somehow need to be able to capture a group and refer back to it while at the same time know its current value. For example, in the HTML tag regex, we need to know what kind of tag we've matched at runtime. Say that we've matched a picture tag, we need to have the value picture in memory to match it later to with. 
 
