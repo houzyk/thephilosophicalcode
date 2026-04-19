@@ -5,7 +5,7 @@ description: "The MDN reference on JavaScript regular expressions notes that \"J
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://github.com/houzyk"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
-date: 2026-04-16
+date: 2026-04-19
 ---
 
 ![(Ir)regular JavaScript Expressions](/images/irregular-javascript-expressions/cover.webp)
@@ -18,13 +18,13 @@ For context, here's the full note from MDN:
 
 > JavaScript regular expressions are in fact not regular, due to the existence of backreferences (regular expressions must have finite states). However, they are still a very useful feature.
 
-By drawing on ideas from this note, this article is organised into three sections. Firstly, we explore the theory behind actual regular expressions to understand why they must have finite states. Secondly, we cash out the underlying tension (between actual and JavaScript regular expressions) as an issue of *language recognition*. Finally, we demonstrate the usefulness of backreferences and conceptually understand how they make JavaScript regular expressions irregular.
+By drawing on ideas from this note, this article is organised into three sections.
 
-In section 1, we show how regular expressions act as syntactic sugar for a class of languages called 'regular languages'. We then discuss how these languages are recognised by and are intrinsically tied to a class of *finite state* machines called Deterministic Finite Automata (DFA).
+In section 1, we dive into some code to demonstrate the usefulness of backreferences. We then conceptually analyse the way they work to abduct that they rely on memory. A fortiori, we can abduct that JavaScript regular expressions rely on memory.
 
-In section 2, we take a look at Chomsky's hierarchy. The latter hints at how different classes of languages are recognised by different classes of machines. This gives us a way to cash out the aforementioned tension by talking about the different levels in the hierarchy. Essentially, to understand why JavaScript regular expressions are irregular *is* to understand how they recognise a larger (hence different) class of languages than actual regular expressions.
+In section 2, we explore the theory behind actual regular expressions to understand why they must have finite states. In particular, we show how regular expressions act as syntactic sugar for a class of languages called 'regular languages'. We then discuss how these languages are recognised by and are intrinsically tied to a class of *finite state* machines called Deterministic Finite Automata (DFA).
 
-In section 3, we dive into some code to demonstrate the usefulness of backreferences. We then conceptually analyse the way they work to abduct that they rely on memory. A fortiori, JavaScript regular expressions rely on memory. In contrast, DFAs are finite state machines without memory that are intrinsically tied to regular languages. So, JavaScript regular expressions are not regular because they recognise a different class of languages compared to DFAs.
+In section 3, we cash out the underlying tension between actual and JavaScript regular expressions as an issue of *language recognition*. We take a look at Chomsky's hierarchy. The latter hints at how different classes of languages are recognised by different classes of machines. This gives us a way to cash out the aforementioned tension by talking about the different levels in the hierarchy. Essentially, to understand why JavaScript regular expressions are irregular *is* to understand how they recognise a larger (hence different) class of languages than actual regular expressions. Briefly, DFAs are finite state machines without memory that are intrinsically tied to regular languages. In constrast, JavaScript regular expressions rely on memory. So, the latter are irregular because they recognise a different class of languages compared to DFAs.
 
 ## 1. Backreferences
 
