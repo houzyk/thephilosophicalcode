@@ -24,19 +24,25 @@ In section 1, we dive into some code to demonstrate the usefulness of backrefere
 
 In section 2, we explore the theory behind actual regular expressions to understand why they must have finite states. In particular, we show how regular expressions act as syntactic sugar for a class of languages called 'regular languages'. We then discuss how these languages are recognised by and are intrinsically tied to a class of *finite state* machines called Deterministic Finite Automata (DFA).
 
-In section 3, we cash out the underlying tension between actual and JavaScript regular expressions as an issue of *language recognition*. We take a look at Chomsky's hierarchy. The latter hints at how different classes of languages are recognised by different classes of machines. This gives us a way to cash out the aforementioned tension by talking about the different levels in the hierarchy. Essentially, to understand why JavaScript regular expressions are irregular *is* to understand how they recognise a larger (hence different) class of languages than actual regular expressions. Briefly, DFAs are finite state machines without memory that are intrinsically tied to regular languages. In constrast, JavaScript regular expressions rely on memory. So, the latter are irregular because they recognise a different class of languages compared to DFAs.
+In section 3, we cash out the underlying tension between actual and JavaScript regular expressions as an issue of *language recognition*. We take a look at Chomsky's hierarchy. The latter hints at how different classes of languages are recognised by different classes of machines. This gives us a way to cash out the aforementioned tension by talking about the different levels in the hierarchy. 
+
+Essentially, to understand why JavaScript regular expressions are not regular *is* to understand how they recognise a larger (hence different) class of languages than actual regular expressions. Briefly, DFAs are finite state machines without memory that are intrinsically tied to regular languages. In constrast, JavaScript regular expressions rely on memory. So, owing to their reliance on memory, the latter are not regular because they recognise a different class of languages compared to DFAs.
 
 ## 1. Backreferences
 
-In JavaScript regular expressions, backreferences allow us to explicitly refer to some previously defined capturing group in the expression. We may refer to that or by using named backreferences.
+Backreferences allow us to refer to submatches of previously defined capturing groups in any JavaScript regular expression.
 
-To clarify, a capturing group syntactically is `(pattern)`. Intuitively, the first occurence of a match in a string will be saved as a capturing group. Capturing groups create a one-to-one relation between the match and the regular expression.
+Syntactically, a capturing group looks like `(pattern)` in some parent regular expression `/...(pattern).../`. Suppose that a string S matches that parent. In such a case, the capturing group `(pattern)` segments (i.e. captures) a substring of S that matches its defined pattern. That substring is called the capturing group's submatch. A JavaScript regular expression may contain multiple capturing groups. In such cases, capturing groups are in a one-to-one relation with their submatches.
 
 ![Capturing groups in JS](/images/irregular-javascript-expressions/capturing_groups_in_js.webp)
 
-Let's look at some code as examples. Syntactically, a backreference has the format `\N` where `N` is a positive whole number referencing some previously occuring coapturing group. For example, in the regex `/(a)(b)\2\1\2/`, we have two capturing groups: firstly, `(a)`. Secondly, `(b)`. So, in our regex, the backreferece `\1` is refering to whatever value would have matched the first capturing group `(a)`. Morevoer, the two backreferences `\2` both refer to whatever value has matched the second capturing group `(b)`. For example, `/(a)(b)\2\1\2/` would match the string `'abbab'`. In this case, the first backreference is the first `'a'` while the second backreference is the `'b'`. However, the regex would not march a string like `'abaab'` since the value at the first backreference does not match the value of the first capturing group. To see this clearer, imagine `/(\d+)a\1/`. This. In other words, we have kept the value of the digit in memory and then matched it afterwards. If there was another number at the backreference spot, there would be not match.
+We can run the `RegExp.prototype.exec()` function to see this one-to-one relation. For example, given `/(a)(b)/` and a matching string `'ab'`, running `/(a)(b)/.exec("ab")` returns the array `[ 'ab', 'a', 'b', index: 0, input: 'ab', groups: undefined ]`. Its "1th" element `'a'` relates to the first capturing group `(a)`. Similarly, its "2th" element `'b'` relates to the second group `(b)`.
 
 With backreferences, we do not need to write the same capturing groups multiple times.
+
+It memorises the value of that submatch
+
+Let's look at some code as examples. Syntactically, a backreference has the format `\N` where `N` is a positive whole number referencing some previously occuring coapturing group. For example, in the regex `/(a)(b)\2\1\2/`, we have two capturing groups: firstly, `(a)`. Secondly, `(b)`. So, in our regex, the backreferece `\1` is refering to whatever value would have matched the first capturing group `(a)`. Morevoer, the two backreferences `\2` both refer to whatever value has matched the second capturing group `(b)`. For example, `/(a)(b)\2\1\2/` would match the string `'abbab'`. In this case, the first backreference is the first `'a'` while the second backreference is the `'b'`. However, the regex would not march a string like `'abaab'` since the value at the first backreference does not match the value of the first capturing group. To see this clearer, imagine `/(\d+)a\1/`. This. In other words, we have kept the value of the digit in memory and then matched it afterwards. If there was another number at the backreference spot, there would be not match.
 
 Given this, a useful case for
 
@@ -51,6 +57,8 @@ parseTitle('title="foo"'); // 'foo'
 parseTitle("title='foo' lang='en'"); // 'foo'
 parseTitle('title="Named capturing groups\' advantages"');
 ```
+
+### 1.2 Conceptual Analysis
 
 Intuitively, backreferences requires memory. We somehow need to be able to capture a group and refer back to it while at the same time know its current value. For example, in the HTML tag regex, we need to know what kind of tag we've matched at runtime. Say that we've matched a picture tag, we need to have the value picture in memory to match it later to with. 
 
