@@ -2,7 +2,7 @@
 external: false
 title: "The Perfect Compression Algorithm Does Not Exist"
 description: "In this article, we'll informally prove that the perfect compression algorithm does not (and cannot) exist."
-authorUrl: "https://github.com/houzyk"
+authorUrl: "https://houzair.me/"
 ogImagePath: "/images/the-perfect-compression-algorithm-does-not-exist/cover.webp"
 date: 2025-10-26
 author: "Muhammad Houzair Koussa"
