@@ -32,37 +32,70 @@ Essentially, to understand why JavaScript regular expressions are not regular *i
 
 Backreferences allow us to refer to submatches of previously defined capturing groups in any JavaScript regular expression.
 
-Syntactically, a capturing group looks like `(pattern)` in some parent regular expression `/...(pattern).../`. Suppose that a string S matches that parent. In such a case, the capturing group `(pattern)` segments (i.e. captures) a substring of S that matches its defined pattern. That substring is called the capturing group's submatch. A JavaScript regular expression may contain multiple capturing groups. In such cases, capturing groups are in a one-to-one relation with their submatches.
+Syntactically, a capturing group looks like `(pattern)` in some parent regular expression `/...(pattern).../`. Suppose that a string M matches `/...(pattern).../`. In such a case, the capturing group `(pattern)` segments (i.e. captures) a substring (of M) that matches its defined pattern. That substring is called the capturing group's submatch. 
+
+A JavaScript regular expression may contain multiple capturing groups. In such a case, these capturing groups are in a one-to-one relation to their submatches. As illustrated below, if some string of form `...[1]...[2]...[3]...` matches a regular expression of form `/...(c1)...(c2)...(c3).../`, then the capturing groups `(c1)`, `(c2)` and `(c3)` are in a one-to-one relation to the submatches `[1]`, `[2]` and `[3]`respectively.
 
 ![Capturing groups in JS](/images/irregular-javascript-expressions/capturing_groups_in_js.webp)
 
-We can run the `RegExp.prototype.exec()` function to see this one-to-one relation. For example, given `/(a)(b)/` and a matching string `'ab'`, running `/(a)(b)/.exec("ab")` returns the array `[ 'ab', 'a', 'b', index: 0, input: 'ab', groups: undefined ]`. Its "1th" element `'a'` relates to the first capturing group `(a)`. Similarly, its "2th" element `'b'` relates to the second group `(b)`.
+In JavaScript, we can run the `RegExp.prototype.exec()` function to see this one-to-one relation. For example, given `/(a)(b)/` and a matching string `'ab'`, running `/(a)(b)/.exec("ab")` returns the array `[ 'ab', 'a', 'b', index: 0, input: 'ab', groups: undefined ]`. Its first element `'a'` relates to the first capturing group `(a)`. Similarly, its second element `'b'` relates to the second group `(b)`.
 
-With backreferences, we do not need to write the same capturing groups multiple times.
+With backreferences, we can refer to such submatches. Syntactically, a backreference has the format `\N` where `N` is a positive whole number referencing some previously occuring coapturing group. For example, we can add backreferences to the aforementioned regular expression `/(a)(b)/` like `/(a)(b)\2\1\2/`. To clarify, the backreference `\1` refers to any submatch of the capturing group `(a)`. Similarly, the two backreferences `\2` both refer to any submatch of the capturing group `(b)`. 
 
-It memorises the value of that submatch
+For example, the string `'abbab'` matches the regular expression `/(a)(b)\2\1\2/`. This is because the submatch of `(a)` is `'a'` and the submatch `(b)` of is `'b'`. So, `\1` refers to `'a'` and `\2` refers to `'b'`. Intuitively, in this case, `/(a)(b)\2\1\2/` becomes equivalent to `/(a)(b)bab/`.
 
-Let's look at some code as examples. Syntactically, a backreference has the format `\N` where `N` is a positive whole number referencing some previously occuring coapturing group. For example, in the regex `/(a)(b)\2\1\2/`, we have two capturing groups: firstly, `(a)`. Secondly, `(b)`. So, in our regex, the backreferece `\1` is refering to whatever value would have matched the first capturing group `(a)`. Morevoer, the two backreferences `\2` both refer to whatever value has matched the second capturing group `(b)`. For example, `/(a)(b)\2\1\2/` would match the string `'abbab'`. In this case, the first backreference is the first `'a'` while the second backreference is the `'b'`. However, the regex would not march a string like `'abaab'` since the value at the first backreference does not match the value of the first capturing group. To see this clearer, imagine `/(\d+)a\1/`. This. In other words, we have kept the value of the digit in memory and then matched it afterwards. If there was another number at the backreference spot, there would be not match.
-
-Given this, a useful case for
-
-For example, we can dynamically capture HTML tag elements with a capturing group. This is helpful as I do not need to specify a whole list of potential HTML tags that need to be matched on both sides. We just know that a match is any HTML tag as log as it respects the format.
+To demonstrate the usefulness of backreferences, consider the following simple HTML tag parser `parseHtmlTags`. Its goal is to capture any piece of valid HTML tag in the form `<xyz>...</xyz>` in some arbitrary string.
 
 ```js
-function parseTitle(metastring) {
-  return metastring.match(/title=(["'])(.*?)\1/)[2];
+function parseHtmlTags(input) {
+  // Capturing group (\w+) captures the tag name
+  // \1 is a backreference that must match the same text as group 1
+  const regex = /<(\w+)>(.*?)<\/\1>/g;
+  const matches = [];
+  let match;
+  while ((match = regex.exec(input)) !== null) {
+    matches.push({
+      fullMatch: match[0],
+      tagName: match[1],
+      content: match[2]
+    });
+  }
+  return matches;
 }
 
-parseTitle('title="foo"'); // 'foo'
-parseTitle("title='foo' lang='en'"); // 'foo'
-parseTitle('title="Named capturing groups\' advantages"');
+// Examples
+parseHtmlTags("<p>Hello world</p>");
+// returns [
+//    { 
+//        "fullMatch": '<p>Hello world</p>', 
+//        "tagName": 'p', 
+//        "content": 'Hello world' 
+//    }
+// ]
+
+parseHtmlTags("<div>content</div> and <span>text</span>");
+// returns [
+//     {
+//         "fullMatch": "<div>content</div>",
+//         "tagName": "div",
+//         "content": "content"
+//     },
+//     {
+//         "fullMatch": "<span>text</span>",
+//         "tagName": "span",
+//         "content": "text"
+//     }
+// ]
+
+parseHtmlTags("<p>mismatched</div>");
+// returns []
 ```
+
+we can dynamically parse HTML tag elements with a capturing group. This is helpful as I do not need to specify a whole list of potential HTML tags that need to be matched on both sides. We just know that a match is any HTML tag as log as it respects the format.
 
 ### 1.2 Conceptual Analysis
 
-Intuitively, backreferences requires memory. We somehow need to be able to capture a group and refer back to it while at the same time know its current value. For example, in the HTML tag regex, we need to know what kind of tag we've matched at runtime. Say that we've matched a picture tag, we need to have the value picture in memory to match it later to with. 
-
-JavaScript regular expressions rely on memory during computation.
+Intuitively, for a backreference to refer to a capturing group's submatch, we have to store the value of that submatch in memory to later reference it. In the aforementioned HTML tag parser example, if the capturing group's submatch is `'p'` (in the tag `<p>`), we need to store the value `'p'`, so that the backreference `\1` may refer to it. So, backreferences rely on memory. A fortiori, JavaScript regular expressions rely on memory.
 
 ## 1. The Theory Behind Regular Expressions
 
