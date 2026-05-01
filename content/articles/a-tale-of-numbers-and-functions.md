@@ -3,7 +3,7 @@ external: false
 title: "A Tale Of Numbers And Functions"
 description: "In theory, anything computational is a function - including numbers. In this article, we'll explore how to represent numbers and carry out some basic arithmetic operations using nothing but functions."
 author: "Muhammad Houzair Koussa"
-authorUrl: "https://github.com/houzyk"
+authorUrl: "https://houzair.me/"
 ogImagePath: "/images/a-tale-of-numbers-and-functions/cover.webp"
 date: 2023-08-06
 ---
