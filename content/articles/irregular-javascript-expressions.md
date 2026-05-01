@@ -3,7 +3,7 @@ external: false
 title: "(Ir)regular JavaScript Expressions"
 description: "The MDN reference on JavaScript regular expressions notes that \"JavaScript regular expressions are in fact not regular\". This highlights a subtle tension between actual regular expressions and their implementation in JavaScript. In this article, we examine this tension by contrasting JavaScript regular expressions with their theoretical counterpart."
 author: "Muhammad Houzair Koussa"
-authorUrl: "https://github.com/houzyk"
+authorUrl: "https://houzair.me/"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
 date: 2026-04-19
 ---
