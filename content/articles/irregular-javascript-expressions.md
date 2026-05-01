@@ -44,7 +44,7 @@ With backreferences, we can refer to such submatches. Syntactically, a backrefer
 
 For example, the string `'abbab'` matches the regular expression `/(a)(b)\2\1\2/`. This is because the submatch of `(a)` is `'a'` and the submatch `(b)` of is `'b'`. So, `\1` refers to `'a'` and `\2` refers to `'b'`. Intuitively, in this case, `/(a)(b)\2\1\2/` becomes equivalent to `/(a)(b)bab/`.
 
-To demonstrate the usefulness of backreferences, consider the following simple HTML tag parser `parseHtmlTags`. Its goal is to capture any piece of valid HTML tag in the form `<xyz>...</xyz>` in some arbitrary string.
+To demonstrate the usefulness of backreferences, consider the following function `parseHtmlTags`. It's a simple HTML tag parser. It returns all valid HTML tags in the form `<xyz>...</xyz>` after parsing some arbitrary string.
 
 ```js
 function parseHtmlTags(input) {
@@ -54,46 +54,25 @@ function parseHtmlTags(input) {
   const matches = [];
   let match;
   while ((match = regex.exec(input)) !== null) {
-    matches.push({
-      fullMatch: match[0],
-      tagName: match[1],
-      content: match[2]
-    });
+    matches.push(match[0]);
   }
   return matches;
 }
 
 // Examples
 parseHtmlTags("<p>Hello world</p>");
-// returns [
-//    { 
-//        "fullMatch": '<p>Hello world</p>', 
-//        "tagName": 'p', 
-//        "content": 'Hello world' 
-//    }
-// ]
+// returns [ '<p>Hello world</p>' ]
 
 parseHtmlTags("<div>content</div> and <span>text</span>");
-// returns [
-//     {
-//         "fullMatch": "<div>content</div>",
-//         "tagName": "div",
-//         "content": "content"
-//     },
-//     {
-//         "fullMatch": "<span>text</span>",
-//         "tagName": "span",
-//         "content": "text"
-//     }
-// ]
+// returns [ '<div>content</div>', '<span>text</span>' ]
 
 parseHtmlTags("<p>mismatched</div>");
 // returns []
 ```
 
-we can dynamically parse HTML tag elements with a capturing group. This is helpful as I do not need to specify a whole list of potential HTML tags that need to be matched on both sides. We just know that a match is any HTML tag as log as it respects the format.
+The backreference in `parseHtmlTags` is especially useful in making the HTML tag parsing quite dynamic. Intuitively, We don't need to specify a whole list of potential HTML tags alternating each other (like `<p>(.*?)<\/p>)` or `<div>(.*?)<\/div>)` or `<a>(.*?)<\/a>)` or ...). Once we have a submatch to the capturing group in `<(\w+)>`, we can dynamically refer to it using the backreference in `<\/\1>`.
 
-### 1.2 Conceptual Analysis
+### 1.1 Conceptual Analysis
 
 Intuitively, for a backreference to refer to a capturing group's submatch, we have to store the value of that submatch in memory to later reference it. In the aforementioned HTML tag parser example, if the capturing group's submatch is `'p'` (in the tag `<p>`), we need to store the value `'p'`, so that the backreference `\1` may refer to it. So, backreferences rely on memory. A fortiori, JavaScript regular expressions rely on memory.
 
