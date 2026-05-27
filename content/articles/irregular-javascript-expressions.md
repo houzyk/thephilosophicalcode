@@ -5,7 +5,7 @@ description: "The MDN reference on JavaScript regular expressions notes that \"J
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://houzair.me/"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
-date: 2026-05-02
+date: 2026-05-27
 ---
 
 ![(Ir)regular JavaScript Expressions](/images/irregular-javascript-expressions/cover.webp)
@@ -40,9 +40,9 @@ A JavaScript regular expression may contain multiple capturing groups. In such a
 
 In JavaScript, we can run the `RegExp.prototype.exec()` function to see this one-to-one ordered relation. For example, given `/(a)(b)/` and a matching string `'ab'`, running `/(a)(b)/.exec("ab")` returns the array `[ 'ab', 'a', 'b', index: 0, input: 'ab', groups: undefined ]`. Its first element `'a'` relates to the first capturing group `(a)`. Similarly, its second element `'b'` relates to the second group `(b)`.
 
-Backreferences refer to such ordered submatches as follows. Syntactically, a backreference has the format `\N` where `N` is a positive whole number referencing some previously occuring capturing group. Since capturing groups are in a one-to-one ordered relation to their submatches, `N` also refers to the submatch at position `N` in the order [2].
+With backreferences, we can easily refer to such ordered submatches. Syntactically, a backreference has the format `\N` where `N` is a positive whole number referring to some previously occuring capturing group. Since capturing groups are in a one-to-one ordered relation to their submatches, `N` points to the submatch at position `N` in the order [2].
 
-We can add backreferences to the aforementioned regular expression `/(a)(b)/` like `/(a)(b)\2\1\2/`. To clarify, the backreference `\1` refers to any submatch of the capturing group `(a)`. Similarly, the two backreferences `\2` both refer to any submatch of the capturing group `(b)`. 
+We can add backreferences to the aforementioned regular expression `/(a)(b)/`. For example, `/(a)(b)\2\1\2/`. To clarify, the backreference `\1` refers to any submatch of the capturing group `(a)`. Similarly, the two backreferences `\2` both refer to any submatch of the capturing group `(b)`. 
 
 For example, the string `'abbab'` matches the regular expression `/(a)(b)\2\1\2/`. This is because the submatch of `(a)` is `'a'` and the submatch `(b)` of is `'b'`. So, `\1` refers to `'a'` and `\2` refers to `'b'`. Intuitively, in this case, `/(a)(b)\2\1\2/` becomes equivalent to `/(a)(b)bab/`.
 
@@ -72,7 +72,9 @@ parseHtmlTags("<p>mismatched</div>");
 // returns []
 ```
 
-The backreference in `parseHtmlTags` is especially useful in making the HTML tag parsing quite dynamic. Intuitively, We don't need to specify a whole list of potential HTML tags alternating each other (like `<p>(.*?)<\/p>)` or `<div>(.*?)<\/div>)` or `<a>(.*?)<\/a>)` or ...). Once we have a submatch to the capturing group in `<(\w+)>`, we can dynamically refer to it using the backreference in `<\/\1>`.
+The backreference in `parseHtmlTags` is especially useful in making HTML tag parsing quite dynamic. Intuitively, We don't need to specify a whole list of potential HTML tags alternating each other (like `<p>(.*?)<\/p>)` or `<div>(.*?)<\/div>)` or `<a>(.*?)<\/a>)`). Once we have an HTML tag as a submatch to the capturing group in `<(\w+)>`, we can dynamically refer to it using the backreference in `<\/\1>`.
+
+### 1.1 Conceptual Analysis
 
 Conceptually, for a backreference to refer to a capturing group's submatch, we have to store the value of that submatch in memory to later reference it. In the aforementioned HTML tag parser example, if the capturing group's submatch is `'p'` (in the tag `<p>`), we need to store the value `'p'`, so that the backreference `\1` may refer to it. So, backreferences rely on memory. A fortiori, JavaScript regular expressions rely on memory.
 
@@ -179,7 +181,7 @@ Hence, we can how to cash out
 
 1. Quoted from MDN at the time of writing.
 
-2. named backreferences and named caputring groups
+2. JavaScript also has [named backreferences](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_backreference "named backreferences"). We can use custom names, instead of a positive whole number, to refer to the submatch of some previously defined [named capturing group](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_capturing_group "named capturing group").
 
 2. explain why the empty set
 
