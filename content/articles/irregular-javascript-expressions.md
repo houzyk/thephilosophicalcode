@@ -169,6 +169,8 @@ The key difference from a DFA is that a PDA is equipped with an unbounded stack.
 
 Visually, a PDA is made up of a set of finite states with transitions among them, just like a DFA. However, each transition can also inspect and manipulate the stack: pushing symbols onto it, popping symbols off it, or both. One state is the start state, some states are accepting. A string is fed into the machine via the start state, and the machine transitions through its states by individually parsing the string's characters and managing its stack. Once all characters are parsed, the machine stops. If it lands in an accepting state (with some formulations also requiring an empty stack), the machine accepts the string. So, the language of the PDA is the set of all strings that, after being parsed character-by-character, lands in an accepting state. To further clarify, let's construct a PDA that recognises the aforementioned context-free language aⁿbⁿ.
 
+![PDA for aⁿbⁿ](/images/irregular-javascript-expressions/pda_for_anbn.webp)
+
 ### 3.3 Language Recognition (DFA vs PDA)
 
 Given the aforementioned context-free language, it's impossible to create a DFA for it.
@@ -187,7 +189,7 @@ Hence, we can how to cash out
 
 4. Here's a formal [proof](https://courses.grainger.illinois.edu/cs373/su2011/lectures/lecture10.pdf "proof") demonstrating that all regular expressions act as syntactic sugar for regular languages (URL valid at the time of writing).
 
-5. Regular languages, DFAs, NFAs and regular expressions are all intrinsically tied to each other.
+5. DFAs, NFAs, regular languages, regular grammars and regular expressions are all intrinsically tied to each other.
 ![Relation between regular expressions, DFAs, NFAs, regular languages and regular grammar](/images/irregular-javascript-expressions/relation_between_regexp_dfa_nfa_reg_lang_reg_gram.webp)
 
 6. Here's a [formal definition](https://www.khoury.northeastern.edu/home/vkp/390-fl07/FA-Formal-Definitions.pdf "formal definition") of a DFA (URL valid at the time of writing).
