@@ -5,7 +5,7 @@ description: "The MDN reference on JavaScript regular expressions notes that \"J
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://houzair.me/"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
-date: 2026-05-27
+date: 2026-05-29
 ---
 
 ![(Ir)regular JavaScript Expressions](/images/irregular-javascript-expressions/cover.webp)
@@ -22,7 +22,7 @@ By drawing on ideas from this note, this article is organised into three section
 
 In section 1, we dive into some code to demonstrate the usefulness of backreferences. We then conceptually analyse the way they work to abduct that they rely on memory. A fortiori, we can abduct that JavaScript regular expressions rely on memory.
 
-In section 2, we explore the theory behind regular expressions to understand why they must have finite states. In particular, we show how regular expressions act as syntactic sugar for a class of languages called 'regular languages'. We then discuss how these languages are recognised by and are intrinsically tied to a class of *finite state* machines (without memory) called Deterministic Finite Automata (DFA).
+In section 2, we explore the theory behind regular expressions to understand why they must have finite states. In particular, we show how regular expressions act as syntactic sugar for a class of languages called regular languages. We then discuss how these languages are recognised by and are intrinsically tied to a class of *finite state* machines (without memory) called deterministic finite automata (DFA).
 
 In section 3, we cash out the underlying tension between theoretical and JavaScript regular expressions as an issue of *language recognition*. We take a look at Chomsky's hierarchy. The latter hints at how different classes of languages are recognised by different classes of machines. This gives us a way to cash out the aforementioned tension by talking about the different levels in the hierarchy. 
 
@@ -34,17 +34,17 @@ Backreferences allow us to refer to submatches of previously defined capturing g
 
 Syntactically, a capturing group looks like `(pattern)` in some parent regular expression `/...(pattern).../`. Suppose that a string M matches `/...(pattern).../`. In such a case, the capturing group `(pattern)` segments (i.e. captures) a substring (of M) that matches its defined pattern. That substring is called the capturing group's submatch. 
 
-A JavaScript regular expression may contain multiple capturing groups. In such a case, these capturing groups are in a one-to-one _ordered_ relation to their submatches. As illustrated below, if some string of form `...[1]...[2]...[3]...` matches a regular expression of form `/...(c1)...(c2)...(c3).../`, then the capturing groups `(c1)`, `(c2)` and `(c3)` are in a one-to-one relation to the submatches `[1]`, `[2]` and `[3]`respectively.
+A JavaScript regular expression may contain multiple capturing groups. In such a case, these capturing groups are in a one-to-one _ordered_ relation to their submatches. As illustrated below, if some string of form `...[1]...[2]...[3]...` matches a regular expression of form `/...(c1)...(c2)...(c3).../`, then the capturing groups `(c1)`, `(c2)` and `(c3)` are in a one-to-one ordered relation to the submatches `[1]`, `[2]` and `[3]`respectively.
 
 ![Capturing groups in JS](/images/irregular-javascript-expressions/capturing_groups_in_js.webp)
 
 In JavaScript, we can run the `RegExp.prototype.exec()` function to see this one-to-one ordered relation. For example, given `/(a)(b)/` and a matching string `'ab'`, running `/(a)(b)/.exec("ab")` returns the array `[ 'ab', 'a', 'b', index: 0, input: 'ab', groups: undefined ]`. Its first element `'a'` relates to the first capturing group `(a)`. Similarly, its second element `'b'` relates to the second group `(b)`.
 
-With backreferences, we can easily refer to such ordered submatches. Syntactically, a backreference has the format `\N` where `N` is a positive whole number referring to some previously occuring capturing group. Since capturing groups are in a one-to-one ordered relation to their submatches, `N` points to the submatch at position `N` in the order [2].
+With backreferences, we can easily refer to these submatches. Syntactically, a backreference has the format `\N` where `N` is a positive whole number referring to some previously occuring capturing group. Since capturing groups are in a one-to-one ordered relation to their submatches, `N` points to the submatch at position `N` in the order [2].
 
 We can add backreferences to the aforementioned regular expression `/(a)(b)/`. For example, `/(a)(b)\2\1\2/`. To clarify, the backreference `\1` refers to any submatch of the capturing group `(a)`. Similarly, the two backreferences `\2` both refer to any submatch of the capturing group `(b)`. 
 
-For example, the string `'abbab'` matches the regular expression `/(a)(b)\2\1\2/`. This is because the submatch of `(a)` is `'a'` and the submatch `(b)` of is `'b'`. So, `\1` refers to `'a'` and `\2` refers to `'b'`. Intuitively, in this case, `/(a)(b)\2\1\2/` becomes equivalent to `/(a)(b)bab/`.
+For example, the string `'abbab'` matches the regular expression `/(a)(b)\2\1\2/`. The submatch of `(a)` is `'a'` and the submatch `(b)` of is `'b'`. `\1` refers to `'a'` and `\2` refers to `'b'`. Intuitively, in this case, `/(a)(b)\2\1\2/` is equivalent to `/(a)(b)bab/`.
 
 To demonstrate the usefulness of backreferences, consider the following function `parseHtmlTags`. It's a simple HTML tag parser. It returns all valid HTML tags in the form `<xyz>...</xyz>` after parsing some arbitrary string.
 
@@ -76,7 +76,7 @@ The backreference in `parseHtmlTags` is especially useful in making HTML tag par
 
 ### 1.1 Conceptual Analysis
 
-Conceptually, for a backreference to refer to a capturing group's submatch, we have to store the value of that submatch in memory to later reference it. In the aforementioned HTML tag parser example, if the capturing group's submatch is `'p'` (in the tag `<p>`), we need to store the value `'p'`, so that the backreference `\1` may refer to it. So, backreferences rely on memory. A fortiori, JavaScript regular expressions rely on memory.
+Conceptually, for a backreference to refer to a capturing group's submatch, we have to store the value of that submatch in memory to later reference it. In the aforementioned HTML tag parser example, if the capturing group's submatch is `'p'` (from the tag `<p>`), we need to store the value `'p'`, so that the backreference `\1` may refer to it. So, backreferences rely on memory. A fortiori, JavaScript regular expressions rely on memory.
 
 ## 2. The Theory Behind Regular Expressions
 
@@ -88,7 +88,7 @@ Firstly, regular expressions are governed by strict syntax rules over a finite a
 
 Given some finite alphabet (like the set of Unicode characters with the empty string);
 
-1. The empty set is a regular expression [1].
+1. The empty set is a regular expression [3].
 2. The empty string `''` is a regular expression.
 3. Any character from the alphabet is a regular expression.
 4. For any two regular expressions `R` and `S`,
@@ -114,7 +114,7 @@ As a side note, one may feel that these rules are incomplete because regular exp
 
 Secondly, some regular expressions can match more than one string (some even have infinite matches). Intuitively, we can form a set of all possible matches to a regular expression. In this sense, when we say that a string "matches" a regular expression, we're saying that this string is an element of that set. In other words, a regular expressions is just a shorthand way of talking about that set.
 
-So far, we've observed that regular expressions obey strict syntax rules over an alphabet, and that they serve as a shorthand way of talking about a set of strings. Formally, a set of strings over an alphabet is called a language. With that in mind, regular expressions are characteristically syntactic sugar for a particular class of languages called 'regular languages' [2].
+So far, we've observed that regular expressions obey strict syntax rules over an alphabet, and that they serve as a shorthand way of talking about a set of strings. Formally, a set of strings over an alphabet is called a language. So, characteristically, regular expressions act as syntactic sugar for a particular class of languages called regular languages [4].
 
 
 ### 2.2 Regular Languages and DFAs
@@ -123,11 +123,11 @@ A classic example of a regular language is the set of all strings of even length
 
 There are many interesting formal properties that govern these languages (like the union of two regular languages is also a regular language). However, for our current purposes, one such interesting property is their intrinsic tie to the DFA class of finite state machines:
 
-All regular languages are recognised by DFAs and DFAs only recognise regular languages [4].
+All regular languages are recognised by DFAs and DFAs only recognise regular languages [5].
 
 A DFA is a theoretical machine that recognises a set of strings. This set is the language of that machine. In particular, for all strings over an alphabet, the machine will either accept or reject it. The set of all strings that the machine accepts _is_ the language of that machine. 
 
-Visually, a DFA is made up of a set of finite states with transitions among them. Some of these states are "accepting" and others are "rejecting". One of these states must be the start state. Any string over an alphabet is fed into the machine via that start state. As it's fed through, the machine transitions through its states by individually parsing the string's characters. Once all characters are parsed, the machine stops. It either lands in an accepting or rejecting state. If it's an accepting state, then the machine accepts the string. Conversely, it rejects it [5]. So, the language of the DFA is the set of all strings that, after being parsed character-by-character, lands in an accepting state. To further clarify, let's construct a DFA that recognises the aforementioned regular language expressed by the regular expression `(aa)*` [6].
+Visually, a DFA is made up of a set of finite states with transitions among them. Some of these states are "accepting" and others are "rejecting". One of these states must be the start state. Any string over an alphabet is fed into the machine via that start state. As it's fed through, the machine transitions through its states by individually parsing the string's characters. Once all characters are parsed, the machine stops. It either lands in an accepting or rejecting state. If it's an accepting state, then the machine accepts the string. Conversely, it rejects it [6]. So, the language of the DFA is the set of all strings that, after being parsed character-by-character, lands in an accepting state. To further clarify, let's construct a DFA that recognises the aforementioned regular language expressed by the regular expression `(aa)*` [7].
 
 ![DFA for language over a of even length](/images/irregular-javascript-expressions/dfa_for_language_over_a_of_even_length.webp)
 
@@ -181,21 +181,19 @@ Hence, we can how to cash out
 
 1. Quoted from MDN at the time of writing.
 
-2. JavaScript also has [named backreferences](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_backreference "named backreferences"). We can use custom names, instead of a positive whole number, to refer to the submatch of some previously defined [named capturing group](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_capturing_group "named capturing group").
+2. JavaScript also has [named backreferences](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_backreference "named backreferences"). We can use custom names, instead of a positive whole number, to refer to the submatch of some previously defined [named capturing groups](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_capturing_group "named capturing groups").
 
-2. explain why the empty set
+3. Since DFAs only recognise regular languages and regular expressions act as syntactic sugar for regular languages, there must be a regular expression that corresponds to the DFA that does not accept any string. Intuitively, that's the empty set.
 
-3. talk about the proof
+4. Here's a formal [proof](https://courses.grainger.illinois.edu/cs373/su2011/lectures/lecture10.pdf "proof") demonstrating that all regular expressions act as syntactic sugar for regular languages (URL valid at the time of writing).
 
-4. ...
+5. Regular languages, DFAs, NFAs and regular expressions are all intrinsically tied to each other.
 ![Relation between regular expressions, DFAs, NFAs, regular languages and regular grammar](/images/irregular-javascript-expressions/relation_between_regexp_dfa_nfa_reg_lang_reg_gram.webp)
 
-5. add the formal definition of a DFA here
+6. Here's a [formal definition](https://www.khoury.northeastern.edu/home/vkp/390-fl07/FA-Formal-Definitions.pdf "formal definition") of a DFA (URL valid at the time of writing).
 
-6. add a the website for turning regexp into dfas
+7. Check out this [website](https://regexper.com/ "website") to visualise any JavaScript regular expression as a state machine.
 
-6. Explain that there is a DFA for all strings. That does not mean that the DFA is all powerful. The issue comes in dealineation. Talk of overgeneration and undergeneration.
+8. Explain that there is a DFA for all strings. That does not mean that the DFA is all powerful. The issue comes in dealineation. Talk of overgeneration and undergeneration.
 
-7. ref ARJ article
-
-8. talk of regex to DFA/NFA conversion and vice versa
+I was originally inspired to write this article after reading [Abdur-Rahmaan Janhangeer](https://www.compileralchemy.com/ "Abdur-Rahmaan Janhangeer")'s article - [Regex Engines: History and Contributions](https://www.linkedin.com/pulse/regex-engines-history-contributions-abdur-rahmaan-janhangeer "Regex Engines: History and Contributions").
