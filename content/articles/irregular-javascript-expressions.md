@@ -5,7 +5,7 @@ description: "The MDN reference on JavaScript regular expressions notes that \"J
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://houzair.me/"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
-date: 2026-05-29
+date: 2026-06-03
 ---
 
 ![(Ir)regular JavaScript Expressions](/images/irregular-javascript-expressions/cover.webp)
@@ -24,9 +24,9 @@ In section 1, we dive into some code to demonstrate the usefulness of backrefere
 
 In section 2, we explore the theory behind regular expressions to understand why they must have finite states. In particular, we show how regular expressions act as syntactic sugar for a class of languages called regular languages. We then discuss how these languages are recognised by and are intrinsically tied to a class of *finite state* machines (without memory) called deterministic finite automata (DFA).
 
-In section 3, we cash out the underlying tension between theoretical and JavaScript regular expressions as an issue of *language recognition*. We take a look at Chomsky's hierarchy. The latter hints at how different classes of languages are recognised by different classes of machines. This gives us a way to cash out the aforementioned tension by talking about the different levels in the hierarchy. 
+In section 3, we take a look at Chomsky's hierarchy. The latter hints at how different classes of languages are recognised by different classes of machines. This gives us a way to cash out the tension (between theoretical and JavaScript regular expressions) by talking about the different levels in the hierarchy.
 
-Essentially, to understand why JavaScript regular expressions are not regular *is* to understand how they recognise a larger (hence different) class of languages than theoretical regular expressions. As previously mentioned, DFAs are finite state machines without memory that are intrinsically tied to regular languages. In constrast, JavaScript regular expressions rely on memory. So, owing to their reliance on memory, they recognise a different class of languages than DFAs. Hence, they are not regular.
+Essentially, we cash out the tension as an issue of *language recognition*. To understand why JavaScript regular expressions are not regular *is* to understand how they recognise a larger (hence different) class of languages than theoretical regular expressions. As previously mentioned, DFAs are finite state machines without memory that are intrinsically tied to regular languages. In constrast, JavaScript regular expressions rely on memory. So, owing to their reliance on memory, they recognise a different class of languages than DFAs. Hence, they are not regular.
 
 ## 1. Backreferences
 
@@ -143,11 +143,9 @@ Importantly, notice how DFAs do not have memory during computation. It simply tr
 
 So far, we've discussed how regular languages are recognised by and are intrinsically tied to DFAs. Since regular expressions act as syntactic for regular languages, we've also illustrated an intrinsic tie between DFAs and regular expressions. A key insight from this tie is that if some concept/object is incompatible with a DFA, then it must be incompatible with regular languages and regular expressions. Since DFAs are machines without memory, then regular expressions must also be devoid of memory.
 
-## 3. An Issue Of Language Recognition
+## 3. Chomsky's Hierarchy
 
 The tension between JS regular expressions and theoretical regular expressions will bear on the aforementioned insight. To properly understand this, we will look at Chomsky's hierarchy of languages and what they mean. Then, we will concentrate on two levels in our hierarchy - regular languages and context free languages. We will see how each language reguire different machines. one is the DFA which we already saw and the other is the PDA. We will see how a DFA works and, informally, show that the difference is - a form of memory. With this in mind, we will use our insight and see that if something uses memory, then that thing is iincomptabile with regular languages, DFAs and hence, regular expressions.
-
-### 3.1 Chomsky's Hierarchy
 
 ![Chomsky's Hierarchy](/images/irregular-javascript-expressions/chomsky_hierarchy.webp)
 
@@ -155,7 +153,7 @@ Chomsky's hierarchy contains subsets of formal languages. At the very bottom, we
 
 As a side note, the last layer are those languages recognised by Turing Machines.
 
-### 3.2 Context-free languages and PDAs
+### 3.1 Context-free languages and PDAs
 
 A classic example of a context-free language is the set of all strings of the form `aⁿbⁿ` over an alphabet like `{'a', 'b'}`. This is the set of strings starting with some number of `a` strictly followed by the same number of `b`. It contains strings like `'ab'`, `'aabb'` or `''` (the empty string). Its corresponding regular expression is `(aa)*`.
 
@@ -171,7 +169,7 @@ Visually, a PDA is made up of a set of finite states with transitions among them
 
 ![PDA for aⁿbⁿ](/images/irregular-javascript-expressions/pda_for_anbn.webp)
 
-### 3.3 Language Recognition (DFA vs PDA)
+### 3.2 An Issue Of Language Recognition
 
 Given the aforementioned context-free language, it's impossible to create a DFA for it.
 
@@ -194,8 +192,6 @@ Hence, we can how to cash out
 
 6. Here's a [formal definition](https://www.khoury.northeastern.edu/home/vkp/390-fl07/FA-Formal-Definitions.pdf "formal definition") of a DFA (URL valid at the time of writing).
 
-7. Check out this [website](https://regexper.com/ "website") to visualise any JavaScript regular expression as a state machine.
-
-8. Explain that there is a DFA for all strings. That does not mean that the DFA is all powerful. The issue comes in dealineation. Talk of overgeneration and undergeneration.
+7. Visit [regexper.com](https://regexper.com/ "regexper.com") to visualise any JavaScript regular expression as a state machine.
 
 I was originally inspired to write this article after reading [Abdur-Rahmaan Janhangeer](https://www.compileralchemy.com/ "Abdur-Rahmaan Janhangeer")'s article - [Regex Engines: History and Contributions](https://www.linkedin.com/pulse/regex-engines-history-contributions-abdur-rahmaan-janhangeer "Regex Engines: History and Contributions").
