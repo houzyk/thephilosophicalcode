@@ -22,7 +22,7 @@ By drawing on ideas from this note, this article is organised into three section
 
 In section 1, we dive into some code to demonstrate the usefulness of backreferences. We then conceptually analyse the way they work to abduce that they rely on memory. So, we can abduce that JavaScript regular expressions rely on memory.
 
-In section 2, we explore the theory behind regular expressions to understand why they must have finite states. In particular, we show how regular expressions act as syntactic sugar for a class of languages called regular languages. We then discuss how these languages are recognised by and are intrinsically tied to a class of *finite state* machines without memory called deterministic finite automata (DFA).
+In section 2, we explore the theory behind regular expressions to understand why they must have finite states. In particular, we show how regular expressions act as syntactic sugar for a class of languages called regular languages. We then discuss how these languages are recognised by and are intrinsically tied to a class of *finite state* machines without memory [2] called deterministic finite automata (DFA).
 
 In section 3, we take a look at Chomsky's hierarchy. This hints at how different classes of languages are recognised by different classes of machines. This gives us a way to cash out the tension (between theoretical and JavaScript regular expressions) by talking about the different levels in the hierarchy.
 
@@ -84,9 +84,11 @@ Conceptually, for a backreference to refer to a capturing group's submatch, we h
 
 To see how regular expressions act as syntactic sugar, let's consider two observations about them.
 
-Firstly, regular expressions are governed by strict syntax rules over a finite alphabet (a set of characters). These rules dictate whether a string is a valid regular expression or not. For example, the string `a{1` is an invalid regular expression because it's missing the `}`, whereas `a{1}` is valid. It's standard to recursively define the rules as follows:
+#### 2.1.1 Observation 1
 
-Given some finite alphabet (like the set of Unicode characters with the empty string);
+Regular expressions are governed by strict syntax rules over a finite alphabet (a set of characters). These rules dictate whether a string is a valid regular expression or not. For example, the string `a{1` is an invalid regular expression because it's missing the `}`, whereas `a{1}` is valid. It's standard to recursively define the rules as follows.
+
+Given some finite alphabet (like the set of Unicode characters),
 
 1. The empty set is a regular expression [3].
 2. The empty string `''` is a regular expression.
@@ -112,9 +114,11 @@ As a side note, one may feel that these rules are incomplete because regular exp
 | `[^abc]` | Negated class | Alternation of all alphabet characters *not* listed | `[^ab]` = `c\|d\|...` |
 | `.` | Any character | Alternation of all alphabet characters | `a.b` = `a(x\|y\|z\|...)b` |
 
-Secondly, some regular expressions can match more than one string (some even have infinite matches). Intuitively, we can form a set of all possible matches to a regular expression. In this sense, when we say that a string "matches" a regular expression, we're saying that this string is an element of that set. In other words, a regular expressions is just a shorthand way of talking about that set.
+#### 2.1.2 Observation 2
 
-So far, we've observed that regular expressions obey strict syntax rules over an alphabet, and that they serve as a shorthand way of talking about a set of strings. Formally, a set of strings over an alphabet is called a language. So, characteristically, regular expressions act as syntactic sugar for a particular class of languages called regular languages [4].
+Some regular expressions can match more than one string (some even have infinite matches). Intuitively, we can form a set of all possible matches to a regular expression. In this sense, when we say that a string "matches" a regular expression, we're saying that this string is an element of that set. In other words, a regular expression is just a shorthand way of talking about that set.
+
+So far, we've observed that regular expressions obey strict syntax rules over an alphabet, and that they serve as a shorthand way of talking about a set of strings. Formally, a set of strings over an alphabet is called a language. So, characteristically, regular expressions act as syntactic sugar for a particular class of languages. Those are regular languages [4].
 
 
 ### 2.2 Regular Languages and DFAs
@@ -137,11 +141,11 @@ Let's walk through how the machine recognises our language by looking at two exa
 
 Given `a`, it begins in the start state and transitions into the the "odd length" state once it parses the only character `'a'`. Since there are no characters left, the machine lands in a rejecting state and rejects `'a'`.
 
-On a side note, different configurations of states and transitions yields different regular languages. It's possible that DFAs with seemingly different configurations accept the same set of strings. Intuitively, this is how seemingly different regular expressions act as syntactic sugar for the same regular language (like `(aa)*` and `(a{2})*`). 
+On a side note, different configurations of states and transitions yield different regular languages. It's possible that DFAs with seemingly different configurations accept the same set of strings. Intuitively, this is how seemingly different regular expressions act as syntactic sugar for the same regular language (like `(aa)*` and `(a{2})*`). 
 
-Importantly, notice how DFAs do not have memory during computation. It simply transitions between states on each computational step. For example, once it parses a character, the machine "forgets" it. Similarly, it does not have any memory of all previously parsed characters or states traversed. At any computational step, it only "knows" the current string, the current state and its transitions. Hence, DFAs are finate state machines without memory.
+Importantly, notice how DFAs do not have memory during computation. It simply transitions between states on each computational step. For example, once it parses a character, the machine "forgets" it. Similarly, it does not have any memory of all previously parsed characters or states traversed. At any computational step, it only "knows" the current character, the current state and its transitions. Hence, DFAs are finite state machines without memory.
 
-So far, we've discussed how regular languages are recognised by and are intrinsically tied to DFAs. Since regular expressions act as syntactic for regular languages, we've also illustrated an intrinsic tie between DFAs and regular expressions. A key insight from this tie is that if some concept/object is incompatible with a DFA, then it must be incompatible with regular languages and regular expressions. Since DFAs are machines without memory, then regular expressions must also be devoid of memory.
+So far, we've discussed how regular languages are recognised by and are intrinsically tied to DFAs. Since regular expressions act as syntactic sugar for regular languages, we've also illustrated an intrinsic tie between DFAs and regular expressions. A key insight from this tie is that if some concept/object is incompatible with a DFA, then it must be incompatible with regular languages and regular expressions. Since DFAs are machines without memory, then regular expressions must also be devoid of memory.
 
 ## 3. Chomsky's Hierarchy
 
@@ -177,21 +181,27 @@ One crucial difference between a DFA and a PDA is the addition of a form of memo
 
 Hence, we can how to cash out
 
+Add informal argument here
+
+regular expressions denote exactly the regular languages → regular languages are exactly what DFAs recognise → recognising a regular language requires no unbounded memory → therefore no genuinely regular notation needs memory
+
 ## Footnotes
 
 1. Quoted from MDN at the time of writing.
 
-2. JavaScript also has [named backreferences](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_backreference "named backreferences"). We can use custom names, instead of a positive whole number, to refer to the submatch of some previously defined [named capturing groups](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_capturing_group "named capturing groups").
+2. We can argue that DFAs do have a form of memory - it's states and transitions. However, that memory is finite and bounded. DFAs cannot store arbitrary strings.
 
-3. Since DFAs only recognise regular languages and regular expressions act as syntactic sugar for regular languages, there must be a regular expression that corresponds to the DFA that does not accept any string. Intuitively, that's the empty set.
+3. JavaScript also has [named backreferences](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_backreference "named backreferences"). We can use custom names, instead of a positive whole number, to refer to the submatch of some previously defined [named capturing groups](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_capturing_group "named capturing groups").
 
-4. Here's a formal [proof](https://courses.grainger.illinois.edu/cs373/su2011/lectures/lecture10.pdf "proof") demonstrating that all regular expressions act as syntactic sugar for regular languages (URL valid at the time of writing).
+4. Since DFAs only recognise regular languages and regular expressions act as syntactic sugar for regular languages, there must be a regular expression that corresponds to the DFA that does not accept any string. Intuitively, that's the empty set.
 
-5. DFAs, NFAs, regular languages, regular grammars and regular expressions are all intrinsically tied to each other.
+5. Here's a formal [proof](https://courses.grainger.illinois.edu/cs373/su2011/lectures/lecture10.pdf "proof") demonstrating that all regular expressions act as syntactic sugar for regular languages (URL valid at the time of writing).
+
+6. DFAs, NFAs, regular languages, regular grammars and regular expressions are all intrinsically tied to each other.
 ![Relation between regular expressions, DFAs, NFAs, regular languages and regular grammar](/images/irregular-javascript-expressions/relation_between_regexp_dfa_nfa_reg_lang_reg_gram.webp)
 
-6. Here's a [formal definition](https://www.khoury.northeastern.edu/home/vkp/390-fl07/FA-Formal-Definitions.pdf "formal definition") of a DFA (URL valid at the time of writing).
+7. Here's a [formal definition](https://www.khoury.northeastern.edu/home/vkp/390-fl07/FA-Formal-Definitions.pdf "formal definition") of a DFA (URL valid at the time of writing).
 
-7. Visit [regexper.com](https://regexper.com/ "regexper.com") to visualise any JavaScript regular expression as a state machine.
+8. Visit [regexper.com](https://regexper.com/ "regexper.com") to visualise any JavaScript regular expression as a state machine.
 
 I was originally inspired to write this article after reading [Abdur-Rahmaan Janhangeer](https://www.compileralchemy.com/ "Abdur-Rahmaan Janhangeer")'s article - [Regex Engines: History and Contributions](https://www.linkedin.com/pulse/regex-engines-history-contributions-abdur-rahmaan-janhangeer "Regex Engines: History and Contributions").
