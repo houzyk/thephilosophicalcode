@@ -5,7 +5,7 @@ description: "The MDN reference on JavaScript regular expressions notes that \"J
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://houzair.me/"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
-date: 2026-06-03
+date: 2026-06-05
 ---
 
 ![(Ir)regular JavaScript Expressions](/images/irregular-javascript-expressions/cover.webp)
@@ -16,13 +16,13 @@ date: 2026-06-03
 
 For context, here's the full note from MDN [1]:
 
-> JavaScript regular expressions are in fact not regular, due to the existence of backreferences (regular expressions must have finite states). However, they are still a very useful feature.
+> JavaScript regular expressions are in fact not regular, due to the existence of [backreferences](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Backreference "backreferences") (regular expressions must have finite states). However, they are still a very useful feature.
 
 By drawing on ideas from this note, this article is organised into three sections.
 
 In section 1, we dive into some code to demonstrate the usefulness of backreferences. We then conceptually analyse the way they work to abduct that they rely on memory. A fortiori, we can abduct that JavaScript regular expressions rely on memory.
 
-In section 2, we explore the theory behind regular expressions to understand why they must have finite states. In particular, we show how regular expressions act as syntactic sugar for a class of languages called regular languages. We then discuss how these languages are recognised by and are intrinsically tied to a class of *finite state* machines (without memory) called deterministic finite automata (DFA).
+In section 2, we explore the theory behind regular expressions to understand why they must have finite states. In particular, we show how regular expressions act as syntactic sugar for a class of languages called regular languages. We then discuss how these languages are recognised by and are intrinsically tied to a class of *finite state* machines without memory called deterministic finite automata (DFA).
 
 In section 3, we take a look at Chomsky's hierarchy. The latter hints at how different classes of languages are recognised by different classes of machines. This gives us a way to cash out the tension (between theoretical and JavaScript regular expressions) by talking about the different levels in the hierarchy.
 
@@ -30,7 +30,7 @@ Essentially, we cash out the tension as an issue of *language recognition*. To u
 
 ## 1. Backreferences
 
-Backreferences allow us to refer to submatches of previously defined capturing groups in any JavaScript regular expression.
+Backreferences allow us to refer to submatches of previously defined [capturing groups](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Capturing_group "capturing groups") in any JavaScript regular expression. A backreference matches the same string as its group. It refers to the same submatch.
 
 Syntactically, a capturing group looks like `(pattern)` in some parent regular expression `/...(pattern).../`. Suppose that a string M matches `/...(pattern).../`. In such a case, the capturing group `(pattern)` segments (i.e. captures) a substring (of M) that matches its defined pattern. That substring is called the capturing group's submatch. 
 
@@ -38,7 +38,7 @@ A JavaScript regular expression may contain multiple capturing groups. In such a
 
 ![Capturing groups in JS](/images/irregular-javascript-expressions/capturing_groups_in_js.webp)
 
-In JavaScript, we can run the `RegExp.prototype.exec()` function to see this one-to-one ordered relation. For example, given `/(a)(b)/` and a matching string `'ab'`, running `/(a)(b)/.exec("ab")` returns the array `[ 'ab', 'a', 'b', index: 0, input: 'ab', groups: undefined ]`. Its first element `'a'` relates to the first capturing group `(a)`. Similarly, its second element `'b'` relates to the second group `(b)`.
+In JavaScript, we can run the `RegExp.prototype.exec()` function to see this one-to-one ordered relation. For example, given `/(a)(b)/` and a matching string `'ab'`, running `/(a)(b)/.exec("ab")` returns the array `[ 'ab', 'a', 'b', index: 0, input: 'ab', groups: undefined ]`. Its first element `'a'` is the submatch of the first capturing group `(a)`. Similarly, its second element `'b'` is the submatch of the second group `(b)`.
 
 With backreferences, we can easily refer to these submatches. Syntactically, a backreference has the format `\N` where `N` is a positive whole number referring to some previously occuring capturing group. Since capturing groups are in a one-to-one ordered relation to their submatches, `N` points to the submatch at position `N` in the order [2].
 
