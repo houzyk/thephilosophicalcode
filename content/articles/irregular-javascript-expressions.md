@@ -20,13 +20,13 @@ For context, here's the full note from MDN [1]:
 
 By drawing on ideas from this note, this article is organised into three sections.
 
-In section 1, we dive into some code to demonstrate the usefulness of backreferences. We then conceptually analyse the way they work to abduct that they rely on memory. A fortiori, we can abduct that JavaScript regular expressions rely on memory.
+In section 1, we dive into some code to demonstrate the usefulness of backreferences. We then conceptually analyse the way they work to abduce that they rely on memory. So, we can abduce that JavaScript regular expressions rely on memory.
 
 In section 2, we explore the theory behind regular expressions to understand why they must have finite states. In particular, we show how regular expressions act as syntactic sugar for a class of languages called regular languages. We then discuss how these languages are recognised by and are intrinsically tied to a class of *finite state* machines without memory called deterministic finite automata (DFA).
 
-In section 3, we take a look at Chomsky's hierarchy. The latter hints at how different classes of languages are recognised by different classes of machines. This gives us a way to cash out the tension (between theoretical and JavaScript regular expressions) by talking about the different levels in the hierarchy.
+In section 3, we take a look at Chomsky's hierarchy. This hints at how different classes of languages are recognised by different classes of machines. This gives us a way to cash out the tension (between theoretical and JavaScript regular expressions) by talking about the different levels in the hierarchy.
 
-Essentially, we cash out the tension as an issue of *language recognition*. To understand why JavaScript regular expressions are not regular *is* to understand how they recognise a larger (hence different) class of languages than theoretical regular expressions. As previously mentioned, DFAs are finite state machines without memory that are intrinsically tied to regular languages. In constrast, JavaScript regular expressions rely on memory. So, owing to their reliance on memory, they recognise a different class of languages than DFAs. Hence, they are not regular.
+Essentially, we cash out the tension as an issue of *language recognition*. To understand why JavaScript regular expressions are not regular *is* to understand how they recognise a larger (hence different) class of languages than theoretical regular expressions. As previously mentioned, DFAs are finite state machines without memory that are intrinsically tied to regular languages. In contrast, JavaScript regular expressions rely on memory. So, owing to their reliance on memory, they recognise a different class of languages than DFAs. Hence, they are not regular.
 
 ## 1. Backreferences
 
@@ -34,19 +34,19 @@ Backreferences allow us to refer to submatches of previously defined [capturing 
 
 Syntactically, a capturing group looks like `(pattern)` in some parent regular expression `/...(pattern).../`. Suppose that a string M matches `/...(pattern).../`. In such a case, the capturing group `(pattern)` segments (i.e. captures) a substring (of M) that matches its defined pattern. That substring is called the capturing group's submatch. 
 
-A JavaScript regular expression may contain multiple capturing groups. In such a case, these capturing groups are in a one-to-one _ordered_ relation to their submatches. As illustrated below, if some string of form `...[1]...[2]...[3]...` matches a regular expression of form `/...(c1)...(c2)...(c3).../`, then the capturing groups `(c1)`, `(c2)` and `(c3)` are in a one-to-one ordered relation to the submatches `[1]`, `[2]` and `[3]`respectively.
+A JavaScript regular expression may contain multiple capturing groups. In such a case, these capturing groups are in a one-to-one _ordered_ relation to their submatches. As illustrated below, if some string of the form `...[1]...[2]...[3]...` matches a regular expression of the form `/...(c1)...(c2)...(c3).../`, then the capturing groups `(c1)`, `(c2)` and `(c3)` are in a one-to-one ordered relation to the submatches `[1]`, `[2]` and `[3]` respectively.
 
 ![Capturing groups in JS](/images/irregular-javascript-expressions/capturing_groups_in_js.webp)
 
-In JavaScript, we can run the `RegExp.prototype.exec()` function to see this one-to-one ordered relation. For example, given `/(a)(b)/` and a matching string `'ab'`, running `/(a)(b)/.exec("ab")` returns the array `[ 'ab', 'a', 'b', index: 0, input: 'ab', groups: undefined ]`. Its first element `'a'` is the submatch of the first capturing group `(a)`. Similarly, its second element `'b'` is the submatch of the second group `(b)`.
+In JavaScript, we can run the `RegExp.prototype.exec()` function to see this one-to-one ordered relation. For example, given `/(a)(b)/` and a matching string `'ab'`, running `/(a)(b)/.exec('ab')` returns the array `[ 'ab', 'a', 'b', index: 0, input: 'ab', groups: undefined ]`. The element `'a'` (at index `1`) is the submatch of the first capturing group `(a)`. Similarly, the element `'b'` (at index `2`) is the submatch of the second group `(b)`.
 
-With backreferences, we can easily refer to these submatches. Syntactically, a backreference has the format `\N` where `N` is a positive whole number referring to some previously occuring capturing group. Since capturing groups are in a one-to-one ordered relation to their submatches, `N` points to the submatch at position `N` in the order [2].
+With backreferences, we can easily refer to these submatches. Syntactically, a backreference has the format `\N` where `N` is a positive whole number referring to some previously occurring capturing group. Since capturing groups are in a one-to-one ordered relation to their submatches, `N` points to the submatch at position `N` in the order [2].
 
-We can add backreferences to the aforementioned regular expression `/(a)(b)/`. For example, `/(a)(b)\2\1\2/`. To clarify, the backreference `\1` refers to any submatch of the capturing group `(a)`. Similarly, the two backreferences `\2` both refer to any submatch of the capturing group `(b)`. 
+We can add backreferences to the aforementioned regular expression `/(a)(b)/`. For example, `/(a)(b)\2\1\2/`. To clarify, the backreference `\1` refers to the submatch of the capturing group `(a)`. Similarly, the two backreferences `\2` both refer to the submatch of the capturing group `(b)`. 
 
-For example, the string `'abbab'` matches the regular expression `/(a)(b)\2\1\2/`. The submatch of `(a)` is `'a'` and the submatch `(b)` of is `'b'`. `\1` refers to `'a'` and `\2` refers to `'b'`. Intuitively, in this case, `/(a)(b)\2\1\2/` is equivalent to `/(a)(b)bab/`.
+For example, the string `'abbab'` matches the regular expression `/(a)(b)\2\1\2/`. The submatch of `(a)` is `'a'` and the submatch of `(b)` is `'b'`. `\1` refers to `'a'` and `\2` refers to `'b'`. Intuitively, in this case, `/(a)(b)\2\1\2/` is equivalent to `/(a)(b)bab/`.
 
-To demonstrate the usefulness of backreferences, consider the following function `parseHtmlTags`. It's a simple HTML tag parser. It returns all valid HTML tags in the form `<xyz>...</xyz>` after parsing some arbitrary string.
+To demonstrate the usefulness of backreferences, consider the following function `parseHtmlTags`. It's a simple HTML tag parser. It returns all matching open/close tags of the form `<xyz>...</xyz>` after parsing some arbitrary string.
 
 ```js
 function parseHtmlTags(input) {
@@ -62,21 +62,21 @@ function parseHtmlTags(input) {
 }
 
 // Examples
-parseHtmlTags("<p>Hello world</p>");
+parseHtmlTags('<p>Hello world</p>');
 // returns [ '<p>Hello world</p>' ]
 
-parseHtmlTags("<div>content</div> and <span>text</span>");
+parseHtmlTags('<div>content</div> and <span>text</span>');
 // returns [ '<div>content</div>', '<span>text</span>' ]
 
-parseHtmlTags("<p>mismatched</div>");
+parseHtmlTags('<p>mismatched</div>');
 // returns []
 ```
 
-The backreference in `parseHtmlTags` is especially useful in making HTML tag parsing quite dynamic. Intuitively, We don't need to specify a whole list of potential HTML tags alternating each other (like `<p>(.*?)<\/p>)` or `<div>(.*?)<\/div>)` or `<a>(.*?)<\/a>)`). Once we have an HTML tag as a submatch to the capturing group in `<(\w+)>`, we can dynamically refer to it using the backreference in `<\/\1>`.
+The backreference in `parseHtmlTags` is especially useful in making HTML tag parsing quite dynamic. Intuitively, we don't need to specify a whole list of potential HTML tags alternating with one another (like `(<p>(.*?)<\/p>)` or `(<div>(.*?)<\/div>)` or `(<a>(.*?)<\/a>)`). Once we have an HTML tag name as a submatch of the capturing group in `<(\w+)>`, we can dynamically refer to it using the backreference in `<\/\1>`.
 
 ### 1.1 Conceptual Analysis
 
-Conceptually, for a backreference to refer to a capturing group's submatch, we have to store the value of that submatch in memory to later reference it. In the aforementioned HTML tag parser example, if the capturing group's submatch is `'p'` (from the tag `<p>`), we need to store the value `'p'`, so that the backreference `\1` may refer to it. So, backreferences rely on memory. A fortiori, JavaScript regular expressions rely on memory.
+Conceptually, for a backreference to refer to a capturing group's submatch, we have to store the value of that submatch in memory to later reference it. In the aforementioned HTML tag parser example, if the capturing group's submatch is `'p'` (from the tag `<p>`), we need to store the value `'p'`, so that the backreference `\1` may refer to it. So, backreferences rely on memory. It follows that JavaScript regular expressions rely on memory.
 
 ## 2. The Theory Behind Regular Expressions
 
