@@ -150,15 +150,11 @@ So far, we've discussed how regular languages are recognised by and are intrinsi
 
 ## 3. Chomsky's Hierarchy
 
-The tension between JavaScript regular expressions and theoretical regular expressions will bear on the aforementioned insight. To properly understand this, we will look at Chomsky's hierarchy of languages and what they mean. Then, we will concentrate on two levels in our hierarchy - regular languages and context free languages. We will see how each language reguire different machines. one is the DFA which we already saw and the other is the PDA. We will see how a DFA works and, informally, show that the difference is - a form of memory. With this in mind, we will use our insight and see that if something uses memory, then that thing is iincomptabile with regular languages, DFAs and hence, theoretical regular expressions.
-
 ![Chomsky's Hierarchy](/images/irregular-javascript-expressions/chomsky_hierarchy.webp)
 
-Chomsky's hierarchy contains subsets of formal languages. At the very bottom, we have regular languages and just above we have context-free languages. The interesting feature of this language is that each language in the hierarchy needs a different type of machine to recognise it. For our current purposes, we will be focusing on the difference between the machines used to recognise regular languages and context-free languages.
+Essentially, Chomsky's Hierarchy is a containment hierarchy of formal languages. The higher we go up the hierarchy, the more complex the language gets. At the very bottom, we have regular languages and just above we have context-free languages. The interesting feature of the hierarchy is that each language needs a different type of machine to recognise it. For our current purposes, we will be focusing on the difference between the machines used to recognise regular languages and context-free languages.
 
-As a side note, the last layer are those languages recognised by Turing Machines.
-
-### 3.1 Context-free languages and PDAs
+### 3.1 Context-free Languages and PDAs
 
 A classic example of a context-free language is the set of all strings of the form `aⁿbⁿ` over an alphabet like `{'a', 'b'}`. This is the set of strings starting with some number of `a` strictly followed by the same number of `b`. It contains strings like `'ab'`, `'aabb'` or `''` (the empty string). Its corresponding regular expression is `(aa)*`.
 
@@ -184,7 +180,21 @@ Hence, we can how to cash out
 
 Add informal argument here
 
-regular expressions denote exactly the regular languages → regular languages are exactly what DFAs recognise → recognising a regular language requires no unbounded memory → therefore no genuinely regular notation needs memory
+## PS
+
+This article's main argument can be informally captured as follows.
+
+1. Regular languages are **exactly and only** what DFAs recognise.
+2. DFAs do not require memory.
+3. So, regular languages do not require memory.
+
+4. Theoretical regular expressions act as syntactic sugar for regular languages.
+5. So, theoretical regular expressions do not require memory.
+
+6. JavaScript backreferences require memory. 
+7. So, JavaScript regular expressions require memory.
+
+8. Hence, JavaScript regular expressions are not regular.
 
 ## Footnotes
 
