@@ -22,7 +22,7 @@ By drawing on ideas from this note, this article is organised into three section
 
 In section 1, we dive into some code to demonstrate the usefulness of backreferences. We then conceptually analyse the way they work to abduce that they rely on memory. So, we can abduce that JavaScript regular expressions rely on memory.
 
-In section 2, we explore the theory behind regular expressions to understand why they must have finite states. In particular, we show how regular expressions act as syntactic sugar for a class of languages called regular languages. We then discuss how these languages are recognised by and are intrinsically tied to a class of *finite state* machines without memory [2] called deterministic finite automata (DFA).
+In section 2, we explore the theory behind regular expressions to understand why they must have finite states. In particular, we show how theoretical regular expressions act as syntactic sugar for a class of languages called regular languages. We then discuss how these languages are recognised by and are intrinsically tied to a class of *finite state* machines without memory [2] called deterministic finite automata (DFA).
 
 In section 3, we take a look at Chomsky's hierarchy. This hints at how different classes of languages are recognised by different classes of machines. This gives us a way to cash out the tension (between theoretical and JavaScript regular expressions) by talking about the different levels in the hierarchy.
 
@@ -82,7 +82,7 @@ Conceptually, for a backreference to refer to a capturing group's submatch, we h
 
 ### 2.1 Regular Expressions As Syntactic Sugar
 
-To see how regular expressions act as syntactic sugar, let's consider two observations about them.
+To see how theoretical regular expressions act as syntactic sugar, let's consider two observations about them.
 
 #### 2.1.1 Observation 1
 
@@ -119,7 +119,7 @@ As a side note, one may feel that these rules are incomplete because regular exp
 
 Some regular expressions can match more than one string (some even have infinitely many matches). Intuitively, we can form a set of all possible matches to a regular expression. In this sense, when we say that a string "matches" a regular expression, we're saying that this string is an element of that set. In other words, a regular expression is just a shorthand way of talking about that set.
 
-So far, we've observed that regular expressions obey strict syntax rules over an alphabet, and that they serve as a shorthand way of talking about a set of strings. Formally, a set of strings over an alphabet is called a language. In effect, regular expressions act as syntactic sugar for a particular class of languages. Those are regular languages [5].
+So far, we've observed that theoretical regular expressions obey strict syntax rules over an alphabet, and that they serve as a shorthand way of talking about a set of strings. Formally, a set of strings over an alphabet is called a language. In effect, theoretical regular expressions act as syntactic sugar for a particular class of languages. Those are regular languages [5].
 
 
 ### 2.2 Regular Languages and DFAs
@@ -146,11 +146,11 @@ On a side note, different configurations of states and transitions yield differe
 
 Importantly, notice how a DFA does not have memory during computation. It simply transitions between states on each computational step. For example, once it parses a character, the machine "forgets" it. Similarly, it does not have any memory of any previously parsed characters or states traversed. At any computational step, it only "knows" the current character, the current state and its transitions. Hence, DFAs are finite state machines without memory.
 
-So far, we've discussed how regular languages are recognised by and are intrinsically tied to DFAs. Since regular expressions act as syntactic sugar for regular languages, we've also illustrated an intrinsic tie between DFAs and regular expressions. A key insight from this tie is that if some concept/object is incompatible with a DFA, then it must be incompatible with regular languages and regular expressions. Since DFAs are machines without memory, theoretical regular expressions must also be devoid of memory.
+So far, we've discussed how regular languages are recognised by and are intrinsically tied to DFAs. Since theoretical regular expressions act as syntactic sugar for regular languages, we've also illustrated an intrinsic tie between DFAs and theoretical regular expressions. A key insight from this tie is that if some concept/object is incompatible with a DFA, then it must be incompatible with regular languages and theoretical regular expressions. Since DFAs are machines without memory, theoretical regular expressions must also be devoid of memory.
 
 ## 3. Chomsky's Hierarchy
 
-The tension between JS regular expressions and theoretical regular expressions will bear on the aforementioned insight. To properly understand this, we will look at Chomsky's hierarchy of languages and what they mean. Then, we will concentrate on two levels in our hierarchy - regular languages and context free languages. We will see how each language reguire different machines. one is the DFA which we already saw and the other is the PDA. We will see how a DFA works and, informally, show that the difference is - a form of memory. With this in mind, we will use our insight and see that if something uses memory, then that thing is iincomptabile with regular languages, DFAs and hence, regular expressions.
+The tension between JavaScript regular expressions and theoretical regular expressions will bear on the aforementioned insight. To properly understand this, we will look at Chomsky's hierarchy of languages and what they mean. Then, we will concentrate on two levels in our hierarchy - regular languages and context free languages. We will see how each language reguire different machines. one is the DFA which we already saw and the other is the PDA. We will see how a DFA works and, informally, show that the difference is - a form of memory. With this in mind, we will use our insight and see that if something uses memory, then that thing is iincomptabile with regular languages, DFAs and hence, theoretical regular expressions.
 
 ![Chomsky's Hierarchy](/images/irregular-javascript-expressions/chomsky_hierarchy.webp)
 
@@ -196,7 +196,7 @@ regular expressions denote exactly the regular languages → regular languages a
 
 4. Since DFAs only recognise regular languages and regular expressions act as syntactic sugar for regular languages, there must be a regular expression that corresponds to the DFA that does not accept any string. Intuitively, that's the empty set.
 
-5. Here's a formal [proof](https://courses.grainger.illinois.edu/cs373/su2011/lectures/lecture10.pdf "proof") demonstrating that all regular expressions act as syntactic sugar for regular languages (URL valid at the time of writing).
+5. Here's a formal [proof](https://courses.grainger.illinois.edu/cs373/su2011/lectures/lecture10.pdf "proof") demonstrating that all theoretical regular expressions act as syntactic sugar for regular languages (URL valid at the time of writing).
 
 6. DFAs, NFAs, regular languages, regular grammars and regular expressions are all intrinsically tied to each other.
 ![Relation between regular expressions, DFAs, NFAs, regular languages and regular grammar](/images/irregular-javascript-expressions/relation_between_regexp_dfa_nfa_reg_lang_reg_gram.webp)
