@@ -152,13 +152,11 @@ So far, we've discussed how regular languages are recognised by and are intrinsi
 
 ![Chomsky's Hierarchy](/images/irregular-javascript-expressions/chomsky_hierarchy.webp)
 
-Essentially, Chomsky's Hierarchy is a containment hierarchy of formal languages. The higher we go up the hierarchy, the more complex the language gets. At the very bottom, we have regular languages and just above we have context-free languages. The interesting feature of the hierarchy is that each language needs a different type of machine to recognise it. For our current purposes, we will be focusing on the difference between the machines used to recognise regular languages and context-free languages.
+Chomsky's Hierarchy is a containment hierarchy of formal languages (or grammars). The higher up the hierarchy, the more complex the languages get. Traditionally, regular languages live at the very bottom with context-free languages just above. An interesting feature of the hierarchy is that each language needs a different type of machine to recognise it. For our current purposes, we will only be focusing on regular languages, context-free languages and their machines. As previously covered, regular languages are only recognised by DFAs. In contrast, context-free languages are only recognised by machines called pushdown automata (PDAs).
 
 ### 3.1 Context-free Languages and PDAs
 
-A classic example of a context-free language is the set of all strings of the form `aⁿbⁿ` over an alphabet like `{'a', 'b'}`. This is the set of strings starting with some number of `a` strictly followed by the same number of `b`. It contains strings like `'ab'`, `'aabb'` or `''` (the empty string). Its corresponding regular expression is `(aa)*`.
-
-Similarly to regular languages, one such interesting property is their intrinsic tie to the PDA (Pushdown Automata) class of finite state machines:
+A classic example of a context-free language is the set of all strings of the form `aⁿbⁿ` over an alphabet like `{'a', 'b'}`. This is the set of strings starting with some number of `a`'s strictly followed by the same number of `b`'s. It contains strings like `'ab'`, `'aabb'` or `''` (the empty string). As we just hinted, there is an intrinsic tie between regular languages and PDAs:
 
 All context-free languages are recognised by PDAs and PDAs only recognise context-free languages.
 
@@ -166,15 +164,13 @@ Like a DFA, a PDA is a theoretical machine that recognises a set of strings. For
 
 The key difference from a DFA is that a PDA is equipped with an unbounded stack. This stack is what gives PDAs their extra expressive power as illustrated by Chomsky's hierarcy. This acts as a memory that a DFA simply does not have. 
 
-Visually, a PDA is made up of a finte set of states with transitions among them, just like a DFA. However, each transition can also inspect and manipulate the stack: pushing symbols onto it, popping symbols off it, or both. One state is the start state, some states are accepting. A string is fed into the machine via the start state, and the machine transitions through its states by individually parsing the string's characters and managing its stack. Once all characters are parsed, the machine stops. If it lands in an accepting state (with some formulations also requiring an empty stack), the machine accepts the string. So, the language of the PDA is the set of all strings that, after being parsed character-by-character, lands in an accepting state. To further clarify, let's construct a PDA that recognises the aforementioned context-free language aⁿbⁿ.
+Visually, a PDA is made up of a finte set of states with transitions among them. However, unlike a DFA, each transition can also inspect and manipulate the stack: pushing symbols onto it, popping symbols off it, or both. One state is the start state, some states are accepting. A string is fed into the machine via the start state, and the machine transitions through its states by individually parsing the string's characters and managing its stack. Once all characters are parsed, the machine stops. If it lands in an accepting state (with some formulations also requiring an empty stack), the machine accepts the string. So, the language of the PDA is the set of all strings that, after being parsed character-by-character, lands in an accepting state [9]. To further clarify, let's construct a PDA that recognises the aforementioned context-free language aⁿbⁿ.
 
 ![PDA for aⁿbⁿ](/images/irregular-javascript-expressions/pda_for_anbn.webp)
 
-Let's walk through how the machine recognises our language by looking at two example strings: `'a'` and `'aa'`. Ideally, the machine should accept `'aa'` and reject `'a'`.
+Let's walk through how the machine recognises our language by looking at one example strings: `'ab'`. Ideally, the machine should accept `'ab'`.
 
-`'aa'` begins in the start state "even length". The machine parses the first `'a'` and transitions to the "odd length" state. It then parses the last `'a'` and lands back in the "even length" state. Since there are no more characters to parse, the machine stops. So, the machine lands in an accepting state and accepts the string `'aa'`. 
-
-Given `'a'`, it begins in the start state and transitions into the "odd length" state once it parses the only character `'a'`. Since there are no characters left, the machine lands in a rejecting state and rejects `'a'`.
+`'ab'` begins in the start state. Firstly, the machine does not parse any character and pops nothing from the stack (equivalently, it parses the empty string `''` from the input string and pops the `''` from the stack). It also pushes an arbitrary string `'$'` that acts as a sentinal which signifies the end of the stack. It then transitions to the next state. In that state, the machine parses the first `'a'`, pops nothing from the stack and pushes an arbitrary string `'A'` into the stack. Basically, `'A'` signifies the amount of `'a'`'s that we have parsed in the string. As we will see shortly, in order to ensure that there is the same amout of `'b'`'s, we will have to pop . Since we pushed the same amount of `A`'s (whenever we saw an `'a'`) and we popped the same amount of `'A'`'s (whenever we saw a `'b'`), we know that the string contains the same amount of a and bs. Next, it parses the last `'b'`, pops `'A'` from the stack and pushes nothing onto it. Since we're not only left with the sentinal in the stack and we have nothing else to parse, we can take the transition to the last accepting state. Since there are no more possible transitions left, the machine stops. So, the machine lands in an accepting state and accepts the string `'ab'`. 
 
 ### 3.2 An Issue Of Language Recognition
 
@@ -218,5 +214,7 @@ This article's main argument can be informally captured as follows.
 7. Here's a [formal definition](https://www.khoury.northeastern.edu/home/vkp/390-fl07/FA-Formal-Definitions.pdf "formal definition") of a DFA (URL valid at the time of writing).
 
 8. Visit [regexper.com](https://regexper.com/ "regexper.com") to visualise any JavaScript regular expression as a state machine.
+
+9. Here's a [formal definition](https://www.khoury.northeastern.edu/home/vkp/390-fl07/Pushdown-Automata.pdf "formal definition") of a PDA (URL valid at the time of writing).
 
 I was originally inspired to write this article after reading [Abdur-Rahmaan Janhangeer](https://www.compileralchemy.com/ "Abdur-Rahmaan Janhangeer")'s article - [Regex Engines: History and Contributions](https://www.linkedin.com/pulse/regex-engines-history-contributions-abdur-rahmaan-janhangeer "Regex Engines: History and Contributions").
