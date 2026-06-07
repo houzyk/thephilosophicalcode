@@ -5,7 +5,7 @@ description: "The MDN reference on JavaScript regular expressions notes that \"J
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://houzair.me/"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
-date: 2026-06-06
+date: 2026-06-07
 ---
 
 ![(Ir)regular JavaScript Expressions](/images/irregular-javascript-expressions/cover.webp)
@@ -170,15 +170,19 @@ Visually, a PDA is made up of a finte set of states with transitions among them,
 
 ![PDA for aⁿbⁿ](/images/irregular-javascript-expressions/pda_for_anbn.webp)
 
+Let's walk through how the machine recognises our language by looking at two example strings: `'a'` and `'aa'`. Ideally, the machine should accept `'aa'` and reject `'a'`.
+
+`'aa'` begins in the start state "even length". The machine parses the first `'a'` and transitions to the "odd length" state. It then parses the last `'a'` and lands back in the "even length" state. Since there are no more characters to parse, the machine stops. So, the machine lands in an accepting state and accepts the string `'aa'`. 
+
+Given `'a'`, it begins in the start state and transitions into the "odd length" state once it parses the only character `'a'`. Since there are no characters left, the machine lands in a rejecting state and rejects `'a'`.
+
 ### 3.2 An Issue Of Language Recognition
 
 Given the aforementioned context-free language, it's impossible to create a DFA for it.
 
-One crucial difference between a DFA and a PDA is the addition of a form of memory. Essentially, DFAs do not have any external memory. They only have states. At any point in their computation, the DFA only knows about its current state, the character that its reading and its transitions. It does not have memory of what it has seen before. 
+One crucial difference between a DFA and a PDA is the addition of a form of memory. Essentially, DFAs do not have any external memory. They only have states. At any point in their computation, the DFA only knows about its current state, the character that its reading and its transitions. It does not have memory of what it has seen before. Importantly, once we add memory (like an unbounded stack), we move up Chomsky's Hierarchy moving away from regular languages.
 
-Hence, we can how to cash out
-
-Add informal argument here
+Hence, we can how to cash out the tension between JavaScript regular expressions and their theoretical counterpart. Since JavaScript regular expressions rely on memory, just like context-free languages, they correspond to languages in the hierarchy that move away from regular languages. In other words, act as syntatic sugar for languages belonging in different levels in the hierarchy. Hence, JavaScript regular expressions are not regular.
 
 ## PS
 
