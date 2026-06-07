@@ -152,13 +152,13 @@ So far, we've discussed how regular languages are recognised by and are intrinsi
 
 ![Chomsky's Hierarchy](/images/irregular-javascript-expressions/chomsky_hierarchy.webp)
 
-Chomsky's Hierarchy is a containment hierarchy of formal languages (or grammars). The higher up the hierarchy, the more complex the languages get. Traditionally, regular languages live at the very bottom with context-free languages just above. An interesting feature of the hierarchy is that each language needs a different type of machine to recognise it. For our current purposes, we will only be focusing on regular languages, context-free languages and their machines. As previously covered, regular languages are only recognised by DFAs. In contrast, context-free languages are only recognised by machines called pushdown automata (PDAs).
+Chomsky's Hierarchy is a containment hierarchy of formal languages (or grammars). The higher up the hierarchy, the more complex the languages get. Traditionally, regular languages live at the very bottom with context-free languages just above. An interesting property of the hierarchy is that each language needs a different type of machine to recognise it. For example, just like regular languages, context-free languages also have an intrinsic tie to class of finite state machines called pushdown automata (PDA):
+
+All context-free languages are recognised by PDAs and PDAs only recognise context-free languages.
 
 ### 3.1 Context-free Languages and PDAs
 
 A classic example of a context-free language is the set of all strings of the form `aⁿbⁿ` over an alphabet like `{'a', 'b'}`. This is the set of strings starting with some number of `a`'s strictly followed by the same number of `b`'s. It contains strings like `'ab'`, `'aabb'` or `''` (the empty string). As we just hinted, there is an intrinsic tie between regular languages and PDAs:
-
-All context-free languages are recognised by PDAs and PDAs only recognise context-free languages.
 
 Like a DFA, a PDA is a theoretical machine that recognises a set of strings. For any string over an alphabet, the machine will either accept or reject it. The set of all strings that the machine accepts is the language of that machine.
 
@@ -184,7 +184,7 @@ Hence, we can now to cash out the tension between JavaScript regular expressions
 
 This article's main argument can be informally captured as follows.
 
-1. Regular languages are **exactly and only** what DFAs recognise.
+1. Regular languages are **only** recognised by DFAs.
 2. DFAs do not require memory.
 3. So, regular languages do not require memory.
 
