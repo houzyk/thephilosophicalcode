@@ -22,7 +22,7 @@ By drawing on ideas from this note, this article is organised into three section
 
 In section 1, we dive into some code to demonstrate the usefulness of backreferences. We then conceptually analyse the way they work to abduce that they rely on memory. So, we can abduce that JavaScript regular expressions rely on memory.
 
-In section 2, we explore the theory behind regular expressions to understand why they must have finite states. In particular, we show how regular expressions act as syntactic sugar for a class of languages called regular languages. We then discuss how these languages are recognised by and are intrinsically tied to a class of *finite state* machines without memory [2] called deterministic finite automata (DFA).
+In section 2, we explore the theory behind regular expressions to understand why they must have finite states. In particular, we show how regular expressions act as syntactic sugar for a class of languages called regular languages. We then discuss how these languages are recognised by and are intrinsically tied to a class of *finite state* machines without memory [2], called deterministic finite automata (DFAs).
 
 In section 3, we take a look at Chomsky's hierarchy. This hints at how different classes of languages are recognised by different classes of machines. This gives us a way to cash out the tension (between theoretical and JavaScript regular expressions) by talking about the different levels in the hierarchy.
 
@@ -32,7 +32,7 @@ Essentially, we cash out the tension as an issue of *language recognition*. To u
 
 Backreferences allow us to refer to submatches of previously defined [capturing groups](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Capturing_group "capturing groups") in any JavaScript regular expression. A backreference matches the same string as its group. It refers to the same submatch.
 
-Syntactically, a capturing group looks like `(pattern)` in some parent regular expression `/...(pattern).../`. Suppose that a string M matches `/...(pattern).../`. In such a case, the capturing group `(pattern)` segments (i.e. captures) a substring (of M) that matches its defined pattern. That substring is called the capturing group's submatch. 
+Syntactically, a capturing group looks like `(pattern)` in some parent regular expression `/...(pattern).../`. Suppose that a string `M` matches `/...(pattern).../`. In such a case, the capturing group `(pattern)` segments (i.e. captures) a substring (of `M`) that matches its defined pattern. That substring is called the capturing group's submatch. 
 
 A JavaScript regular expression may contain multiple capturing groups. In such a case, these capturing groups are in a one-to-one _ordered_ relation to their submatches. As illustrated below, if some string of the form `...[1]...[2]...[3]...` matches a regular expression of the form `/...(c1)...(c2)...(c3).../`, then the capturing groups `(c1)`, `(c2)` and `(c3)` are in a one-to-one ordered relation to the submatches `[1]`, `[2]` and `[3]` respectively.
 
@@ -149,11 +149,11 @@ Importantly, notice how a DFA does not have memory during computation. It simply
 
 So far, we've discussed how regular languages are recognised by and are intrinsically tied to DFAs. Since theoretical regular expressions act as syntactic sugar for regular languages, we've also illustrated an intrinsic tie between DFAs and theoretical regular expressions. A key insight from this tie is that if some concept/object is incompatible with a DFA, then it must be incompatible with regular languages and theoretical regular expressions. Since DFAs are machines without memory, theoretical regular expressions must also be devoid of memory.
 
-## 3. Chomsky's Hierarchy
+## 3. Chomsky's hierarchy
 
-![Chomsky's Hierarchy](/images/irregular-javascript-expressions/chomsky_hierarchy.webp)
+![Chomsky's hierarchy](/images/irregular-javascript-expressions/chomsky_hierarchy.webp)
 
-Chomsky's Hierarchy is a containment hierarchy of formal languages (or their corresponding grammars). The higher up the hierarchy, the more complex the languages get. Traditionally, regular languages live at the very bottom with context-free languages just above. An interesting property of the hierarchy is that each class of languages needs a different type of machine to recognise it. For example, just like regular languages, context-free languages also have an intrinsic tie to a class of machines called pushdown automata (PDA):
+Chomsky's hierarchy is a containment hierarchy of formal languages (or their corresponding grammars). The higher up the hierarchy, the more complex the languages get. Traditionally, regular languages live at the very bottom with context-free languages just above. An interesting property of the hierarchy is that each class of languages needs a different type of machine to recognise it. For example, just like regular languages, context-free languages also have an intrinsic tie to a class of machines called pushdown automata (PDAs):
 
 All context-free languages are recognised by PDAs and PDAs only recognise context-free languages [9].
 
@@ -175,13 +175,13 @@ Let's walk through how the machine recognises our language by looking at one exa
 
 As previously mentioned, a key difference between a DFA and a PDA is the addition of an unbounded stack. DFAs do not have that kind of memory. They only have states and transitions. At any point in its computation, a DFA only knows about its current state, the character that it's reading and its available transitions. It does not know what it previously saw. 
 
-We can now cash out the tension between JavaScript regular expressions and their theoretical counterpart. Notice that once we add memory (like an unbounded stack), we move up Chomsky's Hierarchy and away from regular languages. So, any class of machines equipped with memory can recognise a larger class of languages than regular languages (they can also recognise regular languages). In other words, any computational model that relies on memory recognises a different set of languages than regular languages. Since JavaScript regular expressions rely on memory, they correspond to languages in the hierarchy that move away from regular languages. In other words, JavaScript regular expressions act as syntactic sugar for languages belonging to a different containment level in the hierarchy than regular languages. So, they recognise a larger (and different) class of languages than DFAs and regular languages. Hence, they are not regular.
+We can now cash out the tension between JavaScript regular expressions and their theoretical counterpart. Notice that once we add memory (like an unbounded stack), we move up Chomsky's hierarchy and away from regular languages. So, any class of machines equipped with such memory can recognise a larger class of languages than regular languages (they can also recognise regular languages). In other words, any computational model that relies on such memory recognises a different set of languages than regular languages. Since JavaScript regular expressions rely on memory, they correspond to languages in the hierarchy that move away from regular languages [11]. In other words, JavaScript regular expressions act as syntactic sugar for languages belonging to a different containment level in the hierarchy than regular languages. So, they recognise a larger (and different) class of languages than DFAs and regular languages. Hence, they are not regular.
 
 ## PS
 
 This article's main argument can be informally captured as follows.
 
-1. Regular languages are **only** recognised by DFAs.
+1. Regular languages are recognised by DFAs.
 2. DFAs do not require memory.
 3. So, regular languages do not require memory.
 
@@ -197,7 +197,7 @@ This article's main argument can be informally captured as follows.
 
 1. Quoted from MDN at the time of writing.
 
-2. We can argue that DFAs do have a form of memory - its states and transitions. However, that memory is finite and bounded. DFAs cannot store arbitrary strings.
+2. We can argue that a DFA has a form of memory - its states and transitions. However, that memory is finite and bounded. A DFA cannot store arbitrary strings.
 
 3. JavaScript also has [named backreferences](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_backreference "named backreferences"). We can use custom names, instead of a positive whole number, to refer to the submatch of some previously defined [named capturing groups](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_capturing_group "named capturing groups").
 
@@ -211,8 +211,10 @@ This article's main argument can be informally captured as follows.
 
 8. Visit [regexper.com](https://regexper.com/ "regexper.com") to visualise any JavaScript regular expression as a railroad diagram.
 
-9. PDAs, context-free languages and context-free grammars are all intrinsically tied to each other.
+9. Nondeterministic PDAs, context-free languages and context-free grammars are all intrinsically tied to each other.
 
 10. Here's a [formal definition](https://www.khoury.northeastern.edu/home/vkp/390-fl07/Pushdown-Automata.pdf "formal definition") of a PDA (URL valid at the time of writing).
+
+11. This does not imply that JavaScript regular expressions act as syntactic sugar for context-free languages.
 
 I was originally inspired to write this article after reading [Abdur-Rahmaan Janhangeer](https://www.compileralchemy.com/ "Abdur-Rahmaan Janhangeer")'s article - [Regex Engines: History and Contributions](https://www.linkedin.com/pulse/regex-engines-history-contributions-abdur-rahmaan-janhangeer "Regex Engines: History and Contributions").
