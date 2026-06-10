@@ -26,7 +26,7 @@ In section 2, we explore the theory behind regular expressions to understand why
 
 In section 3, we take a look at Chomsky's hierarchy. This hints at how different classes of languages are recognised by different classes of machines. This gives us a way to cash out the tension (between theoretical and JavaScript regular expressions) by talking about the different levels in the hierarchy.
 
-Essentially, we cash out the tension as an issue of *language recognition*. To understand why JavaScript regular expressions are not regular *is* to understand how they recognise a larger (hence different) class of languages than theoretical regular expressions. As previously mentioned, DFAs are finite state machines without memory that are intrinsically tied to regular languages. In contrast, JavaScript regular expressions rely on memory. So, owing to their reliance on memory, they recognise a different class of languages than DFAs. Hence, they are not regular.
+Essentially, we cash out the tension as an issue of *language recognition*. To understand why JavaScript regular expressions are not regular *is* to understand how they recognise a larger (hence different) class of languages than theoretical regular expressions. As previously mentioned, DFAs are finite state machines without memory that are intrinsically tied to regular languages. In contrast, JavaScript regular expressions rely on memory. So, owing to their reliance on memory, they recognise a different class of languages from DFAs. Hence, they are not regular.
 
 ## 1. Backreferences
 
@@ -38,7 +38,7 @@ A JavaScript regular expression may contain multiple capturing groups. In such a
 
 ![Capturing groups in JS](/images/irregular-javascript-expressions/capturing_groups_in_js.webp)
 
-In JavaScript, we can run the `RegExp.prototype.exec()` function to see this one-to-one ordered relation. For example, given `/(a)(b)/` and a matching string `'ab'`, running `/(a)(b)/.exec('ab')` returns the array `[ 'ab', 'a', 'b', index: 0, input: 'ab', groups: undefined ]`. The element `'a'` (at index `1`) is the submatch of the first capturing group `(a)`. Similarly, the element `'b'` (at index `2`) is the submatch of the second group `(b)`.
+In JavaScript, we can run the `RegExp.prototype.exec()` method to see this one-to-one ordered relation. For example, given `/(a)(b)/` and a matching string `'ab'`, running `/(a)(b)/.exec('ab')` returns the array `[ 'ab', 'a', 'b', index: 0, input: 'ab', groups: undefined ]`. The element `'a'` (at index `1`) is the submatch of the first capturing group `(a)`. Similarly, the element `'b'` (at index `2`) is the submatch of the second group `(b)`.
 
 With backreferences, we can easily refer to these submatches. Syntactically, a backreference has the format `\N` where `N` is a positive whole number referring to some previously occurring capturing group. Since capturing groups are in a one-to-one ordered relation to their submatches, `N` points to the submatch at position `N` in the order [3].
 
@@ -74,13 +74,13 @@ parseHtmlTags('<p>mismatched</div>');
 
 The backreference in `parseHtmlTags` is especially useful in making HTML tag parsing quite dynamic. Intuitively, we don't need to specify a whole list of potential HTML tags alternating with one another (like `(<p>(.*?)<\/p>)` or `(<div>(.*?)<\/div>)` or `(<a>(.*?)<\/a>)`). Once we have an HTML tag name as a submatch of the capturing group in `<(\w+)>`, we can dynamically refer to it using the backreference in `<\/\1>`.
 
-### 1.1 Conceptual Analysis
+### 1.1 Conceptual analysis
 
 Conceptually, for a backreference to refer to a capturing group's submatch, we have to store the value of that submatch in memory to later reference it. In the aforementioned HTML tag parser example, if the capturing group's submatch is `'p'` (from the tag `<p>`), we need to store the value `'p'`, so that the backreference `\1` may refer to it. So, backreferences rely on memory. It follows that JavaScript regular expressions rely on memory.
 
-## 2. The Theory Behind Regular Expressions
+## 2. The theory behind regular expressions
 
-### 2.1 Regular Expressions As Syntactic Sugar
+### 2.1 Regular expressions as syntactic sugar
 
 To see how regular expressions act as syntactic sugar, let's consider two observations about them.
 
@@ -123,7 +123,7 @@ Some regular expressions can match more than one string (some even have infinite
 So far, we've observed that theoretical regular expressions obey strict syntax rules over an alphabet, and that they serve as a shorthand way of talking about a set of strings. Formally, a set of strings over an alphabet is called a language. In effect, theoretical regular expressions act as syntactic sugar for a particular class of languages. Those are regular languages [5].
 
 
-### 2.2 Regular Languages and DFAs
+### 2.2 Regular languages and DFAs
 
 A classic example of a regular language is the set of all strings of even length over an alphabet like `{'a'}`. It contains strings like `'aa'`, `'aaaa'` or `''` (the empty string). Its corresponding regular expression is `(aa)*`.
 
@@ -157,41 +157,25 @@ Chomsky's hierarchy is a containment hierarchy of formal languages (or their cor
 
 All context-free languages are recognised by PDAs and PDAs only recognise context-free languages [9].
 
-### 3.1 Context-free Languages and PDAs
+### 3.1 Context-free languages and PDAs
 
 A classic example of a context-free language is the set of all strings of the form `aⁿbⁿ` over an alphabet like `{'a', 'b'}`. This is the set of strings starting with some number of `a`'s strictly followed by the same number of `b`'s. It contains strings like `'ab'`, `'aabb'` or `''` (the empty string).
 
 Moreover, a PDA is also a theoretical machine that recognises a set of strings. For any string over an alphabet, the machine will either accept or reject it. The set of all strings that the machine accepts is the language of that machine. The key difference from a DFA is that a PDA is equipped with an unbounded stack. This stack is what gives PDAs their extra expressive power as illustrated by Chomsky's hierarchy. The stack acts as memory that a DFA lacks. 
 
-Visually, a PDA is made up of a finite set of states with transitions among them. For each transition, the machine can also inspect and manipulate the stack. It can push symbols onto it or pop symbols off it. One state is the start state. Some states are accepting; some are rejecting. A string is fed into the machine via the start state, and the machine transitions through its states by individually parsing the string's characters and managing its stack. Once no further transitions apply, the machine stops. If it lands in an accepting state, the machine accepts the string. Otherwise, it rejects it. So, the language of the PDA is the set of all strings that land in an accepting state [10]. To further clarify, let's construct a PDA that recognises the aforementioned context-free language `aⁿbⁿ`.
+Visually, a PDA is made up of a finite set of states with transitions among them. For each transition, the machine can also inspect and manipulate the stack. It can push symbols onto it or pop symbols off it. One state is the start state. Some of these states are "accepting" and others are "rejecting". A string is fed into the machine via the start state, and the machine transitions through its states by individually parsing the string's characters and managing its stack. Once no further transitions apply, the machine stops. If it lands in an accepting state, the machine accepts the string. Otherwise, it rejects it. So, the language of the PDA is the set of all strings that land in an accepting state [10]. To further clarify, let's construct a PDA that recognises the aforementioned context-free language `aⁿbⁿ`.
 
 ![PDA for aⁿbⁿ](/images/irregular-javascript-expressions/pda_for_anbn.webp)
 
 Let's walk through how the machine recognises our language by looking at one example string `'ab'`. Ideally, the machine should accept `'ab'`.
 
-`'ab'` begins in the start state. Firstly, the machine does not parse any character (it parses the empty string `''`) and pops nothing from the stack (it pops `''`). It also pushes a designated string `'$'` that acts as a sentinel which signifies the bottom of the stack. It then transitions to the next state where the machine parses the first `'a'`, pops nothing from the stack and pushes a designated string `'A'` onto the stack. Basically, `'A'` signifies the number of `'a'`'s that we have parsed throughout a computation. As we will see shortly, in order to ensure that there is the same number of `'b'`'s as `'a'`'s in a string, we have to pop all the `'A'`'s from the stack until we reach the bottom. Then, the machine transitions to the next state without popping or pushing anything from the stack. It then reads the last `'b'`, pops an `'A'` from the stack and pushes nothing onto it. Finally, since the sentinel `'$'` is the only string left on the stack, the machine pops it and transitions into an accepting state. So, it accepts `'ab'`.
+`'ab'` begins in the start state. Firstly, the machine does not parse any character (it parses the empty string `''`) and pops nothing from the stack (it pops `''`). It also pushes a designated symbol `'$'` that acts as a sentinel which signifies the bottom of the stack. It then transitions to the next state where the machine parses the first `'a'`, pops nothing from the stack and pushes a designated symbol `'A'` onto the stack. Basically, `'A'` signifies the number of `'a'`'s that we have parsed throughout a computation. As we will see shortly, in order to ensure that there is the same number of `'b'`'s as `'a'`'s in a string, we have to pop all the `'A'`'s from the stack until we reach the bottom. Then, the machine transitions to the next state without popping or pushing anything from the stack. It then parses the last `'b'`, pops an `'A'` from the stack and pushes nothing onto it. Finally, since the sentinel `'$'` is the only symbol left on the stack, the machine pops it and transitions into an accepting state. So, it accepts `'ab'`.
 
-### 3.2 An Issue Of Language Recognition
+### 3.2 An issue of language recognition
 
 As previously mentioned, a key difference between a DFA and a PDA is the addition of an unbounded stack. DFAs do not have that kind of memory. They only have states and transitions. At any point in its computation, a DFA only knows about its current state, the character that it's reading and its available transitions. It does not know what it previously saw. 
 
 We can now cash out the tension between JavaScript regular expressions and their theoretical counterpart. Notice that once we add memory (like an unbounded stack), we move up Chomsky's hierarchy and away from regular languages. So, any class of machines equipped with such memory can recognise a larger class of languages than regular languages (they can also recognise regular languages). In other words, any computational model that relies on such memory recognises a different set of languages than regular languages. Since JavaScript regular expressions rely on memory, they correspond to languages in the hierarchy that move away from regular languages [11]. In other words, JavaScript regular expressions act as syntactic sugar for languages belonging to a different containment level in the hierarchy than regular languages. So, they recognise a larger (and different) class of languages than DFAs and regular languages. Hence, they are not regular.
-
-## PS
-
-This article's main argument can be informally captured as follows.
-
-1. Regular languages are recognised by DFAs.
-2. DFAs do not require memory.
-3. So, regular languages do not require memory.
-
-4. Theoretical regular expressions act as syntactic sugar for regular languages.
-5. So, theoretical regular expressions do not require memory.
-
-6. JavaScript backreferences require memory. 
-7. So, JavaScript regular expressions require memory.
-
-8. Hence, JavaScript regular expressions are not regular.
 
 ## Footnotes
 
@@ -199,7 +183,7 @@ This article's main argument can be informally captured as follows.
 
 2. We can argue that a DFA has a form of memory - its states and transitions. However, that memory is finite and bounded. A DFA cannot store arbitrary strings.
 
-3. JavaScript also has [named backreferences](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_backreference "named backreferences"). We can use custom names, instead of a positive whole number, to refer to the submatch of some previously defined [named capturing groups](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_capturing_group "named capturing groups").
+3. JavaScript also permits forward referencing by matching the empty string. Moreover, JavaScript also has [named backreferences](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_backreference "named backreferences"). We can use custom names, instead of a positive whole number, to refer to the submatch of some previously defined [named capturing groups](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_capturing_group "named capturing groups").
 
 4. Since DFAs only recognise regular languages and theoretical regular expressions act as syntactic sugar for regular languages, there must be a regular expression that corresponds to the DFA that does not accept any string. Intuitively, that's the empty set.
 
