@@ -5,7 +5,7 @@ description: "The MDN reference on JavaScript regular expressions notes that \"J
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://houzair.me/"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
-date: 2026-06-18
+date: 2026-06-19
 ---
 
 ![(Ir)regular JavaScript Expressions](/images/irregular-javascript-expressions/cover.webp)
@@ -22,45 +22,27 @@ By drawing on ideas from this note, this article is organised into four sections
 
 Section 1 sets the scene for the whole article. Firstly, I build a vocabulary for cashing out the tension between theoretical and JavaScript regular expressions. In particular, I define concepts such as an alphabet, languages and classes of such languages. Secondly, I introduce the concept of a language denoting mechanism - a well-defined system for denoting classes of languages. Thirdly, I take a look at Chomsky's hierarchy. This hints at how different classes of languages are recognised by different language denoting mechanisms. One of these classes are regular languages. We say that a language denoting mechanism is regular if and only if it maximally denotes regular languages.
 
-This allows us to cash out "JavaScript regular expressions are not regular" as the claim "JavaScript regular expressions are not a regular language denoting mechanism". In contrast, theoretical regular expressions are a regular language denoting mechanism. The remaining sections focus on clarifying and explaining this cashed out claim. 
+At this point, I can cash out the claim that "JavaScript regular expressions are not regular" as the claim that "JavaScript regular expressions are not a regular language denoting mechanism". In contrast, theoretical regular expressions are a regular language denoting mechanism. Consequently, I can cash out and examine the tension by explaining and justifying this cashed out claim. 
 
-In section 1, I show how both JavaScript and theoretical regular expression are language denoting mechanisms.
+In section 2, I show how both JavaScript and theoretical regular expression are language denoting mechanisms by looking at syntax rules and observing that each regular expression denotes a set of strings.
 
-In section 2, I informally define the class of regular expressions
+In section 3, I informally define the class of regular languages by refering to a class of *finite state* machines, called deterministic finite automata (DFAs). These are the quitessential language denoting mchanism that defines the class of regular laguages. I briefly wave at how other language denoting mechanisms such as theoretical regular expressions, regular grammars and NFAs are equivalent. In doing so, we also understand why they must have finite states.
 
+In section 4, we dive into some code to demonstrate the usefulness of backreferences. I then show how there's at least one instance of a JavaScript regular expression that does not denote a regular language. I also how this particular example is a context-free language by looking at PDAs.
 
-we explore the theory behind regular expressions to understand why they must have finite states. In particular, we show how regular expressions act as syntactic sugar for a class of languages called regular languages. 
+As a side note, I on must have finite states.
 
+In summary, here's as an informal argument.
 
-We then discuss how these languages are recognised by and are intrinsically tied to a class of *finite state* machines without memory [2], called deterministic finite automata (DFAs).
+1. A language denoting mechanism is a well-defined system for denoting a class of languages.
+2. A language denoting mechanism is regular if it maximally denotes the class of regular languages.
+3. The class of regular languages is the class of all languages recongised by the language denoting mechanism of deterministic finite automata (DFAs).
+3. Regular expressions are a language denoting mechanism.
+4. Due to backreferences, JavaScript regular expressions do not maximally denote the class of regular languages.
+5. JavaScript regular expressions are not a regular language denoting mechanism
+4. To say that "JavaScript regular expressions are not regular" is to say that "JavaScript regular expressions are not a regular language denoting mechanism"
 
-In section 4, we dive into some code to demonstrate the usefulness of backreferences. We then conceptually analyse the way they work to abduce that computing them requires memory. So, we can abduce that JavaScript regular expressions rely on memory.
-
-
-In section 4, we take a look at Chomsky's hierarchy. This hints at how different classes of languages are recognised by different classes of machines. This gives us a way to cash out the tension (between theoretical and JavaScript regular expressions) by talking about the different levels in the hierarchy.
-
-Essentially, we cash out the tension as an issue of *language recognition*. To understand why JavaScript regular expressions are not regular *is* to understand how they recognise a larger (hence different) class of languages than theoretical regular expressions. As previously mentioned, DFAs are finite state machines without memory that are intrinsically tied to regular languages. In contrast, JavaScript regular expressions rely on memory. So, owing to their reliance on memory, they recognise a different class of languages from DFAs. Hence, they are not regular.
-
-Here's as an informal premise-conclusion representation to summarise this article's main argument.
-
-1. A mechanism for denoting a set of languages is regular if and only if its maximally denoted set is the set of regular languages.
-2. The set of regular languages is equal to the set of all languages recognised by DFAs.
-3. DFAs is a mechanism for denoting a set of languages.
-The computation behind any DFA does not require unbounded memory.
-4. If any computation of a mechanism for denoting a set of languages requires unbounded memory, that mechanism is not regular.
-
-
-2. Theoretical regular expressions maximally denote the set of regular languages.
-4. As mechanisms for maximally denoting regular languages, DFAs and theoretical regular expressions are equivalent.
-5. As a mechanism for maximally denoting regular languages, the computation behind DFAs does not require unbounded memory.
-6. Since DFAs and theoretical regular expressions are equivalent mechanisms for maximally denoting regular languages, the computation behind theoretical regular expressions does not require unbounded memory.
-
-5. Some computation behind backreferences require unbounded memory.
-6. Backreferences are part of JavaScript regular expressions.
-7. Some computation behind JavaScript regular expressions require unbounded memory.
-8. JavaScript regular expressions is a mechanism for denoting a set of languages.
-9. is larger (hence different) than the set of regular languages.
-10. JavaScript regular expressions are not regular.
+Therefore, JavaScript regular expressions are not regular.
 
 
 ## 1. Cashing out the tension
@@ -219,6 +201,10 @@ Let's walk through how the machine recognises our language by looking at one exa
 As previously mentioned, a key difference between a DFA and a PDA is the addition of an unbounded stack. DFAs do not have that kind of memory. They only have states and transitions. At any point in its computation, a DFA only knows about its current state, the character that it's reading and its available transitions. It does not know what it previously saw. 
 
 We can now cash out the tension between JavaScript regular expressions and their theoretical counterpart. Notice that once we add memory (like an unbounded stack), we move up Chomsky's hierarchy and away from regular languages. So, any class of machines equipped with such memory can recognise a larger class of languages than regular languages (they can also recognise regular languages). In other words, any computational model that relies on such memory recognises a different set of languages from regular languages. Since JavaScript regular expressions rely on memory, they correspond to languages in the hierarchy that move away from regular languages [11]. In other words, JavaScript regular expressions act as syntactic sugar for languages belonging to a different containment level in the hierarchy than regular languages. So, they recognise a larger (and different) class of languages than DFAs and regular languages. Hence, they are not regular.
+
+## PS
+
+everything about memory goes here
 
 ## Footnotes
 
