@@ -1,16 +1,16 @@
 ---
 external: false
 title: "(Ir)regular JavaScript Expressions"
-description: "The MDN reference on JavaScript regular expressions notes that \"JavaScript regular expressions are in fact not regular [...]\". This highlights a subtle tension between theoretical regular expressions and their implementation in JavaScript. In this article, I cash out and examine this tension by contrasting JavaScript regular expressions with their theoretical counterpart."
+description: "The MDN reference on JavaScript regular expressions notes that \"JavaScript regular expressions are in fact not regular [...]\". This highlights a subtle tension between theoretical regular expressions and their implementation in JavaScript. In this article, I cash-out and examine this tension by contrasting JavaScript regular expressions with their theoretical counterpart."
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://houzair.me/"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
-date: 2026-06-19
+date: 2026-06-22
 ---
 
 ![(Ir)regular JavaScript Expressions](/images/irregular-javascript-expressions/cover.webp)
 
-> [The MDN reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions "The MDN reference") on JavaScript regular expressions notes that "JavaScript regular expressions are in fact not regular [...]". This highlights a subtle tension between theoretical regular expressions and their implementation in JavaScript. In this article, I cash out and examine this tension by contrasting JavaScript regular expressions with their theoretical counterpart.
+> [The MDN reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions "The MDN reference") on JavaScript regular expressions notes that "JavaScript regular expressions are in fact not regular [...]". This highlights a subtle tension between theoretical regular expressions and their implementation in JavaScript. In this article, I cash-out and examine this tension by contrasting JavaScript regular expressions with their theoretical counterpart.
 
 ## Abstract
 
@@ -20,15 +20,15 @@ For context, here's the full note from MDN [1]:
 
 By drawing on ideas from this note, this article is organised into four sections.
 
-Section 1 sets the scene for the whole article. Firstly, I build a vocabulary for cashing out the tension between theoretical and JavaScript regular expressions. In particular, I define concepts such as an alphabet, languages and classes of such languages. Secondly, I introduce the concept of a language denoting mechanism - a well-defined system for denoting classes of languages. Thirdly, I take a look at Chomsky's hierarchy. This hints at how different classes of languages are recognised by different language denoting mechanisms. One of these classes are regular languages. We say that a language denoting mechanism is regular if and only if it maximally denotes regular languages.
+In section 1, I lay the groundwork for the whole article. Firstly, I build a vocabulary for cashing out the tension between theoretical and JavaScript regular expressions. In particular, I define concepts such as an alphabet, languages and classes of such languages. Secondly, I introduce the concept of a language denoting mechanism - a well-defined system for denoting classes of languages. Thirdly, I take a look at Chomsky's hierarchy. This hints at how different classes of languages are recognised by different language denoting mechanisms. One of such class is the class of regular languages. We say that a language denoting mechanism is regular if and only if it maximally denotes regular languages. With reference to Chomsky's hierarchy, I analyse the claim that "JavaScript regular expressions are not regular" as the claim that "JavaScript regular expressions are not a regular language denoting mechanism". In contrast, theoretical regular expressions are a regular language denoting mechanism. This allows us to cash-out the tension as examining how theoretical regular expressions are regular language denoting mechanisms but JavaScript regular expressions are not. My examination proceeds as follows.
 
-At this point, I can cash out the claim that "JavaScript regular expressions are not regular" as the claim that "JavaScript regular expressions are not a regular language denoting mechanism". In contrast, theoretical regular expressions are a regular language denoting mechanism. Consequently, I can cash out and examine the tension by explaining and justifying this cashed out claim. 
+In section 2, I informally define the class of regular languages by refering to a class of *finite state* machines, called deterministic finite automata (DFAs). These are the quitessential language denoting mechanisms that define the class of regular languages. This allows me to define a regular language denoting mechanism - . I briefly wave at how other language denoting mechanisms such as theoretical regular expressions, regular grammars and NFAs are equivalent.
 
-In section 2, I show how both JavaScript and theoretical regular expression are language denoting mechanisms by looking at syntax rules and observing that each regular expression denotes a set of strings.
+In section 3, I show how both JavaScript and theoretical regular expression are language denoting mechanisms by looking at syntax rules and observing that each regular expression denotes a set of strings. At this point, I can establish that theoretical regular expressions are a regular language denoting mechanism.
 
-In section 3, I informally define the class of regular languages by refering to a class of *finite state* machines, called deterministic finite automata (DFAs). These are the quitessential language denoting mchanism that defines the class of regular laguages. I briefly wave at how other language denoting mechanisms such as theoretical regular expressions, regular grammars and NFAs are equivalent. In doing so, we also understand why they must have finite states.
+In section 4, I dive into some code to demonstrate the usefulness of backreferences. I then show how there's at least one instance of a JavaScript regular expression that does not denote a regular language. I also how this particular example is a context-free language by looking at PDAs. This allows me to establish that.
 
-In section 4, we dive into some code to demonstrate the usefulness of backreferences. I then show how there's at least one instance of a JavaScript regular expression that does not denote a regular language. I also how this particular example is a context-free language by looking at PDAs.
+So, we would have established that theoretical regular expressions are a but JavaScript regular expressions are not. Walking back the analysis of "" to "is not regular", we can conclude that JavaScript regular expressions are not regular. Therefore, JavaScript regular expressions are not regular.
 
 As a side note, I on must have finite states.
 
@@ -36,14 +36,11 @@ In summary, here's as an informal argument.
 
 1. A language denoting mechanism is a well-defined system for denoting a class of languages.
 2. A language denoting mechanism is regular if it maximally denotes the class of regular languages.
-3. The class of regular languages is the class of all languages recongised by the language denoting mechanism of deterministic finite automata (DFAs).
+
 3. Regular expressions are a language denoting mechanism.
 4. Due to backreferences, JavaScript regular expressions do not maximally denote the class of regular languages.
 5. JavaScript regular expressions are not a regular language denoting mechanism
 4. To say that "JavaScript regular expressions are not regular" is to say that "JavaScript regular expressions are not a regular language denoting mechanism"
-
-Therefore, JavaScript regular expressions are not regular.
-
 
 ## 1. Cashing out the tension
 
