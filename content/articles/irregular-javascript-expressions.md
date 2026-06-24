@@ -24,7 +24,7 @@ In section 1, I lay the groundwork for cashing-out and examining the tension bet
 
 With these concepts in hand, my cashing-out strategy begins by analysing the claim that "JavaScript regular expressions are not regular" as the claim that "JavaScript regular expressions are not a regular language denoting mechanism". In contrast, theoretical regular expressions are a regular language denoting mechanism. Consequently, my examination focuses on how JavaScript regular expressions are not a regular language denoting mechanism but their theoretical counterparts are.
 
-In section 2, I informally define the class of regular languages by talking about the class of *finite state* machines, called deterministic finite automata (DFAs). This class is the quintessential language denoting mechanism that defines the class of regular languages. Any other regular language denoting mechanisms precisely denotes that class of languages.
+In section 2, I informally define the class of regular languages by talking about the class of *finite state* machines, called deterministic finite automata (DFAs). This class is the quintessential language denoting mechanism that defines the class of regular languages. Any other regular language denoting mechanism precisely denotes that class of languages.
 
 In section 3, I show how both JavaScript and theoretical regular expression are language denoting mechanisms by observing their syntax rules and that each regular expression denotes a set of strings (a language). Moreover, I note how theoretical regular expressions (along with regular grammars and NFAs) are regular language denoting mechanisms.
 
