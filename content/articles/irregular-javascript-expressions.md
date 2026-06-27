@@ -65,6 +65,10 @@ As a side note, I would like to justify my introduction of a concept like a lang
 
 ### 1.3 Chomsky's hierarchy
 
+![Chomsky's hierarchy](/images/irregular-javascript-expressions/chomsky_hierarchy.webp)
+
+Chomsky's hierarchy is a containment hierarchy of formal languages (or their corresponding grammars). The higher up the hierarchy, the more complex the languages get. Traditionally, regular languages live at the very bottom with context-free languages just above. An interesting property of the hierarchy is that each class of languages needs a different type of machine to recognise it. 
+
 ### 1.4 Cashing-out strategy
 
 ## 2. Regular languages
@@ -187,6 +191,18 @@ The backreference in `parseHtmlTags` is especially useful in making HTML tag par
 
 ### 4.2 Context-free languages and NFAs
 
+A classic example of a context-free language is the set of all strings of the form `aⁿbⁿ` over an alphabet like `{'a', 'b'}`. This is the set of strings starting with some number of `a`'s strictly followed by the same number of `b`'s. It contains strings like `'ab'`, `'aabb'` or `''` (the empty string).
+
+Moreover, a PDA is also a theoretical machine that recognises a set of strings. For any string over an alphabet, the machine will either accept or reject it. The set of all strings that the machine accepts is the language of that machine. The key difference from a DFA is that a PDA is equipped with an unbounded stack. This stack is what gives PDAs their extra expressive power as illustrated by Chomsky's hierarchy. The stack acts as memory that a DFA lacks. 
+
+Visually, a PDA is made up of a finite set of states with transitions among them. For each transition, the machine can also inspect and manipulate the stack. It can push symbols onto it or pop symbols off it. One state is the start state. Some of these states are "accepting" and others are "rejecting". A string is fed into the machine via the start state, and the machine transitions through its states by individually parsing the string's characters and managing its stack. Once no further transitions apply, the machine stops. If it lands in an accepting state, the machine accepts the string. Otherwise, it rejects it. So, the language of the PDA is the set of all strings that land in an accepting state [10]. To further clarify, let's construct a PDA that recognises the aforementioned context-free language `aⁿbⁿ`.
+
+![PDA for aⁿbⁿ](/images/irregular-javascript-expressions/pda_for_anbn.webp)
+
+Let's walk through how the machine recognises our language by looking at one example string `'ab'`. Ideally, the machine should accept `'ab'`.
+
+`'ab'` begins in the start state. Firstly, the machine does not parse any character (it parses the empty string `''`) and pops nothing from the stack (it pops `''`). It also pushes a designated symbol `'$'` that acts as a sentinel which signifies the bottom of the stack. It then transitions to the next state where the machine parses the first `'a'`, pops nothing from the stack and pushes a designated symbol `'A'` onto the stack. Basically, `'A'` signifies the number of `'a'`'s that we have parsed throughout a computation. As we will see shortly, in order to ensure that there is the same number of `'b'`'s as `'a'`'s in a string, we have to pop all the `'A'`'s from the stack until we reach the bottom. Then, the machine transitions to the next state without popping or pushing anything from the stack. It then parses the last `'b'`, pops an `'A'` from the stack and pushes nothing onto it. Finally, since the sentinel `'$'` is the only symbol left on the stack, the machine pops it and transitions into an accepting state. So, it accepts `'ab'`.
+
 ### 4.3 Memory and finite states
 
 ## Footnotes
@@ -235,25 +251,11 @@ So far, we've discussed how regular languages are recognised by and are intrinsi
 
 ## 3. Chomsky's hierarchy
 
-![Chomsky's hierarchy](/images/irregular-javascript-expressions/chomsky_hierarchy.webp)
-
-Chomsky's hierarchy is a containment hierarchy of formal languages (or their corresponding grammars). The higher up the hierarchy, the more complex the languages get. Traditionally, regular languages live at the very bottom with context-free languages just above. An interesting property of the hierarchy is that each class of languages needs a different type of machine to recognise it. For example, just like regular languages, context-free languages also have an intrinsic tie to a class of machines called pushdown automata (PDAs):
+For example, just like regular languages, context-free languages also have an intrinsic tie to a class of machines called pushdown automata (PDAs):
 
 All context-free languages are recognised by PDAs and PDAs only recognise context-free languages [9].
 
 ### 3.1 Context-free languages and PDAs
-
-A classic example of a context-free language is the set of all strings of the form `aⁿbⁿ` over an alphabet like `{'a', 'b'}`. This is the set of strings starting with some number of `a`'s strictly followed by the same number of `b`'s. It contains strings like `'ab'`, `'aabb'` or `''` (the empty string).
-
-Moreover, a PDA is also a theoretical machine that recognises a set of strings. For any string over an alphabet, the machine will either accept or reject it. The set of all strings that the machine accepts is the language of that machine. The key difference from a DFA is that a PDA is equipped with an unbounded stack. This stack is what gives PDAs their extra expressive power as illustrated by Chomsky's hierarchy. The stack acts as memory that a DFA lacks. 
-
-Visually, a PDA is made up of a finite set of states with transitions among them. For each transition, the machine can also inspect and manipulate the stack. It can push symbols onto it or pop symbols off it. One state is the start state. Some of these states are "accepting" and others are "rejecting". A string is fed into the machine via the start state, and the machine transitions through its states by individually parsing the string's characters and managing its stack. Once no further transitions apply, the machine stops. If it lands in an accepting state, the machine accepts the string. Otherwise, it rejects it. So, the language of the PDA is the set of all strings that land in an accepting state [10]. To further clarify, let's construct a PDA that recognises the aforementioned context-free language `aⁿbⁿ`.
-
-![PDA for aⁿbⁿ](/images/irregular-javascript-expressions/pda_for_anbn.webp)
-
-Let's walk through how the machine recognises our language by looking at one example string `'ab'`. Ideally, the machine should accept `'ab'`.
-
-`'ab'` begins in the start state. Firstly, the machine does not parse any character (it parses the empty string `''`) and pops nothing from the stack (it pops `''`). It also pushes a designated symbol `'$'` that acts as a sentinel which signifies the bottom of the stack. It then transitions to the next state where the machine parses the first `'a'`, pops nothing from the stack and pushes a designated symbol `'A'` onto the stack. Basically, `'A'` signifies the number of `'a'`'s that we have parsed throughout a computation. As we will see shortly, in order to ensure that there is the same number of `'b'`'s as `'a'`'s in a string, we have to pop all the `'A'`'s from the stack until we reach the bottom. Then, the machine transitions to the next state without popping or pushing anything from the stack. It then parses the last `'b'`, pops an `'A'` from the stack and pushes nothing onto it. Finally, since the sentinel `'$'` is the only symbol left on the stack, the machine pops it and transitions into an accepting state. So, it accepts `'ab'`.
 
 ### 3.2 An issue of language recognition
 
