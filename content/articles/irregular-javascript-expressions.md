@@ -5,7 +5,7 @@ description: "The MDN reference on JavaScript regular expressions notes that \"J
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://houzair.me/"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
-date: 2026-06-25
+date: 2026-06-27
 ---
 
 ![(Ir)regular JavaScript Expressions](/images/irregular-javascript-expressions/cover.webp)
@@ -26,11 +26,11 @@ With these concepts in hand, my cashing-out strategy begins by analysing the cla
 
 In section 2, I informally define the class of regular languages by talking about the class of *finite state* machines, called deterministic finite automata (DFAs). These machines constitute the quintessential language denoting mechanism that defines the class of regular languages - a regular language denoting mechanism precisely denotes that class of languages.
 
-In section 3, I show how both JavaScript and theoretical regular expressions are language denoting mechanisms by observing their syntax rules and that each regular expression denotes a language. Moreover, I note how theoretical regular expressions (along with regular grammars and NFAs) are regular language denoting mechanisms.
+In section 3, I show how both JavaScript and theoretical regular expressions are language denoting mechanisms by observing their syntax rules and that each regular expression denotes a language. I also note how theoretical regular expressions (along with regular grammars and NFAs) are regular language denoting mechanisms.
 
-In section 4, I dive into some code to demonstrate the usefulness of backreferences. By considering a JavaScript regular expression with a backreference as a counter-example, I show that there's at least one instance of a JavaScript regular expression that does not denote a regular language. In other words, JavaScript regular expressions denote a proper superclass of regular languages. So, they are not a regular language denoting mechanism. Hence, JavaScript regular expressions are not regular. As a plus, I also show how that particular counter-example denotes a context-free language by looking at a class of machines called pushdown automata (PDAs).
+In section 4, I dive into some code to demonstrate the usefulness of backreferences. By considering a JavaScript regular expression with a backreference as a counter-example, I show that there's at least one instance of a JavaScript regular expression that does not denote a regular language. In other words, JavaScript regular expressions denote a proper superclass of regular languages. So, they are not a regular language denoting mechanism. Hence, JavaScript regular expressions are not regular. As a plus, I also show how that particular counter-example denotes a context-free language by looking at the class of machines called pushdown automata (PDAs).
 
-Here's an informal argument summarising my examination.
+To clarify, here's an informal argument summarising my examination.
 
 1. A language denoting mechanism is a well-defined system for denoting a class of languages.
 2. JavaScript regular expressions are a well-defined system for denoting a class of languages.
@@ -46,7 +46,22 @@ Here's an informal argument summarising my examination.
 
 ### 1.1 Alphabets, languages and classes of languages
 
+An alphabet is a set of characters. For example, the set of characters `{'0', '1'}`, behind binary notation, is an alphabet. A string is the concatenation of any characters from an alphabet (like `'0'`, `'01'` or `'111'`). The concatenation of no characters gives the empty string `''`. A language is a set of strings. A class of languages is a set of languages. So, a class of languages is a set of sets of strings.
+
+![An alphabet, a language and a class of languages](/images/irregular-javascript-expressions/alphabet_language_class_of_languages.webp)
+
 ### 1.2 Language denoting mechanism
+
+Informally, a language denoting mechanism is a well-defined system for denoting a class of languages. A system is well-defined if there are rigorous and exhaustive rules on how to construct instances of that system. For example, there are strict syntax rules behind valid Python code. There are rigourous and exhaustive rules on what constitute a valid instance of Python syntax and what does not.
+
+Moreover, each instance must denote a language (a set of strings). A language denoting mechanism is the set of all instances each of which denotes a language. The class of these languages is the class that the mechanism denotes.
+
+In summary, a language denoting mechanism must satisfy the following properties:
+
+1. A set of well-defined constructed instances.
+2. Each instance denotes a language (set of strings).
+
+As a side note, I would like to justify my introduction of a concept like a language denoting mechanism. It acts like a bridge between theoretical systems that are intuitively distinct from each other. For example, we machines (like Turning Machines) on one hand and (like Python). They both recognise . allows me to easily talk about two and bridging them. 
 
 ### 1.3 Chomsky's hierarchy
 
@@ -54,11 +69,33 @@ Here's an informal argument summarising my examination.
 
 ## 2. Regular languages
 
+A classic example of a regular language is the set of all strings of even length over an alphabet like `{'a'}`. It contains strings like `'aa'`, `'aaaa'` or `''` (the empty string). Its corresponding regular expression is `(aa)*`.
+
+There are many interesting formal properties that govern these languages (for example, the union of two regular languages is also a regular language). However, for our current purposes, one such interesting property is their intrinsic tie to the DFA class of finite state machines:
+
+All regular languages are recognised by DFAs and DFAs only recognise regular languages [6].
+
 ### 2.1 DFAs
+
+A DFA is a theoretical machine that recognises a set of strings. This set is the language of that machine. In particular, for any string over an alphabet, the machine will either accept or reject it. The set of all strings that the machine accepts _is_ the language of that machine. 
+
+Visually, a DFA is made up of a finite set of states with transitions among them. Some of these states are "accepting" and others are "rejecting". One of these states must be the start state. Any string over an alphabet is fed into the machine via that start state. As it's fed through, the machine transitions through its states by individually parsing the string's characters. Once all characters are parsed, the machine stops. It lands in either an accepting or rejecting state. If it's an accepting state, then the machine accepts the string. Otherwise, it rejects it [7]. So, the language of the DFA is the set of all strings that, after being parsed character-by-character, land in an accepting state. To further clarify, let's construct a DFA that recognises the aforementioned regular language expressed by the regular expression `(aa)*` [8].
+
+![DFA for language over a of even length](/images/irregular-javascript-expressions/dfa_for_language_over_a_of_even_length.webp)
+
+Let's walk through how the machine recognises our language by looking at two example strings: `'a'` and `'aa'`. Ideally, the machine should accept `'aa'` and reject `'a'`.
+
+`'aa'` begins in the start state "even length". The machine parses the first `'a'` and transitions to the "odd length" state. It then parses the last `'a'` and lands back in the "even length" state. Since there are no more characters to parse, the machine stops. So, the machine lands in an accepting state and accepts the string `'aa'`. 
+
+Given `'a'`, it begins in the start state and transitions into the "odd length" state once it parses the only character `'a'`. Since there are no characters left, the machine lands in a rejecting state and rejects `'a'`.
+
+On a side note, different configurations of states and transitions yield different regular languages. It's possible that DFAs with seemingly different configurations accept the same set of strings. Intuitively, this is how seemingly different regular expressions act as syntactic sugar for the same regular language (like `(aa)*` and `(a{2})*`). 
 
 ### 2.2 Regular language denoting mechanism
 
-## 3. Regular expressions as language denoting mechanisms
+## 3. Regular expressions as a language denoting mechanism
+
+To see how regular expressions are a language denoting mechanism, let's consider two observations about them.
 
 ### 3.1 Observation 1
 
@@ -93,6 +130,10 @@ As a side note, one may feel that these rules are incomplete because regular exp
 | `.` | Any character | Alternation of all alphabet characters | `a.b` = `a(x\|y\|z\|...)b` |
 
 ### 3.2 Observation 2
+
+Some regular expressions can match more than one string (some even have infinitely many matches). Intuitively, we can form a set of all possible matches to a regular expression. In this sense, when we say that a string "matches" a regular expression, we're saying that this string is an element of that set. In other words, a regular expression is just a shorthand way of talking about that set.
+
+So far, we've observed that theoretical regular expressions obey strict syntax rules over an alphabet, and that they serve as a shorthand way of talking about a set of strings. Formally, a set of strings over an alphabet is called a language. In effect, theoretical regular expressions act as syntactic sugar for a particular class of languages. Those are regular languages [5].
 
 ### 3.3 Theoretical regular expressions, grammars and NFAs
 
@@ -184,35 +225,9 @@ Conceptually, for a backreference to refer to a capturing group's submatch, we h
 
 ### 2.1 Regular expressions as syntactic sugar
 
-To see how regular expressions act as syntactic sugar, let's consider two observations about them.
-
 #### 2.1.2 Observation 2
 
-Some regular expressions can match more than one string (some even have infinitely many matches). Intuitively, we can form a set of all possible matches to a regular expression. In this sense, when we say that a string "matches" a regular expression, we're saying that this string is an element of that set. In other words, a regular expression is just a shorthand way of talking about that set.
-
-So far, we've observed that theoretical regular expressions obey strict syntax rules over an alphabet, and that they serve as a shorthand way of talking about a set of strings. Formally, a set of strings over an alphabet is called a language. In effect, theoretical regular expressions act as syntactic sugar for a particular class of languages. Those are regular languages [5].
-
 ### 2.2 Regular languages and DFAs
-
-A classic example of a regular language is the set of all strings of even length over an alphabet like `{'a'}`. It contains strings like `'aa'`, `'aaaa'` or `''` (the empty string). Its corresponding regular expression is `(aa)*`.
-
-There are many interesting formal properties that govern these languages (for example, the union of two regular languages is also a regular language). However, for our current purposes, one such interesting property is their intrinsic tie to the DFA class of finite state machines:
-
-All regular languages are recognised by DFAs and DFAs only recognise regular languages [6].
-
-A DFA is a theoretical machine that recognises a set of strings. This set is the language of that machine. In particular, for any string over an alphabet, the machine will either accept or reject it. The set of all strings that the machine accepts _is_ the language of that machine. 
-
-Visually, a DFA is made up of a finite set of states with transitions among them. Some of these states are "accepting" and others are "rejecting". One of these states must be the start state. Any string over an alphabet is fed into the machine via that start state. As it's fed through, the machine transitions through its states by individually parsing the string's characters. Once all characters are parsed, the machine stops. It lands in either an accepting or rejecting state. If it's an accepting state, then the machine accepts the string. Otherwise, it rejects it [7]. So, the language of the DFA is the set of all strings that, after being parsed character-by-character, land in an accepting state. To further clarify, let's construct a DFA that recognises the aforementioned regular language expressed by the regular expression `(aa)*` [8].
-
-![DFA for language over a of even length](/images/irregular-javascript-expressions/dfa_for_language_over_a_of_even_length.webp)
-
-Let's walk through how the machine recognises our language by looking at two example strings: `'a'` and `'aa'`. Ideally, the machine should accept `'aa'` and reject `'a'`.
-
-`'aa'` begins in the start state "even length". The machine parses the first `'a'` and transitions to the "odd length" state. It then parses the last `'a'` and lands back in the "even length" state. Since there are no more characters to parse, the machine stops. So, the machine lands in an accepting state and accepts the string `'aa'`. 
-
-Given `'a'`, it begins in the start state and transitions into the "odd length" state once it parses the only character `'a'`. Since there are no characters left, the machine lands in a rejecting state and rejects `'a'`.
-
-On a side note, different configurations of states and transitions yield different regular languages. It's possible that DFAs with seemingly different configurations accept the same set of strings. Intuitively, this is how seemingly different regular expressions act as syntactic sugar for the same regular language (like `(aa)*` and `(a{2})*`). 
 
 Importantly, notice how a DFA does not have memory during computation. It simply transitions between states on each computational step. For example, once it parses a character, the machine "forgets" it. Similarly, it does not have any memory of any previously parsed characters or states traversed. At any computational step, it only "knows" the current character, the current state and its transitions. Hence, DFAs are finite state machines without memory.
 
