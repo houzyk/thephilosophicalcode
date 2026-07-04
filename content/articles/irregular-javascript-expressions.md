@@ -5,7 +5,7 @@ description: "The MDN reference on JavaScript regular expressions notes that \"J
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://houzair.me/"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
-date: 2026-06-27
+date: 2026-07-04
 ---
 
 ![(Ir)regular JavaScript Expressions](/images/irregular-javascript-expressions/cover.webp)
@@ -193,6 +193,10 @@ The backreference in `parseHtmlTags` is especially useful in making HTML tag par
 
 A classic example of a context-free language is the set of all strings of the form `aⁿbⁿ` over an alphabet like `{'a', 'b'}`. This is the set of strings starting with some number of `a`'s strictly followed by the same number of `b`'s. It contains strings like `'ab'`, `'aabb'` or `''` (the empty string).
 
+Just like regular languages, context-free languages also have an intrinsic tie to a class of machines called pushdown automata (PDAs):
+
+All context-free languages are recognised by PDAs and PDAs only recognise context-free languages [9].
+
 Moreover, a PDA is also a theoretical machine that recognises a set of strings. For any string over an alphabet, the machine will either accept or reject it. The set of all strings that the machine accepts is the language of that machine. The key difference from a DFA is that a PDA is equipped with an unbounded stack. This stack is what gives PDAs their extra expressive power as illustrated by Chomsky's hierarchy. The stack acts as memory that a DFA lacks. 
 
 Visually, a PDA is made up of a finite set of states with transitions among them. For each transition, the machine can also inspect and manipulate the stack. It can push symbols onto it or pop symbols off it. One state is the start state. Some of these states are "accepting" and others are "rejecting". A string is fed into the machine via the start state, and the machine transitions through its states by individually parsing the string's characters and managing its stack. Once no further transitions apply, the machine stops. If it lands in an accepting state, the machine accepts the string. Otherwise, it rejects it. So, the language of the PDA is the set of all strings that land in an accepting state [10]. To further clarify, let's construct a PDA that recognises the aforementioned context-free language `aⁿbⁿ`.
@@ -204,6 +208,16 @@ Let's walk through how the machine recognises our language by looking at one exa
 `'ab'` begins in the start state. Firstly, the machine does not parse any character (it parses the empty string `''`) and pops nothing from the stack (it pops `''`). It also pushes a designated symbol `'$'` that acts as a sentinel which signifies the bottom of the stack. It then transitions to the next state where the machine parses the first `'a'`, pops nothing from the stack and pushes a designated symbol `'A'` onto the stack. Basically, `'A'` signifies the number of `'a'`'s that we have parsed throughout a computation. As we will see shortly, in order to ensure that there is the same number of `'b'`'s as `'a'`'s in a string, we have to pop all the `'A'`'s from the stack until we reach the bottom. Then, the machine transitions to the next state without popping or pushing anything from the stack. It then parses the last `'b'`, pops an `'A'` from the stack and pushes nothing onto it. Finally, since the sentinel `'$'` is the only symbol left on the stack, the machine pops it and transitions into an accepting state. So, it accepts `'ab'`.
 
 ### 4.3 Memory and finite states
+
+Conceptually, for a backreference to refer to a capturing group's submatch, we have to store the value of that submatch in memory to later reference it. In the aforementioned HTML tag parser example, if the capturing group's submatch is `'p'` (from the tag `<p>`), we need to store the value `'p'`, so that the backreference `\1` may refer to it. So, backreferences rely on memory. It follows that JavaScript regular expressions rely on memory.
+
+Importantly, notice how a DFA does not have memory during computation. It simply transitions between states on each computational step. For example, once it parses a character, the machine "forgets" it. Similarly, it does not have any memory of any previously parsed characters or states traversed. At any computational step, it only "knows" the current character, the current state and its transitions. Hence, DFAs are finite state machines without memory.
+
+
+As previously mentioned, a key difference between a DFA and a PDA is the addition of an unbounded stack. DFAs do not have that kind of memory. They only have states and transitions. At any point in its computation, a DFA only knows about its current state, the character that it's reading and its available transitions. It does not know what it previously saw. 
+
+We can now cash out the tension between JavaScript regular expressions and their theoretical counterpart. Notice that once we add memory (like an unbounded stack), we move up Chomsky's hierarchy and away from regular languages. So, any class of machines equipped with such memory can recognise a larger class of languages than regular languages (they can also recognise regular languages). In other words, any computational model that relies on such memory recognises a different set of languages from regular languages. Since JavaScript regular expressions rely on memory, they correspond to languages in the hierarchy that move away from regular languages [11]. In other words, JavaScript regular expressions act as syntactic sugar for languages belonging to a different containment level in the hierarchy than regular languages. So, they recognise a larger (and different) class of languages than DFAs and regular languages. Hence, they are not regular.
+
 
 ## Footnotes
 
@@ -230,40 +244,3 @@ Let's walk through how the machine recognises our language by looking at one exa
 11. This does not imply that JavaScript regular expressions act as syntactic sugar for context-free languages.
 
 I was originally inspired to write this article after reading [Abdur-Rahmaan Janhangeer](https://www.compileralchemy.com/ "Abdur-Rahmaan Janhangeer")'s article - [Regex Engines: History and Contributions](https://www.linkedin.com/pulse/regex-engines-history-contributions-abdur-rahmaan-janhangeer "Regex Engines: History and Contributions").
-
-# _____________________
-
-### 1.1 Conceptual analysis
-
-Conceptually, for a backreference to refer to a capturing group's submatch, we have to store the value of that submatch in memory to later reference it. In the aforementioned HTML tag parser example, if the capturing group's submatch is `'p'` (from the tag `<p>`), we need to store the value `'p'`, so that the backreference `\1` may refer to it. So, backreferences rely on memory. It follows that JavaScript regular expressions rely on memory.
-
-## 2. The theory behind regular expressions
-
-### 2.1 Regular expressions as syntactic sugar
-
-#### 2.1.2 Observation 2
-
-### 2.2 Regular languages and DFAs
-
-Importantly, notice how a DFA does not have memory during computation. It simply transitions between states on each computational step. For example, once it parses a character, the machine "forgets" it. Similarly, it does not have any memory of any previously parsed characters or states traversed. At any computational step, it only "knows" the current character, the current state and its transitions. Hence, DFAs are finite state machines without memory.
-
-So far, we've discussed how regular languages are recognised by and are intrinsically tied to DFAs. Since theoretical regular expressions act as syntactic sugar for regular languages, we've also illustrated an intrinsic tie between DFAs and theoretical regular expressions. A key insight from this tie is that if some concept/object is incompatible with a DFA, then it must be incompatible with regular languages and theoretical regular expressions. Since DFAs are machines without memory, theoretical regular expressions must also be "devoid of memory".
-
-## 3. Chomsky's hierarchy
-
-For example, just like regular languages, context-free languages also have an intrinsic tie to a class of machines called pushdown automata (PDAs):
-
-All context-free languages are recognised by PDAs and PDAs only recognise context-free languages [9].
-
-### 3.1 Context-free languages and PDAs
-
-### 3.2 An issue of language recognition
-
-As previously mentioned, a key difference between a DFA and a PDA is the addition of an unbounded stack. DFAs do not have that kind of memory. They only have states and transitions. At any point in its computation, a DFA only knows about its current state, the character that it's reading and its available transitions. It does not know what it previously saw. 
-
-We can now cash out the tension between JavaScript regular expressions and their theoretical counterpart. Notice that once we add memory (like an unbounded stack), we move up Chomsky's hierarchy and away from regular languages. So, any class of machines equipped with such memory can recognise a larger class of languages than regular languages (they can also recognise regular languages). In other words, any computational model that relies on such memory recognises a different set of languages from regular languages. Since JavaScript regular expressions rely on memory, they correspond to languages in the hierarchy that move away from regular languages [11]. In other words, JavaScript regular expressions act as syntactic sugar for languages belonging to a different containment level in the hierarchy than regular languages. So, they recognise a larger (and different) class of languages than DFAs and regular languages. Hence, they are not regular.
-
-## PS
-
-everything about memory goes here
-
