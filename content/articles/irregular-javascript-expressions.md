@@ -5,7 +5,7 @@ description: "The MDN reference on JavaScript regular expressions notes that \"J
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://houzair.me/"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
-date: 2026-07-04
+date: 2026-07-07
 ---
 
 ![(Ir)regular JavaScript Expressions](/images/irregular-javascript-expressions/cover.webp)
@@ -46,7 +46,7 @@ To clarify, here's an informal argument summarising my examination.
 
 ### 1.1 Alphabets, languages and classes of languages
 
-An alphabet is a set of characters. For example, the set of characters `{'0', '1'}`, behind binary notation, is an alphabet. A string is the concatenation of any characters from an alphabet (like `'0'`, `'01'` or `'111'`). The concatenation of no characters gives the empty string `''`. A language is a set of strings. A class of languages is a set of languages. So, a class of languages is a set of sets of strings.
+An alphabet is a set of characters (like the set of characters `{'0', '1'}` behind binary notation). A string is the concatenation of any characters from an alphabet (like `'0'`, `'01'` or `'111'`). The concatenation of no characters gives the empty string `''`. A language is a set of strings. A class of languages is a set of languages. So, a class of languages is a set of sets of strings.
 
 ![An alphabet, a language and a class of languages](/images/irregular-javascript-expressions/alphabet_language_class_of_languages.webp)
 
@@ -61,7 +61,7 @@ In summary, a language denoting mechanism must satisfy the following properties:
 1. A set of well-defined constructed instances.
 2. Each instance denotes a language (set of strings).
 
-As a side note, I would like to justify my introduction of a concept like a language denoting mechanism. It acts like a bridge between theoretical systems that are intuitively distinct from each other. For example, we machines (like Turning Machines) on one hand and (like Python). They both recognise . allows me to easily talk about two and bridging them. 
+As a side note, I would like to justify my introduction of a concept like a language denoting mechanism. It acts like a bridge between theoretical systems that are intuitively distinct from each other. For example, we machines (like Turning Machines) on one hand and (like Python). They both recognise . allows me to easily talk about two and bridging them.
 
 ### 1.3 Chomsky's hierarchy
 
@@ -69,7 +69,11 @@ As a side note, I would like to justify my introduction of a concept like a lang
 
 Chomsky's hierarchy is a containment hierarchy of formal languages (or their corresponding grammars). The higher up the hierarchy, the more complex the languages get. Traditionally, regular languages live at the very bottom with context-free languages just above. An interesting property of the hierarchy is that each class of languages needs a different type of machine to recognise it. 
 
+![Regular language denoting mechanism](/images/irregular-javascript-expressions/regular_language_denoting_mechanism.webp)
+
 ### 1.4 Cashing-out strategy
+
+As previously mentioned, my cashing-out strategy begins by analysing the claim that as the claim that "". The tension becomes apparent with the claim that. Consequently, my upcoming examination deals with the following respecivly. Firstly, I by properly defining the class of regular languages. Secondly, I show how both JavaScript and theoretical regular expressions are both language denoting mechanism. Then, I explain how theoretical regular expressions by their equivalence to DFAs, NFAs and regular grammars. Then, I consider the counter-example `//` containing a backreference.
 
 ## 2. Regular languages
 
@@ -94,8 +98,6 @@ Let's walk through how the machine recognises our language by looking at two exa
 Given `'a'`, it begins in the start state and transitions into the "odd length" state once it parses the only character `'a'`. Since there are no characters left, the machine lands in a rejecting state and rejects `'a'`.
 
 On a side note, different configurations of states and transitions yield different regular languages. It's possible that DFAs with seemingly different configurations accept the same set of strings. Intuitively, this is how seemingly different regular expressions act as syntactic sugar for the same regular language (like `(aa)*` and `(a{2})*`). 
-
-### 2.2 Regular language denoting mechanism
 
 ## 3. Regular expressions as a language denoting mechanism
 
