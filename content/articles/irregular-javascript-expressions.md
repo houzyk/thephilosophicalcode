@@ -5,7 +5,7 @@ description: "The MDN reference on JavaScript regular expressions notes that \"J
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://houzair.me/"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
-date: 2026-07-07
+date: 2026-07-08
 ---
 
 ![(Ir)regular JavaScript Expressions](/images/irregular-javascript-expressions/cover.webp)
@@ -24,7 +24,7 @@ In section 1, I lay the groundwork for cashing-out and examining the tension bet
 
 With these concepts in hand, my cashing-out strategy begins by analysing the claim that "JavaScript regular expressions are not regular" as the claim that "JavaScript regular expressions are not a regular language denoting mechanism". In contrast, theoretical regular expressions are a regular language denoting mechanism. Consequently, my examination focuses on how JavaScript regular expressions are not a regular language denoting mechanism but their theoretical counterparts are.
 
-In section 2, I informally define the class of regular languages by talking about the class of *finite state* machines, called deterministic finite automata (DFAs). These machines constitute the quintessential language denoting mechanism that defines the class of regular languages - a regular language denoting mechanism precisely denotes that class of languages.
+In section 2, I informally define the class of regular languages by talking about the class of *finite state* machines, called deterministic finite automata (DFAs). These machines constitute the quintessential language denoting mechanism that defines the class of regular languages.
 
 In section 3, I show how both JavaScript and theoretical regular expressions are language denoting mechanisms by observing their syntax rules and that each regular expression denotes a language. I also note how theoretical regular expressions (along with regular grammars and NFAs) are regular language denoting mechanisms.
 
@@ -52,14 +52,12 @@ An alphabet is a set of characters (like the set of characters `{'0', '1'}` behi
 
 ### 1.2 Language denoting mechanism
 
-Informally, a language denoting mechanism is a well-defined system for denoting a class of languages. A system is well-defined if there are rigorous and exhaustive rules on how to construct instances of that system. For example, there are strict syntax rules behind valid Python code. There are rigourous and exhaustive rules on what constitute a valid instance of Python syntax and what does not.
-
-Moreover, each instance must denote a language (a set of strings). A language denoting mechanism is the set of all instances each of which denotes a language. The class of these languages is the class that the mechanism denotes.
+Informally, a language denoting mechanism is a well-defined system for denoting a class of languages. For our current purposes, we'll say that a system has instances. It is well-defined if there are rigorous and exhaustive rules on how to construct its instances. Roughly, we may consider the syntax behind Python as a well-defined system. Its instances are snippets like `some_var = True`. Each snippet is governed by rigorous and exhaustive syntax rules. Moreover, each instance must denote a language. So, a language denoting mechanism is a set of instances each of which denotes a language. The class of these denoted languages is the class that the mechanism denotes.
 
 In summary, a language denoting mechanism must satisfy the following properties:
 
-1. A set of well-defined constructed instances.
-2. Each instance denotes a language (set of strings).
+1. A set of well-defined rules to construct instances.
+2. Each instance denotes a language.
 
 As a side note, I would like to justify my introduction of a concept like a language denoting mechanism. It acts like a bridge between theoretical systems that are intuitively distinct from each other. For example, we machines (like Turning Machines) on one hand and (like Python). They both recognise . allows me to easily talk about two and bridging them.
 
@@ -73,15 +71,15 @@ Chomsky's hierarchy is a containment hierarchy of formal languages (or their cor
 
 ### 1.4 Cashing-out strategy
 
-As previously mentioned, my cashing-out strategy begins by analysing the claim that as the claim that "". The tension becomes apparent with the claim that. Consequently, my upcoming examination deals with the following respecivly. Firstly, I by properly defining the class of regular languages. Secondly, I show how both JavaScript and theoretical regular expressions are both language denoting mechanism. Then, I explain how theoretical regular expressions by their equivalence to DFAs, NFAs and regular grammars. Then, I consider the counter-example `//` containing a backreference.
+As previously mentioned, my cashing-out strategy begins by analysing the claim that as the claim that "". The tension becomes apparent with the claim that. Consequently, my upcoming examination deals with the following respecivly. Firstly, I properly defining the class of regular languages. Secondly, I show how both JavaScript and theoretical regular expressions are both language denoting mechanism. Then, I explain how theoretical regular expressions by their equivalence to DFAs, NFAs and regular grammars. Then, I consider the counter-example `/^(a*)b\1$/` containing a backreference. I show how this is an instance which denotes. It denotes a context-free language.
 
 ## 2. Regular languages
 
 A classic example of a regular language is the set of all strings of even length over an alphabet like `{'a'}`. It contains strings like `'aa'`, `'aaaa'` or `''` (the empty string). Its corresponding regular expression is `(aa)*`.
 
-There are many interesting formal properties that govern these languages (for example, the union of two regular languages is also a regular language). However, for our current purposes, one such interesting property is their intrinsic tie to the DFA class of finite state machines:
+There are many interesting formal properties that govern these languages (for example, the union of two regular languages is also a regular language). However, for our current purposes, one such interesting property is their informaly defition to the DFA class of finite state machines:
 
-All regular languages are recognised by DFAs and DFAs only recognise regular languages [6].
+The class of regular languages _is_ the class of languages recognised by DFAs.
 
 ### 2.1 DFAs
 
@@ -97,7 +95,9 @@ Let's walk through how the machine recognises our language by looking at two exa
 
 Given `'a'`, it begins in the start state and transitions into the "odd length" state once it parses the only character `'a'`. Since there are no characters left, the machine lands in a rejecting state and rejects `'a'`.
 
-On a side note, different configurations of states and transitions yield different regular languages. It's possible that DFAs with seemingly different configurations accept the same set of strings. Intuitively, this is how seemingly different regular expressions act as syntactic sugar for the same regular language (like `(aa)*` and `(a{2})*`). 
+On a side note, different configurations of states and transitions yield different regular languages. It's possible that DFAs with seemingly different configurations accept the same set of strings. Intuitively, this is how seemingly different regular expressions act as syntactic sugar for the same regular language (like `(aa)*` and `(a{2})*`).
+
+Formally, there are strict rules. Since each instance of a DFA also denotes a language, we can say that DFAs are a language denoting mechanism. Since, the class of regular languages is the class DFAs denotes, we consider DFAs to be the quitessential regular language denoting mechanism. In particular, any other regular language denoting mechanism must precisely denote that class of languages.
 
 ## 3. Regular expressions as a language denoting mechanism
 
