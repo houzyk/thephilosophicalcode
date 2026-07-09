@@ -191,6 +191,17 @@ The backreference in `parseHtmlTags` is especially useful in making HTML tag par
 
 ### 4.1 JavaScript regular expressions denote a proper superclass of regular languages
 
+Let's take the as a counter-example. In this section, I informally prove that this does not denote a regular language. In fact, it denotes a context-free language.
+
+Intuitively, the language that `/^(a*)b+\1$/` denotes is equivalent to the language described as `aⁿbaⁿ` (where `n >= 0`). 
+
+Briefly, the pumping lemma states that 
+
+Firstly, I will use the pumping lemma to prove that . For the sake of contradiction, assume that is regular. By the pumping lemma, there exists such that.
+
+
+In summary, `/^(a*)b+\1$/` is an instance of a JavaScript regular expression (with a backreference) that does not denote a regular language. So, as a language denoting mechanism, JavaScript regular expressions denote a proper superclass of regular languages. So, they are not a regular language denoting mechanism. In other words, they are not regular.
+
 ### 4.2 Context-free languages and NFAs
 
 A classic example of a context-free language is the set of all strings of the form `aⁿbⁿ` over an alphabet like `{'a', 'b'}`. This is the set of strings starting with some number of `a`'s strictly followed by the same number of `b`'s. It contains strings like `'ab'`, `'aabb'` or `''` (the empty string).
