@@ -5,7 +5,7 @@ description: "The MDN reference on JavaScript regular expressions notes that \"J
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://houzair.me/"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
-date: 2026-07-08
+date: 2026-07-09
 ---
 
 ![(Ir)regular JavaScript Expressions](/images/irregular-javascript-expressions/cover.webp)
@@ -46,20 +46,22 @@ To clarify, here's an informal argument summarising my examination.
 
 ### 1.1 Alphabets, languages and classes of languages
 
-An alphabet is a set of characters (like the set of characters `{'0', '1'}` behind binary notation). A string is the concatenation of any characters from an alphabet (like `'0'`, `'01'` or `'111'`). The concatenation of no characters gives the empty string `''`. A language is a set of strings. A class of languages is a set of languages. So, a class of languages is a set of sets of strings.
+An alphabet is a set of characters (like the set of characters `{'0', '1'}` behind binary notation). A string is constructed by concatenating characters from an alphabet (like `'0'`, `'01'` or `'111'`). The empty string `''` is constructed by concatenating no characters at all. A language is a set of such strings. A class of languages is a set of such languages. So, a class of languages is a set of sets of strings.
 
 ![An alphabet, a language and a class of languages](/images/irregular-javascript-expressions/alphabet_language_class_of_languages.webp)
 
 ### 1.2 Language denoting mechanism
 
-Informally, a language denoting mechanism is a well-defined system for denoting a class of languages. For our current purposes, we'll say that a system has instances. It is well-defined if there are rigorous and exhaustive rules on how to construct its instances. Roughly, we may consider the syntax behind Python as a well-defined system. Its instances are snippets like `some_var = True`. Each snippet is governed by rigorous and exhaustive syntax rules. Moreover, each instance must denote a language. So, a language denoting mechanism is a set of instances each of which denotes a language. The class of these denoted languages is the class that the mechanism denotes.
+Informally, a language denoting mechanism is a well-defined system for denoting a class of languages. 
+
+For our current purposes, we'll say that a system consists of well-defined instances. In particular, there are rigorous and exhaustive rules governing these instances. For example, we may consider the syntax behind Python as a well-defined system. Its instances are valid Python snippets like `some_var = True`. Each snippet is governed by rigorous and exhaustive syntax rules. Moreover, each instance must denote a language (a set of strings). So, a language denoting mechanism denotes the class of all languages denoted by each of its instances.
 
 In summary, a language denoting mechanism must satisfy the following properties:
 
-1. A set of well-defined rules to construct instances.
+1. It consists of well-defined instances.
 2. Each instance denotes a language.
 
-As a side note, I would like to justify my introduction of a concept like a language denoting mechanism. It acts like a bridge between theoretical systems that are intuitively distinct from each other. For example, we machines (like Turning Machines) on one hand and (like Python). They both recognise . allows me to easily talk about two and bridging them.
+As a side note, I would like to justify my introduction of a concept of a language denoting mechanism. Its theoretical import is to act like a bridge between theoretical systems that are _intrinsinctly_ distinct but _extrinsinctly_ similar to each other. For example, we often speak of Turing Machines and the Lambda Calculus as equivalent models of computation. Intuitively, these are intrisinctly distinct entities - one feels like a mechanical devices with a tape and a head while the other feels like syntactic manipulation. However, they both extrinsinctly "talk about" (i.e. denote) the same class of recursively enumerable languages. So, framing them as language denoting mechanisms allows us to easily talk about and bridge these distinct systems.
 
 ### 1.3 Chomsky's hierarchy
 
