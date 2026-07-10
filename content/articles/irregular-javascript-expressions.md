@@ -5,7 +5,7 @@ description: "The MDN reference on JavaScript regular expressions notes that \"J
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://houzair.me/"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
-date: 2026-07-09
+date: 2026-07-10
 ---
 
 ![(Ir)regular JavaScript Expressions](/images/irregular-javascript-expressions/cover.webp)
@@ -26,7 +26,7 @@ With these concepts in hand, my cashing-out strategy begins by analysing the cla
 
 In section 2, I informally define the class of regular languages by talking about the class of *finite state* machines, called deterministic finite automata (DFAs).
 
-In section 3, I show how both JavaScript and theoretical regular expressions are language denoting mechanisms. I also note how theoretical regular expressions (along with regular grammars and NFAs) are regular language denoting mechanisms.
+In section 3, I show how both JavaScript and theoretical regular expressions are language denoting mechanisms. I also talk about how theoretical regular expressions are regular language denoting mechanisms.
 
 In section 4, I dive into some code to demonstrate the usefulness of backreferences. By considering a JavaScript regular expression with a backreference as a counter-example, I show that JavaScript regular expressions are not a regular language denoting mechanism. Hence, JavaScript regular expressions are not regular.
 
@@ -42,22 +42,22 @@ An alphabet is a set of characters (like the set of characters `{'0', '1'}` behi
 
 Informally, a language denoting mechanism is a well-defined system for denoting a class of languages. 
 
-For our current purposes, we'll say that a system consists of well-defined instances. In particular, there are rigorous and exhaustive rules governing these instances. For example, we may consider the syntax behind Python as a well-defined system. Its instances are valid Python snippets like `some_var = True`. Each snippet is governed by rigorous and exhaustive syntax rules. Moreover, each instance must denote a language (a set of strings). So, a language denoting mechanism denotes the class of all languages denoted by each of its instances.
+For our current purposes, we'll say that a system consists of well-defined instances. In particular, there are strict, rigorous and exhaustive rules governing these instances. For example, we may roughly consider the different types behind Python as a well-defined system. Its instances are valid Python type like `bool` or `str`. Each snippet is governed by strict, rigorous and exhaustive rules - the `for` keyword cannot be a Python type. Moreover, each instance must denote a language (a set of strings). For example, syntactically, the `bool` type denotes `True` and `False`. Naturally, a language denoting mechanism denotes the class of all languages denoted by each of its instances.
 
 In summary, a language denoting mechanism must satisfy the following properties:
 
 1. It consists of well-defined instances.
 2. Each instance denotes a language.
 
-As a side note, I would like to justify my introduction of a concept of a language denoting mechanism. Its theoretical import is to act like a bridge between theoretical systems that are _intrinsinctly_ distinct but _extrinsinctly_ similar to each other. For example, we often speak of Turing Machines and the Lambda Calculus as equivalent models of computation. Intuitively, these are intrisinctly distinct entities - one feels like a mechanical devices with a tape and a head while the other feels like syntactic manipulation. However, they both extrinsinctly "talk about" (i.e. denote) the same class of recursively enumerable languages. So, framing them as language denoting mechanisms allows us to easily talk about and bridge these distinct systems.
+As a side note, I would like to justify my introduction of the concept of a language denoting mechanism. I believe that its theoretical value is to act like a bridge between systems that are _intrinsinctly_ distinct but _extrinsinctly_ similar to each other. It allows us to easily talk about and bridge these kinds of systems. For example, we often speak of Turing Machines and the Lambda Calculus as equivalent models of computation. Intuitively, these are intrisinctly distinct entities - one is a mechanical devices with a tape and a head while the other feels like syntactic manipulation. However, they both extrinsinctly "talk about" (i.e. denote) the same class of recursively enumerable languages. So, framing them as language denoting mechanisms allows us to easily talk about and bridge these intrisinctly distinct systems.
 
 ### 1.3 Chomsky's hierarchy
 
 ![Chomsky's hierarchy](/images/irregular-javascript-expressions/chomsky_hierarchy.webp)
 
-Chomsky's hierarchy is a containment hierarchy of formal languages (or their corresponding grammars). This hints at how different classes of languages are denoted by different language denoting mechanisms. One such class is the class of regular languages. The higher up the hierarchy, the more complex the languages get. Traditionally, regular languages live at the very bottom with context-free languages just above. An interesting property of the hierarchy is that each class of languages needs a different type of machine to recognise it. 
+Chomsky's hierarchy is a containment hierarchy of formal languages. It hints at how different classes of languages are denoted by different language denoting mechanisms. The higher up the hierarchy, the more complex the languages get (the more complex the mechanism gets). Traditionally, regular languages live at the very bottom with context-free languages just above. 
 
- Briefly, a language denoting mechanism is regular if and only if the class of languages it denotes *is* the class of regular languages.
+For our current purposes, the hierarchy allows us to visualise that we can have different kinds of language denoting mechanism. Each kind corresponding to a particular level in the hierarchy. For example, we have regular language denoting mechanisms. I come back to this concept later on but for now let's say that a language denoting mechanism is regular if and only if the class of languages it denotes *is* the class of regular languages.
 
 ![Regular language denoting mechanism](/images/irregular-javascript-expressions/regular_language_denoting_mechanism.webp)
 
