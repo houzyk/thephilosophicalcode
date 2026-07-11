@@ -77,31 +77,37 @@ Given how Chomsky's hierarchy hints at how different classes of languages are de
 
 ![Regular language denoting mechanism](/images/irregular-javascript-expressions/regular_language_denoting_mechanism.webp)
 
-## 2. The class of regular languages
+## 2. Regular language denoting mechanisms
 
-A classic example of a regular language is the set of all strings of even length over an alphabet like `{'a'}`. It contains strings like `'aa'`, `'aaaa'` or `''` (the empty string). Its corresponding regular expression is `(aa)*`.
+### 2.1 The class of regular languages
 
-There are many interesting formal properties that govern these languages (for example, the union of two regular languages is also a regular language). However, for our current purposes, one such interesting property is their informaly defition to the DFA class of finite state machines:
+A classic example of a regular language is the set of all strings of even length over an alphabet like `{'a'}`. It contains strings like `'aa'`, `'aaaa'` or `''` (the empty string). The class of regular languages is defined in relation to DFAs.
 
-The class of regular languages _is_ the class of languages recognised by DFAs.
+The class of regular languages *is* the class of languages recognised by DFAs.
 
-### 2.1 DFAs
+### 2.2 DFAs
 
-A DFA is a theoretical machine that recognises a set of strings. This set is the language of that machine. In particular, for any string over an alphabet, the machine will either accept or reject it. The set of all strings that the machine accepts _is_ the language of that machine. 
+A DFA is a theoretical machine that recognises a set of strings. This set is the language of that machine. In particular, for any string over the machine's alphabet, the machine will either accept or reject it. The set of all strings that the machine accepts *is* the language of that machine. 
 
-Visually, a DFA is made up of a finite set of states with transitions among them. Some of these states are "accepting" and others are "rejecting". One of these states must be the start state. Any string over an alphabet is fed into the machine via that start state. As it's fed through, the machine transitions through its states by individually parsing the string's characters. Once all characters are parsed, the machine stops. It lands in either an accepting or rejecting state. If it's an accepting state, then the machine accepts the string. Otherwise, it rejects it [7]. So, the language of the DFA is the set of all strings that, after being parsed character-by-character, land in an accepting state. To further clarify, let's construct a DFA that recognises the aforementioned regular language expressed by the regular expression `(aa)*` [8].
+Visually, a DFA is made up of a finite set of states with transitions among them. Each of these states is either "accepting" or "rejecting". One of these states must be the start state. Any string over the machine's alphabet is fed into the machine via that start state. As it's fed through, the machine transitions through its states by individually reading the string's characters. It's deterministic as, for each state, each character determines exactly one transition. 
 
-![DFA for language over a of even length](/images/irregular-javascript-expressions/dfa_for_language_over_a_of_even_length.webp)
+Once all characters are read, the machine stops. It lands in either an accepting or rejecting state. If it's an accepting state, then the machine accepts the string. Otherwise, it rejects it. So, the language of the DFA is the set of all strings that, after being read character by character, land in an accepting state. To further clarify, let's construct a DFA that recognises the aforementioned regular language.
+
+![DFA for language of even length](/images/irregular-javascript-expressions/dfa_for_language_of_even_length.webp)
 
 Let's walk through how the machine recognises our language by looking at two example strings: `'a'` and `'aa'`. Ideally, the machine should accept `'aa'` and reject `'a'`.
 
-`'aa'` begins in the start state "even length". The machine parses the first `'a'` and transitions to the "odd length" state. It then parses the last `'a'` and lands back in the "even length" state. Since there are no more characters to parse, the machine stops. So, the machine lands in an accepting state and accepts the string `'aa'`. 
+`'aa'` begins in the start state "even length". The machine reads the first `'a'` and transitions to the "odd length" state. It then reads the last `'a'` and lands back in the "even length" state. Since there are no more characters to read, the machine stops. So, the machine lands in an accepting state and accepts the string `'aa'`. 
 
-Given `'a'`, it begins in the start state and transitions into the "odd length" state once it parses the only character `'a'`. Since there are no characters left, the machine lands in a rejecting state and rejects `'a'`.
+Given `'a'`, it begins in the start state and transitions into the "odd length" state once it reads the only character `'a'`. Since there are no characters left, the machine lands in a rejecting state and rejects `'a'`.
 
-On a side note, different configurations of states and transitions yield different regular languages. It's possible that DFAs with seemingly different configurations accept the same set of strings. Intuitively, this is how seemingly different regular expressions act as syntactic sugar for the same regular language (like `(aa)*` and `(a{2})*`).
+### 2.3 DFAs as the quintessential regular language denoting mechanism
 
-Formally, there are strict rules. Since each instance of a DFA also denotes a language, we can say that DFAs are a language denoting mechanism. Since, the class of regular languages is the class DFAs denotes, we consider DFAs to be the quitessential regular language denoting mechanism. In particular, any other regular language denoting mechanism must precisely denote that class of languages.
+It's standard to [formally define](https://www.khoury.northeastern.edu/home/vkp/390-fl07/FA-Formal-Definitions.pdf "formally define") a DFA as a 5-tuple consisting of states, an alphabet, a transition function, the start state and a set of accepting states. So, a DFA is governed by strict, rigorous and exhaustive rules. A DFA is well-defined. Moreover, it denotes a language. In other words, DFAs are a language denoting mechanism. 
+
+Since the class of regular languages is defined in relation to DFAs, I consider DFAs to constitute the quintessential language denoting mechanism that defines the class of regular languages. Any other regular language denoting mechanism *must* denote that particular class of languages. So, the class of languages that such a mechanism denotes *is* the class of languages recognised by DFAs.
+
+So far, I have laid the groundwork for my cashing-out strategy and properly characterised regular language denoting mechanisms. Remember that my strategy hinges on showing that JavaScript regular expressions are not a regular language denoting mechanism but their theoretical counterparts are. So, I now show how both JavaScript and theoretical regular expressions are language denoting mechanisms. Then, I explain how theoretical regular expressions are a regular language denoting mechanism.
 
 ## 3. Regular expressions as a language denoting mechanism
 
@@ -147,7 +153,7 @@ So far, we've observed that theoretical regular expressions obey strict syntax r
 
 In particular, both these observations satisfy the two previously mentioned properties of a language denoting mechanism.
 
-### 3.3 Theoretical regular expressions, grammars and NFAs
+### 3.3 Theoretical regular expressions are a regular language denoting mechanism
 
 ## 4. Backreferences
 
@@ -167,7 +173,7 @@ We can add backreferences to the aforementioned regular expression `/(a)(b)/`. F
 
 For example, the string `'abbab'` matches the regular expression `/(a)(b)\2\1\2/`. The submatch of `(a)` is `'a'` and the submatch of `(b)` is `'b'`. `\1` refers to `'a'` and `\2` refers to `'b'`. Intuitively, in this case, `/(a)(b)\2\1\2/` is equivalent to `/(a)(b)bab/`.
 
-To demonstrate the usefulness of backreferences, consider the following function `parseHtmlTags`. It's a simple HTML tag parser. It returns all matching open/close tags of the form `<xyz>...</xyz>` after parsing some arbitrary string.
+To demonstrate the usefulness of backreferences, consider the following function `parseHtmlTags`. It's a simple HTML tag parser. It returns all matching open/close tags of the form `<xyz>...</xyz>` after reading some arbitrary string.
 
 ```js
 function parseHtmlTags(input) {
@@ -193,7 +199,7 @@ parseHtmlTags('<p>mismatched</div>');
 // returns []
 ```
 
-The backreference in `parseHtmlTags` is especially useful in making HTML tag parsing quite dynamic. Intuitively, we don't need to specify a whole list of potential HTML tags alternating with one another (like `(<p>(.*?)<\/p>)` or `(<div>(.*?)<\/div>)` or `(<a>(.*?)<\/a>)`). Once we have an HTML tag name as a submatch of the capturing group in `<(\w+)>`, we can dynamically refer to it using the backreference in `<\/\1>`.
+The backreference in `parseHtmlTags` is especially useful in making HTML tag reading quite dynamic. Intuitively, we don't need to specify a whole list of potential HTML tags alternating with one another (like `(<p>(.*?)<\/p>)` or `(<div>(.*?)<\/div>)` or `(<a>(.*?)<\/a>)`). Once we have an HTML tag name as a submatch of the capturing group in `<(\w+)>`, we can dynamically refer to it using the backreference in `<\/\1>`.
 
 ### 4.1 The class denoted by JavaScript regular expressions is not the class of regular languages
 
@@ -216,9 +222,9 @@ Just like regular languages, context-free languages also have an intrinsic tie t
 
 All context-free languages are recognised by PDAs and PDAs only recognise context-free languages [9].
 
-Moreover, a PDA is also a theoretical machine that recognises a set of strings. For any string over an alphabet, the machine will either accept or reject it. The set of all strings that the machine accepts is the language of that machine. The key difference from a DFA is that a PDA is equipped with an unbounded stack. This stack is what gives PDAs their extra expressive power as illustrated by Chomsky's hierarchy. The stack acts as memory that a DFA lacks. 
+Moreover, a PDA is also a theoretical machine that recognises a set of strings. For any string over the machine's alphabet, the machine will either accept or reject it. The set of all strings that the machine accepts is the language of that machine. The key difference from a DFA is that a PDA is equipped with an unbounded stack. This stack is what gives PDAs their extra expressive power as illustrated by Chomsky's hierarchy. The stack acts as memory that a DFA lacks. 
 
-Visually, a PDA is made up of a finite set of states with transitions among them. For each transition, the machine can also inspect and manipulate the stack. It can push symbols onto it or pop symbols off it. One state is the start state. Some of these states are "accepting" and others are "rejecting". A string is fed into the machine via the start state, and the machine transitions through its states by individually parsing the string's characters and managing its stack. Once no further transitions apply, the machine stops. If it lands in an accepting state, the machine accepts the string. Otherwise, it rejects it. So, the language of the PDA is the set of all strings that land in an accepting state [10]. To further clarify, let's construct a PDA that recognises the aforementioned context-free language `aⁿbⁿ`.
+Visually, a PDA is made up of a finite set of states with transitions among them. For each transition, the machine can also inspect and manipulate the stack. It can push symbols onto it or pop symbols off it. One state is the start state. Some of these states are "accepting" and others are "rejecting". A string is fed into the machine via the start state, and the machine transitions through its states by individually reading the string's characters and managing its stack. Once no further transitions apply, the machine stops. If it lands in an accepting state, the machine accepts the string. Otherwise, it rejects it. So, the language of the PDA is the set of all strings that land in an accepting state [10]. To further clarify, let's construct a PDA that recognises the aforementioned context-free language `aⁿbⁿ`.
 
 ![PDA for aⁿbⁿ](/images/irregular-javascript-expressions/pda_for_anbn.webp)
 
@@ -246,13 +252,7 @@ We can now cash out the tension between JavaScript regular expressions and their
 
 3. JavaScript also permits forward referencing by matching the empty string. Moreover, JavaScript also has [named backreferences](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_backreference "named backreferences"). We can use custom names, instead of a positive whole number, to refer to the submatch of some previously defined [named capturing groups](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_capturing_group "named capturing groups").
 
-4. Since DFAs only recognise regular languages and theoretical regular expressions act as syntactic sugar for regular languages, there must be a regular expression that corresponds to the DFA that does not accept any string. Intuitively, that's the empty set.
-
 5. Here's a formal [proof](https://courses.grainger.illinois.edu/cs373/su2011/lectures/lecture10.pdf "proof") demonstrating that all theoretical regular expressions act as syntactic sugar for regular languages (URL valid at the time of writing).
-
-6. Here's a [formal definition](https://www.khoury.northeastern.edu/home/vkp/390-fl07/FA-Formal-Definitions.pdf "formal definition") of a DFA (URL valid at the time of writing).
-
-7. Visit [regexper.com](https://regexper.com/ "regexper.com") to visualise any JavaScript regular expression as a railroad diagram.
 
 8. Nondeterministic PDAs, context-free languages and context-free grammars are all intrinsically tied to each other.
 
