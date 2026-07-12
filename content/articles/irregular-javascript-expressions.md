@@ -258,6 +258,6 @@ Here's an informal argument summarising my cashing-out strategy and examination.
 
 2. JavaScript also permits forward referencing by matching the empty string. Moreover, JavaScript also has [named backreferences](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_backreference "named backreferences"). We can use custom names, instead of a positive whole number, to refer to the submatch of some previously defined [named capturing groups](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_capturing_group "named capturing groups").
 
-3. Formally, the general pumping lemma for regular languages states that
+3. Formally, the general pumping lemma for regular languages states that, for any regular language `RL`, there exists a positive integer `p`, called the pumping length, such that every string of form `uwv` in `RL` (where the length `len(w)` of `w` is such that `len(w) >= p`) can be written in the form `uwv = uxyzv`. The length `len(xy)` of `xy` is such that `len(xy) <= p`. The length `len(y)` of `y` is such that `len(y) >= 1`. Then, for any positive integer `k`, any string of form `uxyᵏzv` is in `RL`.
 
 I was originally inspired to write this article after reading [Abdur-Rahmaan Janhangeer](https://www.compileralchemy.com/ "Abdur-Rahmaan Janhangeer")'s article - [Regex Engines: History and Contributions](https://www.linkedin.com/pulse/regex-engines-history-contributions-abdur-rahmaan-janhangeer "Regex Engines: History and Contributions").
