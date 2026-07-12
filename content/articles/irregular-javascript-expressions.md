@@ -5,7 +5,7 @@ description: "The MDN reference on JavaScript regular expressions notes that \"J
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://houzair.me/"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
-date: 2026-07-11
+date: 2026-07-12
 ---
 
 ![(Ir)regular JavaScript Expressions](/images/irregular-javascript-expressions/cover.webp)
@@ -28,7 +28,7 @@ In section 2, I properly characterise regular language denoting mechanisms. I in
 
 In section 3, I show how both JavaScript and theoretical regular expressions are language denoting mechanisms. In particular, by observing their syntax rules and that each regular expression denotes a language, I infer that they are both well-defined systems for denoting a class of languages. I also explain how theoretical regular expressions (by their equivalence to DFAs) are a regular language denoting mechanism.
 
-In section 4, I focus on how JavaScript regular expressions are not a regular language denoting mechanism. Firstly, I dive into some code to demonstrate the usefulness of backreferences. Then, by considering the JavaScript regular expression `/^(a*)b+\1$/` with a backreference as a counter-example, I informally prove that there's at least one instance of a JavaScript regular expression that does not denote a regular language. So, the class denoted by JavaScript regular expressions is not the class of regular languages. So, they are not a regular language denoting mechanism. Hence, JavaScript regular expressions are not regular. As a plus, I show how `/^(a*)b+\1$/` denotes a context-free language by looking at the class of machines called pushdown automata (PDAs).
+In section 4, I focus on how JavaScript regular expressions are not a regular language denoting mechanism. Firstly, I dive into some code to demonstrate the usefulness of backreferences. Then, by considering the JavaScript regular expression `/^(a*)b+\1$/` with a backreference as a counter-example, I informally prove that there's at least one instance of a JavaScript regular expression that does not denote a regular language. So, the class of languages denoted by JavaScript regular expressions is not the class of regular languages. So, they are not a regular language denoting mechanism. Hence, JavaScript regular expressions are not regular. As a plus, I show how `/^(a*)b+\1$/` denotes a context-free language by looking at the class of machines called pushdown automata (PDAs).
 
 Here's an informal argument summarising my cashing-out strategy and examination.
 
@@ -39,7 +39,7 @@ Here's an informal argument summarising my cashing-out strategy and examination.
 4. A language denoting mechanism is regular if and only if the class of languages it denotes is the class of regular languages.
 5. Due to their equivalence to DFAs, theoretical regular expressions denote the class of regular languages.
 6. So, theoretical regular expressions are a regular language denoting mechanism.
-7. Due to backreferences, the class denoted by JavaScript regular expressions is not the class of regular languages.
+7. Due to backreferences, the class of languages denoted by JavaScript regular expressions is not the class of regular languages.
 8. So, JavaScript regular expressions are not a regular language denoting mechanism.
 
 9. To say that "JavaScript regular expressions are not regular" is to say that "JavaScript regular expressions are not a regular language denoting mechanism". Therefore, the tension becomes apparent and cashed out. In essence, JavaScript regular expressions are not a regular language denoting mechanism but their theoretical counterparts are.
@@ -64,7 +64,7 @@ For our current purposes, the hierarchy allows us to visualise that each layer i
 
 Informally, a language denoting mechanism is a well-defined system for denoting a class of languages. 
 
-For our current purposes, we'll say that a system consists of well-defined instances. In particular, there are strict, rigorous and exhaustive rules governing these instances. As a rough example, we may consider the different types behind Python as a well-defined system. Its instances are valid Python types like `bool` or `str`. Each instance is governed by strict, rigorous and exhaustive rules - the `for` keyword cannot be a Python type. Moreover, each instance must denote a language (a set of strings). For example, syntactically, the `bool` type denotes `'True'` and `'False'`. Naturally, a language denoting mechanism denotes the class of all languages denoted by its instances.
+For our current purposes, we'll say that a system consists of well-defined instances. In particular, there are rigorous rules governing these instances. As a rough example, we may consider the different types behind Python as a well-defined system. Its instances are valid Python types like `bool` or `str`. Each instance is governed by rigorous rules - the `for` keyword cannot be a Python type. Moreover, each instance must denote a language (a set of strings). For example, syntactically, the `bool` type denotes `'True'` and `'False'`. Naturally, a language denoting mechanism denotes the class of all languages denoted by its instances.
 
 In summary, a language denoting mechanism must satisfy the following properties:
 
@@ -103,7 +103,7 @@ Given `'a'`, it begins in the start state and transitions into the "odd length" 
 
 ### 2.3 DFAs as the quintessential regular language denoting mechanism
 
-It's standard to [formally define](https://www.khoury.northeastern.edu/home/vkp/390-fl07/FA-Formal-Definitions.pdf "formally define") a DFA as a 5-tuple consisting of states, an alphabet, a transition function, the start state and a set of accepting states. So, a DFA is governed by strict, rigorous and exhaustive rules. A DFA is well-defined. Moreover, it denotes a language. In other words, DFAs are a language denoting mechanism. 
+It's standard to [formally define](https://www.khoury.northeastern.edu/home/vkp/390-fl07/FA-Formal-Definitions.pdf "formally define") a DFA as a 5-tuple consisting of states, an alphabet, a transition function, the start state and a set of accepting states. So, a DFA is governed by rigorous rules. A DFA is well-defined. Moreover, it denotes a language. In other words, DFAs are a language denoting mechanism. 
 
 Since the class of regular languages is defined in relation to DFAs, I consider DFAs to constitute the quintessential language denoting mechanism that defines the class of regular languages. Any other regular language denoting mechanism *must* denote that particular class of languages. So, the class of languages that such a mechanism denotes *is* the class of languages recognised by DFAs.
 
@@ -115,7 +115,7 @@ To see how both JavaScript and theoretical regular expressions are language deno
 
 ### 3.1 Observation 1 - well-defined instances
 
-Our first observation is that both kinds of instances are governed by strict, rigorous and exhaustive rules. Each instance is well-defined.
+Our first observation is that both kinds of instances are governed by rigorous rules. Each instance is well-defined.
 
 Firstly, we can infer that JavaScript regular expressions are governed by these rules by observing that an invalid expression like `/a{1/u` throws a syntax error (because it's missing the `}`).
 
@@ -123,9 +123,9 @@ Secondly, we observe that it is standard to recursively define theoretical regul
 
 Given some alphabet,
 
-1. The empty set is a regular expression (it denotes the empty language).
-2. The empty string `''` is a regular expression (it denotes the language `{''}`).
-3. Any character from the alphabet is a regular expression (a character `'x'` denotes the language `{'x'}`).
+1. The empty set is a regular expression.
+2. The empty string `''` is a regular expression.
+3. Any character from the alphabet is a regular expression.
 4. For any two regular expressions `R` and `S`,
     1. The concatenation `RS` is a regular expression.
     2. The alternation `R|S` (the set union of all the strings in `R` and `S`) is a regular expression.
@@ -136,11 +136,11 @@ Given some alphabet,
 
 For example, we can easily construct a familiar regular expression like `(ab)|a` using these rules. Starting with `a` and `b` as characters (rule 3), we concatenate them to get `ab` (rule 4.1). Rule 5.2 gives `(ab)`. Alternating with `a` gives `(ab)|a` (rule 4.2).
 
-As a side note, one may feel that these rules are incomplete because regular expressions from popular programming languages support operators beyond those shown in the rules (like `+` or `?`). However, this feeling can be safely dismissed since most of these additional operators can be defined by the operators from the rules. For example, we can define the `R+` operator as `RR*`. It's crucial to point out that we cannot do this for *all* operators from popular programming languages (backreferences are one such exception!). To further clarify, here's a table of common operators and their rule-based definitions:
+As a side note, one may feel that these rules are incomplete because regular expressions from popular programming languages support operators beyond those shown in the rules (like `+` or `?`). However, this feeling can be safely dismissed since most of these additional operators can be defined by the operators from the rules. For example, we can define the `R+` operator as `R(R*)`. It's crucial to point out that we cannot do this for *all* operators from popular programming languages (backreferences are one such exception!). To further clarify, here's a table of common operators and their rule-based definitions:
 
 | Operator | Description | Rule-based definition | Example |
 |---|---|---|---|
-| `R+` | One or more | `RR*` | `a+` = `a(a*)` |
+| `R+` | One or more | `R(R*)` | `a+` = `a(a*)` |
 | `R?` | Optional | `R\|''` | `a?` = `a\|''` |
 | `R{n}` | Exactly n | `RR...R` (n concatenations) | `a{3}` = `aaa` |
 | `R{n,m}` | Between n and m | `R{n}` concat `R?` repeated (m−n) times | `a{2,4}` = `aa(a\|'')(a\|'')` |
@@ -152,7 +152,7 @@ As a side note, one may feel that these rules are incomplete because regular exp
 
 Our second observation is that both JavaScript and theoretical regular expressions match a set of strings. For example, `/^(aa)*$/` (JavaScript) and `(aa)*` (theoretical) both equivalently match the set of strings `{'', 'aa', 'aaaa', ...}`. In other words, both kinds of instances denote a language. 
 
-As a side note, a JavaScript regular expression can also match a parent string because it matches one of its substrings. For example, `/(aa)*/` also matches the parent string `'baab'` as it matches the substring `'aa'`. I consider such parent strings as an element of the language that it denotes.
+As a side note, a JavaScript regular expression can also match a parent string because it matches one of its substrings. For example, `/(aa)*/` also matches the parent string `'baab'` as it matches the substring `'aa'`. I consider such parent strings as elements of the language that the expression denotes.
 
 In summary, both kinds of instances are well-defined and denote a language. So, both JavaScript and theoretical regular expressions are language denoting mechanisms.
 
@@ -168,19 +168,19 @@ Backreferences allow us to refer to submatches of previously defined [capturing 
 
 Syntactically, a capturing group looks like `(pattern)` in some parent regular expression `/...(pattern).../`. Suppose that a string `M` matches `/...(pattern).../`. In such a case, the capturing group `(pattern)` segments (i.e. captures) a substring (of `M`) that matches its defined pattern. That substring is called the capturing group's submatch. 
 
-A JavaScript regular expression may contain multiple capturing groups. In such a case, these capturing groups are in a one-to-one _ordered_ relation to their submatches. As illustrated below, if some string of the form `...[1]...[2]...[3]...` matches a regular expression of the form `/...(c1)...(c2)...(c3).../`, then the capturing groups `(c1)`, `(c2)` and `(c3)` are in a one-to-one ordered relation to the submatches `[1]`, `[2]` and `[3]` respectively.
+A JavaScript regular expression may contain multiple capturing groups. In such a case, these capturing groups are in a one-to-one *ordered* relation to their submatches. As illustrated below, if some string of the form `...[1]...[2]...[3]...` matches a regular expression of the form `/...(c1)...(c2)...(c3).../`, then the capturing groups `(c1)`, `(c2)` and `(c3)` are in a one-to-one ordered relation to the submatches `[1]`, `[2]` and `[3]` respectively.
 
 ![Capturing groups in JS](/images/irregular-javascript-expressions/capturing_groups_in_js.webp)
 
 In JavaScript, we can run the `RegExp.prototype.exec()` method to see this one-to-one ordered relation. For example, given `/(a)(b)/` and a matching string `'ab'`, running `/(a)(b)/.exec('ab')` returns the array `[ 'ab', 'a', 'b', index: 0, input: 'ab', groups: undefined ]`. The element `'a'` (at index `1`) is the submatch of the first capturing group `(a)`. Similarly, the element `'b'` (at index `2`) is the submatch of the second group `(b)`.
 
-With backreferences, we can easily refer to these submatches. Syntactically, a backreference has the format `\N` where `N` is a positive whole number referring to some previously occurring capturing group. Since capturing groups are in a one-to-one ordered relation to their submatches, `N` points to the submatch at position `N` in the order [3].
+With backreferences, we can easily refer to these submatches. Syntactically, a backreference has the format `\N` where `N` is a positive whole number referring to some previously occurring capturing group. Since capturing groups are in a one-to-one ordered relation to their submatches, `N` points to the submatch at position `N` in the order [2].
 
 We can add backreferences to the aforementioned regular expression `/(a)(b)/`. For example, `/(a)(b)\2\1\2/`. To clarify, the backreference `\1` refers to the submatch of the capturing group `(a)`. Similarly, the two backreferences `\2` both refer to the submatch of the capturing group `(b)`. 
 
-For example, the string `'abbab'` matches the regular expression `/(a)(b)\2\1\2/`. The submatch of `(a)` is `'a'` and the submatch of `(b)` is `'b'`. `\1` refers to `'a'` and `\2` refers to `'b'`. Intuitively, in this case, `/(a)(b)\2\1\2/` is equivalent to `/(a)(b)bab/`.
+For example, the string `'abbab'` matches the regular expression `/(a)(b)\2\1\2/`. The submatch of `(a)` is `'a'` and the submatch of `(b)` is `'b'`. `\1` refers to `'a'` and `\2` refers to `'b'`.
 
-To demonstrate the usefulness of backreferences, consider the following function `parseHtmlTags`. It's a simple HTML tag parser. It returns all matching open/close tags of the form `<xyz>...</xyz>` after reading some arbitrary string.
+To demonstrate the usefulness of backreferences, consider the following function `parseHtmlTags`. It's a simple HTML tag parser. It returns matching non-nested open/close tags of the form `<xyz>...</xyz>` after reading some arbitrary string.
 
 ```js
 function parseHtmlTags(input) {
@@ -208,18 +208,38 @@ parseHtmlTags('<p>mismatched</div>');
 
 The backreference in `parseHtmlTags` is especially useful in making HTML tag reading quite dynamic. Intuitively, we don't need to specify a whole list of potential HTML tags alternating with one another (like `(<p>(.*?)<\/p>)` or `(<div>(.*?)<\/div>)` or `(<a>(.*?)<\/a>)`). Once we have an HTML tag name as a submatch of the capturing group in `<(\w+)>`, we can dynamically refer to it using the backreference in `<\/\1>`.
 
-### 4.1 The class denoted by JavaScript regular expressions is not the class of regular languages
+### 4.1 The class of languages denoted by JavaScript regular expressions is not the class of regular languages
+
+If we prove that there's at least one instance of a JavaScript regular expression that does not denote a regular language, then we've proven that, as a language denoting mechanism, the class of languages denoted by JavaScript regular expressions is not the class of regular languages. So, consider the JavaScript regular expression `/^(a*)b+\1$/` with a backreference as a counter-example. Intuitively, it denotes the language described as `aⁿbaⁿ` (where `n >= 0` and `i >= 1`). For example, the expression matches strings from the language like `'aabaa'` or `'bbb'`. 
+
+Now, let's prove that the language described by `aⁿbaⁿ` is not regular by using the Pumping lemma.
+
+The pumping lemma states that for any regular language `RL`, there exists an integer `p` (where `p >= 1`), called the pumping length, such that every string `w` in `RL` of length at least `p` can be written as `w` = `xyz` such that:
+
+1. The length of `y` is `>= 1`.
+2. The length of `xy` is `<= p`.
+3. For all `n` (where `n >= 0`), the string `xyⁿz` is in `RL`.
+
+Informally, any sufficiently long string `w` from a regular language `RL` can be converted to `xyz` such that all the strings of form `xyⁿz` (where `n >= 0`) is also in `RL`.
+
+For the sake of contradiction, let's assume that the language described by `aⁿbaⁿ` is regular. So, it should satisfy the pumping lemma.
+
+Let `p` be a pumping length that satisfies the pumpimg lemma and let `x = ''`, `y = aP` and `z = baP`.
+
+So, `xyz` = `aPbaP` which is in `aⁿbaⁿ`.
+
+Now, let 
+
+
 
 Let's take the as a counter-example. In this section, I informally prove that this does not denote a regular language. In fact, it denotes a context-free language.
 
 Intuitively, the language that `/^(a*)b+\1$/` denotes is equivalent to the language described as `aⁿbaⁿ` (where `n >= 0`). 
 
-Briefly, the pumping lemma states that 
 
 Firstly, I will use the pumping lemma to prove that . For the sake of contradiction, assume that is regular. By the pumping lemma, there exists such that.
 
-
-In summary, `/^(a*)b+\1$/` is an instance of a JavaScript regular expression (with a backreference) that does not denote a regular language. So, as a language denoting mechanism, the class denoted by JavaScript regular expressions is not the class of regular languages. So, they are not a regular language denoting mechanism. In other words, they are not regular.
+In summary, `/^(a*)b+\1$/` is an instance of a JavaScript regular expression (with a backreference) that does not denote a regular language. So, as a language denoting mechanism, the class of languages denoted by JavaScript regular expressions is not the class of regular languages. So, they are not a regular language denoting mechanism. In other words, they are not regular.
 
 ### 4.2 Context-free languages and NFAs
 
@@ -255,9 +275,10 @@ We can now cash out the tension between JavaScript regular expressions and their
 
 1. Quoted from [the MDN reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions "the MDN reference") on JavaScript regular expressions at the time of writing (July 2026).
 
+2. JavaScript also permits forward referencing by matching the empty string. Moreover, JavaScript also has [named backreferences](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_backreference "named backreferences"). We can use custom names, instead of a positive whole number, to refer to the submatch of some previously defined [named capturing groups](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_capturing_group "named capturing groups").
+
 2. We can argue that a DFA has a form of memory - its states and transitions. However, that memory is finite and bounded. A DFA cannot store arbitrary strings.
 
-3. JavaScript also permits forward referencing by matching the empty string. Moreover, JavaScript also has [named backreferences](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_backreference "named backreferences"). We can use custom names, instead of a positive whole number, to refer to the submatch of some previously defined [named capturing groups](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_capturing_group "named capturing groups").
 
 8. Nondeterministic PDAs, context-free languages and context-free grammars are all intrinsically tied to each other.
 
