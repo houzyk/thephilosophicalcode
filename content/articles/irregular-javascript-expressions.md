@@ -28,21 +28,7 @@ In section 2, I properly characterise regular language denoting mechanisms. I in
 
 In section 3, I show how both JavaScript and theoretical regular expressions are language denoting mechanisms. In particular, by observing their syntax rules and that each regular expression denotes a language, I infer that they are both well-defined systems for denoting a class of languages. I also explain how theoretical regular expressions (by their equivalence to DFAs) are a regular language denoting mechanism.
 
-In section 4, I focus on how JavaScript regular expressions are not a regular language denoting mechanism. Firstly, I dive into some code to demonstrate the usefulness of backreferences. Then, by considering the JavaScript regular expression `/^(a*)b+\1$/` with a backreference as a counter-example, I informally prove that there's at least one instance of a JavaScript regular expression that does not denote a regular language. So, the class of languages denoted by JavaScript regular expressions is not the class of regular languages. So, they are not a regular language denoting mechanism. Hence, JavaScript regular expressions are not regular. As a plus, I show how `/^(a*)b+\1$/` denotes a context-free language by looking at the class of machines called pushdown automata (PDAs).
-
-Here's an informal argument summarising my cashing-out strategy and examination.
-
-1. A language denoting mechanism is a well-defined system for denoting a class of languages.
-2. JavaScript and theoretical regular expressions are both well-defined systems for denoting a class of languages.
-3. So, JavaScript and theoretical regular expressions are both language denoting mechanisms.
-
-4. A language denoting mechanism is regular if and only if the class of languages it denotes is the class of regular languages.
-5. Due to their equivalence to DFAs, theoretical regular expressions denote the class of regular languages.
-6. So, theoretical regular expressions are a regular language denoting mechanism.
-7. Due to backreferences, the class of languages denoted by JavaScript regular expressions is not the class of regular languages.
-8. So, JavaScript regular expressions are not a regular language denoting mechanism.
-
-9. To say that "JavaScript regular expressions are not regular" is to say that "JavaScript regular expressions are not a regular language denoting mechanism". Therefore, the tension becomes apparent and cashed out. In essence, JavaScript regular expressions are not a regular language denoting mechanism but their theoretical counterparts are.
+In section 4, I focus on how JavaScript regular expressions are not a regular language denoting mechanism. Firstly, I dive into some code to demonstrate the usefulness of backreferences. Then, by considering the JavaScript regular expression `/^(a*)b+\1$/` with a backreference as a counter-example, I informally prove that there's at least one instance of a JavaScript regular expression that does not denote a regular language. So, the class of languages denoted by JavaScript regular expressions is not the class of regular languages. So, they are not a regular language denoting mechanism. Hence, JavaScript regular expressions are not regular.
 
 ## 1. Groundwork
 
@@ -208,68 +194,63 @@ parseHtmlTags('<p>mismatched</div>');
 
 The backreference in `parseHtmlTags` is especially useful in making HTML tag reading quite dynamic. Intuitively, we don't need to specify a whole list of potential HTML tags alternating with one another (like `(<p>(.*?)<\/p>)` or `(<div>(.*?)<\/div>)` or `(<a>(.*?)<\/a>)`). Once we have an HTML tag name as a submatch of the capturing group in `<(\w+)>`, we can dynamically refer to it using the backreference in `<\/\1>`.
 
-### 4.1 The class of languages denoted by JavaScript regular expressions is not the class of regular languages
+### 4.1 JavaScript regular expressions are not a regular language denoting mechanism
 
-If we prove that there's at least one instance of a JavaScript regular expression that does not denote a regular language, then we've proven that, as a language denoting mechanism, the class of languages denoted by JavaScript regular expressions is not the class of regular languages. So, consider the JavaScript regular expression `/^(a*)b+\1$/` with a backreference as a counter-example. Intuitively, it denotes the language described as `aⁿbaⁿ` (where `n >= 0` and `i >= 1`). For example, the expression matches strings from the language like `'aabaa'` or `'bbb'`. 
+As a language denoting mechanism, the class of languages denoted by JavaScript regular expressions is not the class of regular languages. I prove this by showing that there's at least one instance of a JavaScript regular expression that does not denote a regular language. 
 
-Now, let's prove that the language described by `aⁿbaⁿ` is not regular by using the Pumping lemma.
+Consider the JavaScript regular expression `/^(a*)b+\1$/` with a backreference as a counter-example. Intuitively, it denotes the language described as `aⁿbʲaⁿ` where `n >= 0` and `j >= 1` containing strings like `'aabaa'` or `'bbb'`.
 
-The pumping lemma states that for any regular language `RL`, there exists an integer `p` (where `p >= 1`), called the pumping length, such that every string `w` in `RL` of length at least `p` can be written as `w` = `xyz` such that:
+For the sake of contraction, assume that `aⁿbʲaⁿ` is a regular language.
 
-1. The length of `y` is `>= 1`.
-2. The length of `xy` is `<= p`.
-3. For all `n` (where `n >= 0`), the string `xyⁿz` is in `RL`.
+Informally, the general pumping lemma for regular languages states that, for any regular language `RL`, if a string `uwv` in `RL` contains a sufficiently long substring `w`, then `w` can be split into 3 parts `xyz` (where `xy` must be sufficiently long and `y` must have a non-zero length). Then, we can keep on pumping up the number of `y`'s such that `ux..y..zv` remains in `RL` [3]. 
 
-Informally, any sufficiently long string `w` from a regular language `RL` can be converted to `xyz` such that all the strings of form `xyⁿz` (where `n >= 0`) is also in `RL`.
+![General pumping lemma for regular languages](/images/irregular-javascript-expressions/general_pumping_lemma_for_regular_languages.webp)
 
-For the sake of contradiction, let's assume that the language described by `aⁿbaⁿ` is regular. So, it should satisfy the pumping lemma.
+For example, take the string `'aaaa'` from the regular language of even length over an alphabet like `{'a'}`.
 
-Let `p` be a pumping length that satisfies the pumpimg lemma and let `x = ''`, `y = aP` and `z = baP`.
+We can see that `'aaaa'` has the form `uwv` where `u = ''`, `w = 'aa'` and `v = 'aa'`. 
 
-So, `xyz` = `aPbaP` which is in `aⁿbaⁿ`.
+So, `'aaaa'` is `'' + 'aa' + 'aa'`. 
 
-Now, let 
+`w` can be split into 3, `'' + 'aa' + ''`, where `x = ''`, `y = 'aa'` and `z = ''` (remember that `y` must have a non-zero length).
 
+We can then pump up the number of `y`'s. Since `y = 'aa'` and we pump it 3 times, we get `'aaaaaa'`.
 
+When we add back `x` and `z` to the pumped-up `y`, `w` pumps up to `'' + 'aaaaaa' + ''`. So, `w = 'aaaaaa'`.
 
-Let's take the as a counter-example. In this section, I informally prove that this does not denote a regular language. In fact, it denotes a context-free language.
+When we add back `u` and `v` to the pumped-up `w`, we get `'' + 'aaaaaa' + 'aa'`. This gives `'aaaaaaaa'` which is a string in our regular language.
 
-Intuitively, the language that `/^(a*)b+\1$/` denotes is equivalent to the language described as `aⁿbaⁿ` (where `n >= 0`). 
+Going back to our proof, `aⁿbʲaⁿ` must satisfy the general pumping lemma. So, let `u = ''`, `w = aᵏ` and `v = baᵏ` for some value `k` that satisfies the pumping lemma. So, `uwv = '' + aᵏ + baᵏ` and `uwv = aᵏbaᵏ`. `aᵏbaᵏ` is in `aⁿbʲaⁿ`.
 
+`w` can be split into 3. So, `aᵏ = xyz` for some values of `x`, `y` and `z` that satisfy the lemma.
 
-Firstly, I will use the pumping lemma to prove that . For the sake of contradiction, assume that is regular. By the pumping lemma, there exists such that.
+We can now pump up the number of `y`'s. Let's pump it to 2. Since `aᵏ` contains at least one `a` and only `a`'s while `y` must have a non-zero length, then `y` must also contain at least one `a` and only `a`'s.
 
-In summary, `/^(a*)b+\1$/` is an instance of a JavaScript regular expression (with a backreference) that does not denote a regular language. So, as a language denoting mechanism, the class of languages denoted by JavaScript regular expressions is not the class of regular languages. So, they are not a regular language denoting mechanism. In other words, they are not regular.
+So, `yy` contains more `a`'s than `y`. 
 
-### 4.2 Context-free languages and NFAs
+When we add back `x` and `z` to the two-times pumped-up `y`, `w` pumps up to `xyyz`.
 
-A classic example of a context-free language is the set of all strings of the form `aⁿbⁿ` over an alphabet like `{'a', 'b'}`. This is the set of strings starting with some number of `a`'s strictly followed by the same number of `b`'s. It contains strings like `'ab'`, `'aabb'` or `''` (the empty string).
+Since, the number of `a`'s in `xyz` is `aᵏ`, then the number of `a`'s in `xyyz` is more than `aᵏ`. For simplicity, I'll now write `xyyz` as `aᵏ⁺`.
 
-Just like regular languages, context-free languages also have an intrinsic tie to a class of machines called pushdown automata (PDAs):
+When we add back `u` and `v` to the pumped-up `w`, we get `'' + 'aᵏ⁺' + baᵏ`. This gives `'aᵏ⁺baᵏ'` which is **not a string in `aⁿbʲaⁿ`**.
 
-All context-free languages are recognised by PDAs and PDAs only recognise context-free languages [9].
+We've reached our contradiction. `aⁿbʲaⁿ` is not a regular language. So, `/^(a*)b+\1$/` is an instance of a JavaScript regular expression that does not denote a regular language. As a language denoting mechanism, the class of languages denoted by JavaScript regular expressions is not the class of regular languages.Hence, JavaScript regular expressions are not a regular language denoting mechanism.
 
-Moreover, a PDA is also a theoretical machine that recognises a set of strings. For any string over the machine's alphabet, the machine will either accept or reject it. The set of all strings that the machine accepts is the language of that machine. The key difference from a DFA is that a PDA is equipped with an unbounded stack. This stack is what gives PDAs their extra expressive power as illustrated by Chomsky's hierarchy. The stack acts as memory that a DFA lacks. 
+### 4.2 Tying it all together
 
-Visually, a PDA is made up of a finite set of states with transitions among them. For each transition, the machine can also inspect and manipulate the stack. It can push symbols onto it or pop symbols off it. One state is the start state. Some of these states are "accepting" and others are "rejecting". A string is fed into the machine via the start state, and the machine transitions through its states by individually reading the string's characters and managing its stack. Once no further transitions apply, the machine stops. If it lands in an accepting state, the machine accepts the string. Otherwise, it rejects it. So, the language of the PDA is the set of all strings that land in an accepting state [10]. To further clarify, let's construct a PDA that recognises the aforementioned context-free language `aⁿbⁿ`.
+Here's an informal argument summarising my cashing-out strategy and examination.
 
-![PDA for aⁿbⁿ](/images/irregular-javascript-expressions/pda_for_anbn.webp)
+1. A language denoting mechanism is a well-defined system for denoting a class of languages.
+2. JavaScript and theoretical regular expressions are both well-defined systems for denoting a class of languages.
+3. So, JavaScript and theoretical regular expressions are both language denoting mechanisms.
 
-Let's walk through how the machine recognises our language by looking at one example string `'ab'`. Ideally, the machine should accept `'ab'`.
+4. A language denoting mechanism is regular if and only if the class of languages it denotes is the class of regular languages.
+5. Due to their equivalence to DFAs, theoretical regular expressions denote the class of regular languages.
+6. So, theoretical regular expressions are a regular language denoting mechanism.
+7. Due to backreferences, the class of languages denoted by JavaScript regular expressions is not the class of regular languages.
+8. So, JavaScript regular expressions are not a regular language denoting mechanism.
 
-`'ab'` begins in the start state. Firstly, the machine does not parse any character (it parses the empty string `''`) and pops nothing from the stack (it pops `''`). It also pushes a designated symbol `'$'` that acts as a sentinel which signifies the bottom of the stack. It then transitions to the next state where the machine parses the first `'a'`, pops nothing from the stack and pushes a designated symbol `'A'` onto the stack. Basically, `'A'` signifies the number of `'a'`'s that we have parsed throughout a computation. As we will see shortly, in order to ensure that there is the same number of `'b'`'s as `'a'`'s in a string, we have to pop all the `'A'`'s from the stack until we reach the bottom. Then, the machine transitions to the next state without popping or pushing anything from the stack. It then parses the last `'b'`, pops an `'A'` from the stack and pushes nothing onto it. Finally, since the sentinel `'$'` is the only symbol left on the stack, the machine pops it and transitions into an accepting state. So, it accepts `'ab'`.
-
-## PS. Memory and finite states
-
-Conceptually, for a backreference to refer to a capturing group's submatch, we have to store the value of that submatch in memory to later reference it. In the aforementioned HTML tag parser example, if the capturing group's submatch is `'p'` (from the tag `<p>`), we need to store the value `'p'`, so that the backreference `\1` may refer to it. So, backreferences rely on memory. It follows that JavaScript regular expressions rely on memory.
-
-Importantly, notice how a DFA does not have memory during computation. It simply transitions between states on each computational step. For example, once it parses a character, the machine "forgets" it. Similarly, it does not have any memory of any previously parsed characters or states traversed. At any computational step, it only "knows" the current character, the current state and its transitions. Hence, DFAs are finite state machines without memory.
-
-
-As previously mentioned, a key difference between a DFA and a PDA is the addition of an unbounded stack. DFAs do not have that kind of memory. They only have states and transitions. At any point in its computation, a DFA only knows about its current state, the character that it's reading and its available transitions. It does not know what it previously saw. 
-
-We can now cash out the tension between JavaScript regular expressions and their theoretical counterparts. Notice that once we add memory (like an unbounded stack), we move up Chomsky's hierarchy and away from regular languages. So, any class of machines equipped with such memory can recognise a larger class of languages than regular languages (they can also recognise regular languages). In other words, any computational model that relies on such memory recognises a different set of languages from regular languages. Since JavaScript regular expressions rely on memory, they correspond to languages in the hierarchy that move away from regular languages [11]. In other words, JavaScript regular expressions act as syntactic sugar for languages belonging to a different containment level in the hierarchy than regular languages. So, they recognise a larger (and different) class of languages than DFAs and regular languages. Hence, they are not regular.
-
+9. To say that "JavaScript regular expressions are not regular" is to say that "JavaScript regular expressions are not a regular language denoting mechanism". Therefore, the tension becomes apparent and cashed out. In essence, JavaScript regular expressions are not a regular language denoting mechanism but their theoretical counterparts are.
 
 ## Footnotes
 
@@ -277,11 +258,6 @@ We can now cash out the tension between JavaScript regular expressions and their
 
 2. JavaScript also permits forward referencing by matching the empty string. Moreover, JavaScript also has [named backreferences](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_backreference "named backreferences"). We can use custom names, instead of a positive whole number, to refer to the submatch of some previously defined [named capturing groups](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_capturing_group "named capturing groups").
 
-2. We can argue that a DFA has a form of memory - its states and transitions. However, that memory is finite and bounded. A DFA cannot store arbitrary strings.
-
-
-8. Nondeterministic PDAs, context-free languages and context-free grammars are all intrinsically tied to each other.
-
-9. Here's a [formal definition](https://www.khoury.northeastern.edu/home/vkp/390-fl07/Pushdown-Automata.pdf "formal definition") of a PDA (URL valid at the time of writing).
+3. Formally, the general pumping lemma for regular languages states that
 
 I was originally inspired to write this article after reading [Abdur-Rahmaan Janhangeer](https://www.compileralchemy.com/ "Abdur-Rahmaan Janhangeer")'s article - [Regex Engines: History and Contributions](https://www.linkedin.com/pulse/regex-engines-history-contributions-abdur-rahmaan-janhangeer "Regex Engines: History and Contributions").
