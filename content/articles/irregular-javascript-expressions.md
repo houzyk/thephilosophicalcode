@@ -109,7 +109,7 @@ Secondly, we observe that it is standard to recursively define theoretical regul
 
 Given some alphabet,
 
-1. The empty set `∅` is a regular expression
+1. The empty set `∅` is a regular expression.
 2. The empty string `''` is a regular expression.
 3. Any character from the alphabet is a regular expression.
 4. For any two regular expressions `R` and `S`,
@@ -256,7 +256,7 @@ Here's an informal argument summarising my cashing-out strategy and examination.
 
 1. Quoted from [the MDN reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions "the MDN reference") on JavaScript regular expressions at the time of writing (July 2026).
 
-2. JavaScript also permits forward referencing. If a backreference appears before its capturing group, it matches the empty string. Moreover, JavaScript has [named backreferences](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_backreference "named backreferences"). We can use a custom name, instead of a positive whole number, to refer to the submatch of a previously defined [named capturing groups](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_capturing_group "named capturing groups").
+2. JavaScript also permits forward referencing. If a backreference appears before its capturing group, it matches the empty string. Moreover, JavaScript has [named backreferences](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_backreference "named backreferences"). We can use a custom name, instead of a positive whole number, to refer to the submatch of a previously defined [named capturing group](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_capturing_group "named capturing group").
 
 3. Formally, the general pumping lemma for regular languages states that, for any regular language `RL`, there exists a positive integer `p`, called the pumping length, such that every string of the form `uwv` in `RL` (where the length `len(w)` of `w` is such that `len(w) >= p`) can be written in the form `uwv = uxyzv`. The length `len(xy)` of `xy` is such that `len(xy) <= p`. The length `len(y)` of `y` is such that `len(y) >= 1`. Then, for any positive integer `i`, any string of the form `uxyⁱzv` is in `RL`.
 
