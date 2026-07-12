@@ -109,7 +109,7 @@ Secondly, we observe that it is standard to recursively define theoretical regul
 
 Given some alphabet,
 
-1. `∅` is a regular expression
+1. The empty set `∅` is a regular expression
 2. The empty string `''` is a regular expression.
 3. Any character from the alphabet is a regular expression.
 4. For any two regular expressions `R` and `S`,
@@ -218,7 +218,7 @@ We can then pump up the number of `y`'s. Since `y = 'aa'` and we pump it 3 times
 
 When we add back `x` and `z` to the pumped-up `y`, `w` pumps up to `'' + 'aaaaaa' + ''`. So, `w = 'aaaaaa'`.
 
-When we add back `u` and `v` to the pumped-up `w`, we get `'' + 'aaaaaa' + 'aa'`. This gives `'aaaaaaaa'` which is a string in our regular language.
+When we add back `u` and `v` to the pumped-up `w`, we get `'' + 'aaaaaa' + 'aa'`. This gives `'aaaaaaaa'`, which is a string in our regular language.
 
 Going back to our proof, `aⁿbʲaⁿ` must satisfy the general pumping lemma. So, let `u = ''`, `w = aᵏ` and `v = baᵏ` for some value `k` that satisfies the pumping lemma. So, `uwv = '' + aᵏ + baᵏ` and `uwv = aᵏbaᵏ`. `aᵏbaᵏ` is in `aⁿbʲaⁿ`.
 
@@ -232,7 +232,7 @@ When we add back `x` and `z` to the two-times pumped-up `y`, `w` pumps up to `xy
 
 Since the number of `a`'s in `xyz` is `k`, then the number of `a`'s in `xyyz` is more than `k`. For simplicity, I'll now write `xyyz` as `aᵏ⁺`.
 
-When we add back `u` and `v` to the pumped-up `w`, we get `'' + aᵏ⁺ + baᵏ`. This gives `aᵏ⁺baᵏ` which is **not a string in `aⁿbʲaⁿ`**.
+When we add back `u` and `v` to the pumped-up `w`, we get `'' + aᵏ⁺ + baᵏ`. This gives `aᵏ⁺baᵏ`, which is **not a string in `aⁿbʲaⁿ`**.
 
 We've reached our contradiction. `aⁿbʲaⁿ` is not a regular language. So, `/^(a*)b+\1$/` is an instance of a JavaScript regular expression that does not denote a regular language. The class of languages denoted by JavaScript regular expressions is not the class of regular languages. Hence, JavaScript regular expressions are not a regular language denoting mechanism.
 
@@ -256,7 +256,7 @@ Here's an informal argument summarising my cashing-out strategy and examination.
 
 1. Quoted from [the MDN reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions "the MDN reference") on JavaScript regular expressions at the time of writing (July 2026).
 
-2. JavaScript also permits forward referencing by matching the empty string. If a backreference appears before its capturing group, it matches the empty string. Moreover, JavaScript has [named backreferences](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_backreference "named backreferences"). We can use a custom name, instead of a positive whole number, to refer to the submatch of some previously defined [named capturing groups](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_capturing_group "named capturing groups").
+2. JavaScript also permits forward referencing. If a backreference appears before its capturing group, it matches the empty string. Moreover, JavaScript has [named backreferences](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_backreference "named backreferences"). We can use a custom name, instead of a positive whole number, to refer to the submatch of a previously defined [named capturing groups](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_capturing_group "named capturing groups").
 
 3. Formally, the general pumping lemma for regular languages states that, for any regular language `RL`, there exists a positive integer `p`, called the pumping length, such that every string of the form `uwv` in `RL` (where the length `len(w)` of `w` is such that `len(w) >= p`) can be written in the form `uwv = uxyzv`. The length `len(xy)` of `xy` is such that `len(xy) <= p`. The length `len(y)` of `y` is such that `len(y) >= 1`. Then, for any positive integer `i`, any string of the form `uxyⁱzv` is in `RL`.
 
