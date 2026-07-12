@@ -1,7 +1,7 @@
 ---
 external: false
 title: "(Ir)regular JavaScript Expressions"
-description: "The MDN reference on JavaScript regular expressions notes that \"JavaScript regular expressions are in fact not regular [...]\". This highlights a subtle tension between theoretical regular expressions and their implementation in JavaScript. In this article, I cash-out and examine this tension by contrasting JavaScript regular expressions with their theoretical counterparts."
+description: "The MDN reference on JavaScript regular expressions notes that \"JavaScript regular expressions are in fact not regular [...]\". This highlights a subtle tension between theoretical regular expressions and their implementation in JavaScript. In this article, I cash out and examine this tension by contrasting JavaScript regular expressions with their theoretical counterparts."
 author: "Muhammad Houzair Koussa"
 authorUrl: "https://houzair.me/"
 ogImagePath: "/images/irregular-javascript-expressions/cover.webp"
@@ -144,7 +144,7 @@ In summary, both kinds of instances are well-defined and denote a language. So, 
 
 ### 3.3 Theoretical regular expressions are a regular language denoting mechanism
 
-It's standard to say that theoretical regular expressions are equivalent to DFAs. In fact, we can [prove](https://courses.grainger.illinois.edu/cs373/su2011/lectures/lecture10.pdf "prove") it. This means that, as a language denoting mechanism, the class of languages that theoretical regular expressions denote is the class of languages recognised by DFAs. By definition, that's the class of regular languages. Hence, theoretical regular expressions are a regular language denoting mechanism.
+It's standard to say that theoretical regular expressions are equivalent to DFAs. In fact, we can [prove](https://courses.grainger.illinois.edu/cs373/su2011/lectures/lecture10.pdf "prove") it. This means that the class of languages that theoretical regular expressions denote is the class of languages recognised by DFAs. By definition, that's the class of regular languages. Hence, theoretical regular expressions are a regular language denoting mechanism.
 
 Following my cashing-out strategy, I now focus on how JavaScript regular expressions are not a regular language denoting mechanism by looking at backreferences.
 
@@ -196,11 +196,11 @@ The backreference in `parseHtmlTags` is especially useful in making HTML tag rea
 
 ### 4.1 JavaScript regular expressions are not a regular language denoting mechanism
 
-As a language denoting mechanism, the class of languages denoted by JavaScript regular expressions is not the class of regular languages. I prove this by showing that there's at least one instance of a JavaScript regular expression that does not denote a regular language. 
+The class of languages denoted by JavaScript regular expressions is not the class of regular languages. I prove this by showing that there's at least one instance of a JavaScript regular expression that does not denote a regular language. 
 
 Consider the JavaScript regular expression `/^(a*)b+\1$/` with a backreference as a counter-example. Intuitively, it denotes the language described as `aⁿbʲaⁿ` where `n >= 0` and `j >= 1` containing strings like `'aabaa'` or `'bbb'`.
 
-For the sake of contraction, assume that `aⁿbʲaⁿ` is a regular language.
+For the sake of contradiction, assume that `aⁿbʲaⁿ` is a regular language.
 
 Informally, the general pumping lemma for regular languages states that, for any regular language `RL`, if a string `uwv` in `RL` contains a sufficiently long substring `w`, then `w` can be split into 3 parts `xyz` (where `xy` must be sufficiently long and `y` must have a non-zero length). Then, we can keep on pumping up the number of `y`'s such that `ux..y..zv` remains in `RL` [3]. 
 
@@ -230,11 +230,11 @@ So, `yy` contains more `a`'s than `y`.
 
 When we add back `x` and `z` to the two-times pumped-up `y`, `w` pumps up to `xyyz`.
 
-Since, the number of `a`'s in `xyz` is `aᵏ`, then the number of `a`'s in `xyyz` is more than `aᵏ`. For simplicity, I'll now write `xyyz` as `aᵏ⁺`.
+Since the number of `a`'s in `xyz` is `k`, then the number of `a`'s in `xyyz` is more than `k`. For simplicity, I'll now write `xyyz` as `aᵏ⁺`.
 
 When we add back `u` and `v` to the pumped-up `w`, we get `'' + 'aᵏ⁺' + baᵏ`. This gives `'aᵏ⁺baᵏ'` which is **not a string in `aⁿbʲaⁿ`**.
 
-We've reached our contradiction. `aⁿbʲaⁿ` is not a regular language. So, `/^(a*)b+\1$/` is an instance of a JavaScript regular expression that does not denote a regular language. As a language denoting mechanism, the class of languages denoted by JavaScript regular expressions is not the class of regular languages.Hence, JavaScript regular expressions are not a regular language denoting mechanism.
+We've reached our contradiction. `aⁿbʲaⁿ` is not a regular language. So, `/^(a*)b+\1$/` is an instance of a JavaScript regular expression that does not denote a regular language. The class of languages denoted by JavaScript regular expressions is not the class of regular languages. Hence, JavaScript regular expressions are not a regular language denoting mechanism.
 
 ### 4.2 Tying it all together
 
@@ -259,5 +259,7 @@ Here's an informal argument summarising my cashing-out strategy and examination.
 2. JavaScript also permits forward referencing by matching the empty string. Moreover, JavaScript also has [named backreferences](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_backreference "named backreferences"). We can use custom names, instead of a positive whole number, to refer to the submatch of some previously defined [named capturing groups](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Named_capturing_group "named capturing groups").
 
 3. Formally, the general pumping lemma for regular languages states that, for any regular language `RL`, there exists a positive integer `p`, called the pumping length, such that every string of form `uwv` in `RL` (where the length `len(w)` of `w` is such that `len(w) >= p`) can be written in the form `uwv = uxyzv`. The length `len(xy)` of `xy` is such that `len(xy) <= p`. The length `len(y)` of `y` is such that `len(y) >= 1`. Then, for any positive integer `k`, any string of form `uxyᵏzv` is in `RL`.
+
+## Acknowledgements
 
 I was originally inspired to write this article after reading [Abdur-Rahmaan Janhangeer](https://www.compileralchemy.com/ "Abdur-Rahmaan Janhangeer")'s article - [Regex Engines: History and Contributions](https://www.linkedin.com/pulse/regex-engines-history-contributions-abdur-rahmaan-janhangeer "Regex Engines: History and Contributions").
