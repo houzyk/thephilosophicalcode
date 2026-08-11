@@ -2,7 +2,7 @@
 
 # The Philosophical Code
 
-The Philosophical Code is an open-source article series exploring the intersection of philosophy and computation.
+The Philosophical Code is an open-source article series exploring the intersection of philosophy and technology.
 
 Live: [thephilosophicalcode.com](https://thephilosophicalcode.com)
 
